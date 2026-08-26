@@ -6,38 +6,21 @@
       <img
         src="/etz-logo.png"
         alt="ETZ logo"
-        class="h-7 w-auto object-contain"
+        class="h-6 w-auto object-contain"
       />
     </div>
 
     <!-- Center Navigation -->
     <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
-
       <a
         routerLink="/dashboard"
-        routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
+        routerLinkActive="nav-link-active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
-      >
+        class="nav-link">
         Dashboard
       </a>
 
-@if (roleService.hasRole('manager')) {
-  <!-- <a
-    routerLink="/elevate"
-    routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
-  >
-    Elevate
-  </a> -->
-  <!-- <a
-  routerLink="/elevate"
-  routerLinkActive="!bg-[#edf6ff] !text-red-500 [#2F87DA] font-semibold"
-  class="px-6 py-2 rounded-full text-sm !text-gray-700 hover:bg-[#edf6ff] hover:text-[#4d94d7] transition font-medium"
->
-  Elevate
-</a> -->
+@if (roleService.hasRole(['manager', 'employee'])) {
   <a
     routerLink="/elevate"
     routerLinkActive="nav-link-active"
@@ -51,9 +34,8 @@
   @if (roleService.hasRole('hr')) {
     <a
       routerLink="hr/kpi-templates"
-      routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
-      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
-    >
+      routerLinkActive="nav-link-active"
+      class="nav-link">
       KPI Templates
     </a>
   }
@@ -61,9 +43,8 @@
   @if (roleService.hasRole('hr')) {
     <a
       routerLink="hr/performance-cycles"
-      routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
-      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
-    >
+      routerLinkActive="nav-link-active"
+      class="nav-link">
       Performance Cycles
     </a>
   }
@@ -71,16 +52,20 @@
   @if (roleService.hasRole('hr')) {
     <a
       routerLink="hr/departments"
- elevate-branch
-      routerLinkActive="!bg-[#edf6ff] !text-[#2F87DA]"
-      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
-
-
-    >
+      routerLinkActive="nav-link-active"
+      class="nav-link">
       Departments
     </a>
   }
 
+    @if (roleService.hasRole('hr')) {
+    <a
+      routerLink="hr/validation"
+      routerLinkActive="nav-link-active"
+      class="nav-link">
+      Validation
+    </a>
+  }
 
     </nav>
 

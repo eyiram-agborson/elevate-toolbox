@@ -6,7 +6,6 @@ import { Departments } from './hr/departments/departments';
 import { roleGuard } from './guards/role-guard';
 import { DepartmentDetails } from './hr/departments/department-details/department-details';
 import { EmployeeReview } from './hr/departments/employee-review/employee-review';
- elevate-branch
 import { ManagerElevate } from './elevate/manager-elevate/manager-elevate';
 import { UserElevate } from './elevate/user-elevate/user-elevate';
 
@@ -57,6 +56,10 @@ export const routes: Routes = [
       },
       {
         path: 'hr/kpi-templates', loadComponent: ()=> import('./hr/kpi-templates/kpi-templates').then(m => m.KpiTemplates),
+        canActivate: [roleGuard], data: {role: 'hr'}
+      },
+      {
+        path: 'hr/validation', loadComponent: ()=> import('./hr/validation/validation').then(m => m.Validation),
         canActivate: [roleGuard], data: {role: 'hr'}
       }
     ]
