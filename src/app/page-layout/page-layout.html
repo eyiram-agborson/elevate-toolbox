@@ -15,9 +15,9 @@
 
       <a
         routerLink="/dashboard"
-        routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
+        routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+        class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
       >
         Dashboard
       </a>
@@ -25,9 +25,9 @@
 @if (roleService.hasRole('manager')) {
   <a
     routerLink="/elevate"
-    routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
+    routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
     [routerLinkActiveOptions]="{ exact: true }"
-    class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+    class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
   >
     Elevate
   </a>
@@ -36,8 +36,8 @@
   @if (roleService.hasRole('hr')) {
     <a
       routerLink="hr/performance-cycles"
-      routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
-      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+      routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
+      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
     >
       Performance Cycles
     </a>
@@ -47,7 +47,7 @@
     <a
       routerLink="hr/departments"
       routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
-      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
     >
       Departments
     </a>
