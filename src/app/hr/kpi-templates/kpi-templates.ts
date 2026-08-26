@@ -6,4 +6,30 @@ import { Component } from '@angular/core';
   templateUrl: './kpi-templates.html',
   styleUrl: './kpi-templates.css',
 })
-export class KpiTemplates {}
+export class KpiTemplates {
+
+  isEditKpi = false;
+
+openEditKpi(): void {
+  this.isEditKpi= true;
+}
+
+closeEditKpi(): void {
+  this.isEditKpi= false;
+}
+
+saveTemplate(): void {
+  this.isEditKpi= false;
+}
+
+showAddTemplateModal = false;
+
+openAddTemplate(): void {
+  this.showAddTemplateModal = true;
+}
+
+closeAddTemplate(): void {
+  this.showAddTemplateModal = false;
+}
+
+}
