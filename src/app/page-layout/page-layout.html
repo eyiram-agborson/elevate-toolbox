@@ -22,7 +22,7 @@
         Dashboard
       </a>
 
-<!-- @if (roleService.hasRole('manager')) { -->
+@if (roleService.hasRole('manager')) {
   <a
     routerLink="/elevate"
     routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
@@ -31,7 +31,18 @@
   >
     Elevate
   </a>
-<!-- } -->
+}
+
+  @if (roleService.hasRole('hr')) {
+    <a
+      routerLink="hr/departments"
+      routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
+      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-700 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+    >
+      Departments
+    </a>
+  }
+
 
     </nav>
 

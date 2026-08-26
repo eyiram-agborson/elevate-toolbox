@@ -28,11 +28,15 @@ export class Dashboard {
     this.router.navigate(['/manager-performance']);
   }
 
-  goToDepartmentManagement() {
-    this.router.navigate(['/department-management']);
+  goToEmployeeReview() {
+    this.router.navigate(['/employee-review']);
   }
 
   goToDepartmentDetails() {
-    this.router.navigate(['/department-details']);
+    this.router.navigate(['hr/departments/:id']);
+  }
+
+  goToEmployeeDetails(){
+    this.router.navigate(['/hr/departments/:id/employee/:employeeId'])
   }
 }

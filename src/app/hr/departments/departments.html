@@ -1,0 +1,140 @@
+<div class="min-h-screen bg-[#F7F8FA]">
+    <div class="w-full px-[30px] py-[35px]">
+        <a href="/dashboard" class="mb-[20px] flex w-[170px] items-center gap-[15px] font-medium !text-[#807777] link-select !hover:text-[#5BA2F7]">
+            &larr; Dashboard
+        </a>
+
+        <!-- PAGE HEADER -->
+        <div class="mb-[28px] flex items-center justify-between">
+            <div class="flex flex-col gap-[6px]">
+                <span class="text-[28px] font-medium text-[#111827]">All Departments</span>
+                <span class="text-[15px] text-gray-400">Track manager review progress across all departments</span>
+            </div>
+
+            <div class="flex items-center gap-[15px]">
+                <!-- Search -->
+                <div class="relative w-[342px]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-[16px] top-1/2 -translate-y-1/2 text-[18px] text-[#777]"></i>
+                    <input type="text" placeholder="Search department..." class="h-[50px] w-full rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] pl-[48px] pr-[16px] text-[16px] text-[#555] outline-none focus:border-[#999]" />
+                </div>
+
+                <!-- Filter -->
+                <button type="button" class="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] text-[#555] hover:bg-[#F0F1F2]">
+                    <i class="fa-solid fa-sliders text-[18px]"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- DEPARTMENT PROGRESS -->
+        <section class="mt-[28px]">
+            <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+
+                <!-- ROW 1 -->
+                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                    <div class="flex w-[40%] items-center gap-[12px]">
+                        <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
+                        <div class="flex flex-col gap-[3px]">
+                            <span class="text-[15px] font-medium">Technology</span>
+                            <span class="text-[15px] text-gray-400">24 team members</span>
+                        </div>
+                    </div>
+
+                    <div class="w-[38%]">
+                        <div class="mb-[5px] flex items-center gap-[10px]">
+                            <nz-progress [nzPercent]="33" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6" class="flex-1"></nz-progress>
+                            <span class="whitespace-nowrap rounded-full bg-[#FFF4D6] px-[10px] py-[4px] text-[12px] font-medium text-[#9A6B00]">In Progress</span>
+                        </div>
+                        <span class="text-[15px] text-gray-400">8/24 reviewed</span>
+                    </div>
+
+                    <button (click)="goToDepartmentDetails()" class="font-medium text-[15px] text-[#555] link-select hover:text-[#5BA2F7]">Open →</button>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                    <div class="flex w-[40%] items-center gap-[12px]">
+                        <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
+                        <div class="flex flex-col gap-[3px]">
+                            <span class="text-[15px] font-medium">Finance</span>
+                            <span class="text-[15px] text-gray-400">24 team members</span>
+                        </div>
+                    </div>
+
+                    <div class="w-[38%]">
+                        <div class="mb-[5px] flex items-center gap-[10px]">
+                            <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6" class="flex-1"></nz-progress>
+                            <span class="whitespace-nowrap rounded-full bg-[#FFF4D6] px-[10px] py-[4px] text-[12px] font-medium text-[#9A6B00]">In Progress</span>
+                        </div>
+                        <span class="text-[15px] text-gray-400">16/24 reviewed</span>
+                    </div>
+
+                    <button (click)="goToDepartmentDetails()" class="font-medium text-[15px] text-[#555] link-select hover:text-[#5BA2F7]">Open →</button>
+                </div>
+
+                <!-- ROW 3 -->
+                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                    <div class="flex w-[40%] items-center gap-[12px]">
+                        <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
+                        <div class="flex flex-col gap-[3px]">
+                            <span class="text-[15px] font-medium">Human Resources</span>
+                            <span class="text-[15px] text-gray-400">24 team members</span>
+                        </div>
+                    </div>
+
+                    <div class="w-[38%]">
+                        <div class="mb-[5px] flex items-center gap-[10px]">
+                            <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6" class="flex-1"></nz-progress>
+                            <span class="whitespace-nowrap rounded-full bg-[#E8F7EE] px-[10px] py-[4px] text-[12px] font-medium text-[#287A45]">Completed</span>
+                        </div>
+                        <span class="text-[15px] text-gray-400">24/24 reviewed</span>
+                    </div>
+
+                    <button (click)="goToDepartmentDetails()" class="font-medium text-[15px] text-[#555] link-select hover:text-[#5BA2F7]">Open →</button>
+                </div>
+
+                <!-- ROW 4 -->
+                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                    <div class="flex w-[40%] items-center gap-[12px]">
+                        <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
+                        <div class="flex flex-col gap-[3px]">
+                            <span class="text-[15px] font-medium">Operations</span>
+                            <span class="text-[15px] text-gray-400">24 team members</span>
+                        </div>
+                    </div>
+
+                    <div class="w-[38%]">
+                        <div class="mb-[5px] flex items-center gap-[10px]">
+                            <nz-progress [nzPercent]="50" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6" class="flex-1"></nz-progress>
+                            <span class="whitespace-nowrap rounded-full bg-[#FFF4D6] px-[10px] py-[4px] text-[12px] font-medium text-[#9A6B00]">In Progress</span>
+                        </div>
+                        <span class="text-[15px] text-gray-400">12/24 reviewed</span>
+                    </div>
+
+                    <button (click)="goToDepartmentDetails()" class="font-medium text-[15px] text-[#555] link-select hover:text-[#5BA2F7]">Open →</button>
+                </div>
+
+                <!-- ROW 5 -->
+                <div class="flex items-center justify-between px-[18px] py-[16px]">
+                    <div class="flex w-[40%] items-center gap-[12px]">
+                        <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
+                        <div class="flex flex-col gap-[3px]">
+                            <span class="text-[15px] font-medium">Marketing</span>
+                            <span class="text-[15px] text-gray-400">24 team members</span>
+                        </div>
+                    </div>
+
+                    <div class="w-[38%]">
+                        <div class="mb-[5px] flex items-center gap-[10px]">
+                            <nz-progress [nzPercent]="0" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6" class="flex-1"></nz-progress>
+                            <span class="whitespace-nowrap rounded-full bg-[#F1F2F4] px-[10px] py-[4px] text-[12px] font-medium text-[#6B7280]">Not Started</span>
+                        </div>
+                        <span class="text-[15px] text-gray-400">0/24 reviewed</span>
+                    </div>
+
+                    <button (click)="goToDepartmentDetails()" class="font-medium text-[15px] text-[#555] link-select hover:text-[#5BA2F7]">Open →</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
