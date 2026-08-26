@@ -1,0 +1,16 @@
+.completed-cycle .ant-steps-item-finish .ant-steps-item-icon {
+  border-color: #22c55e;
+  background: #22c55e;
+}
+
+.completed-cycle .ant-steps-item-finish .ant-steps-icon {
+  color: #ffffff;
+}
+
+.completed-cycle .ant-steps-item-finish .ant-steps-item-title {
+  color: #374151;
+}
+
+.completed-cycle .ant-steps-item-finish .ant-steps-item-tail::after {
+  background-color: #22c55e;
+}

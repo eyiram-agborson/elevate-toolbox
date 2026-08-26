@@ -6,8 +6,10 @@ import { Departments } from './hr/departments/departments';
 import { roleGuard } from './guards/role-guard';
 import { DepartmentDetails } from './hr/departments/department-details/department-details';
 import { EmployeeReview } from './hr/departments/employee-review/employee-review';
+ elevate-branch
 import { ManagerElevate } from './elevate/manager-elevate/manager-elevate';
 import { UserElevate } from './elevate/user-elevate/user-elevate';
+
 
 export const routes: Routes = [
   {
@@ -38,7 +40,7 @@ export const routes: Routes = [
 
 
       {
-        path: 'hr/departments', component: Departments,
+        path: 'hr/departments', loadComponent: ()=> import('./hr/departments/departments').then(m => m.Departments),
         canActivate: [roleGuard], data: {role: 'hr'}
       },
       {
@@ -48,6 +50,14 @@ export const routes: Routes = [
       {
         path: 'hr/departments/:id/employee/:employeeId', component: EmployeeReview,
         canActivate: [roleGuard], data: {role: 'hr'}
+      },
+      {
+        path: 'hr/performance-cycles', loadComponent: () => import('./hr/performance-cycles/performance-cycles').then(m => m.PerformanceCycles),
+        canActivate: [roleGuard], data: {role: 'hr'}
+      },
+      {
+        path: 'hr/kpi-templates', loadComponent: ()=> import('./hr/kpi-templates/kpi-templates').then(m => m.KpiTemplates),
+        canActivate: [roleGuard], data: {role: 'hr'}
       }
     ]
   },
@@ -56,11 +66,3 @@ export const routes: Routes = [
   }
 ];
 
-
-
-// {
-//   path: 'elevate',
-//   component: Elevate,
-//   canActivate: [roleGuard],
-//   data: { role: 'manager' }
-// }

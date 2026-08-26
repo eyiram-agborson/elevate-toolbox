@@ -1,0 +1,284 @@
+<div class="px-[24px] py-[20px]">
+    <div class="mt-5">
+                <a routerLink="/"
+            class="mb-[18px] flex w-fit items-center gap-[9px] text-[15px] font-medium !text-[#807777] hover:text-[#5BA2F7]"
+        >
+            <i class="fa-solid fa-arrow-left text-[16px] !text-[#807777] link-select"></i>
+            Dashboard
+        </a>
+    </div>
+
+  <div class="mb-[24px]">
+    <h1 class="text-[28px] font-semibold text-[#0F172A]">Performance Cycles</h1>
+    <p class="mt-[6px] text-[15px] text-[#64748B]">
+      Manage the organisation's review periods and workflow stages.
+    </p>
+  </div>
+
+  <!-- Q1 -->
+  <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+<div class="mb-[12px] inline-flex items-center rounded-full bg-[#E8F1FF] px-[12px] py-[6px] text-[14px] font-medium text-[#428FEF]">
+  <span class="mr-[5px] text-[10px]">•</span>
+  Completed
+</div>
+      <h2 class="text-[20px] font-semibold text-[#0F172A]">
+        ELEVATE – Q1 (January – March 2026)
+      </h2>
+
+      <p class="mt-[8px] text-[14px] text-[#64748B]">
+        Review period: Q1 2026 • 22 Jan 2026 – 7 Apr 2026
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          TARGET SETTING WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          22 Jan – 30 Jan 2026
+        </p>
+      </div>
+
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          PERFORMANCE REVIEW WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          29 Mar – 7 Apr 2026
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+<div class="mb-[12px] inline-flex items-center rounded-full bg-[#E8F1FF] px-[12px] py-[6px] text-[14px] font-medium text-[#428FEF]">
+  <span class="mr-[5px] text-[10px]">•</span>
+  Completed
+</div>
+      <h2 class="text-[20px] font-semibold text-[#0F172A]">
+        ELEVATE – Q2 (April – June 2026)
+      </h2>
+
+      <p class="mt-[8px] text-[14px] text-[#64748B]">
+        Review period: Q2 2026 • 22 Apr 2026 – 7 Jul 2026
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          TARGET SETTING WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          22 Apr – 30 Apr 2026
+        </p>
+      </div>
+
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          PERFORMANCE REVIEW WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          29 Jun – 7 Jul 2026
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 ACTIVE -->
+  <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+      <div class="flex items-start justify-between gap-[20px]">
+        <div>
+          <div class="mb-[12px] inline-flex items-center rounded-full bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+            <span class="mr-[5px] text-[10px]">•</span>
+            Active
+          </div>
+
+          <h2 class="text-[20px] font-semibold text-[#0F172A]">
+            ELEVATE – Q3 (July – September 2026)
+          </h2>
+
+          <p class="mt-[8px] text-[14px] text-[#64748B]">
+            Review period: Q3 2026 • 22 Jul 2026 – 7 Oct 2026
+          </p>
+        </div>
+
+        <button
+          type="button"
+          (click)="openEditModal('Q3')"
+          class="button-press h-[40px] rounded-[8px] border border-[#D1D5DB] bg-white px-[18px] text-[14px] font-medium text-[#111827] hover:bg-[#F7F8FA]">
+          <i class="fa-solid fa-pen mr-[7px] text-[12px]"></i>
+          Edit cycle
+        </button>
+      </div>
+    </div>
+
+    <!-- Active cycle workflow -->
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[18px]">
+      <nz-steps nzSize="small" [nzCurrent]="0">
+        <nz-step nzTitle="Targets"></nz-step>
+        <nz-step nzTitle="Performance Review"></nz-step>
+        <nz-step nzTitle="Manager Review"></nz-step>
+        <nz-step nzTitle="Completed"></nz-step>
+      </nz-steps>
+    </div>
+
+    <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          TARGET SETTING WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          22 Jul – 30 Jul 2026
+        </p>
+      </div>
+
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          PERFORMANCE REVIEW WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          29 Sep – 7 Oct 2026
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 UPCOMING -->
+  <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+      <div class="mb-[12px] inline-flex items-center rounded-full bg-[#F1F3F5] px-[12px] py-[6px] text-[14px] font-medium text-[#6B7280]">
+        <span class="mr-[5px] text-[10px]">•</span>
+        Upcoming
+      </div>
+
+      <h2 class="text-[20px] font-semibold text-[#0F172A]">
+        ELEVATE – Q4 (October – December 2026)
+      </h2>
+
+      <p class="mt-[8px] text-[14px] text-[#64748B]">
+        Review period: Q4 2026 • 20 Oct 2026 – 8 Jan 2027
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          TARGET SETTING WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          20 Oct – 28 Oct 2026
+        </p>
+      </div>
+
+      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+          <i class="fa-regular fa-calendar"></i>
+          PERFORMANCE REVIEW WINDOW
+        </div>
+
+        <p class="text-[15px] font-medium text-[#0F172A]">
+          27 Dec 2026 – 8 Jan 2027
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PERFORMANCE CYCLE MODAL -->
+  <nz-modal
+    [(nzVisible)]="isEditModal"
+    nzTitle="Edit Performance Cycle"
+    nzWidth="620px"
+    [nzFooter]="null"
+    (nzOnCancel)="closeEditModal()">
+
+    <ng-container *nzModalContent>
+      <div class="mb-[18px]">
+        <label class="mb-[7px] block text-[15px] font-medium text-[#374151]">
+          Cycle name
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="cycleName"
+          readonly
+          class="h-[46px] w-full rounded-[8px] border border-[#D1D5DB] bg-[#F8FAFC] px-[14px] text-[15px] text-[#64748B] outline-none" />
+      </div>
+
+      <div class="mb-[18px]">
+        <label class="mb-[7px] block text-[15px] font-medium text-[#374151]">
+          Review period
+        </label>
+
+        <select
+          [(ngModel)]="reviewPeriod"
+          (ngModelChange)="updateCycleName()"
+          class="h-[46px] w-full rounded-[8px] border border-[#D1D5DB] bg-white px-[14px] text-[15px] text-[#374151] outline-none focus:border-[#428FEF]">
+          <option value="Q1">Q1 — January to March</option>
+          <option value="Q2">Q2 — April to June</option>
+          <option value="Q3">Q3 — July to September</option>
+          <option value="Q4">Q4 — October to December</option>
+        </select>
+      </div>
+
+      <div class="mb-[18px] grid grid-cols-2 gap-[18px]">
+        <div>
+          <label class="mb-[7px] block text-[15px] font-medium text-[#374151]">
+            Start date
+          </label>
+
+          <input
+            type="date"
+            [(ngModel)]="startDate"
+            class="h-[46px] w-full rounded-[8px] border border-[#D1D5DB] bg-white px-[14px] text-[15px] text-[#374151] outline-none focus:border-[#428FEF]" />
+        </div>
+
+        <div>
+          <label class="mb-[7px] block text-[15px] font-medium text-[#374151]">
+            End date
+          </label>
+
+          <input
+            type="date"
+            [(ngModel)]="endDate"
+            class="h-[46px] w-full rounded-[8px] border border-[#D1D5DB] bg-white px-[14px] text-[15px] text-[#374151] outline-none focus:border-[#428FEF]" />
+        </div>
+      </div>
+
+      <div class="mt-[30px] flex justify-end gap-[10px]">
+        <button
+          type="button"
+          (click)="closeEditModal()"
+          class=" button-press rounded-[8px] border border-[#D1D5DB] bg-white px-[18px] py-[10px] text-[15px] font-medium text-[#374151] hover:bg-[#F7F8FA]">
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          (click)="saveChanges()"
+          class="button-press rounded-[8px] bg-[#4D9BF6] px-[18px] py-[10px] text-[15px] font-medium !text-white hover:bg-[#3D8DE8]">
+          Save Changes
+        </button>
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>

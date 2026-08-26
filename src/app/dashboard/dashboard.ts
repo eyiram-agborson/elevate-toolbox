@@ -39,4 +39,8 @@ export class Dashboard {
   goToEmployeeDetails(){
     this.router.navigate(['/hr/departments/:id/employee/:employeeId'])
   }
+
+  goToPerformanceCycles(){
+    this.router.navigate(['/hr/performance-cycles'])
+  }
 }
