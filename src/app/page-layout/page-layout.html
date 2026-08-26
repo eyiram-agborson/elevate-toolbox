@@ -35,6 +35,16 @@
 
   @if (roleService.hasRole('hr')) {
     <a
+      routerLink="hr/kpi-templates"
+      routerLinkActive="!bg-[#edf6ff] !text-[#4d94d7]"
+      class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"
+    >
+      KPI Templates
+    </a>
+  }
+
+  @if (roleService.hasRole('hr')) {
+    <a
       routerLink="hr/performance-cycles"
       routerLinkActive="!bg-[#edf6ff] !text-[#5AA4FF]"
       class="rounded-full px-5 py-2 text-sm font-medium !text-gray-500 transition-colors hover:!bg-gray-100 hover:!text-gray-900"

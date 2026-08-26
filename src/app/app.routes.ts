@@ -38,6 +38,10 @@ export const routes: Routes = [
       {
         path: 'hr/performance-cycles', loadComponent: () => import('./hr/performance-cycles/performance-cycles').then(m => m.PerformanceCycles),
         canActivate: [roleGuard], data: {role: 'hr'}
+      },
+      {
+        path: 'hr/kpi-templates', loadComponent: ()=> import('./hr/kpi-templates/kpi-templates').then(m => m.KpiTemplates),
+        canActivate: [roleGuard], data: {role: 'hr'}
       }
     ]
   },
