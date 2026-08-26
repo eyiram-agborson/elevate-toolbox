@@ -1,0 +1,22 @@
+.nav-link {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* ACTIVE */
+.nav-link.nav-link-active {
+  background-color: #edf6ff !important;
+  color: #2f87da !important;
+  font-weight: 600;
+}

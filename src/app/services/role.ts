@@ -7,7 +7,7 @@ export type UserRole = 'employee' | 'manager' | 'hr' | 'executive' | 'admin';
 })
 export class Role {
 
-  private currentRole: UserRole = 'hr';
+  private currentRole: UserRole = 'admin';
 
   getRole(): UserRole{
     return this.currentRole;
