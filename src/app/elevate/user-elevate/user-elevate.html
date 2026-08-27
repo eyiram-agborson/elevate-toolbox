@@ -1,15 +1,18 @@
 
 
 
- <!-- @if (role === 'user') { -->
+ @if (roleService.hasRole('employee')) {
 
 @if (isActiveTab === 'targets') {
-  <main class="overflow-x-auto text-[#171717]">
+  <main class="overflow-x-auto py-6 text-[#171717]">
 
     <!-- BACK BUTTON -->
     <div class="mx-8 mt-10 text-gray-400">
-      <button type="button" (click)="myactivities()"
-        class="mt-1 flex items-center gap-2 text-sm cursor-pointer transition hover:text-[#3f91df]" >
+      <button
+        type="button"
+        (click)="myactivities()"
+        class="mt-1 flex items-center gap-2 text-sm cursor-pointer transition hover:text-[#3f91df]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -29,6 +32,7 @@
       </button>
     </div>
 
+
     <!-- PAGE HEADER -->
     <header class="mx-8 mt-8">
       <h2 class="text-lg font-semibold">
@@ -40,9 +44,11 @@
       </p>
     </header>
 
+
     <!-- PROGRESS SECTION -->
     <section class="mx-8 mt-6">
       <div class="rounded-xl border border-[#D0D0D0] bg-white">
+
         <div class="px-5 py-7">
           <nz-steps [nzCurrent]="0">
             <nz-step nzTitle="Targets"></nz-step>
@@ -54,39 +60,56 @@
         <div class="h-px w-full bg-[#D0D0D0]"></div>
 
         <div class="flex items-center gap-3 px-5 py-4">
-          <span class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]">
+
+          <span
+            class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]"
+          >
             Preview targets
           </span>
+
           <span class="text-[14px] font-semibold text-gray-700">
             Your manager has published targets for this cycle. Review each KPI to guide your progress.
           </span>
+
         </div>
       </div>
     </section>
 
+
     <!-- KPI SECTION -->
     <section class="mx-8 mt-6 pb-8">
 
-      <h3 class="mb-3 text-[14px] font-bold">KEY PERFORMANCE INDICATORS </h3>
+      <h3 class="mb-3 text-[14px] font-bold">
+        KEY PERFORMANCE INDICATORS
+      </h3>
+
 
       <!-- KPI 1 -->
       <div class="rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
 
         <div class="flex items-start justify-between gap-4">
+
           <p class="text-[14px] font-semibold text-[#171717]">
             Application Development & Delivery
           </p>
 
-          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]">
+          <span
+            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+          >
             Weight 60%
           </span>
+
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">TARGET</p>
+        <p class="mt-4 text-[14px] font-medium text-gray-500">
+          TARGET
+        </p>
 
         <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
+
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
@@ -94,30 +117,43 @@
 
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
+
         </div>
+
       </div>
+
 
       <!-- KPI 2 -->
       <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
 
         <div class="flex items-start justify-between gap-4">
-          <p class="text-[14px] font-semibold text-[#171717]">
-            Operational Efficiency & Code Quality</p>
 
-          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]">
+          <p class="text-[14px] font-semibold text-[#171717]">
+            Operational Efficiency & Code Quality
+          </p>
+
+          <span
+            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+          >
             Weight 15%
           </span>
+
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">TARGET</p>
+        <p class="mt-4 text-[14px] font-medium text-gray-500">
+          TARGET
+        </p>
 
         <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
+
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
@@ -125,29 +161,43 @@
 
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
+
         </div>
+
       </div>
+
 
       <!-- KPI 3 -->
       <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
 
         <div class="flex items-start justify-between gap-4">
+
           <p class="text-[14px] font-semibold text-[#171717]">
-            Learning & Development</p>
-          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]">
+            Learning & Development
+          </p>
+
+          <span
+            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+          >
             Weight 15%
           </span>
+
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">TARGET</p>
+        <p class="mt-4 text-[14px] font-medium text-gray-500">
+          TARGET
+        </p>
 
         <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
+
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
@@ -155,15 +205,22 @@
 
           <div class="flex items-start gap-1">
             <span class="text-[#4D9BF6]">•</span>
+
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
+
         </div>
+
       </div>
 
+
       <!-- LOCK MESSAGE -->
-      <div class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[14px] text-[#6E6E6E]">
+      <div
+        class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[14px] text-[#6E6E6E]"
+      >
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -175,20 +232,35 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+          <rect
+            width="18"
+            height="11"
+            x="3"
+            y="11"
+            rx="2"
+            ry="2"
+          />
+
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
 
         <span>
           Targets are set by your manager, so there is nothing to edit here.
         </span>
+
       </div>
+
 
       <!-- CONTINUE -->
       <div class="mt-6 flex justify-end">
-        <button type="button" (click)="goToSelfReviewPage()" [disabled]="!selfReviewOpen"
-          class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-6 py-2.5 text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8]
-          disabled:cursor-not-allowed disabled:bg-[#D9DEE5] disabled:!text-white">
+
+        <button
+          type="button"
+          (click)="goToSelfReviewPage()"
+          [disabled]="!selfReviewOpen"
+          class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-6 py-2.5 text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8] disabled:cursor-not-allowed disabled:bg-[#D9DEE5] disabled:!text-white"
+        >
+
           Continue
 
           <svg
@@ -205,25 +277,642 @@
             <path d="M5 12h14" />
             <path d="m13 6 6 6-6 6" />
           </svg>
+
         </button>
+
       </div>
 
     </section>
+
+
+    <!-- EVALUATION STAGES -->
+    <div class="mt-8 flex items-center gap-3 px-8 pb-6">
+
+      <span class="whitespace-nowrap text-[14px] font-semibold text-[#171717]">
+        EVALUATION STAGES:
+      </span>
+
+      <nz-segmented
+        class="target-segmented"
+        [(ngModel)]="isActiveTab"
+        (ngModelChange)="tabsActive($event)"
+      >
+
+        <label
+          nz-segmented-item
+          nzValue="targets"
+        >
+          Targets
+        </label>
+
+        <label
+          nz-segmented-item
+          nzValue="self-review"
+        >
+          Self-Review
+        </label>
+
+        <label
+          nz-segmented-item
+          nzValue="completed"
+        >
+          Completed
+        </label>
+
+      </nz-segmented>
+
+    </div>
+
+  </main>
+}
+
+
+@if (isActiveTab === 'self-review') {
+  <main class="overflow-x-auto py-6 text-[#171717]">
+
+    <!-- BACK BUTTON -->
+    <div class="mx-8 mt-10 text-gray-400">
+      <button
+        type="button"
+        (click)="myactivities()"
+        class="mt-1 flex cursor-pointer items-center gap-2 text-sm transition hover:text-[#3f91df]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+
+        My Activities
+      </button>
+    </div>
+
+
+    <!-- PAGE HEADER -->
+    <header class="mx-8 mt-8">
+      <h2 class="text-lg font-semibold">
+        ELEVATE – Q3 (July – September 2026)
+      </h2>
+
+      <p class="mt-2 text-sm text-gray-500">
+        @if (selfReviewSubmitted) {
+          Your self-review has been submitted and is awaiting your manager's review.
+        } @else {
+          Rate your performance and add the necessary comments before the deadline.
+        }
+      </p>
+    </header>
+
+
+    <!-- PROGRESS SECTION -->
+    <section class="mx-8 mt-6">
+      <div class="rounded-xl border border-[#D0D0D0] bg-white">
+
+        <div class="px-5 py-7">
+          <nz-steps [nzCurrent]="1">
+            <nz-step nzTitle="Targets"></nz-step>
+            <nz-step nzTitle="Self-Review"></nz-step>
+            <nz-step nzTitle="Completed"></nz-step>
+          </nz-steps>
+        </div>
+
+        <div class="h-px w-full bg-[#D0D0D0]"></div>
+
+        <div class="flex items-center gap-3 px-5 py-4">
+
+          @if (selfReviewSubmitted) {
+
+            <span
+              class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[14px] font-medium text-[#6E6E6E]"
+            >
+              Awaiting manager review
+            </span>
+
+            <span class="text-[14px] font-semibold text-gray-700">
+              Your self-review has been submitted and is awaiting your manager's rating.
+            </span>
+
+          } @else {
+
+            <span
+              class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]"
+            >
+              Self-review open
+            </span>
+
+            <span class="text-[14px] font-semibold text-gray-700">
+              Rate your performance and add the necessary comments before the deadline.
+            </span>
+
+          }
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- KPI SECTION -->
+    <section class="mx-8 mt-6 pb-10">
+
+      <h3 class="mb-4 text-[14px] font-bold">
+        KEY PERFORMANCE INDICATORS
+      </h3>
+
+
+      <!-- ====================================================== -->
+      <!-- KPI 1 -->
+      <!-- ====================================================== -->
+
+      <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+
+        <div class="px-5 py-4">
+
+          <!-- KPI HEADER -->
+          <div class="flex items-start justify-between gap-4">
+
+            <p class="text-[14px] font-semibold text-[#171717]">
+              Application Development & Delivery
+            </p>
+
+            <span
+              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+            >
+              Weight 60%
+            </span>
+
+          </div>
+
+
+          <!-- TARGET -->
+          <p class="mt-4 text-[14px] font-medium text-gray-500">
+            TARGET
+          </p>
+
+          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Deliver 100% of assigned tasks within agreed sprint timelines.
+              </span>
+            </div>
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Maintain agreed quality standards across all deliverables.
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- PERFORMANCE RATING -->
+          <div class="mt-5">
+
+            <p class="text-[14px] font-semibold">
+              MY PERFORMANCE RATING
+            </p>
+
+            <div class="mt-2 flex items-center gap-2">
+
+              @for (page of pages; track page) {
+
+                <button
+                  type="button"
+                  (click)="currentPage = page"
+                  [disabled]="selfReviewSubmitted"
+                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                  [ngClass]="currentPage === page
+                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+                >
+                  {{ page }}
+                </button>
+
+              }
+
+              <span class="ml-1 text-[14px] text-gray-500">
+                out of 5
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MY COMMENTS -->
+          <div class="mt-5">
+
+            <p class="mb-2 text-[14px] font-semibold">
+              MY COMMENTS
+            </p>
+
+            <textarea
+              [(ngModel)]="message"
+              name="message"
+              [disabled]="selfReviewSubmitted"
+              placeholder="Describe what you delivered against this KPI."
+              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+            ></textarea>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ====================================================== -->
+      <!-- KPI 2 -->
+      <!-- ====================================================== -->
+
+      <div class="mt-4 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+
+        <div class="px-5 py-4">
+
+          <!-- KPI HEADER -->
+          <div class="flex items-start justify-between gap-4">
+
+            <p class="text-[14px] font-semibold text-[#171717]">
+              Operational Efficiency & Code Quality
+            </p>
+
+            <span
+              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+            >
+              Weight 15%
+            </span>
+
+          </div>
+
+
+          <!-- TARGET -->
+          <p class="mt-4 text-[14px] font-medium text-gray-500">
+            TARGET
+          </p>
+
+          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Deliver 100% of assigned tasks within agreed sprint timelines.
+              </span>
+            </div>
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Maintain agreed quality standards across all deliverables.
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- PERFORMANCE RATING -->
+          <div class="mt-5">
+
+            <p class="text-[14px] font-semibold">
+              MY PERFORMANCE RATING
+            </p>
+
+            <div class="mt-2 flex items-center gap-2">
+
+              @for (page of pages; track page) {
+
+                <button
+                  type="button"
+                  (click)="currentPage = page"
+                  [disabled]="selfReviewSubmitted"
+                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                  [ngClass]="currentPage === page
+                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+                >
+                  {{ page }}
+                </button>
+
+              }
+
+              <span class="ml-1 text-[14px] text-gray-500">
+                out of 5
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MY COMMENTS -->
+          <div class="mt-5">
+
+            <p class="mb-2 text-[14px] font-semibold">
+              MY COMMENTS
+            </p>
+
+            <textarea
+              [(ngModel)]="message"
+              name="message"
+              [disabled]="selfReviewSubmitted"
+              placeholder="Describe what you delivered against this KPI."
+              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+            ></textarea>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ====================================================== -->
+      <!-- KPI 3 -->
+      <!-- ====================================================== -->
+
+      <div class="mt-4 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+
+        <div class="px-5 py-4">
+
+          <!-- KPI HEADER -->
+          <div class="flex items-start justify-between gap-4">
+
+            <p class="text-[14px] font-semibold text-[#171717]">
+              Learning & Development
+            </p>
+
+            <span
+              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
+            >
+              Weight 15%
+            </span>
+
+          </div>
+
+
+          <!-- TARGET -->
+          <p class="mt-4 text-[14px] font-medium text-gray-500">
+            TARGET
+          </p>
+
+          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Deliver 100% of assigned tasks within agreed sprint timelines.
+              </span>
+            </div>
+
+            <div class="flex items-start gap-1">
+              <span class="text-[#4D9BF6]">•</span>
+
+              <span>
+                Maintain agreed quality standards across all deliverables.
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- PERFORMANCE RATING -->
+          <div class="mt-5">
+
+            <p class="text-[14px] font-semibold">
+              MY PERFORMANCE RATING
+            </p>
+
+            <div class="mt-2 flex items-center gap-2">
+
+              @for (page of pages; track page) {
+
+                <button
+                  type="button"
+                  (click)="currentPage = page"
+                  [disabled]="selfReviewSubmitted"
+                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                  [ngClass]="currentPage === page
+                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+                >
+                  {{ page }}
+                </button>
+
+              }
+
+              <span class="ml-1 text-[14px] text-gray-500">
+                out of 5
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MY COMMENTS -->
+          <div class="mt-5">
+
+            <p class="mb-2 text-[14px] font-semibold">
+              MY COMMENTS
+            </p>
+
+            <textarea
+              [(ngModel)]="message"
+              name="message"
+              [disabled]="selfReviewSubmitted"
+              placeholder="Describe what you delivered against this KPI."
+              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+            ></textarea>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ACTIONS -->
+      @if (!selfReviewSubmitted) {
+
+        <div class="mt-6 flex justify-end gap-3">
+
+          <!-- CONTINUE LATER -->
+          <button
+            type="button"
+            class="flex items-center gap-2 rounded-[8px] border border-[#D1D5DB] bg-white px-5 py-2.5 text-[14px] font-medium text-[#374151] transition hover:bg-[#F7F8FA]"
+          >
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+              />
+
+              <path
+                d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"
+              />
+
+              <path
+                d="M7 3v4a1 1 0 0 0 1 1h7"
+              />
+            </svg>
+
+            Continue later
+
+          </button>
+
+
+          <!-- SUBMIT SELF REVIEW -->
+          <button
+            type="button"
+            (click)="submitSelfReview()"
+            class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-5 py-2.5 text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8]"
+          >
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0 .024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+              />
+
+              <path
+                d="m21.854 2.147-10.94 10.939"
+              />
+            </svg>
+
+            Submit Self Review
+
+          </button>
+
+        </div>
+
+      }
+
+
+      <!-- READ-ONLY MESSAGE -->
+      @if (selfReviewSubmitted) {
+
+        <div
+          class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[14px] text-[#6E6E6E]"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect
+              width="18"
+              height="11"
+              x="3"
+              y="11"
+              rx="2"
+              ry="2"
+            />
+
+            <path
+              d="M7 11V7a5 5 0 0 1 10 0v4"
+            />
+          </svg>
+
+          <span>
+            Your self-review has been submitted and can no longer be edited.
+          </span>
+
+        </div>
+
+      }
+
+
+      <!-- EVALUATION STAGES -->
+      <div class="mt-8 flex items-center gap-3 px-8 pb-6">
+
+        <span class="whitespace-nowrap text-[14px] font-semibold text-[#171717]">
+          EVALUATION STAGES:
+        </span>
+
+        <nz-segmented
+          class="target-segmented"
+          [(ngModel)]="isActiveTab"
+          (ngModelChange)="tabsActive($event)"
+        >
+
+          <label
+            nz-segmented-item
+            nzValue="targets"
+          >
+            Targets
+          </label>
+
+          <label
+            nz-segmented-item
+            nzValue="self-review"
+          >
+            Self-Review
+          </label>
+
+          <label
+            nz-segmented-item
+            nzValue="completed"
+          >
+            Completed
+          </label>
+
+        </nz-segmented>
+
+      </div>
+
+    </section>
+
   </main>
 }
 
 
 
+<!-- step 3 -->
+@if (isActiveTab === 'completed') {
+  <main class="overflow-x-auto text-[15px] text-[#171717]">
 
-<!-- ////////////////////////////////////////////////////////////////////////// -->
- @if (isActiveTab === 'self-review') {
-
-    <!-- Back button -->
-    <div class="text-gray-400 mt-10 mx-8">
+    <!-- BACK BUTTON -->
+    <div class="mx-8 mt-10 text-gray-400">
       <button
-      (click)="myactivities()"
         type="button"
-        class="mt-10 flex items-center gap-2 text-sm md:text-[13px] cursor-pointer hover:text-[#3f91df] transition">
+        (click)="myactivities()"
+        class="mt-1 flex cursor-pointer items-center gap-2 text-[14px] transition hover:text-[#3f91df]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -243,727 +932,377 @@
       </button>
     </div>
 
-  <header>
 
-    <!-- PAGE TITLE -->
-    <div class="mx-8 mt-8">
+    <!-- PAGE HEADER + TOTAL SCORE -->
+    <section class="mx-8 mt-8">
 
-      <h2 class="text-xl md:text-lg font-semibold">
-        ELEVATE – Q3 (July – September 2026)
-      </h2>
+      <div class="flex items-start justify-between gap-6">
 
-      <p class="mt-2 text-sm md:text-sm text-gray-500">
-        Kindly set targets before agreed deadline
-      </p>
-
-    </div>
-
-  </header>
-
-
-  <!-- PROGRESS SECTION -->
-  <section class="mx-8 mt-10">
-
-    <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-12 h-[170px] md:overflow-y-hidden">
-        <div class="px-10 md:px-5">
-          <nz-steps
-          [nzCurrent]="
-          isActiveTab === 'self-review' ? 1 :
-          isActiveTab === 'manager-review' ? 2 :
-          3
-          "
-        >
-          <nz-step nzTitle="Target"></nz-step>
-          <nz-step nzTitle="Self Review"></nz-step>
-          <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"></nz-step>
-        </nz-steps>
-      </div>
-       
-
-       <!-- DIVIDER -->
-      <div class="h-px w-full bg-gray-200 mt-2">
-
-      </div>
-
-
-       <!-- INFORMATION -->
-      <div class="px-1 md:px-5 md:py-3 mt-4 flex flex-col md:flex-row md:items-center gap-3">
-        <!-- PREVIEW -->
-        <div class="w-fit bg-[#E6F5FF] text-[#0084BD] px-4 border border-[#E2F4FF] rounded-[10px] text-sm md:text-[12px] font-bold hover:bg-gray-300">
-          self review open
-        </div>
-
-        <!-- MESSAGE -->
-        <span class="text-base md:text-[13px] font-bold text-gray-700">
-          Rate your performance and add the necessary comments before the deadline.
-        </span>
-      </div>
-
-       </div>
-    </div>
-  </section>
-
-
- <!-- MY COMMENTS -->
-
-   <!-- KPI SECTION -->
-  <section class="mx-8 mt-5 pb-10">
-
-    <!-- TITLE -->
-    <h3 class=" mb-4 text-sm md:text-[13px] font-bold">
-      KEY PERFORMANCE INDICATORS
-    </h3>
-
-    <!-- KPI CARD -->
-    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-
-      <!-- @for (cycle of previousCycles; track $index) { -->
-
-        <div class="px-5 sm:px-6 py-1 last:border-b-0 hover:bg-gray-50 transition">
-
-          <!-- APPLICATION + WEIGHT -->
-          <div class="flex justify-between gap-4 mt-2">
-
-            <!-- APPLICATION -->
-            <p class="text-sm font-bold text-gray-900">
-              Application Development $ Delivery
-            </p>
-
-            <!-- WEIGHT -->
-            <p class="bg-[#EFECEC] text-[#6E6E6E] px-2 py-0.5 rounded-full md:text-[12px] font-bold whitespace-nowrap">
-              Weight 60%
-            </p>
-
-          </div>
-
-
-          <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
-            Target
-          </p>
-
-
-          <!-- TARGET -->
-         <div class="mt-2 text-sm md:text-sm text-gray-500 leading-6">
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
-              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
-            </div>
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
-              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
-            </div>
-          </div>
-
-        </div>
-
-      <!-- }   -->
-
-    <!-- MY PERFORMANCE RATING -->
-     <div class="mx-5 mt-2">
-    <div class="font-semibold">
-        <span>MY PERFORMANCE RATING</span>
-
-          <div class="flex items-center gap-2 mt-2">
-          @for (page of pages; track page) {
-            <button
-              type="button"
-              (click)="currentPage = page"
-              class="flex h-10 w-10 items-center justify-center rounded-md border text-sm font-medium transition-colors"
-              [ngClass]="currentPage === page
-                  ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
-                  : 'border-[#E4E7EC] bg-[#FFFFFF] text-[#807777] hover:border-[#2f87da] hover:text-[#2f87da]'
-              "
-            >
-              {{ page }}
-            </button>
-          }
-        </div>
-    </div>
-
-
-    <!-- MY COMMENTS -->
-    <div class="mb-5 mt-2">
-      <p class="font-semibold">MY COMMENTS</p>
-      <textarea
-      [(ngModel)]="message"
-      name="message"
-      placeholder="Describe what you delivered against this KPI."
-       class="bg-[#F8F5F0] border border-[#B9B9B9] w-full px-4 h-30 py-2 rounded-[10px] font-semibold"
-
-      >
-      </textarea>
-    </div>
-
-    </div>
-   </div>
-
-
-    <!-- header -->
-   <div class="mt-6">
-      <h3 class="px-2 sm:px-3 mb-4 mt-20 text-sm md:text-[13px] font-bold">
-        KEY PERFORMANCE INDICATORS
-      </h3>
-
-
-    <!-- KPI CARD -->
-    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-
-      <!-- @for (cycle of previousCycles; track $index) { -->
-
-        <div class="px-5 sm:px-6 py-1  hover:bg-gray-50 transition">
-
-          <!-- APPLICATION + WEIGHT -->
-          <div class="flex items-start justify-between gap-4">
-            <!-- APPLICATION -->
-            <p class="text-base md:text-sm font-bold text-gray-900">
-              Application Delivelopment & Delivery
-            </p>
-
-
-            <!-- WEIGHT -->
-            <p class="bg-[#EFECEC] text-[#6E6E6E] px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold whitespace-nowrap">
-              Weight 60%
-            </p>
-
-          </div>
-
-
-          <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
-            TARGET
-          </p>
-
-
-          <!-- TARGET -->
-          <div class="mt-2 text-sm md:text-sm text-gray-500 leading-6">
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
-              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
-            </div>
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
-              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
-            </div>
-          </div>
-            
-
-        </div>
-
-      <!-- } -->
-
-
-    <!-- MY PERFORMANCE RATING -->
-     <div class="px-1 md:px-6 mt-2">
-    <div class="font-semibold">
-      <span class="text-[#000000]">MY PERFORMANCE RATING</span>
-      </div>
-
-      <!-- PAGINATION BUTTONS -->
-      <div class="flex items-center gap-4 mt-2">
-       <div class="flex items-center gap-2 ">
-          @for (page of pages; track page) {
-            <button
-              type="button"
-              (click)="currentPage = page"
-              class="flex h-10 w-10 items-center justify-center rounded-md border text-sm font-medium transition-colors"
-              [ngClass]="currentPage === page
-                  ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
-                  : 'border-[#E4E7EC] bg-[#FFFFFF] text-[#807777] hover:border-[#2f87da] hover:text-[#2f87da]'
-              "
-            >
-              {{ page }}
-            </button>
-          }
-        </div>
-         <span class="text-sm text-gray-500">
-    {{ currentPage }} out of 5
-  </span>
-     </div>
-
-        
-    <!-- MY STAFF COMMENTS -->
-    <div class="mt-2">
-      <p class="font-bold">MY STAFF COMMENTS</p>
-      <textarea
-      [(ngModel)]="message"
-      name="message"
-      placeholder="Describe what you delivered against this KPI."
-       class="bg-[#F8F5F0] border border-[#B9B9B9] w-full px-4 h-30 py-2 rounded-[10px] font-semibold"
-      >
-      </textarea>
-    </div>
-
-
-     <!-- Continue later and Submit Button   -->
-      <div class="flex justify-end gap-4 mt-2">
+        <!-- PAGE HEADER -->
         <div>
-      <button 
-      class="flex gap-2 items-center mt-5 py-1 md:py-2 px-2 md:px-8 whitespace-nowrap md:w-[12rem]  mx-6 rounded-[8px] border-b shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-        width="20" height="24" 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        stroke-width="2" 
-        stroke-linecap="round" 
-        stroke-linejoin="round" 
-        class="lucide lucide-save-icon lucide-save">
-        <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
-        <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/>
-        <path d="M7 3v4a1 1 0 0 0 1 1h7"/>
-      </svg>
-        <span class="cursor-pointer">
-        Continue later
-        </span>
-      </button>
-      </div>
+          <h2 class="text-lg font-semibold">
+            ELEVATE – Q3 (July – September 2026)
+          </h2>
 
-        <div>
-      <button 
-      class="flex gap-2 items-center py-1 md:py-2 bg-blue-500 mt-5 px-2 md:w-[12rem] whitespace-nowrap mx-6 rounded-[8px] border-b shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-        width="20" 
-        height="20" 
-        viewBox="0 0 24 24" 
-        fill="none" stroke="currentColor" 
-        stroke-width="2" 
-        stroke-linecap="round" 
-        stroke-linejoin="round" 
-        class="lucide lucide-send-icon lucide-send text-white">
-        <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
-        <path d="m21.854 2.147-10.94 10.939"/>
-      </svg>
-        <span class=" text-white cursor-pointer">
-        Submit Staff Review
-        </span>
-      </button>
-      </div>
-    </div>
-  </div>
+          <p class="mt-2 text-[15px] text-gray-500">
+            Your performance review for this cycle has been completed.
+          </p>
+        </div>
 
 
-    <!--//////// cycle progress /////////-->
-    <div class="md:flex gap-2 mt-5 mb-8 mx-5">
-      <span class="text-[14px] flex items-center font-semibold">
-        EVALUATION STAGES:
-      </span>
-
-
-      <!--/////// toggle buttons //////////-->
-         <nz-segmented
-              class="target-segmented mb-5 bg-[#2f87da]"
-              [(ngModel)]="isActiveTab"
-              (ngModelChange)="tabsActive($event)"
-                          >
-              <label nz-segmented-item nzValue="target">
-                Targets
-              </label>
-
-              <label nz-segmented-item nzValue="self-review"
-              
-              >
-                Self-review
-              </label>
-
-              <label nz-segmented-item nzValue="manager-review"
-
-              >
-                Manager Review
-              </label>
-
-              <label nz-segmented-item nzValue="complete"
-              
-              >
-                Complete
-              </label>
-        </nz-segmented> 
-      </div>
-    </div>
-  </div>
-</section>
- }
-
-
-
-
-  <!-- ///////////////////////////////////////////////////////////// -->
-<!-- step 4 -->
-  @if (isActiveTab === 'completed') {
-
-      <!-- Back button -->
-    <div class="text-gray-400 mt-10 mx-8">
-      <button
-      (click)="myactivities()"
-        type="button"
-        class=" mx-5 md:mx-20 mt-10 flex items-center gap-2 text-sm md:text-[13px] cursor-pointer hover:text-[#3f91df] transition">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+        <!-- TOTAL SCORE -->
+        <div
+          class="flex h-[90px] w-[110px] flex-col items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-white"
         >
-          <path d="m12 19-7-7 7-7" />
-          <path d="M19 12H5" />
-        </svg>
 
-        My Activities
-      </button>
-    </div>
+          <span class="text-[14px] font-semibold text-gray-700">
+            TOTAL SCORE
+          </span>
 
-  <main class="mx-1 md:mx-8 mt-10">
-    <!-- BACK + PAGE HEADER -->
+          <div class="mt-1">
 
-    <section>
-      <!-- Page title + Score -->
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <span class="text-[22px] font-semibold text-[#171717]">
+              0
+            </span>
 
-        <!-- Title -->
-        <div class="">
+            <span class="text-[14px] text-gray-500">
+              / 100
+            </span>
 
-          <!-- <h1 class="text-xl font-semibold text-gray-900">
-            My Activities
-          </h1> -->ooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-            <header class="pt-6">
-
-            <!-- PAGE TITLE -->
-            <div class="mt-9">
-              <h2 class="text-xl md:text-lg font-semibold">
-                ELEVATE – Q3 (July – September 2026)
-              </h2>
-              <p class="mt-2 text-sm md:text-sm text-gray-500">
-                Kindly set targets before agreed deadline
-              </p>
-            </div>
-          </header>
+          </div>
 
         </div>
+
       </div>
+
     </section>
 
+
     <!-- PROGRESS SECTION -->
-    <section class="">
-    <div class="bg-white border border-gray-300 h-[170px] rounded-xl ">
-      <div class="py-8 h-[150px] overflow-y-hidden">
-        <div class="px-5">
-          <nz-steps
-          [nzCurrent]="
-          isActiveTab === 'complete' ? 3 :
-          isActiveTab === 'complete' ? 4 :
-          3
-          "
-        >
-          <nz-step nzTitle="Target"></nz-step>
-          <nz-step nzTitle="Self Review"></nz-step>
-          <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"
-          [class.complete-step]="isActiveTab === 'complete'"
-          ></nz-step>
-        </nz-steps>
-      </div>
-       
+    <section class="mx-8 mt-6">
 
-          <!-- DIVIDER -->
-          <div class="h-px w-full bg-gray-200 mt-7">
+      <div class="rounded-xl border border-[#D0D0D0] bg-white">
 
-          </div>
+        <!-- STEPPER -->
+        <div class="px-5 py-7">
 
+          <nz-steps [nzCurrent]="2">
 
-          <!-- INFORMATION -->
-          <div class="md:px-5 py-6 flex flex-col md:flex-row md:items-center gap-3">
-            <!-- PREVIEW -->
-            <div class="w-fit bg-[#F5F5F5] text-[#7A7A7A] px-4 border border-[#DCDEE3] rounded-[10px] text-sm md:text-[12px]">
-              Awaiting manager review
-            </div>
+            <nz-step nzTitle="Targets"></nz-step>
 
-            <!-- MESSAGE -->
-            <span class="text-base md:text-[13px] font-semibold text-gray-700">
-              Your self review is submitted and awaiting your manager's rating.
-            </span>
-          </div>
+            <nz-step nzTitle="Self-Review"></nz-step>
 
-          </div>
+            <nz-step nzTitle="Completed"></nz-step>
+
+          </nz-steps>
+
         </div>
-      </section>
 
+
+        <div class="h-px w-full bg-[#D0D0D0]"></div>
+
+
+        <!-- COMPLETED MESSAGE -->
+        <div class="flex items-center gap-3 px-5 py-4">
+
+          <span
+            class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[14px] font-medium text-[#6E6E6E]"
+          >
+            Complete
+          </span>
+
+          <span class="text-[15px] font-semibold text-gray-700">
+            This cycle is complete, including your manager's rating and comments.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
     <!-- KPI SECTION -->
+    <section class="mx-8 mt-6 pb-10">
 
-    <section class="mt-10 pb-10">
-
-      <!-- TITLE -->
-      <h3 class="mb-2 text-sm md:text-[13px] font-bold">
+      <h3 class="mb-4 text-[14px] font-bold">
         KEY PERFORMANCE INDICATORS
       </h3>
 
-      <!-- KPI CARD -->
-       <section>
-      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-        <div class=" mx-5 mt-3 ">
-          <div class="md:flex justify-between border-b border-gray-300">
 
-        <div class="">
-        <p class="font-semibold">Application Development</p>
-        <p class="text-gray-500 md:mb-5">Weight 60%</p>
-        </div>
+      <!-- ====================================================== -->
+      <!-- KPI 1 -->
+      <!-- ====================================================== -->
 
-        <div class="flex gap-6 md:gap-10 mb-5 md:mb-0 mt-5 md:mt-0">
+      <div class="rounded-xl border border-[#D0D0D0] bg-white">
 
-          <div>
-            <p class="text-xs font-semibold">
-              MY RATING
-            </p>
-
-            <hr class="mt-2 w-10 border-2" />
-          </div>
-
-
-          <div class="flex flex-col items-center">
-
-            <p class="text-xs font-semibold">
-              MANAGERS RATING
-            </p>
-
-            <hr class="mt-2 w-10 border-2" />
-          </div>
+        <!-- KPI HEADER -->
+        <div
+          class="flex items-start justify-between gap-4 border-b border-[#E5E7EB] px-5 py-4"
+        >
 
           <div>
-            <p class="text-xs font-semibold">
-              TOTAL SCORE
+
+            <p class="text-[15px] font-semibold text-[#171717]">
+              Application Development & Delivery
             </p>
 
-            <hr class="mt-2 w-10 border-2" />
-          </div>
-          
-        </div>
-        </div>
-        
+            <p class="mt-1 text-[14px] text-gray-500">
+              Weight: 60%
+            </p>
 
-        <!-- Target -->
-         <div class="mt-5">
-
-          <div class="text-gray-400">
-            <p class="text-gray-600 font-semibold">
-              TARGET
-            </p>
-            <p class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
-               Deliver 100% of assigned tasts within agreed sprint timelines.
-            </p>
-             <p class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
-               Deliver 100% of assigned tasts within agreed sprint timelines.
-            </p>
           </div>
 
-          <div class="">
-          <span class="font-semibold text-gray-900 mt-5">
-            PERFORMANCE
-          </span>
 
-          <p class="text-sm text-gray-500 mt-1">
-            Self-assessed performance against the agreed targets for this KPI.
-          </p>
-          </div>
-        </div>
+          <!-- RATINGS -->
+          <div class="flex items-start gap-8">
 
-           <!-- MY COMMENTS -->
-        <section class="mb-10 mt-8 border border-gray-300 bg-gray-200 w-full px-4 py-8 rounded-[10px]">
+            <!-- MY RATING -->
+            <div class="text-center">
 
-          <!-- Comment title -->
-          <div class=" gap-2 relative translate-y- 5 px-4 z-10">
-            <div class="flex items-center bg- white py-0.5 md:py-0 relative top- 7.5 md:top- 7">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-gray-700"
-            >
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              <circle cx="9" cy="7" r="4" />
-            </svg>
+              <p class="text-[14px] font-semibold text-gray-700">
+                MY RATING
+              </p>
 
-            <span class="font-semibold text-gray-700  px-2">
-              MY COMMENTS
-            </span>
+              <p class="mt-1 text-[15px] text-gray-500">
+                —
+              </p>
 
             </div>
-          </div>
-        </section>
 
 
-        <section>
-           <!-- Manager comments -->
-          <!-- <div class="flex flex-wrap items-center gap-2 border px-4 py- 8 mb-10"> -->
-            <div class="mb-10 mt-8 border border-gray-300 bg-gray-100 w-full px-4 py-8 rounded-[10px]">
-             <div class="md:flex items-center text-sm md:text-[16px] px-4 w-full">
+            <!-- MANAGER RATING -->
+            <div class="text-center">
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-blue-500 "
-            >
-              <path
-                d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
-              />
-              <path
-                d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"
-              />
-            </svg>
+              <p class="text-[14px] font-semibold text-gray-700">
+                MANAGER RATING
+              </p>
 
-            <span class="text-blue-500 font-semibold px-2">
-              MANAGER COMMENTS
-            </span>
+              <p class="mt-1 text-[15px] text-gray-500">
+                —
+              </p>
 
-            <span class="text-sm text-gray-600">
-              Manager rating: 4/5
-            </span>
+            </div>
+
+
+            <!-- TOTAL SCORE -->
+            <div class="text-center">
+
+              <p class="text-[14px] font-semibold text-gray-700">
+                TOTAL SCORE
+              </p>
+
+              <p class="mt-1 text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
 
           </div>
 
-
-          <!-- Manager textarea -->
-          <!-- <textarea
-            [(ngModel)]="message"
-            name="manager"
-            placeholder="Execute work done!"
-            class="border border-gray-300 w-full px-4 py-8 mt-15 h-32 rounded-[10px] resize-none focus:outline-none focus:ring-2 focus:ring-blue-200"
-          ></textarea> -->
-
-        </div>
-        </section>
-
-
-         </div>
-        </div>
-      <!-- </div> -->
-      </section>
-
-    </section>
-
-
-
-    <!-- PERFORMANCE ITEMS -->
-    <section class="space-y-6">
-
-      <!-- Operational Efficiency -->
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 border bg-white px-4 rounded-[10px]">
-
-        <div>
-          <span class="font-bold">
-            Operational Efficiency & Code Quality
-          </span>
-
-          <p class="py-1 text-sm text-gray-500">
-            Weight 15%
-          </p>
         </div>
 
 
-        <div class="flex gap-6 md:gap-10">
+        <!-- KPI DETAILS -->
+        <div class="px-5 py-5">
+
+          <!-- TARGET -->
           <div>
-            <p class="text-xs font-semibold">
-              RATING
+
+            <p class="text-[14px] font-semibold text-gray-700">
+              TARGET
             </p>
 
-            <hr class="mt-2 w-10 border-2" />
+            <div class="mt-2 space-y-1 text-[15px] text-gray-500">
+
+              <div class="flex items-start gap-2">
+
+                <span class="text-[#4D9BF6]">
+                  •
+                </span>
+
+                <span>
+                  Deliver 100% of assigned tasks within agreed sprint timelines.
+                </span>
+
+              </div>
+
+
+              <div class="flex items-start gap-2">
+
+                <span class="text-[#4D9BF6]">
+                  •
+                </span>
+
+                <span>
+                  Maintain agreed quality standards across all deliverables.
+                </span>
+
+              </div>
+
+            </div>
+
           </div>
 
 
-          <div class="flex flex-col items-center">
+          <!-- PERFORMANCE -->
+          <div class="mt-5">
 
-            <p class="text-xs font-semibold">
+            <p class="text-[14px] font-semibold text-gray-700">
               PERFORMANCE
             </p>
 
-            <hr class="mt-2 w-10 border-2" />
+            <p class="mt-1 text-[15px] text-gray-500">
+              Self-assessed performance against the agreed targets for this KPI.
+            </p>
 
           </div>
 
 
-          <div>
-            <p class="text-xs font-semibold">
-              SCORE
+          <!-- MY COMMENTS -->
+          <div
+            class="mt-5 rounded-[10px] border border-[#E1E1E1] bg-[#F8F5F0] px-4 py-4"
+          >
+
+            <div class="flex items-center gap-2">
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-gray-500"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <circle cx="9" cy="7" r="4" />
+              </svg>
+
+              <span class="text-[14px] font-semibold text-gray-700">
+                MY COMMENTS
+              </span>
+
+            </div>
+
+            <p class="mt-3 text-[15px] text-gray-500">
+              No comments added.
             </p>
 
-            <hr class="mt-2 w-10 border-2" />
+          </div>
+
+
+          <!-- MANAGER COMMENTS -->
+          <div
+            class="mt-4 rounded-[10px] border border-[#E1E1E1] bg-[#F8F5F0] px-4 py-4"
+          >
+
+            <div class="flex items-center gap-2">
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-gray-500"
+              >
+                <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
+              </svg>
+
+              <span class="text-[14px] font-semibold text-gray-700">
+                MANAGER COMMENTS
+              </span>
+
+              <span class="ml-2 text-[14px] text-gray-600">
+                Manager rating: 4/5
+              </span>
+
+            </div>
+
+            <p class="mt-3 text-[15px] text-gray-500">
+              Excellent work done!
+            </p>
+
           </div>
 
         </div>
+
       </div>
 
 
-      <!-- Learning & Development -->
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 border bg-white px-4 rounded-[10px]">
+      <!-- ====================================================== -->
+      <!-- KPI 2 -->
+      <!-- ====================================================== -->
 
-        <div>
+      <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white">
 
-          <span class="font-bold">
-            Learning & Development
-          </span>
-
-          <p class="py-1 text-sm text-gray-500">
-            Weight 15%
-          </p>
-
-        </div>
-
-
-        <div class="flex gap-6 md:gap-10">
+        <div
+          class="flex items-center justify-between px-5 py-4"
+        >
 
           <div>
 
-            <p class="text-xs font-semibold">
-              RATING
+            <p class="text-[15px] font-semibold text-[#171717]">
+              Operational Efficiency & Code Quality
             </p>
 
-            <hr class="mt-2 w-10 border-2" />
+            <p class="mt-1 text-[14px] text-gray-500">
+              Weight: 15%
+            </p>
 
           </div>
 
 
-          <div class="flex flex-col items-center">
+          <div class="flex items-center gap-8">
 
-            <p class="text-xs font-semibold">
-              PERFORMANCE
-            </p>
+            <div class="text-center">
 
-            <hr class="mt-2 w-10 border-2" />
+              <p class="text-[14px] font-semibold">
+                MY RATING
+              </p>
 
-          </div>
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
 
 
-          <div>
+            <div class="text-center">
 
-            <p class="text-xs font-semibold">
-              SCORE
-            </p>
+              <p class="text-[14px] font-semibold">
+                MANAGER RATING
+              </p>
 
-            <hr class="mt-2 w-10 border-2" />
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
+
+
+            <div class="text-center">
+
+              <p class="text-[14px] font-semibold">
+                TOTAL SCORE
+              </p>
+
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
 
           </div>
 
@@ -971,55 +1310,121 @@
 
       </div>
 
-    </section>
 
-    <!-- EVALUATE STAGE -->
-    <section class="mt-10 pb-10">
+      <!-- ====================================================== -->
+      <!-- KPI 3 -->
+      <!-- ====================================================== -->
 
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
+      <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white">
 
-        <!-- Label -->
-        <span class="font-semibold whitespace-nowrap">
-          EVALUATE STAGE:
+        <div
+          class="flex items-center justify-between px-5 py-4"
+        >
+
+          <div>
+
+            <p class="text-[15px] font-semibold text-[#171717]">
+              Learning & Development
+            </p>
+
+            <p class="mt-1 text-[14px] text-gray-500">
+              Weight: 15%
+            </p>
+
+          </div>
+
+
+          <div class="flex items-center gap-8">
+
+            <div class="text-center">
+
+              <p class="text-[14px] font-semibold">
+                MY RATING
+              </p>
+
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
+
+
+            <div class="text-center">
+
+              <p class="text-[14px] font-semibold">
+                MANAGER RATING
+              </p>
+
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
+
+
+            <div class="text-center">
+
+              <p class="text-[14px] font-semibold">
+                TOTAL SCORE
+              </p>
+
+              <p class="text-[15px] text-gray-500">
+                —
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- EVALUATION STAGES -->
+      <div class="mt-8 flex items-center gap-3 pb-6">
+
+        <span class="text-[14px] font-semibold text-[#171717]">
+          EVALUATION STAGES:
         </span>
 
+        <nz-segmented
+          class="target-segmented"
+          [(ngModel)]="isActiveTab"
+          (ngModelChange)="tabsActive($event)"
+        >
 
-              <!-- Toggle -->
-               <nz-segmented
-                  class="target-segmented mb-5 bg-[#2f87da]"
-                  [(ngModel)]="isActiveTab"
-                  (ngModelChange)="tabsActive($event)"
-                              >
-                  <label nz-segmented-item nzValue="target">
-                    Targets
-                  </label>
+          <label
+            nz-segmented-item
+            nzValue="targets"
+          >
+            Targets
+          </label>
 
-                  <label nz-segmented-item nzValue="self-review"
-                  
-                  >
-                    Self-review
-                  </label>
+          <label
+            nz-segmented-item
+            nzValue="self-review"
+          >
+            Self-Review
+          </label>
 
-                  <label nz-segmented-item nzValue="manager-review"
+          <!-- COMPLETED -->
+          <label
+            nz-segmented-item
+            nzValue="completed"
+            class="completed-segment"
+          >
+            Completed
+          </label>
 
-                  >
-                    Manager Review
-                  </label>
+        </nz-segmented>
 
-                  <label nz-segmented-item nzValue="complete"
-                  
-                  >
-                    Complete
-                  </label>
-                </nz-segmented> 
-              <!-- </div>
-            </div> -->
-          </div>
-        </section>
+      </div>
 
-      </main>
+    </section>
 
-    }
+  </main>
+}
 
-  <!-- } -->
+  }
 
