@@ -1,0 +1,256 @@
+<div class="min-h-screen bg-[#F5F7FA]">
+  <div class="flex items-start justify-between px-8 pt-8 pb-5">
+    <div>
+      <h1 class="text-[28px] font-semibold text-[#102A43]">Validation</h1>
+      <p class="mt-2 text-[15px] text-[#60758F]">Record final validation scores following employee performance discussions.</p>
+    </div>
+  </div>
+
+  <!-- NOTICE -->
+<div class="w-full border-y border-[#F0CF87] bg-[#FFFAF0] px-8 py-2.5">
+  <div class="flex items-center gap-3">
+    <i class="fa-solid fa-lock shrink-0 text-[14px] text-[#D99A00]"></i>
+    <span class="text-[14px] leading-5 text-[#60758F]">
+      Validation scores are recorded by HR following the performance validation meeting.
+    </span>
+  </div>
+</div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="px-8 pt-6 pb-5">
+    <div class="flex items-center gap-3 rounded-xl border border-[#DCE1E6] bg-white px-3 py-3">
+      <div class="relative flex-1">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-[#7C91A8]"></i>
+        <input
+          type="text"
+          placeholder="Search employee"
+          class="h-[48px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8CA0B5] focus:border-[#347DEB]"
+        >
+      </div>
+
+      <div class="relative w-[270px]">
+        <select
+          class="h-[48px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]"
+        >
+          <option>All departments</option>
+          <option>Client-side Engineering</option>
+          <option>Technology</option>
+          <option>Human Resources</option>
+          <option>Finance</option>
+          <option>Operations</option>
+          <option>Marketing</option>
+        </select>
+        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALIDATION TABLE -->
+  <div class="px-8 pb-8">
+    <div class="overflow-visible rounded-xl border border-[#DCE1E6] bg-white">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b border-[#DCE1E6] text-left">
+            <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-user text-[12px] text-[#7C91A8]"></i>
+                Employee
+              </span>
+            </th>
+            <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-building text-[12px] text-[#7C91A8]"></i>
+                Department
+              </span>
+            </th>
+            <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-briefcase text-[12px] text-[#7C91A8]"></i>
+                Job Role
+              </span>
+            </th>
+            <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-regular fa-star text-[12px] text-[#7C91A8]"></i>
+                Validation Score
+              </span>
+            </th>
+            <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-regular fa-clock text-[12px] text-[#7C91A8]"></i>
+                Last Updated
+              </span>
+            </th>
+            <th class="px-5 py-3 text-right text-[14px] font-medium uppercase tracking-wide text-[#60758F]">
+              Action
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="border-b border-[#E8ECF0]">
+            <td class="px-5 py-4 text-[15px] font-medium text-[#102A43]">Salomey Oppong</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Client-side Engineering</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Software Engineer</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-right">
+              <details class="relative inline-block">
+                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:text-[#60758F]">
+                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+                </summary>
+<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
+  >
+    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
+    Validate
+  </button>
+
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
+  >
+    <i class="fa-solid fa-file-pen text-[13px]"></i>
+    Edit
+  </button>
+</div>
+              </details>
+            </td>
+          </tr>
+
+          <tr class="border-b border-[#E8ECF0]">
+            <td class="px-5 py-4 text-[15px] font-medium text-[#102A43]">Sally Smith</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Technology</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Backend Engineer</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-right">
+              <details class="relative inline-block">
+                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:text-[#60758F]">
+                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+                </summary>
+<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
+  >
+    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
+    Validate
+  </button>
+
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
+  >
+    <i class="fa-solid fa-file-pen text-[13px]"></i>
+    Edit
+  </button>
+</div>
+              </details>
+            </td>
+          </tr>
+
+          <tr class="border-b border-[#E8ECF0]">
+            <td class="px-5 py-4 text-[15px] font-medium text-[#102A43]">Kofi Asante</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Sales</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Account Executive</td>
+            <td class="px-5 py-4 text-[15px] font-medium text-[#16A36A]">4 / 5</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">28 Sep 2026, 14:30</td>
+            <td class="px-5 py-4 text-right">
+              <details class="relative inline-block">
+                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:text-[#60758F]">
+                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+                </summary>
+<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
+  >
+    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
+    Validate
+  </button>
+
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
+  >
+    <i class="fa-solid fa-file-pen text-[13px]"></i>
+    Edit
+  </button>
+</div>
+              </details>
+            </td>
+          </tr>
+
+          <tr class="border-b border-[#E8ECF0]">
+            <td class="px-5 py-4 text-[15px] font-medium text-[#102A43]">Janet Doe</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Human Resources</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">HR Business Partner</td>
+            <td class="px-5 py-4 text-[15px] font-medium text-[#16A36A]">5 / 5</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">27 Sep 2026, 11:15</td>
+            <td class="px-5 py-4 text-right">
+              <details class="relative inline-block">
+                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:text-[#60758F]">
+                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+                </summary>
+<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
+  >
+    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
+    Validate
+  </button>
+
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
+  >
+    <i class="fa-solid fa-file-pen text-[13px]"></i>
+    Edit
+  </button>
+</div>
+              </details>
+            </td>
+          </tr>
+
+          <tr class="border-b border-[#E8ECF0]">
+            <td class="px-5 py-4 text-[15px] font-medium text-[#102A43]">Sally Smith</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Finance</td>
+            <td class="px-5 py-4 text-[15px] text-[#102A43]">Financial Analyst</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-[15px] text-[#60758F]">—</td>
+            <td class="px-5 py-4 text-right">
+              <details class="relative inline-block">
+                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:text-[#60758F]">
+                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+                </summary>
+<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
+  >
+    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
+    Validate
+  </button>
+
+  <button
+    type="button"
+    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
+  >
+    <i class="fa-solid fa-file-pen text-[13px]"></i>
+    Edit
+  </button>
+</div>
+              </details>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
