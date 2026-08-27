@@ -18,7 +18,7 @@
     </div>
 
   <!-- PAGE HEADER -->
-  <header class="pt-6 mt-5">
+  <header class="mt-8">
       <!-- PAGE TITLE -->
       <div class="mx-2 md:mx-8 mt-">
         <h2 class="text-xl md:text-lg font-semibold">
@@ -32,17 +32,17 @@
 
 
   <!-- PROGRESS SECTION -->
-  <section class="md:mx-8 mt-8">
-    <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-8 md:overflow-y-hidden">
+  <section class="md:mx-8 mt-">
+    <div class="bg-white border border-[#D0D0D0] rounded-xl ">
+      <div class="py-3 h-[130px] md:overflow-y-hidden">
 
         <!-- Progress steps -->
         <div class="px-10 md:px-5">
         <nz-steps 
         [nzCurrent]="
           isActiveTab === 'target' ? 0 :
-          isActiveTab === 'self-review' ? 1 :
-          isActiveTab === 'manager-review' ? 2 :
+          isActiveTab === 'target' ? 1 :
+          
           3
           "
         >
@@ -55,22 +55,22 @@
         </div>
 
        <!-- DIVIDER -->
-      <div class="h-px w-full bg-gray-200 mt-2">
+      <div class="h-px w-full bg-[#D0D0D0] mt-6">
 
       </div>
 
        <!-- INFORMATION -->
-      <div class="px-2 md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
+      <div class="px-2 md:px-5 py-5  flex items-center flex-col md:flex-row md:items-center gap-3">
         <!-- PREVIEW -->
         <div class="w-[123px] h-[22px] bg-[#F5F5F5] items-center flex justify-center px-4 border border-[#DCDEE3] rounded-[10px] text-sm md:text-[12px] text-[#7A7A7A] font-semibold">
           Preview targets
         </div>
 
           <!-- MESSAGE -->
-          <p class="text-base md:text-[13px] font-bold text-gray-700">
+          <span class="text-sm md:text-[13px] font-bold text-gray-700">
             Your manager has published targets to this cycle.
             Review every KPI to guide your progress.
-          </p>
+          </span>
         </div>
        </div>
     </div>
@@ -78,7 +78,7 @@
 
 
   <!-- KPI SECTION -->
-  <section class="md:mx-5 md:mx-8 mt-10">
+  <section class="md:mx-8 mt-5">
 
     <!-- TITLE -->
     <h3 class="px-2 sm:px-3 text-sm md:text-[13px] font-bold">
@@ -87,17 +87,17 @@
 
 
     <!-- KPI CARD -->
-    <div class="bg- white mt-4 overflow-hidden shadow-sm">
+    <div class="bg- white overflow-hidden">
 
       <!-- @for (cycle of previousCycles; track $index) { -->
       <section >
-        <div class="px-5 sm:px-6 py-1 bg-white rounded-xl border border-gray-300">
+        <div class="px-5 sm:px-6 py-1 bg-white rounded-xl border border-[#D0D0D0]">
 
           <!-- APPLICATION + WEIGHT -->
-          <div class="md:flex items-start justify-between gap-4">
+          <div class="md:flex items-start justify-between gap-4 mt-3">
 
             <!-- APPLICATION -->
-            <p class="text-base md:text-sm font-bold text-[#000000]">
+            <p class="text-base md:text-sm font-medium text-[#000000]">
                 Application Development & Delivery
             </p>
 
@@ -108,28 +108,28 @@
           </div>
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-500 leading-6">
+          <span class="mt-3 text- md:text-[13px] font-medium text-gray-500 ">
               TARGET
-          </p>
+          </span>
 
           <!-- TARGET -->
-          <p class="text-sm md:text-sm font-medium text-gray-500 leading-6 ">
-            <div class="flex gap-2 items-center text-[#807777]">
+          <p class="text-sm md:text-sm font-medium text-gray-500 ">
+            <div class="flex items-center text-[#807777]">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
-              <p>Deliver 100% of assigned tasks within agreed sprint timelines</p>
+              <span>Deliver 100% of assigned tasks within agreed sprint timelines</span>
             </div>
-            <div class="flex gap-2 mb-5 text-[#807777]">
+            <div class="flex mb-3 text-[#807777]">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
-              <p>Deliver 100% of assigned tasks within agreed sprint timelines</p>
+              <span>Deliver 100% of assigned tasks within agreed sprint timelines</span>
             </div>
           </div>
           </section>
 
 
          <section>
-          <div class="mt-5 bg-white border rounded-xl border-gray-300">
+          <div class="mt-5 bg-white border rounded-xl border-[#D0D0D0]">
             <div class="mx-5">
-               <div class="md:flex justify-between gap-4">
+               <div class="md:flex justify-between gap-4 mt-3">
 
                 <!-- APPLICATION -->
                 <p class="text-base md:text-sm font-bold text-[#000000]">
@@ -144,17 +144,17 @@
                 </div>
 
                 <!-- KPI NAME -->
-                <p class="mt-3 text-sm md:text-sm text-gray-500 leading-6">
+                <p class="mt-3 text-sm md:text-sm text-gray-500">
                     TARGET
                 </p>
 
                 <!-- TARGET -->
-                <p class="text-sm md:text-sm font-medium text-gray-500 leading-6">
-                  <div class="flex gap-2 items-center text-[#807777]">
+                <p class="text-sm md:text-sm font-medium text-gray-500">
+                  <div class="flex items-center text-[#807777]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
-                    <p>Deliver 100% of assigned tasks within agreed sprint timelines</p>
+                    <span>Deliver 100% of assigned tasks within agreed sprint timelines</span>
                   </div>
-                  <div class="flex gap-2 mb-5 text-[#807777]">
+                  <div class="flex mb-3 text-[#807777]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
                     <p>Deliver 100% of assigned tasks within agreed sprint timelines</p>
                   </div>
@@ -163,9 +163,9 @@
                   </section>
 
                   <section>
-                   <div class="mt-5 bg-white border rounded-xl border-gray-300">
+                   <div class="mt-5 bg-white border rounded-xl border-[#D0D0D0]">
                      <div class="mx-5">
-                      <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center justify-between mt-3 gap-4">
 
                       <!-- APPLICATION -->
                       <p class="text-base md:text-sm font-bold text-[#000000]">
@@ -184,7 +184,7 @@
                     </p>
 
                     <!-- TARGET -->
-                    <p class="text-sm md:text-sm font-medium leading-6">
+                    <p class="text-sm md:text-sm font-medium">
                       <div class="flex gap-2 items-center text-[#807777]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-700"><circle cx="12" cy="12" r="1"/></svg>
                         <p>Deliver 100% of assigned tasks within agreed sprint timelines</p>
@@ -200,7 +200,7 @@
       <!-- } -->
 
 
-      <div class="flex items-center mt-10 border border-[#E4E7EC] bg-[#EEF4FA80] text-[#6E6E6E] w-full h-[60px]">
+      <div class="flex items-center mt-5 border border-[#E4E7EC] bg-[#EEF4FA80] text-[#6E6E6E] w-full h-[60px]">
           <svg xmlns="http://www.w3.org/2000/svg" 
           width="24" 
           height="18" 
@@ -213,19 +213,19 @@
           <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
           <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
         </svg>
-          <p class="">
+          <span class="">
             Targets are set by your manager so there is nothing to edit here
-          </p>
+          </span>
         </div>
 
         <!-- manager set target -->
         <div class="mt-5 ">
     <!-- continue button -->
-    <div class="flex justify-end">
-      <button class="flex items-center md:py-1 px-5 md:px-8 bg-[#E4E7EC] rounded-[12px] shadow-[0_4px_6px_1px_#00000040]">
-        <p class=" text-[#FFFFFF] mx-3">
+    <div class="flex items-center justify-end">
+      <button class="flex items-center md:py-2 px-5 md:px-10 bg-[#E4E7EC] rounded-[12px] shadow-[0_4px_6px_1px_#00000040]">
+        <span class=" text-[#FFFFFF] mx-3">
         Continue
-        </p>
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="15"
@@ -244,68 +244,46 @@
 
 
     <!-- cycle progress -->
-    <div class="md:flex gap-2">
+    <div class="md:flex gap-2 mx-2 mb-5">
       <div class="flex items-center text-[#000000] text-sm md:text-[14px] ">
         CYCLE PROGREE
       </div>
 
-      <!-- toggle buttons -->
-      <div class="text-sm md:text-[14px] border py-1 rounded-[8px] overflow-auto ">
-        <div class="flex items-center gap-2 md:gap-15 md:px-10 whitespace-nowrap">
-           <!-- Targets -->
-            <button
-              nz-button
-              type="button"
-              [nzType]="isActiveTab === 'target' ? 'primary' : 'default'"
-              [class.!bg-blue-500]="true"
-              [class.!text-white]="true"
-              [class.!border-blue-500]="true"
-              (click)="tabsActive('target')"
-              class="cursor-pointer text-[#919191] px-3 h-6 rounded-[6px] transition"
+          <!-- toggle buttons -->
+            <nz-segmented
+            class="target-segmented border border-[#C0C0C0]"
+            [(ngModel)]="isActiveTab"
+            (ngModelChange)="tabsActive($event)"
             >
-              Targets
-            </button>
+              <label nz-segmented-item nzValue="target">
+                Targets
+              </label>
 
-            <!-- Self-review -->
-            <button
-              nz-button
-              type="button"
-              [nzType]="isActiveTab === 'target' ? 'primary' : 'default'"
-              (click)="tabsActive('self-review')"
-              class="cursor-pointer  text-[#919191] px-3 h-6 rounded-[6px] transition"
-            >
-              Self-review
-            </button>
+              <label nz-segmented-item nzValue="self-review"
+              
+              >
+                Self-review
+              </label>
 
-            <!-- Manager Review -->
-            <button
-              nz-button
-              type="button"
-              [nzType]="isActiveTab === 'target' ? 'primary' : 'default'"
-              (click)="tabsActive('manager-review')"
-              class="cursor-pointer text-[#919191] px-3 h-6 rounded-[6px] transition"
-            >
-              Manager Review
-            </button>
+              <label nz-segmented-item nzValue="manager-review"
 
-            <!-- Complete -->
-            <button
-              nz-button
-              type="button"
-              [nzType]="isActiveTab === 'target' ? 'primary' : 'default'"
-              (click)="tabsActive('complete')"
-              class="cursor-pointer text-[#919191] px-3 h-6 rounded-[6px] transition"
-            >
-              Complete
-            </button>
-          </div>
-          </div>
+              >
+                Manager Review
+              </label>
+
+              <label nz-segmented-item nzValue="complete"
+              
+              >
+                Complete
+              </label>
+          </nz-segmented> 
         </div>
         </div>
 
     </div>
   </section>
 </main>
+
  }
 
 
@@ -318,11 +296,11 @@
  @if (isActiveTab === 'self-review') {
 
     <!-- Back button -->
-    <div class="text-gray-400 mt-10">
+    <div class="text-gray-400 mt-10 mx-8">
       <button
       (click)="myactivities()"
         type="button"
-        class=" mx-5 md:mx-20 mt-10 flex items-center gap-2 text-sm md:text-[13px] cursor-pointer hover:text-[#3f91df] transition">
+        class="mt-10 flex items-center gap-2 text-sm md:text-[13px] cursor-pointer hover:text-[#3f91df] transition">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -342,10 +320,10 @@
       </button>
     </div>
 
-  <header class="pt-6">
+  <header>
 
     <!-- PAGE TITLE -->
-    <div class="mx-5 sm:mx-8 md:mx-20 mt-9">
+    <div class="mx-8 mt-8">
 
       <h2 class="text-xl md:text-lg font-semibold">
         ELEVATE – Q3 (July – September 2026)
@@ -361,10 +339,10 @@
 
 
   <!-- PROGRESS SECTION -->
-  <section class="md:mx-20 mt-10">
+  <section class="mx-8 mt-10">
 
     <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-8 h- [150px] md:overflow-y-hidden">
+      <div class="py-12 h-[170px] md:overflow-y-hidden">
         <div class="px-10 md:px-5">
           <nz-steps
           [nzCurrent]="
@@ -388,9 +366,9 @@
 
 
        <!-- INFORMATION -->
-      <div class="px-1 md:px-5 md:py-3 mt-3 flex flex-col md:flex-row md:items-center gap-3">
+      <div class="px-1 md:px-5 md:py-3 mt-4 flex flex-col md:flex-row md:items-center gap-3">
         <!-- PREVIEW -->
-        <div class="w-fit bg-blue-100 text-blue-600 px-4 border border-gray-400 rounded-[10px] text-sm md:text-[12px] font-bold hover:bg-gray-300">
+        <div class="w-fit bg-[#E6F5FF] text-[#0084BD] px-4 border border-[#E2F4FF] rounded-[10px] text-sm md:text-[12px] font-bold hover:bg-gray-300">
           self review open
         </div>
 
@@ -408,10 +386,10 @@
  <!-- MY COMMENTS -->
 
    <!-- KPI SECTION -->
-  <section class="mx-2 md:mx-20 mt-10 pb-10">
+  <section class="mx-8 mt-5 pb-10">
 
     <!-- TITLE -->
-    <h3 class="px- 2 mb-4 text-sm md:text-[13px] font-bold">
+    <h3 class=" mb-4 text-sm md:text-[13px] font-bold">
       KEY PERFORMANCE INDICATORS
     </h3>
 
@@ -423,18 +401,16 @@
         <div class="px-5 sm:px-6 py-1 last:border-b-0 hover:bg-gray-50 transition">
 
           <!-- APPLICATION + WEIGHT -->
-          <div class="flex items-start justify-between gap-4"
-          >
+          <div class="flex justify-between gap-4 mt-2">
 
             <!-- APPLICATION -->
-            <p class="text-base md:text-sm font-bold text-gray-900">
-              <!-- {{ cycle.application }} -->
+            <p class="text-sm font-bold text-gray-900">
+              Application Development $ Delivery
             </p>
 
-
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
-              <!-- {{ cycle.weight }} -->
+            <p class="bg-[#EFECEC] text-[#6E6E6E] px-2 py-0.5 rounded-full md:text-[12px] font-bold whitespace-nowrap">
+              Weight 60%
             </p>
 
           </div>
@@ -442,50 +418,57 @@
 
           <!-- KPI NAME -->
           <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
-            <!-- {{ cycle.name }} -->
+            Target
           </p>
 
 
           <!-- TARGET -->
-          <p class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
-            <!-- <p>{{ cycle.targets }}</p> -->
-            <!-- <p>{{ cycle.targets }}</p> -->
+         <div class="mt-2 text-sm md:text-sm text-gray-500 leading-6">
+            <div class="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
+              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
+            </div>
+            <div class="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
+              <span>Dliver 100% of assigned tasks within agreed sprint timeline</span>
+            </div>
+          </div>
 
         </div>
 
       <!-- }   -->
 
     <!-- MY PERFORMANCE RATING -->
-     <div class="mx-1 2 md:px-6 mt-5">
-    <div class="font-bold">
-        <p>MY PERFORMANCE RATING</p>
+     <div class="mx-5 mt-2">
+    <div class="font-semibold">
+        <span>MY PERFORMANCE RATING</span>
 
-        <p class="mt-2 flex gap-2">
-      <button
-      [class.bg-blue-600]=""
-      [class.text-white]=""
-      class="w-9 h-9 rounded-lg border border-gray-200">
-         1
-      </button>
-
-          <button
-      [class.bg-blue-600]=""
-      [class.text-white]=""
-      class="w-9 h-9 rounded-lg border border-gray-200">
-         2
-      </button>
-      </p>
+          <div class="flex items-center gap-2 mt-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              class="flex h-10 w-10 items-center justify-center rounded-md border text-sm font-medium transition-colors"
+              [ngClass]="currentPage === page
+                  ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                  : 'border-[#E4E7EC] bg-[#FFFFFF] text-[#807777] hover:border-[#2f87da] hover:text-[#2f87da]'
+              "
+            >
+              {{ page }}
+            </button>
+          }
+        </div>
     </div>
 
 
     <!-- MY COMMENTS -->
-    <div class="mb-10">
-      <p>MY COMMENTS</p>
+    <div class="mb-5 mt-2">
+      <p class="font-semibold">MY COMMENTS</p>
       <textarea
       [(ngModel)]="message"
       name="message"
       placeholder="Describe what you delivered against this KPI."
-       class="border w-full px-4 h-30 rounded-[10px]"
+       class="bg-[#F8F5F0] border border-[#B9B9B9] w-full px-4 h-30 py-2 rounded-[10px] font-semibold"
 
       >
       </textarea>
@@ -496,7 +479,7 @@
 
 
     <!-- header -->
-   <div class="container mt-10">
+   <div class="mt-6">
       <h3 class="px-2 sm:px-3 mb-4 mt-20 text-sm md:text-[13px] font-bold">
         KEY PERFORMANCE INDICATORS
       </h3>
@@ -518,7 +501,7 @@
 
 
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <p class="bg-[#EFECEC] text-[#6E6E6E] px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold whitespace-nowrap">
               Weight 60%
             </p>
 
@@ -550,34 +533,34 @@
 
 
     <!-- MY PERFORMANCE RATING -->
-     <div class="px-1 md:px-6 mt-5">
-    <div class="font-bold">
-      <p>MY PERFORMANCE RATING</p>
+     <div class="px-1 md:px-6 mt-2">
+    <div class="font-semibold">
+      <span class="text-[#000000]">MY PERFORMANCE RATING</span>
       </div>
 
-     <div class="mt-2 flex items-center gap-2">
-        <div>
-        <button
-        [class.bg-blue-600]=""
-        [class.text-white]=""
-        class="w-9 h-9 rounded-lg border border-gray-200">
-          1
-        </button>
-
-        <button
-        [class.bg-blue-600]=""
-        [class.text-white]=""
-        class="w-9 h-9 rounded-lg border border-gray-200">
-          2
-        </button>
+      <!-- PAGINATION BUTTONS -->
+      <div class="flex items-center gap-4 mt-2">
+       <div class="flex items-center gap-2 ">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              class="flex h-10 w-10 items-center justify-center rounded-md border text-sm font-medium transition-colors"
+              [ngClass]="currentPage === page
+                  ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                  : 'border-[#E4E7EC] bg-[#FFFFFF] text-[#807777] hover:border-[#2f87da] hover:text-[#2f87da]'
+              "
+            >
+              {{ page }}
+            </button>
+          }
         </div>
+         <span class="text-sm text-gray-500">
+    {{ currentPage }} out of 5
+  </span>
+     </div>
 
-      <span class="text-gray-500">out of 5</span>
-    </div>
-
-    
-
-
+        
     <!-- MY STAFF COMMENTS -->
     <div class="mt-2">
       <p class="font-bold">MY STAFF COMMENTS</p>
@@ -585,14 +568,14 @@
       [(ngModel)]="message"
       name="message"
       placeholder="Describe what you delivered against this KPI."
-       class="border w-full px-4 h-30 rounded-[10px] focus focus:border-blue-500 focusoutline-none "
+       class="bg-[#F8F5F0] border border-[#B9B9B9] w-full px-4 h-30 py-2 rounded-[10px] font-semibold"
       >
       </textarea>
     </div>
 
 
      <!-- Continue later and Submit Button   -->
-      <div class="flex justify-end ">
+      <div class="flex justify-end gap-4 mt-2">
         <div>
       <button 
       class="flex gap-2 items-center mt-5 py-1 md:py-2 px-2 md:px-8 whitespace-nowrap md:w-[12rem]  mx-6 rounded-[8px] border-b shadow-sm">
@@ -640,63 +623,41 @@
 
 
     <!--//////// cycle progress /////////-->
-    <div class="md:flex gap-4 mt-5 mb-8 mx-5">
-      <p class="text-[14px] flex items-center">
+    <div class="md:flex gap-2 mt-5 mb-8 mx-5">
+      <span class="text-[14px] flex items-center font-semibold">
         EVALUATION STAGES:
-      </p>
+      </span>
 
 
       <!--/////// toggle buttons //////////-->
-      <div class="md:w-[35rem] text-[14px] border py-1 rounded-[8px] overflow-auto">
-        <div class="flex items-center md:gap-10 md:px-10 whitespace-nowrap">
+         <nz-segmented
+              class="target-segmented mb-5 bg-[#2f87da]"
+              [(ngModel)]="isActiveTab"
+              (ngModelChange)="tabsActive($event)"
+                          >
+              <label nz-segmented-item nzValue="target">
+                Targets
+              </label>
 
-         <button
-         nz-button
-         type="button" 
-         [nzType]="isActiveTab === 'self-review' ? 'primary' : 'default'"
-         (click)="tabsActive('target')"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Target
-         </button>
+              <label nz-segmented-item nzValue="self-review"
+              
+              >
+                Self-review
+              </label>
 
-        <button
-         nz-button
-         type="button" 
-         [nzType]="isActiveTab === 'self-review' ? 'primary' : 'default'"
-         [class.!bg-blue-500]="true"
-         [class.!text-white]="true"
-         [class.!border-blue-500]="true"
-         (click)="tabsActive('self-review')"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Self-Review
-         </button>
+              <label nz-segmented-item nzValue="manager-review"
 
-         <button
-         nz-button
-         type="button" 
-         [nzType]="isActiveTab === 'self-review' ? 'primary' : 'default'"
-         (click)="tabsActive('manager-review')"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         > 
-          Manager Review
-         </button>
+              >
+                Manager Review
+              </label>
 
-        <button
-         nz-button
-         type="button" 
-         [nzType]="isActiveTab === 'self-review' ? 'primary' : 'default'"
-         (click)="tabsActive('complete')"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Complete
-         </button>
-         
-        </div>
+              <label nz-segmented-item nzValue="complete"
+              
+              >
+                Complete
+              </label>
+        </nz-segmented> 
       </div>
-      </div>
-  
     </div>
   </div>
 </section>
@@ -736,22 +697,17 @@
     </div>
 
   <div class="mx-5 md:mx-20">
-
     <header class="pt-6">
 
     <!-- PAGE TITLE -->
     <div class="mt-9">
-
       <h2 class="text-xl md:text-lg font-semibold">
         ELEVATE – Q3 (July – September 2026)
       </h2>
-
       <p class="mt-2 text-sm md:text-sm text-gray-500">
         Kindly set targets before agreed deadline
       </p>
-
     </div>
-
   </header>
 
 
@@ -1009,7 +965,7 @@
   @if (isActiveTab === 'complete') {
 
       <!-- Back button -->
-    <div class="text-gray-400 mt-10 mx-20">
+    <div class="text-gray-400 mt-10 mx-8">
       <button
       (click)="myactivities()"
         type="button"
@@ -1033,7 +989,7 @@
       </button>
     </div>
 
-  <main class="mx-5 md:mx-10 lg:mx-20 mt-10">
+  <main class="mx-1 md:mx-8 mt-10">
     <!-- BACK + PAGE HEADER -->
 
     <section>
@@ -1041,46 +997,32 @@
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
 
         <!-- Title -->
-        <div class="mb-2 md:mb-8">
+        <div class="">
 
-          <h1 class="text-xl font-semibold text-gray-900">
+          <!-- <h1 class="text-xl font-semibold text-gray-900">
             My Activities
-          </h1>
+          </h1> -->ooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-          <p class="text-sm text-gray-500 mt-2">
-            Current and previous performance cycles.
-          </p>
+            <header class="pt-6">
+
+            <!-- PAGE TITLE -->
+            <div class="mt-9">
+              <h2 class="text-xl md:text-lg font-semibold">
+                ELEVATE – Q3 (July – September 2026)
+              </h2>
+              <p class="mt-2 text-sm md:text-sm text-gray-500">
+                Kindly set targets before agreed deadline
+              </p>
+            </div>
+          </header>
 
         </div>
-
-
-        <!-- Total score -->
-        <div class="border-2 border-blue-500 h-[5rem] px-5 py-2 rounded-[12px]">
-
-          <span class="text-xs font-semibold text-gray-600">
-            TOTAL SCORE
-          </span>
-
-          <div class="flex gap-1">
-
-            <p class="font-bold text-[35px] text-blue-500">
-              0
-            </p>
-
-            <p class="mb-1 py-5">
-              / 100
-            </p>
-
-          </div>
-        </div>
-
       </div>
-
     </section>
 
     <!-- PROGRESS SECTION -->
     <section class="">
-    <div class="bg-white border border-gray-300 rounded-xl ">
+    <div class="bg-white border border-gray-300 h-[170px] rounded-xl ">
       <div class="py-8 h-[150px] overflow-y-hidden">
         <div class="px-5">
           <nz-steps
@@ -1101,22 +1043,22 @@
        
 
           <!-- DIVIDER -->
-          <div class="h-px w-full bg-gray-200 mt-2">
+          <div class="h-px w-full bg-gray-200 mt-7">
 
           </div>
 
 
           <!-- INFORMATION -->
-          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
+          <div class="md:px-5 py-6 flex flex-col md:flex-row md:items-center gap-3">
             <!-- PREVIEW -->
-            <div class="w-fit bg-green-200 px-4 border border-green-400 rounded-[10px] text-sm md:text-[12px] text-green-600 font-bold hover:bg-gray-300">
-              Complete
+            <div class="w-fit bg-[#F5F5F5] text-[#7A7A7A] px-4 border border-[#DCDEE3] rounded-[10px] text-sm md:text-[12px]">
+              Awaiting manager review
             </div>
 
             <!-- MESSAGE -->
-            <p class="text-base md:text-[13px] font-bold text-gray-700">
-              This cycle is complete, including your manager's rating and comments.
-            </p>
+            <span class="text-base md:text-[13px] font-semibold text-gray-700">
+              Your self review is submitted and awaiting your manager's rating.
+            </span>
           </div>
 
           </div>
@@ -1235,16 +1177,6 @@
 
             </div>
           </div>
-
-
-          <!-- Comment textarea -->
-          <!-- <textarea
-            [(ngModel)]="coments"
-            name="coments"
-            placeholder="I delivered 100% of assigned tasks within agreed sprint timelines."
-            class="border border-gray-300 w-full px-4 py-8 h-32 rounded-[10px] resize-none focus:outline-none focus:ring-2 focus:ring-blue-200"
-          ></textarea> -->
-
         </section>
 
 
@@ -1418,61 +1350,41 @@
       <div class="flex flex-col md:flex-row md:items-center gap-4">
 
         <!-- Label -->
-        <p class="font-semibold whitespace-nowrap">
+        <span class="font-semibold whitespace-nowrap">
           EVALUATE STAGE:
-        </p>
+        </span>
 
 
-        <!-- Toggle -->
-        <div
-          class="text-sm border border-gray-300 py-1 rounded-[8px] overflow-x-auto w-fit max-w-full"
-        >
+              <!-- Toggle -->
+               <nz-segmented
+                  class="target-segmented mb-5 bg-[#2f87da]"
+                  [(ngModel)]="isActiveTab"
+                  (ngModelChange)="tabsActive($event)"
+                              >
+                  <label nz-segmented-item nzValue="target">
+                    Targets
+                  </label>
 
-          <div class="flex items-center gap-2 md:gap-5 px-2 md:px-5 whitespace-nowrap">
-            <button
-                nz-button
-                type="button" 
-                [nzType]="isActiveTab === 'complete' ? 'primary' : 'default'"
-                (click)="tabsActive('target')"
-                >
-                  Target
-             </button>
-
-                <button
-                  nz-button
-                  type="button" 
+                  <label nz-segmented-item nzValue="self-review"
                   
-                  [nzType]="isActiveTab === 'complete' ? 'primary' : 'default'"
-                  (click)="tabsActive('self-review')"
-                  class="cursor-pointer px-3 h-6 rounded-[6px] transition"
                   >
-                    Self-Review
-                </button>
+                    Self-review
+                  </label>
 
-                <button
-                  nz-button
-                  type="button" 
-                  [nzType]="isActiveTab === 'complete' ? 'primary' : 'default'"
-                  (click)="tabsActive('manager-review')"
-                  class="cursor-pointer px-3 h-6 rounded-[6px] transition"
+                  <label nz-segmented-item nzValue="manager-review"
+
                   >
                     Manager Review
-                </button>
+                  </label>
 
-                <button
-                  nz-button
-                  type="button" 
-                  [class.!bg-green-500]="isActiveTab === 'complete'"
-                  [class.!border-green-500]="isActiveTab === 'complete'"
-                  [class.!text-white]="isActiveTab === 'complete'"
-                  [nzType]="isActiveTab === 'complete' ? 'primary' : 'default'"
-                  (click)="tabsActive('complete')"
-                  class="cursor-pointer px-3 h-6 rounded-[6px] transition"
+                  <label nz-segmented-item nzValue="complete"
+                  
                   >
                     Complete
-                </button>
-              </div>
-            </div>
+                  </label>
+                </nz-segmented> 
+              <!-- </div>
+            </div> -->
           </div>
         </section>
 

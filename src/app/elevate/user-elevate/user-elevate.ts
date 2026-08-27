@@ -5,10 +5,13 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { FormsModule } from '@angular/forms';
+import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
+
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-user-elevate',
-  imports: [NzStepsModule, NzProgressModule, NzButtonModule, CommonModule, FormsModule],
+  imports: [NzSegmentedModule, NzAvatarModule, NzStepsModule, NzProgressModule, NzButtonModule, CommonModule, FormsModule],
   templateUrl: './user-elevate.html',
   styleUrl: './user-elevate.css',
 })
@@ -49,13 +52,24 @@ export class UserElevate {
 //  currentSteps = signal(0);
 
 // Steps progress //
-isActiveTab = 'target' 
+isActiveTab = 'target'
 
 tabsActive(tab: string){
   this.isActiveTab = tab
 }
 
-isActiveTabs = 'target' 
+//  pagination buttons //
+pages = [1, 2, 3, 4, 5];
+currentPage = 1;
+
+goToPage(page: number): void {
+  this.currentPage = page;
+
+  // Load/update your data here
+}
+
+
+
 
 // tabActives(tab: string){
 //   this.isActiveTabs = tab
@@ -79,9 +93,6 @@ previousCycles = [
     },
    
   ];
-
-
-
 
 
   // MAGER //
@@ -156,5 +167,30 @@ goToActivities(){
     this.router.navigate(["/dashboard"])
   }
 
+
+
+
+
+  //   options = ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'];
+
+  // handleValueChange(e: string | number): void {
+  //   console.log(e);
+  // }
+ isActiveTabss: 'target' | 'complete' = 'target';
+
+  options = [
+    {
+      label: 'Target',
+      value: 'target'
+    },
+    {
+      label: 'Complete',
+      value: 'complete'
+    }
+  ];
+
+  tabsActives(tab: string): void {
+    this.isActiveTab = tab as 'target' | 'complete';
+  }
   
 }

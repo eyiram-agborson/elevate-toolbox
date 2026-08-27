@@ -1,0 +1,192 @@
+  /* .season-segmented {
+  background: #f5f7fa;
+   padding: 4px;
+  border-radius: 9999px;
+  
+} 
+
+.season-segmented ::ng-deep .ant-segmented-item:hover {
+  color: #2f87da;
+}
+
+
+.season-segmented ::ng-deep .ant-segmented-item-selected {
+  background: #2f87da !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(47, 135, 218, 0.2);
+}
+
+
+.season-segmented
+  ::ng-deep
+  .ant-segmented-item-selected:hover {
+  background: #2f87da !important;
+  color: #ffffff !important;
+} 
+
+
+ 
+.season-segmented {
+  width: 50%;
+  display: block;
+
+ 
+  background: #f5f7fa;
+  padding: 4px;
+  border-radius: 9999px;
+}
+
+
+.season-segmented ::ng-deep .ant-segmented-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+
+.season-segmented ::ng-deep .ant-segmented-item {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  border-radius: 9999px;
+  color: #919191;
+  font-weight: 500;
+}
+
+
+.season-segmented ::ng-deep .ant-segmented-item:hover {
+  color: #2f87da;
+}
+
+
+.season-segmented ::ng-deep .ant-segmented-item-selected {
+  background: #2f87da !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(47, 135, 218, 0.2);
+}
+
+
+.season-segmented
+  ::ng-deep
+  .ant-segmented-item-selected:hover {
+  background: #2f87da !important;
+  color: #ffffff !important;
+}
+
+
+.season-segmented {
+  width: 50%;
+  display: block;
+}
+
+.season-segmented ::ng-deep .ant-segmented-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.season-segmented ::ng-deep .ant-segmented-item {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  border-radius: 9999px;
+}  */
+
+
+
+/* 
+.review-segmented {
+  width: 50%;
+  display: block;
+  background: #f5f7fa;
+  padding: 4px;
+  border-radius: 9999px;
+}
+
+
+.review-segmented ::ng-deep .ant-segmented-group {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+
+.review-segmented ::ng-deep .ant-segmented-item {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  border-radius: 9999px;
+  color: #919191;
+  font-weight: 500;
+}
+
+
+.review-segmented ::ng-deep .ant-segmented-item:hover {
+  color: #2f87da;
+}
+
+
+.review-segmented ::ng-deep .ant-segmented-item-selected {
+  background: #2f87da !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(47, 135, 218, 0.2);
+}
+
+
+.review-segmented
+  ::ng-deep
+  .ant-segmented-item-selected:hover {
+  background: #2f87da !important;
+  color: #ffffff !important;
+} */
+
+
+
+
+
+
+.target-segmented {
+  width: 35%;
+  display: block;
+  background: white;
+  padding: 4px;
+  border-radius: 9999px;
+   border: 1px solid #C0C0C0;
+  
+
+  ::ng-deep .ant-segmented-group {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+  }
+
+  ::ng-deep .ant-segmented-item {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    border-radius: 9999px;
+    color: #919191;
+    font-weight: 500;
+  }
+
+  ::ng-deep .ant-segmented-item:hover {
+    color: #2f87da;
+  }
+
+  ::ng-deep .ant-segmented-item-selected {
+    background:  #2f87da !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(47, 135, 218, 0.2);
+  }
+
+  ::ng-deep .ant-segmented-item-selected:hover {
+    background: #2f87da !important;
+    color: #ffffff !important;
+  }
+}
