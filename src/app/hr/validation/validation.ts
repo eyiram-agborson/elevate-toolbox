@@ -1,40 +1,38 @@
 import { Component } from '@angular/core';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @Component({
   selector: 'app-validation',
-  imports: [],
+  standalone: true,
+  imports: [NzDropDownModule, NzMenuModule ],
   templateUrl: './validation.html',
-  styleUrl: './validation.css',
+  styleUrl: './validation.css'
 })
 export class Validation {
-showValidateModal = false;
-selectedValidationScore: number | null = null;
 
-validationScores = [1, 2, 3, 4, 5];
+  showValidateModal = false;
 
-openValidateModal(): void {
-  this.selectedValidationScore = null;
-  this.showValidateModal = true;
-}
+  selectedScore: number | null = null;
 
-closeValidateModal(): void {
-  this.showValidateModal = false;
-  this.selectedValidationScore = null;
-}
-
-selectValidationScore(score: number): void {
-  this.selectedValidationScore = score;
-}
-
-saveValidationScore(): void {
-  if (this.selectedValidationScore === null) {
-    return;
+  openValidateModal(): void {
+    this.selectedScore = null;
+    this.showValidateModal = true;
+    console.log('Validate modal clicked')
   }
 
-  console.log('Validation score:', this.selectedValidationScore);
+  closeValidateModal(): void {
+    this.showValidateModal = false;
+    this.selectedScore = null;
+  }
 
-  this.closeValidateModal();
-}
+  saveValidation(): void {
+    if (this.selectedScore === null) {
+      return;
+    }
 
+    console.log('Selected validation score:', this.selectedScore);
 
+    this.closeValidateModal();
+  }
 }

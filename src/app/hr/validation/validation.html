@@ -1,36 +1,49 @@
 <div class="min-h-screen bg-[#F5F7FA]">
+
+  <!-- PAGE HEADER -->
   <div class="flex items-start justify-between px-8 pt-8 pb-5">
     <div>
-      <h1 class="text-[28px] font-semibold text-[#102A43]">Validation</h1>
-      <p class="mt-2 text-[15px] !text-[#60758F]">Record final validation scores following employee performance discussions.</p>
+      <h1 class="text-[28px] font-semibold !text-[#102A43]">
+        Validation
+      </h1>
+
+      <p class="mt-2 text-[15px] !text-[#60758F]">
+        Record final validation scores following employee performance discussions.
+      </p>
     </div>
   </div>
 
+
   <!-- NOTICE -->
-<div class="w-full border-y border-[#F0CF87] bg-[#FFFAF0] px-8 py-2.5">
-  <div class="flex items-center gap-3">
-    <i class="fa-solid fa-lock shrink-0 text-[14px] text-[#D99A00]"></i>
-    <span class="text-[14px] leading-5 !text-[#60758F]">
-      Validation scores are recorded by HR following the performance validation meeting.
-    </span>
+  <div class="w-full border-y border-[#F0CF87] bg-[#FFFAF0] px-8 py-2.5">
+    <div class="flex items-center gap-3">
+      <i class="fa-solid fa-lock shrink-0 text-[14px] !text-[#D99A00]"></i>
+
+      <span class="text-[14px] leading-5 !text-[#60758F]">
+        Validation scores are recorded by HR following the performance validation meeting.
+      </span>
+    </div>
   </div>
-</div>
+
 
   <!-- SEARCH + FILTER -->
   <div class="px-8 pt-6 pb-5">
     <div class="flex items-center gap-3 rounded-sm border border-[#DCE1E6] bg-white px-3 py-3">
+
       <div class="relative flex-1">
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-[#7C91A8]"></i>
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] !text-[#7C91A8]"></i>
+
         <input
           type="text"
           placeholder="Search employee"
-          class="h-[48px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8CA0B5] focus:ring-1"
-        >
+          class="h-[48px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:ring-1"
+        />
       </div>
+
 
       <div class="relative w-[270px]">
         <select
-        class="h-[48px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none`1````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````"
+          class="h-[48px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] !text-[#102A43] outline-none focus:ring-1"
         >
           <option>All departments</option>
           <option>Client-side Engineering</option>
@@ -40,337 +53,672 @@
           <option>Operations</option>
           <option>Marketing</option>
         </select>
-        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
+
+        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] !text-[#7C91A8]"></i>
       </div>
+
     </div>
   </div>
+
 
   <!-- VALIDATION TABLE -->
   <div class="px-8 pb-8">
     <div class="overflow-visible rounded-xl border border-[#DCE1E6] bg-white">
+
       <table class="w-full border-collapse">
+
         <thead>
           <tr class="border-b border-[#DCE1E6] text-left">
+
             <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               <span class="inline-flex items-center gap-2">
-                <i class="fa-solid fa-user text-[12px] text-[#7C91A8]"></i>
+                <i class="fa-solid fa-user text-[12px] !text-[#7C91A8]"></i>
                 Employee
               </span>
             </th>
+
             <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               <span class="inline-flex items-center gap-2">
-                <i class="fa-solid fa-building text-[12px] text-[#7C91A8]"></i>
+                <i class="fa-solid fa-building text-[12px] !text-[#7C91A8]"></i>
                 Department
               </span>
             </th>
+
             <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               <span class="inline-flex items-center gap-2">
-                <i class="fa-solid fa-briefcase text-[12px] text-[#7C91A8]"></i>
+                <i class="fa-solid fa-briefcase text-[12px] !text-[#7C91A8]"></i>
                 Job Role
               </span>
             </th>
+
             <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               <span class="inline-flex items-center gap-2">
-                <i class="fa-regular fa-star text-[12px] text-[#7C91A8]"></i>
+                <i class="fa-regular fa-star text-[12px] !text-[#7C91A8]"></i>
                 Validation Score
               </span>
             </th>
+
             <th class="px-5 py-3 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               <span class="inline-flex items-center gap-2">
-                <i class="fa-regular fa-clock text-[12px] text-[#7C91A8]"></i>
+                <i class="fa-regular fa-clock text-[12px] !text-[#7C91A8]"></i>
                 Last Updated
               </span>
             </th>
+
             <th class="px-5 py-3 text-right text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
               Action
             </th>
+
           </tr>
         </thead>
 
+
         <tbody>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium text-[#102A43]">Salomey Oppong</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Client-side Engineering</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Software Engineer</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-right">
-              <details class="relative inline-block">
-                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:!text-[#60758F]">
-                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-                </summary>
-<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
-  >
-    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
-    Validate
-  </button>
 
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
-  >
-    <i class="fa-solid fa-file-pen text-[13px]"></i>
-    Edit
-  </button>
-</div>
-              </details>
+          <!-- ROW 1 -->
+          <tr class="border-b border-[#E8ECF0]">
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">
+              Salomey Oppong
             </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Client-side Engineering
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Software Engineer
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-right">
+
+              <button
+                nz-dropdown
+                [nzDropdownMenu]="actionMenu"
+                nzTrigger="click"
+                type="button"
+                class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+              </button>
+
+            </td>
+
           </tr>
 
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium text-[#102A43]">Sally Smith</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Technology</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Backend Engineer</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-right">
-              <details class="relative inline-block">
-                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:!text-[#60758F]">
-                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-                </summary>
-<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
-  >
-    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
-    Validate
-  </button>
 
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !!text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
-  >
-    <i class="fa-solid fa-file-pen text-[13px]"></i>
-    Edit
-  </button>
-</div>
-              </details>
+          <!-- ROW 2 -->
+          <tr class="border-b border-[#E8ECF0]">
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">
+              Sally Smith
             </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Technology
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Backend Engineer
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-right">
+
+              <button
+                nz-dropdown
+                [nzDropdownMenu]="actionMenu"
+                nzTrigger="click"
+                type="button"
+                class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+              </button>
+
+            </td>
+
           </tr>
 
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium text-[#102A43]">Kofi Asante</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Sales</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Account Executive</td>
-            <td class="px-5 py-5 text-[15px] font-medium text-[#16A36A]">4 / 5</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">28 Sep 2026, 14:30</td>
-            <td class="px-5 py-5 text-right">
-              <details class="relative inline-block">
-                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:!text-[#60758F]">
-                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-                </summary>
-<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
-  >
-    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
-    Validate
-  </button>
 
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
-  >
-    <i class="fa-solid fa-file-pen text-[13px]"></i>
-    Edit
-  </button>
-</div>
-              </details>
+          <!-- ROW 3 -->
+          <tr class="border-b border-[#E8ECF0]">
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">
+              Kofi Asante
             </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Sales
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Account Executive
+            </td>
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#16A36A]">
+              40 / 100
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              28 Sep 2026, 14:30
+            </td>
+
+            <td class="px-5 py-5 text-right">
+
+              <button
+                nz-dropdown
+                [nzDropdownMenu]="actionMenu"
+                nzTrigger="click"
+                type="button"
+                class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+              </button>
+
+            </td>
+
           </tr>
 
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium text-[#102A43]">Janet Doe</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Human Resources</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">HR Business Partner</td>
-            <td class="px-5 py-5 text-[15px] font-medium text-[#16A36A]">5 / 5</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">27 Sep 2026, 11:15</td>
-            <td class="px-5 py-5 text-right">
-              <details class="relative inline-block">
-                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:!text-[#60758F]">
-                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-                </summary>
-<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
-  >
-    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
-    Validate
-  </button>
 
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
-  >
-    <i class="fa-solid fa-file-pen text-[13px]"></i>
-    Edit
-  </button>
-</div>
-              </details>
+          <!-- ROW 4 -->
+          <tr class="border-b border-[#E8ECF0]">
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">
+              Janet Doe
             </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Human Resources
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              HR Business Partner
+            </td>
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#16A36A]">
+              75 / 100
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              27 Sep 2026, 11:15
+            </td>
+
+            <td class="px-5 py-5 text-right">
+
+              <button
+                nz-dropdown
+                [nzDropdownMenu]="actionMenu"
+                nzTrigger="click"
+                type="button"
+                class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+              </button>
+
+            </td>
+
           </tr>
 
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium text-[#102A43]">Sally Smith</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Finance</td>
-            <td class="px-5 py-5 text-[15px] text-[#102A43]">Financial Analyst</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">—</td>
-            <td class="px-5 py-5 text-right">
-              <details class="relative inline-block">
-                <summary class="flex cursor-pointer list-none items-center justify-end text-[#A0ACB8] transition-colors hover:!text-[#60758F]">
-                  <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-                </summary>
-<div class="absolute right-0 z-20 mt-2 w-[150px] overflow-hidden rounded-lg border border-[#DCE1E6] bg-white shadow-sm">
-  <button (click)="openValidateModal()"
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#347DEB] transition-colors hover:bg-[#F4F8FF]"
-  >
-    <i class="fa-solid fa-pen-to-square text-[13px]"></i>
-    Validate
-  </button>
 
-  <button
-    type="button"
-    class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-[14px] !text-[#60758F] transition-colors hover:bg-[#F5F7FA]"
-  >
-    <i class="fa-solid fa-file-pen text-[13px]"></i>
-    Edit
-  </button>
-</div>
-              </details>
+          <!-- ROW 5 -->
+          <tr>
+
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">
+              Sally Smith
             </td>
-          </tr>
 
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Finance
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">
+              Financial Analyst
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+
+            <td class="px-5 py-5 text-right">
+
+              <button
+                nz-dropdown
+                [nzDropdownMenu]="actionMenu"
+                nzTrigger="click"
+                type="button"
+                class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
+              </button>
+
+            </td>
+
+          </tr>
 
         </tbody>
+
       </table>
+
     </div>
   </div>
-</div>
 
 
-@if (showValidateModal) {
-  <div (click)="closeValidateModal()" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" (click)="closeValidateModal()">
-    <div class="w-full max-w-[720px] overflow-hidden rounded-xl border border-[#DCE2E8] bg-[#F8FAFC] shadow-xl">
-      <div class="flex items-center justify-between border-b border-[#DCE2E8] bg-white px-6 py-5">
-        <div>
-          <h2 class="text-[21px] font-semibold text-[#0F172A]">
+  <!-- ACTION DROPDOWN -->
+  <nz-dropdown-menu #actionMenu="nzDropdownMenu">
+
+    <ul nz-menu class="!min-w-[150px]">
+
+      <li
+        nz-menu-item
+        (click)="openValidateModal()"
+        class="!text-[#347DEB]"
+      >
+        <i class="fa-solid fa-pen-to-square mr-2 text-[13px]"></i>
+        Validate
+      </li>
+
+      <li
+        nz-menu-item
+        class="!text-[#60758F]"
+      >
+        <i class="fa-solid fa-file-pen mr-2 text-[13px]"></i>
+        Edit
+      </li>
+
+    </ul>
+
+  </nz-dropdown-menu>
+
+
+  <!-- VALIDATION MODAL -->
+  @if (showValidateModal) {
+
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-5"
+    >
+
+      <div
+        class="flex max-h-[92vh] w-full max-w-[900px] flex-col overflow-hidden rounded-xl bg-[#f7f9fc] shadow-xl"
+        (click)="$event.stopPropagation()"
+      >
+
+        <!-- MODAL HEADER -->
+        <header
+          class="flex shrink-0 items-center justify-between border-b border-gray-200 bg-white px-7 py-4"
+        >
+
+          <h2 class="text-[18px] font-semibold !text-gray-900">
             Validate Performance
           </h2>
-          <p class="mt-1 text-[14px] text-[#60758F]">
-            Record the final validation score following the performance discussion.
-          </p>
-        </div>
 
-        <button (click)="closeValidateModal()" type="button"class="text-[#718096] transition-colors hover:text-[#0F172A]">
-          <i class="fa-solid fa-xmark text-[20px]"></i>
-        </button>
-      </div>
+          <button
+            type="button"
+            (click)="closeValidateModal()"
+            class="text-[22px] !text-gray-500 transition-colors hover:!text-gray-900"
+            aria-label="Close modal"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
 
-      <div class="max-h-[70vh] overflow-y-auto px-6 py-5">
-        <div class="rounded-lg border border-[#DCE2E8] bg-white px-5 py-4">
-          <h3 class="text-[17px] font-semibold text-[#0F172A]">
-            Kofi Asante
-          </h3>
-          <p class="mt-1 text-[14px] text-[#60758F]">
-            Account Executive · Sales
-          </p>
-        </div>
+        </header>
 
-        <div class="mt-4 rounded-lg border border-[#DCE2E8] bg-white px-5 py-4">
-          <div class="flex items-start justify-between">
-            <div>
-              <h3 class="text-[16px] font-semibold text-[#0F172A]">
+
+        <!-- MODAL CONTENT -->
+        <div class="min-h-0 flex-1 overflow-y-auto px-7 py-4">
+
+          <!-- EMPLOYEE -->
+          <section class="mb-4">
+
+            <h3 class="text-[18px] font-semibold !text-gray-900">
+              Kofi Asante
+            </h3>
+
+            <p class="mt-1 text-[15px] !text-[#617896]">
+              Account Executive · Sales
+            </p>
+
+          </section>
+
+
+          <!-- KPI 1 -->
+          <section
+            class="mb-3 rounded-lg border border-gray-200 bg-white px-5 py-3.5"
+          >
+
+            <!-- KPI HEADER -->
+            <div
+              class="flex items-center justify-between border-b border-gray-200 pb-3"
+            >
+
+              <h3 class="text-[18px] font-semibold !text-gray-900">
                 Application Development &amp; Delivery
               </h3>
-              <p class="mt-1 text-[13px] text-[#60758F]">
-                Weight: 60%
-              </p>
-            </div>
-          </div>
 
-          <div class="mt-4 grid grid-cols-2 gap-4">
-            <div class="rounded-lg bg-[#F5F7FA] px-4 py-3">
-              <p class="text-[12px] font-medium uppercase tracking-wide text-[#60758F]">
-                Employee rating
-              </p>
-              <p class="mt-1 text-[17px] font-semibold text-[#0F172A]">
-                4 / 5
-              </p>
-              <p class="mt-1 text-[13px] leading-5 text-[#60758F]">
-                Delivered assigned work within agreed timelines.
-              </p>
-            </div>
-
-            <div class="rounded-lg bg-[#F5F7FA] px-4 py-3">
-              <p class="text-[12px] font-medium uppercase tracking-wide text-[#60758F]">
-                Manager rating
-              </p>
-              <p class="mt-1 text-[17px] font-semibold text-[#0F172A]">
-                4 / 5
-              </p>
-              <p class="mt-1 text-[13px] leading-5 text-[#60758F]">
-                Consistent delivery and good ownership.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-4 rounded-lg border border-[#DCE2E8] bg-white px-5 py-4">
-          <h3 class="text-[16px] font-semibold text-[#0F172A]">
-            Validation score
-          </h3>
-
-          <p class="mt-1 text-[13px] text-[#60758F]">
-            Select the score agreed during the validation meeting.
-          </p>
-
-          <div class="mt-4 flex gap-2">
-            @for (score of validationScores; track score) {
-              <button type="button"
-                class="flex h-10 w-10 items-center justify-center rounded-lg border text-[14px] font-medium transition-colors"
-                [class.border-[#347DEB]]="selectedValidationScore === score"
-                [class.bg-[#347DEB]]="selectedValidationScore === score"
-                [class.text-white]="selectedValidationScore === score"
-                [class.border-[#D7E0EA]]="selectedValidationScore !== score"
-                [class.bg-white]="selectedValidationScore !== score"
-                [class.text-[#0F172A]]="selectedValidationScore !== score"
-                [class.hover:border-[#347DEB]]="selectedValidationScore !== score"
-                [class.hover:text-[#347DEB]]="selectedValidationScore !== score"
-                (click)="selectValidationScore(score)"
+              <span
+                class="ml-4 shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[15px] font-medium !text-[#6E6E6E]"
               >
-                {{ score }}
-              </button>
-            }
-          </div>
+                Weight: 60%
+              </span>
+
+            </div>
+
+
+            <!-- TARGET -->
+            <div class="mt-3">
+
+              <p
+                class="text-[14px] font-semibold uppercase tracking-wide !text-[#617896]"
+              >Target</p>
+
+              <ul
+                class="mt-1 space-y-1 text-[15px] leading-6 !text-[#617896]"
+              >
+                <li>• Deliver 100% of assigned tasks within agreed sprint timelines.
+                </li>
+                <li>• Maintain agreed quality standards across all deliverables.
+                </li>
+              </ul>
+
+            </div>
+
+
+            <!-- EMPLOYEE COMMENT -->
+            <div class="mt-3 rounded-lg border border-[#e8dfd5] bg-[#f8f3ed] px-4 py-3"
+            >
+
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[15px] font-medium !text-[#6f6255]">
+                  <i class="fa-solid fa-user mr-2 text-[14px] !text-[#8a7967]"></i>
+                  Employee Comment
+                </span>
+                <span class="shrink-0 text-[15px] font-medium !text-gray-700">
+                  Employee rating: 4 / 5
+                </span>
+              </div>
+
+              <p class="mt-1.5 text-[15px] leading-6 !text-[#617896]">
+                Delivered all sprint commitments except one item carried over in Sprint 4.
+              </p>
+
+            </div>
+
+
+            <!-- MANAGER COMMENT -->
+            <div class="mt-2 rounded-lg border border-[#d9e9fb] bg-[#f1f7fe] px-4 py-3"
+            >
+
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[15px] font-medium !text-[#347DEB]">
+                  <i class="fa-solid fa-user-tie mr-2 text-[14px] !text-[#4b91ed]"></i>
+                  Manager Comment
+                </span>
+                <span class="shrink-0 text-[15px] font-medium !text-gray-700">
+                  Manager rating: 4 / 5
+                </span>
+              </div>
+              <p class="mt-1.5 text-[15px] leading-6 !text-[#617896]">Consistent delivery and good ownership of release pipeline work.
+              </p>
+            </div>
+
+
+            <!-- VALIDATION SCORE -->
+            <div class="mt-3 border-t border-gray-200 pt-3">
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <h4 class="text-[15px] font-semibold !text-gray-900">Validation score</h4>
+                  <p class="mt-1 text-[15px] !text-[#617896]">Score agreed during the validation meeting.</p>
+                </div>
+                <span class="text-[15px] font-medium !text-[#347DEB]">Weighted: 48 / 60</span>
+              </div>
+
+
+              <!-- SCORE BUTTONS -->
+              <div class="mt-3 flex gap-2">
+                <button type="button"
+                  (click)="selectedScore = 1" [class]="selectedScore === 1
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  1
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 2" [class]="selectedScore === 2
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  2
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 3" [class]="selectedScore === 3
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  3
+                </button>
+
+                <button
+                  type="button"
+                  (click)="selectedScore = 4" [class]="selectedScore === 4
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  4
+                </button>
+
+                <button type="button" (click)="selectedScore = 5"
+                  [class]="selectedScore === 5
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  5
+                </button>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- KPI 2 -->
+          <section class="mb-3 rounded-lg border border-gray-200 bg-white px-5 py-3.5"
+          >
+
+            <div class="flex items-center justify-between border-b border-gray-200 pb-3"
+            >
+              <h3 class="text-[18px] font-semibold !text-gray-900">Operational Efficiency &amp; Code Quality</h3>
+              <span class="ml-4 shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[15px] font-medium !text-[#6E6E6E]"
+              >Weight: 15%
+              </span>
+            </div>
+
+
+            <!-- TARGET -->
+            <div class="mt-3">
+              <p class="text-[14px] font-semibold uppercase tracking-wide !text-[#617896]"
+              >Target</p>
+              <ul class="mt-1 space-y-1 text-[15px] leading-6 !text-[#617896]"
+              >
+                <li>
+                  • Maintain agreed code quality standards across all deliverables.
+                </li>
+                <li>
+                  • Complete assigned development tasks within agreed timelines.
+                </li>
+              </ul>
+
+            </div>
+
+
+            <!-- EMPLOYEE COMMENT -->
+            <div class="mt-3 rounded-lg border border-[#e8dfd5] bg-[#f8f3ed] px-4 py-3"
+            >
+
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[15px] font-medium !text-[#6f6255]">
+                  <i class="fa-solid fa-user mr-2 text-[14px] !text-[#8a7967]"></i>
+                  Employee Comment
+                </span>
+                <span class="shrink-0 text-[15px] font-medium !text-gray-700">
+                  Employee rating: 4 / 5
+                </span>
+              </div>
+
+              <p class="mt-1.5 text-[15px] leading-6 !text-[#617896]">
+                Maintained agreed development standards throughout the review period.
+              </p>
+            </div>
+
+
+            <!-- MANAGER COMMENT -->
+            <div class="mt-2 rounded-lg border border-[#d9e9fb] bg-[#f1f7fe] px-4 py-3"
+            >
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[15px] font-medium !text-[#347DEB]">
+                  <i class="fa-solid fa-user-tie mr-2 text-[14px] !text-[#4b91ed]"></i>
+                  Manager Comment
+                </span>
+                <span class="shrink-0 text-[15px] font-medium !text-gray-700">
+                  Manager rating: 3 / 5
+                </span>
+              </div>
+
+              <p class="mt-1.5 text-[15px] leading-6 !text-[#617896]">
+                Quality was generally good, although some deliverables required additional review.
+              </p>
+            </div>
+
+
+            <!-- VALIDATION SCORE -->
+            <div class="mt-3 border-t border-gray-200 pt-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="text-[15px] font-semibold !text-gray-900">Validation score</h4>
+                  <p class="mt-1 text-[15px] !text-[#617896]">Score agreed during the validation meeting.</p>
+                </div>
+                <span class="text-[15px] font-medium !text-[#347DEB]">Weighted: 9 / 15 </span>
+              </div>
+
+              <div class="mt-3 flex gap-2">
+                <button type="button"
+                  (click)="selectedScore = 1" [class]="selectedScore === 1
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  1
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 2" [class]="selectedScore === 2
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  2
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 3" [class]="selectedScore === 3
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  3
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 4" [class]="selectedScore === 4
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  4
+                </button>
+
+                <button type="button"
+                  (click)="selectedScore = 5" [class]="selectedScore === 5
+                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white'
+                    : 'flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[15px] font-medium !text-gray-900 transition-colors hover:border-[#347DEB] hover:bg-[#eef5ff]'"
+                >
+                  5
+                </button>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- VALIDATION SUMMARY -->
+          <section class="mb-1 rounded-lg border border-[#d9e9fb] bg-[#eef5ff] px-5 py-3.5">
+            <div class="flex items-center justify-between gap-5">
+              <div>
+                <h3 class="text-[15px] font-semibold !text-gray-900">Validation summary</h3>
+                <p class="mt-1 text-[15px] !text-[#617896]">Final weighted score across the KPIs.</p>
+              </div>
+
+              <div class="flex shrink-0 items-center gap-2">
+                <span class="flex h-9 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[15px] font-medium !text-gray-900">48</span>
+                
+                <span class="text-[15px] !text-[#617896]">+</span>
+                <span class="flex h-9 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[15px] font-medium !text-gray-900">9</span>
+                
+                <span class="text-[15px] !text-[#617896]">+</span>
+                <span class="flex h-9 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[15px] font-medium !text-gray-900">32</span>
+
+                <span class="text-[15px] !text-[#617896]">+</span>
+                <span class="flex h-9 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[15px] font-medium !text-gray-900">10</span>
+
+                <span class="mx-1 text-[15px] !text-[#617896]">=</span>
+
+                <span class="flex h-9 min-w-11 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[15px] font-semibold !text-[#347DEB]">99</span>
+
+              </div>
+            </div>
+          </section>
         </div>
+
+
+        <!-- MODAL FOOTER -->
+        <footer
+          class="flex shrink-0 justify-end gap-3 border-t border-gray-200 bg-white px-7 py-3"
+        >
+
+          <button type="button"
+            (click)="closeValidateModal()"
+            class="rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-[15px] font-medium !text-gray-900 transition-colors hover:bg-gray-50"
+          >
+            Cancel
+          </button>
+
+          <button type="button"
+            class="rounded-lg bg-[#347DEB] px-5 py-2.5 text-[15px] font-medium !text-white transition-colors hover:bg-[#286FD6]"
+          >
+            <i class="fa-solid fa-circle-check mr-2"></i>
+            Save Validation
+          </button>
+
+        </footer>
+
       </div>
 
-      <div class="flex justify-end gap-3 border-t border-[#DCE2E8] bg-white px-6 py-4">
-        <button (click)="closeValidateModal()" type="button"
-          class="rounded-lg border border-[#D7E0EA] bg-white px-5 py-2.5 text-[14px] font-medium text-[#0F172A] transition-colors hover:bg-[#F5F7FA]"
-        >
-          Cancel
-        </button>
-
-        <button
-          type="button"
-          class="rounded-lg bg-[#347DEB] px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#286FD6]"
-          [disabled]="selectedValidationScore === null"
-          [class.cursor-not-allowed]="selectedValidationScore === null"
-          [class.opacity-50]="selectedValidationScore === null"
-          (click)="saveValidationScore()"
-        >
-          Save Score
-        </button>
-      </div>
     </div>
-  </div>
-}
+
+  }
+
+</div>
