@@ -29,6 +29,15 @@
   >
     Elevate
   </a>
+
+  <a
+    routerLink="/my-activities"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-link"
+  >
+    My activities
+  </a>
 }
 
   @if (roleService.hasRole('hr')) {

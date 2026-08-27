@@ -36,6 +36,9 @@ export const routes: Routes = [
         ]
      },
 
+      {path: "my-activities", loadComponent: () => import ('./my-activities/my-activities/my-activities').then(m => m.MyActivities)}, 
+      {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
+
 
 
       {
