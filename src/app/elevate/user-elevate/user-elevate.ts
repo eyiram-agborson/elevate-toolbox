@@ -30,9 +30,11 @@ export class UserElevate {
   constructor(private router: Router) {}
 
   isActiveTab: 'targets' | 'self-review' | 'completed' = 'targets';
-
-  selfReviewSubmitted = false;
-  managerReviewCompleted = false;
+  
+// I set it to true for the demo purposes, but it should be false, when the APIs come in.
+  selfReviewOpen = true; 
+  selfReviewSubmitted = true;
+  managerReviewCompleted = true;
 
   pages = [1, 2, 3, 4, 5];
   currentPage = 1;
@@ -99,6 +101,14 @@ export class UserElevate {
 
     this.isActiveTab =
       tab as 'targets' | 'self-review' | 'completed';
+  }
+
+  goToSelfReviewPage(){
+    if (!this.selfReviewOpen){
+      return
+    }
+
+    this.isActiveTab = 'self-review'
   }
 
   goToPage(page: number): void {
