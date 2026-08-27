@@ -35,4 +35,16 @@ export class Validation {
 
     this.closeValidateModal();
   }
+
+  showEditModal = false;
+
+openEditModal(): void {
+  this.selectedScore = null;
+  this.showEditModal = true;
+}
+
+closeEditModal(): void {
+  this.showEditModal = false;
+  this.selectedScore = null;
+}
 }
