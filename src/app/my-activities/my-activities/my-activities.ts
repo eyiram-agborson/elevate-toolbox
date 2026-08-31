@@ -36,9 +36,9 @@ export class MyActivities {
     }
   ];
 
-  role = 'employee';
+  role = 'manager';
 
-  previousCycleRole = 'employee';
+  previousCycleRole = 'manager';
 
 
   goBack(): void {
@@ -46,23 +46,25 @@ export class MyActivities {
   }
 
 
-  goToElevate(): void {
-    switch (this.role) {
-      case 'employee':
-        this.router.navigate(['/elevate/user-elevate']);
-        break;
+  // goToElevate(): void {
+  //   switch (this.role) {
+  //     case 'employee':
+  //       this.router.navigate(['/elevate/user-elevate']);
+  //       break;
 
-      case 'manager':
-        this.router.navigate(['/elevate/manager-elevate']);
-        break;
+  //     case 'manager':
+  //       this.router.navigate(['/elevate/manager-elevate']);
+  //       break;
 
-      default:
-        console.error('Unknown role:', this.role);
-        break;
-    }
-  }
+  //     default:
+  //       console.error('Unknown role:', this.role);
+  //       break;
+  //   }
+  // }
 
-
+goToElevate(): void {
+  this.router.navigate(['/elevate/manager-elevate']);
+}
   goToPreviousCycle(): void {
     switch (this.previousCycleRole) {
       case 'employee':

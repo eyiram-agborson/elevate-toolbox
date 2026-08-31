@@ -22,6 +22,7 @@ export class Dashboard {
 
   goToMyActivities() {
     this.router.navigate(['/my-activities']);
+    console.log("Button clicked")
   }
 
   go() {
