@@ -14,7 +14,6 @@
     <!-- Center Navigation -->
     <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
 
-      @if (roleService.hasRole(['manager', 'employee'])) {
       <a
         routerLink="/dashboard"
         routerLinkActive="nav-link-active"
@@ -22,7 +21,7 @@
         class="nav-link">
         Dashboard
       </a>
-    }
+    
 
   
 

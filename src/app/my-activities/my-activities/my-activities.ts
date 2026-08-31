@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from '../../services/role';
 
-
 @Component({
   selector: 'app-my-activities',
   imports: [],
@@ -11,8 +10,8 @@ import { Role } from '../../services/role';
 })
 export class MyActivities {
 
-  roleService = inject(Role)
-  
+  roleService = inject(Role);
+
   constructor(private router: Router) {}
 
   currentCycles = {
@@ -39,49 +38,29 @@ export class MyActivities {
     }
   ];
 
-  role = 'manager';
-
-  previousCycleRole = 'manager';
-
-
   goBack(): void {
     this.router.navigate(['/']);
   }
 
+  goToElevate(): void {
+    const role = this.roleService.getRole();
 
-  // goToElevate(): void {
-  //   switch (this.role) {
-  //     case 'employee':
-  //       this.router.navigate(['/elevate/user-elevate']);
-  //       break;
-
-  //     case 'manager':
-  //       this.router.navigate(['/elevate/manager-elevate']);
-  //       break;
-
-  //     default:
-  //       console.error('Unknown role:', this.role);
-  //       break;
-  //   }
-  // }
-
-goToElevate(): void {
-  this.router.navigate(['/elevate/manager-elevate']);
-}
-  goToPreviousCycle(): void {
-    switch (this.previousCycleRole) {
+    switch (role) {
       case 'employee':
-        this.router.navigate(['/activities-layout/previous-cycles']);
+        this.router.navigate(['/elevate/user-elevate']);
         break;
 
       case 'manager':
-        this.router.navigate(['/activities-layout/previous-cycles']);
+        this.router.navigate(['/elevate/manager-elevate']);
         break;
 
       default:
-        console.error('Unknown role:', this.previousCycleRole);
+        console.error('Unsupported role for Elevate:', role);
         break;
     }
   }
 
+  goToPreviousCycle(): void {
+    this.router.navigate(['/activities-layout/previous-cycles']);
+  }
 }
