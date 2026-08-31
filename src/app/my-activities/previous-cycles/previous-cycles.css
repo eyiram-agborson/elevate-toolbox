@@ -1,0 +1,25 @@
+
+/* STEP CSS */
+::ng-deep .completed-step .ant-steps-item-icon {
+  border-color: red !important;
+  background-color: red !important;
+}
+
+::ng-deep .completed-step .ant-steps-icon {
+  color: white !important;
+}
+
+/* ::ng-deep .completed-step .ant-steps-item-title {
+  color: red !important;
+} */
+
+
+
+/* Nz zorro collapse */
+::ng-deep .ant-collapse-header {
+  min-height: 30px !important;
+  height: 30px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+}

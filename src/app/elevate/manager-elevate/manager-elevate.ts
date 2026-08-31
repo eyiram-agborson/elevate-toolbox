@@ -2,10 +2,19 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCollapseModule} from 'ng-zorro-antd/collapse'
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
 
 @Component({
   selector: 'app-manager-elevate',
-  imports: [NzCollapseModule, NzStepsModule],
+  imports: [NzCollapseModule, NzStepsModule,  NzSegmentedModule,
+    NzAvatarModule, NzDividerModule, NzStepsModule, NzProgressModule, NzButtonModule, CommonModule, FormsModule],
   templateUrl: './manager-elevate.html',
   styleUrl: './manager-elevate.css',
 })
@@ -31,12 +40,9 @@ current = 3;
         
       }
 
-         
-    
       myactivities(){
         this.router.navigate(["/my-activities"])
       }
-
 
     goToElevate() {
       this.router.navigate(["/elevate"])
@@ -54,32 +60,6 @@ tabsActive(tab: string){
 }
 
 isActiveTabs = 'target' 
-
-// tabActives(tab: string){
-//   this.isActiveTabs = tab
-// }
-
-  // readonly panels = [
-  //   {
-  //     active: true,
-  //     name: 'This is panel header 1'
-  //   },
-  //   {
-  //     active: false,
-  //     name: 'This is panel header 2'
-  //   },
-  //   {
-  //     active: false,
-  //     name: 'This is panel header 3'
-  //   }
-  // ];
-
-
-
-
-
-
-
 
 
 
@@ -162,19 +142,19 @@ goToActivities(){
 
 
 
- readonly panels = [
-    {
-      active: true,
-      name: 'This is panel header 1'
-    },
-    {
-      active: false,
-      name: 'This is panel header 2'
-    },
-    {
-      active: false,
-      name: 'This is panel header 3'
-    }
-  ];
+//  readonly panels = [
+//     {
+//       active: true,
+//       name: 'This is panel header 1'
+//     },
+//     {
+//       active: false,
+//       name: 'This is panel header 2'
+//     },
+//     {
+//       active: false,
+//       name: 'This is panel header 3'
+//     }
+//   ];
   
 }

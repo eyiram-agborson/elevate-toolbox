@@ -25,14 +25,14 @@ export class MyActivities {
       }
 
       // first toggle //
-  setTab(tab: string) {
-    this.activeTab = tab;
-  }
+  // setTab(tab: string) {
+  //   this.activeTab = tab;
+  // }
 
   //  second toggle //
-  tabActive(tab: string){
-    this.isActiveTab = tab
-  }
+  // tabActive(tab: string){ 
+  //   this.isActiveTab = tab
+  // }
 
 
    // ELEVATE //
@@ -99,36 +99,42 @@ export class MyActivities {
 
 
 
-previoursCycle = 'user'
-elevate = "user"
-role = 'user'
+
+// elevate = "manager"
+role = 'manager'
+previoursCycle = 'user' 
 
 
-// Table button //
-goToPrevioursCycle(){
-  switch(this.previoursCycle){
+    goToElevate() {
+      switch (this.role) {
+      case 'user':
+        this.router.navigate(['/elevate/user-elevate']);
+        break;
 
-    case 'user':
-    this.router.navigate(["previous-cycles"])
-    break
+      case 'manager':
+        this.router.navigate(['/elevate/manager-elevate']);
+        break;
 
-    case 'manager':
-    this.router.navigate(["/previous-cycles"])
-    break
+      default:
+        console.error('Unknown role:', this.role);
+        break;
+    }
   }
-  
-}
 
 
-    
-    goToElevate(){
-      if(this.role === 'user'){
-        this.router.navigate(["/elevate/user-elevate"])
 
-      }else{
-        if(this.role === 'manager'){
-        this.router.navigate(["/elevate/manager-elevate"])
-        }
+    // Table button //
+    goToPrevioursCycle(){
+      switch(this.previoursCycle){
+
+        case 'user':
+        this.router.navigate(["/activities-layout/previous-cycles"])
+        break
+
+        case 'manager':
+        this.router.navigate(["/activities-layout/previous-cycles"])
+        break
       }
+      
     }
 }

@@ -1,7 +1,7 @@
 
 
     <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-<!-- @if(role === 'manager'){ -->
+@if(role === 'manager'){
     <!-- MANAGERS -->
      
 <!-- ACTIVITIES -->
@@ -11,12 +11,12 @@
 <main class="text-[#171717] overflow-x-auto">
 
   <!-- PAGE HEADER -->
-  <header class="pt-6">
+  <header class="mt-10">
     <!-- Back button -->
-     <div class="mx-5 md:mx-20">
+     <div class="md:mx-5">
     <button
       (click)="goToActivities()"
-      class="flex items-center gap-2 text-sm md:text-[13px] font-bold cursor-pointer hover:text-[#3f91df] transition">
+      class="flex items-center gap-2 text-sm md:text-[13px] !text-[#807777] cursor-pointer hover:!text-[#3f91df] transition">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="21"
@@ -38,7 +38,7 @@
 
 
     <!-- PAGE TITLE -->
-    <div class="mx-5 sm:mx-8 md:mx-20 mt-9">
+    <div class="mx-5 sm:mx-8 md:mx-5 mt-8">
 
       <h2 class="text-xl md:text-lg font-semibold">
         ELEVATE – Q3 (July – September 2026)
@@ -52,24 +52,16 @@
   </header>
 
   <!-- PROGRESS SECTION -->
-  <section class="mx-5 sm:mx-8 md:mx-20 mt-9">
+  <section class="mx-5 md:mx-5 mt-5">
     <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-8 h-[150px] overflow-y-hidden">
-        <div class="px-5">
-          <nz-steps
-          [nzCurrent]="
-          isActiveTab === 'target' ? 0 :
-          isActiveTab === 'target' ? 1 :
-          3
-          "
-        >
-          <nz-step nzTitle="Target"></nz-step>
-          <nz-step nzTitle="Self Review"></nz-step>
-          <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"
-          ></nz-step>
-        </nz-steps>
-      </div>
+      <div class="h-[150px] overflow-y-hidden">
+        <div class="px-5 py-5">
+          <nz-steps [nzCurrent]="0">
+            <nz-step nzTitle="Target"></nz-step>
+            <nz-step nzTitle="Self-Review"></nz-step>
+            <nz-step nzTitle="Completed"></nz-step>
+          </nz-steps>
+        </div>
       
        
 
@@ -80,16 +72,16 @@
 
 
           <!-- INFORMATION -->
-          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
+          <div class="md:px-5 py-5 flex flex-col md:flex-row md:items-center gap-3">
             <!-- PREVIEW -->
-            <div class="w-fit bg-gray-200 text-gray-500 px-4 border border-gray-400 rounded-[10px] text-sm md:text-[12px] font-bold hover:bg-gray-300">
+            <div class="w-fit bg-[#F5F5F5] text-[#7A7A7A] px-4 py-1.5 border border-[#DCDEE3] rounded-[10px] text-sm md:text-[12px] font-semibold">
               Preview targets
             </div>
 
             <!-- MESSAGE -->
-            <p class="text-base md:text-[13px] font-bold text-gray-700">
-              Your manager has published your targets for his cycle. Review ever KPI to guide your progress
-            </p>
+            <span class="text-base md:text-[13px] font-semibold text-[#000000]">
+              Your manager has published your targets for this cycle. Review ever KPI to guide your progress
+            </span>
           </div>
 
           </div>
@@ -100,16 +92,16 @@
 
 
     <!-- KPI CARD -->
-     <div class="mx-20 mt-10">
+     <div class="mx-5 mt-5">
        <!-- KPI SECTION -->
   <!-- <section class="mx-5 sm:mx-8 md:mx-20 mt-10 pb-10"> -->
     <!-- TITLE -->
-    <h3 class="px-2 sm:px-3 mb-4 text-sm md:text-[13px] font-bold ">
+    <h3 class="text-[#000000 px-2 sm:px-3 mb-4 text-sm md:text-[13px] font-bold ">
       KEY PERFORMANCE INDICATORS
     </h3>
 
       @for (cycle of previousCycles; track $index) {  
-        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+        <div class="bg-white rounded-xl border border-[#DDDDDDDD] overflow-hidden shadow-sm">
 
         <div class="px-5 mb-5 sm:px-6 py-1 last:border-b-0 hover:bg-gray-50 transition"> 
 
@@ -121,7 +113,7 @@
               <p class="text-base md:text-sm font-bold text-gray-900">
               {{ cycle.application }}
             </p>
-            <div class="flex items-center gap-2 mt-4 bg-blue-50 text-blue-700 px-4 py-1 font-bold border rounded-[10px]">
+            <div class="flex items-center gap-2 mt-4 bg-[#EEF2F6] text-[#3B82F6] px-4 py-1.5 font-semibold rounded-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" 
               width="20" height="20" viewBox="0 0 24 24" 
               fill="none" stroke="currentColor" 
@@ -142,7 +134,7 @@
 
 
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <p class="bg-[#EFECEC] text-[#6E6E6E] px-4 py-0.5 md:py-1.5 rounded-full text-base md:text-[12px] font-bold whitespace-nowrap">
               {{ cycle.weight }}
             </p>
 
@@ -151,34 +143,30 @@
 
           <!-- KPI NAME -->
            <div class="mt-5">
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading- 6">
+          <p class="mt-3 text-sm text[#807777] font-medium">
             {{ cycle.name }}
           </p>
           </div>
 
 
           <!-- TARGET -->
-          <div class="text-sm md:text-sm font-medium text-gray-500 leading-6">
+          <div class="text-sm md:text-sm font-medium text-[#807777] leading-6">
             <div class="flex">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
-            <p>{{ cycle.targets }}</p>
+            <span>{{ cycle.targets }}</span>
             </div>
             <div class="flex">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
             <p>{{ cycle.targets }}</p>
             </div>
           </div>
-
-        <!-- </div>
-      </div>
-    } -->
-     
+          
      
       <!-- Authomatic score -->
       <section>
-        <div class="border-2 border-gray-300 bg-blue-100 mt-10 mb-5 mx-5 rounded-xl">
+        <div class="bord er-2 border- gray-300 bg- blue-100 mt- 3 rounded-xl">
 
-            <div class="mx-5 text-sm space-y-2 ">
+            <div class="mx-5 text-sm">
                 <!-- authomatic ascore -->
                 <div class="flex gap-2 text-blue-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" 
@@ -203,39 +191,39 @@
                     <circle cx="10" cy="8" r="5"/>
                     <circle cx="18" cy="18" r="3"/>
                   </svg>
-                    <p class="mt-2">
+                    <span class="mt-2">
                       AUTHOMATIC SCORE
-                    </p>
+                    </span>
                 </div>
 
                 <!-- KPI -->
-                <div class="flex gap-2">
-                  <p class="text-blue-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-                  </p>
-                  <p>
+                <div class="flex gap-2 mt-2">
+                  <span class="text-blue-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                  </span>
+                  <span>
                     This KPI is calculated based on the performance
                     of your team members.It is grnerated by the system 
                     and cannot be edited. 
-                  </p>
+                  </span>
                 </div>
 
-                <div class="flex gap-10 mt-8 mb-8">
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[70px] w-[30rem] bg-white rounded-xl">
+                <!-- <div class="flex gap-10 mt-3 mb-3">
+                  <div class="border-2 border-gray-300 py-1 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
                      <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
                     <div class="flex gap-1">
                       <span class="font-bold text-[25px]">4</span>
                       <span class="text-sm flex items-center">/5</span>
                     </div>
                   </div>
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[70px] w-[30rem] bg-white rounded-xl">
+                  <div class="border-2 border-gray-300 py-1 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
                     <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
-                    <div class="flex gap-2">
+                    <div class="flex">
                       <span class="font-bold text-[25px]">48</span>
                       <span class="text-sm flex items-center">/60</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
 
             </div>
@@ -246,14 +234,11 @@
   }
 
   
-
     <!-- Step 2 -->
-    
-
 @for (cycle of previousCycles; track $index) {
     <section>
-     <div class="mt-10 border-2 border-gray-300 rounded-xl">
-       <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
+     <div class="mt-5 bg-white  border-2 border-gray-300 rounded-xl">
+       <div class="px-5 mb-2 sm:px-6 py-1 border-[#DDDDDDDD] hover:bg-gray-50 transition">
 
           <!-- APPLICATION + WEIGHT -->
           <div class="md:flex items-start justify-between gap-4">
@@ -263,26 +248,25 @@
                 Operational Efficiency & Code Quality
             </p>
 
-
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full w-fit text-sm md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <p class="bg-[#EFECEC] text-[#6E6E6E] text-sm md:text-[13px] px-4 py-0.5 md:py-1.5 rounded-full w-fit font-bold whitespace-nowrap">
               {{ cycle.weight }}
             </p>
 
           </div>
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-500 font-semibold leading-6">
+          <p class="mt-3 text-sm text-gray-500 font-semibold">
             {{ cycle.name }}
           </p>
 
           <!-- TARGET -->
-          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500">
-            <div class="flex">
+          <div class="mt-2 text-sm md:text-sm font-medium">
+            <div class="flex text-[#807777]">
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
               {{ cycle.targets }}
             </div>
-            <div class="flex">
+            <div class="flex text-[#807777]">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
               {{ cycle.targets }}
             </div>
@@ -292,13 +276,10 @@
       </div>
     </section>
 }
-
-
-
   
     <!-- manager set target -->
-     <div class="px-6 mt-5 border-2 border-gray-200 bg-blue-50 py-2 mt-10 rounded-[5px]">
-    <div class="flex gap-2">
+     <div class="px-6 mt-5 border-2 border-[#E4E7EC] bg-[#EEF4FA80] py-4 rounded-[5px]">
+    <div class="flex text-[#6E6E6E]">
       <svg xmlns="http://www.w3.org/2000/svg" 
       width="24" 
       height="18" 
@@ -311,15 +292,15 @@
       <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
     </svg>
-      <p>
+      <div class="text-[#6E6E6E]">
         Targets are set by your manager so there is nothing to edit here
-      </p>
+      </div>
     </div>
     </div>
 
 
     <!-- continue button -->
-    <div class="flex justify-end mt-10">
+    <div class="flex justify-end mt-5">
       <button class="flex gap-2 items-center py-3 px-16 rounded-[8px] border-b shadow-sm bg-gray-300">
         <span class=" text-white">
         Continue
@@ -342,55 +323,41 @@
 
 
     <!-- cycle progress -->
-    <div class="md:flex gap-2 md:gap-4 mt-15 mb-8">
+    <div class="md:flex gap-2 mt- mb-3">
       <div class="flex items-center text-sm md:text-[14px] font-semibold">
         CYCLE PROGRESS
       </div>
 
-      <!-- toggle buttons -->
-      <div class="text-sm md:text-[14px] border py-1 rounded-[8px] overflow-auto ">
-        <div class="flex items-center gap-2 md:gap-15 md:px-10 whitespace-nowrap">
-         <button
-         type="button" 
-         (click)="tabActive('target')"
-         [class.bg-blue-500]="isActiveTab === 'target'"
-         [class.text-white]="isActiveTab === 'target'"
-         [class.text-gray-500]="isActiveTab !== 'target'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition">
-          Targets
-         </button>
+        <nz-segmented
+          class="target-segmented"
+          [(ngModel)]="isActiveTab"
+          (ngModelChange)="tabsActive($event)"
+        >
 
-         <button
-         (click)="tabActive('self-review')"
-         [class.bg-blue-500]="isActiveTab === 'target'"
-         [class.text-white]="isActiveTab === 'target'"
-         [class.text-gray-500]="isActiveTab !== 'target'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Self-review
-        </button>
+          <label
+            nz-segmented-item
+            nzValue="target"
+          >
+            Targets
+          </label>
 
-         <button
-         (click)="tabActive('manager')"
-         [class.bg-blue-500]="isActiveTab === 'target'"
-         [class.text-white]="isActiveTab === 'target'"
-         [class.text-gray-500]="isActiveTab !== 'target'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Manager Review
-        </button>
+          <label
+            nz-segmented-item
+            nzValue="self-review"
+          >
+            Self-Review
+          </label>
 
-         <button
-         (click)="tabActive('complete')"
-         [class.bg-green-500]="isActiveTab === 'target'"
-         [class.text-white]="isActiveTab === 'target'"
-         [class.text-gray-500]="isActiveTab !== 'target'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Complete
-        </button>
-      </div>
-      </div>
+          <!-- COMPLETED -->
+          <label
+            nz-segmented-item
+            nzValue="completed"
+            class="completed-segment"
+          >
+            Completed
+          </label>
+        </nz-segmented>
+     
      </div>
     
     <!-- } -->
@@ -415,13 +382,13 @@
 <main class="text-[#171717] overflow-x-auto">
 
   <!-- PAGE HEADER -->
-  <header class="pt-6">
+  <header class="mx-5 pt-6">
 
     <!-- Back button -->
     <button
     (click)="goToActivities()"
       type="button"
-      class="mx-5 md:mx-20 flex items-center gap-2 text-sm md:text-[13px] font-bold cursor-pointer hover:text-[#3f91df] transition">
+      class="mx-5 flex items-center gap- 2 text-sm md:text-[13px] !text-[#807777] cursor-pointer hover:!text-gray-700 transition">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="21"
@@ -442,7 +409,7 @@
 
 
     <!-- PAGE TITLE -->
-    <div class="mx-5 sm:mx-8 md:mx-20 mt-9">
+    <div class="mt-9">
 
       <h2 class="text-xl md:text-lg font-semibold">
         ELEVATE – Q3 (July – September 2026)
@@ -458,41 +425,34 @@
 
 
   <!-- PROGRESS SECTION -->
-  <section class="mx-5 sm:mx-8 md:mx-20 mt-9">
+  <section class="mx-5 mt-5">
     <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-8 h-[150px] overflow-y-hidden">
+      <div class="py-8 h-[150px] overflow-y-hidden"> 
         <div class="px-5">
-          <nz-steps
-          [nzCurrent]="
-          isActiveTab === 'self-review' ? 1 :
-          isActiveTab === 'self-review' ? 2 :
-          3
-          "
-        >
-          <nz-step nzTitle="Target"></nz-step>
-          <nz-step nzTitle="Self Review"></nz-step>
-          <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"></nz-step>
-        </nz-steps>
+        <nz-steps [nzCurrent]="1">
+            <nz-step nzTitle="Targets"></nz-step>
+            <nz-step nzTitle="Self Review"></nz-step>
+            <nz-step nzTitle="Completed"></nz-step>
+          </nz-steps>
       </div>
        
 
           <!-- DIVIDER -->
-          <div class="h-px w-full bg-gray-200 mt-2">
+          <div class="h-px w-full bg-gray-200 mt-4">
 
           </div>
 
 
           <!-- INFORMATION -->
-          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
+          <div class="md:px-5 py-4 flex flex-col md:flex-row md:items-center gap-1">
             <!-- PREVIEW -->
-            <div class="w-fit bg-[#E2F4FF] px-6 border border-blue-400 rounded-[10px] text-sm md:text-[12px] text-[#0084BD] font-bold hover:bg-gray-300">
-              Self review
+            <div class="w-fit bg-[#E2F4FF] py-1.5 px-6 rounded-[10px] text-sm md:text-[12px] text-[#0084BD] font-semibold hover:bg-gray-300">
+              Self review open
             </div>
 
             <!-- MESSAGE -->
-            <span class="text-base md:text-[13px] font-bold text-gray-700">
-              Rate tour performance and add the necessary comments before the deadl;ine.
+            <span class="text-base md:text-[13px] font-semibold text-gray-700">
+              Rate your performance and add the necessary comments before the deadline.
             </span>
           </div>
 
@@ -502,7 +462,7 @@
 
 
   <!-- KPI SECTION -->
-  <section class="mx-5 sm:mx-8 md:mx-20 mt-10 pb-10">
+  <section class="mx-5 mt-5 mb-3">
 
     <!-- TITLE -->
     <h3 class="px-2 sm:px-3 mb-4 text-sm md:text-[13px] font-bold">
@@ -514,17 +474,17 @@
       @for (cycle of previousCycles; track $index) {
         <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
 
-        <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
+        <div class="px-5 mb-3 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
 
           <!-- APPLICATION + WEIGHT -->
-          <div class="flex items-start justify-between gap-4">
+          <div class="flex items-start justify-between gap-4 mt-2">
 
             <!-- APPLICATION -->
              <div>
               <p class="text-base md:text-sm font-bold text-gray-900">
               {{ cycle.application }}
             </p>
-            <div class="flex items-center gap-2 mt-2 bg-blue-50 text-blue-700 px-4 py-1 font-bold border rounded-[10px]">
+            <div class="flex items-center gap-2 mt-2 bg-blue-50 text-[#3B82F6] px-4 py-1.5 font-semibold rounded-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-dot-icon lucide-refresh-ccw-dot"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/><circle cx="12" cy="12" r="1"/></svg>
               <span class="text-sm whitespace-nowrap">Automatically Calculated</span>
             </div>
@@ -532,7 +492,7 @@
 
 
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <p class="bg-[#EFECEC] text-[#6E6E6E] px-4 py-0.5 md:py-1.5 rounded-full text-base md:text-[12px] font-bold whitespace-nowrap">
               {{ cycle.weight }}
             </p>
 
@@ -540,31 +500,23 @@
 
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
+          <div class="mt-3 text-sm md:text-sm text-[#807777] font-semibold">
             {{ cycle.name }}
-          </p>
+          </div>
 
 
           <!-- TARGET -->
-          <p class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
+          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
+            <span>{{ cycle.targets }}</span>
             <p>{{ cycle.targets }}</p>
-            <p>{{ cycle.targets }}</p>
-            
-
-
-
-          
-        <!-- </div>
-      </div> -->
- 
-     
+          </div>
 
 
       <!-- Authomatic score -->
       <section>
-        <div class="border-2 border-gray-300 bg-blue-100 mt-10 rounded-xl">
+        <div class="border border-[#DCDEE3] bg-[#E6F5FF] mt-5 rounded-xl">
 
-            <div class="mx-5 text-sm space-y-2">
+            <div class="mx-5 text-sm">
                 <!-- authomatic ascore -->
                 <div class="flex gap-2 text-blue-700">
                     <svg xmlns="http://www.w3.org/2000/svg" 
@@ -589,33 +541,33 @@
                     <circle cx="10" cy="8" r="5"/>
                     <circle cx="18" cy="18" r="3"/>
                   </svg>
-                    <p class="mt-2">
+                    <div class="mt-2">
                       AUTHOMATIC SCORE
-                    </p>
+                    </div>
                 </div>
 
                 <!-- KPI -->
-                <div class="flex gap-2">
+                <div class="flex gap-2 mt-2">
                   <p class="text-blue-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
                   </p>
                   <p>
                     This KPI is calculated based on the performance
-                    of your team members.It is grnerated by the system 
+                    of your team members. It is grnerated by the system 
                     and cannot be edited. 
                   </p>
                 </div>
 
-                <div class="flex gap-10 mt-8 mb-8">
-                  <div class="border-2 border-gray-300 px-5 h-[70px] w-[30rem] bg-white rounded-xl">
+                <div class="flex gap-10 mt-3 mb-3">
+                  <div class="border-2 border-gray-300 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
                      <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
                     <div class="flex gap-1">
                       <span class="font-bold text-[25px]">4</span>
                       <span class="text-sm flex items-center">/5</span>
                     </div>
                   </div>
-                  <div class="border-2 border-gray-300 px-5 h-[70px] w-[30rem] bg-white rounded-xl">
-                    <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
+                  <div class="border-2 border-gray-300 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
+                    <span class="text-sm whitespace-nowrap">TEAM CONTRIBUTION</span>
                     <div class="flex gap-1">
                       <span class="font-bold text-[25px]">48</span>
                       <span class="text-sm flex items-center">/60</span>
@@ -626,15 +578,14 @@
 
         </div>
     </section>
-
   </div>
   </div>
 
 
     <!-- Operational efficiency -->
     <section>
-     <div class="mt-10 border-2 border-gray-300 rounded-xl">
-       <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
+     <div class="bg-white mt-5 border-2 border-gray-300 rounded-xl">
+       <div class="px-5 mb-3 sm:px-6 py-1 border-gray-200 hover:bg-gray-50 transition">
 
           <!-- APPLICATION + WEIGHT -->
           <div class="md:flex items-start justify-between gap-4">
@@ -647,7 +598,7 @@
 
 
             <!-- WEIGHT -->
-            <span class="bg-gray-200 px-2 py-0.5 rounded-full w-fit text-sm md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <span class="bg-[#EFECEC] !text-[#6E6E6E] px-4 py-0.5 md:py-1.5 rounded-full w-fit text-sm md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
               {{ cycle.weight }}
             </span>
 
@@ -655,13 +606,12 @@
 
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-700 font-semibold leading-6">
+          <div class="mt-2 text-sm md:text-sm text-[#807777] font-semibold">
             {{ cycle.name }}
-          </p>
-
+          </div>
 
           <!-- TARGET -->
-          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
+          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500">
             <div class="flex">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
               <span>{{ cycle.targets }}</span>
@@ -672,70 +622,40 @@
             </div>
           </div>
 
-        </div>
-     <section>
+          <!-- MY RATING + MY COMMENTS -->
+           <section>
+            <div class="mt-5">
+              <!-- My rating   nzOrientation="left"-->
+              <div>
+                  <nz-collapse nzExpandIconPosition="end" class="!border-b-2 border-[#B9B9B9] !rounded-[12px]">
+                    <nz-collapse-panel nzHeader="MY RATING">
+                      <p style="margin:0;">
+                        Managers rating goes here 
+                      </p>
+                    </nz-collapse-panel>
+                  </nz-collapse>
+              </div>
 
-    <div class="mt-10 mx-5 mb-5 space-y-10">
-      <div class="space-y-2">
-        <!-- <p class="text-sm font-bold">MY RATING</p> -->
+              <!-- My comments -->
+              <div class="mt-5">
+                  <nz-collapse nzExpandIconPosition="end" class="!bg-[#F8F5F0] !border !border-[#D9D9D9] !rounded-[12px]">
+                    <nz-collapse-panel nzHeader="MY COMMENTS">
+                      <p style="margin:0;">
+                        Managers comments goes here 
+                      </p>
+                    </nz-collapse-panel>
+                  </nz-collapse>
+              </div>
+            </div>
+           </section>
 
-        <!-- <div>
-          <p></p>
-          <p>out of 5</p>
-        </div> -->
-        <select
-        class="w-full h-[43px] border-b  rounded-[12px]"
-        >
-          <option value="" disable>MY RATINGS</option>
-          <option value="User">User</option>
-          <option value="anager">Manager</option>
-          <option value="CTO">CTO</option>
-        </select>
-
-       </div>
-
-        <select
-        class="w-full bg-[#F8F5F0] h-[43px] px-2 font-semibold border border-[#B9B9B9]  rounded-[12px]"
-        > border-b
-          <option value="" disable>MY COMMENTS</option>
-          <option value="User">User</option>
-          <option value="anager">Manager</option>
-          <option value="CTO">CTO</option>
-        </select>
-    
-      </div>
+          </div>
+        <section>
+      </section>
+    </div>
   </section>
-
-
-    </div>
-    </section>
-
   }
-
-
-
-    <!-- manager set target -->
-     <!-- <div class="px-6 mt-5 border-2 border-gray-200 bg-blue-50 py-2 mt-10">
-    <div class="flex gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="18" 
-      viewBox="0 0 24 24" 
-      fill="none" stroke="currentColor" 
-      stroke-width="2" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      class="lucide lucide-lock-icon lucide-lock mt-0.5">
-      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>
-      <p>
-        Targets are set by your manager so there is nothing to edit here
-      </p>
-    </div>
-    </div> -->
-
-
+<!-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll -->
     <section>
       <div class="flex gap-5 justify-end mt-5">
       <!-- continue later button -->
@@ -789,59 +709,40 @@
 
 
     <!-- cycle progress -->
-    <div class="md:flex gap-2 md:gap-4 mt-15 mb-8">
-      <div class="flex items-center text-sm md:text-[14px] font-bold">
+    <div class="md:flex gap-2">
+      <div class="flex items-center text-sm md:text-[14px] font-semibold">
         CYCLE PROGRESS
       </div>
+         <nz-segmented
+          class="target-segmented"
+          [(ngModel)]="isActiveTab"
+          (ngModelChange)="tabsActive($event)"
+        >
 
-      <!-- toggle buttons -->
-      <div class="text-sm md:text-[14px] border py-1 rounded-[8px] overflow-auto ">
-        <div class="flex items-center gap-2 md:gap-15 md:px-10 whitespace-nowrap">
-         <button
-         type="button" 
-         (click)="tabActive('target')"
-         [class.bg-blue-500]="isActiveTab === 'self-review'"
-         [class.text-white]="isActiveTab === 'self-review'"
-         [class.text-gray-500]="isActiveTab !== 'self-review'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition">
-          Targets
-         </button>
+          <label
+            nz-segmented-item
+            nzValue="target"
+          >
+            Targets
+          </label>
 
-         <button
-         (click)="tabActive('self-review')"
-         [class.bg-blue-500]="isActiveTab === 'self-review'"
-         [class.text-white]="isActiveTab === 'self-review'"
-         [class.text-gray-500]="isActiveTab !== 'self-review'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Self-review
-        </button>
+          <label
+            nz-segmented-item
+            nzValue="self-review"
+          >
+            Self-Review
+          </label>
 
-         <button
-         (click)="tabActive('manager')"
-         [class.bg-blue-500]="isActiveTab === 'self-review'"
-         [class.text-white]="isActiveTab === 'self-review'"
-         [class.text-gray-500]="isActiveTab !== 'self-review'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Manager Review
-        </button>
-
-         <button
-         (click)="tabActive('complete')"
-         [class.bg-green-500]="isActiveTab === 'self-review'"
-         [class.text-white]="isActiveTab === 'self-review'"
-         [class.text-gray-500]="isActiveTab !== 'self-review'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Complete
-        </button>
+          <!-- COMPLETED -->
+          <label
+            nz-segmented-item
+            nzValue="completed"
+            class="completed-segment"
+          >
+            Completed
+          </label>
+        </nz-segmented>
       </div>
-      </div>
-     </div>
-    <!-- </div> -->
-
-    <!-- </div> -->
   </section>
 
 </main>
@@ -851,407 +752,20 @@
  <!-- ghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh -->
 
 
-  <!-- ACTIVITIES -->
-
- @if (isActiveTab === 'manager') {
-
-<main class="text-[#171717] overflow-x-auto">
-
-  <!-- PAGE HEADER -->
-  <header class="pt-6">
-
-    <!-- Back button -->
-    <button
-      (click)="goToActivities()"
-      type="button"
-      class="mx-5 md:mx-20 flex items-center gap-2 text-sm md:text-[13px] font-bold cursor-pointer hover:text-[#3f91df] transition">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="21"
-        height="21"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="m12 19-7-7 7-7" />
-        <path d="M19 12H5" />
-      </svg>
-
-      <span>My Activities</span>
-    </button>
-
-
-    <!-- PAGE TITLE -->
-    <div class="mx-5 sm:mx-8 md:mx-20 mt-9">
-
-      <h2 class="text-xl md:text-lg font-semibold">
-        ELEVATE – Q3 (July – September 2026)
-      </h2>
-
-      <p class="mt-2 text-sm md:text-sm text-gray-500">
-        Kindly set targets before agreed deadline
-      </p>
-
-    </div>
-
-  </header>
-
-
-  <!-- PROGRESS SECTION -->
-   <section class="mx-5 sm:mx-8 md:mx-20 mt-9">
-    <div class="bg-white border border-gray-300 rounded-xl ">
-      <div class="py-8 h-[150px] overflow-y-hidden">
-        <div class="px-5">
-          <nz-steps
-          [nzCurrent]="
-          isActiveTab === 'manager' ? 2 :
-          isActiveTab === 'manager' ? 3 :
-          3
-          "
-        >
-          <nz-step nzTitle="Target"></nz-step>
-          <nz-step nzTitle="Self Review"></nz-step>
-          <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"></nz-step>
-        </nz-steps>
-      </div>
-       
-
-          <!-- DIVIDER -->
-          <div class="h-px w-full bg-gray-200 mt-2">
-
-          </div>
-
-
-          <!-- INFORMATION -->
-          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
-            <!-- PREVIEW -->
-            <div class="w-fit bg-[#DCDEE3] px-4 border border rounded-[16px] text-sm md:text-[12px] text-[#7A7A7A] font-bold">
-              Awaiting manager review
-            </div>
-
-            <!-- MESSAGE -->
-            <span class="text-base md:text-[13px] font-bold text-gray-700">
-              Your self review is submitted and awaiting your superior's rating
-            </span>
-          </div>
-
-          </div>
-        </div>
-      </section>
-
-
-  <!-- KPI SECTION -->
-  <section class="mx-5 sm:mx-8 md:mx-20 mt-10 pb-10">
-
-    <!-- TITLE -->
-    <h3 class="px-2 sm:px-3 mb-4 text-sm md:text-[13px] font-bold">
-      KEY PERFORMANCE INDICATORS
-    </h3>
-
-
-    <!-- KPI CARD -->
-      @for (cycle of previousCycles; track $index) {
-        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-
-        <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
-
-          <!-- APPLICATION + WEIGHT -->
-          <div class="flex items-start justify-between gap-4">
-
-            <!-- APPLICATION -->
-             <div>
-              <p class="text-base md:text-sm font-bold text-gray-900">
-              {{ cycle.application }}
-            </p>
-            <div class="flex items-center gap-2 mt-2 bg-blue-50 text-blue-700 px-4 py-1 font-bold border rounded-[10px]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-dot-icon lucide-refresh-ccw-dot"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/><circle cx="12" cy="12" r="1"/></svg>
-              <span class="text-sm whitespace-nowrap">Automatically Calculated</span>
-            </div>
-            </div>
-
-
-            <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
-              {{ cycle.weight }}
-            </p>
-
-          </div>
-
-
-          <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
-            {{ cycle.name }}
-          </p>
-
-
-          <!-- TARGET -->
-          <p class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
-            <p>{{ cycle.targets }}</p>
-            <p>{{ cycle.targets }}</p>
-          
-     
-
-      <!-- Authomatic score -->
-      <section>
-        <div class="border-2 border-gray-300 bg-blue-100 mt-10 rounded-xl">
-
-            <div class="mx-5 text-sm space-y-2">
-                <!-- authomatic ascore -->
-                <div class="flex gap-2 text-blue-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    stroke-width="2" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    class="lucide lucide-user-round-cog-icon lucide-user-round-cog mt-2">
-                    <path d="m14.305 19.53.923-.382"/>
-                    <path d="m15.228 16.852-.923-.383"/>
-                    <path d="m16.852 15.228-.383-.923"/>
-                    <path d="m16.852 20.772-.383.924"/>
-                    <path d="m19.148 15.228.383-.923"/>
-                    <path d="m19.53 21.696-.382-.924"/>
-                    <path d="M2 21a8 8 0 0 1 10.434-7.62"/>
-                    <path d="m20.772 16.852.924-.383"/>
-                    <path d="m20.772 19.148.924.383"/>
-                    <circle cx="10" cy="8" r="5"/>
-                    <circle cx="18" cy="18" r="3"/>
-                  </svg>
-                    <p class="mt-2">
-                      AUTHOMATIC SCORE
-                    </p>
-                </div>
-
-                KPI
-                <div class="flex gap-2">
-                  <p class="text-blue-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-                  </p>
-                  <p>
-                    This KPI is calculated based on the performance
-                    of your team members.It is grnerated by the system 
-                    and cannot be edited. 
-                  </p>
-                </div>
-
-                <div class="flex gap-10 mt-8 mb-8">
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[4rem] w-[30rem] bg-white rounded-xl">
-                     <p class="text-sm whitespace-nowrap">TEAM SCORE</p>
-                    <div class="flex gap-2">
-                      <p class="font-bold text-[25px]">4</p>
-                      <p class="text-sm flex items-center">/5</p>
-                    </div>
-                  </div>
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[4rem] w-[30rem] bg-white rounded-xl">
-                    <p class="text-sm whitespace-nowrap">TEAM SCORE</p>
-                    <div class="flex gap-2">
-                      <p class="font-bold text-[25px]">48</p>
-                      <p class="text-sm flex items-center">/60</p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    </div>
-  </div>
-
-
-    <!-- Operational efficiency -->
-    <section>
-     <div class="mt-10 border-2 border-gray-300 rounded-xl">
-       <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
-
-          <!-- APPLICATION + WEIGHT -->
-          <div class="md:flex items-start justify-between gap-4">
-
-            <!-- APPLICATION -->
-            <p class="text-base md:text-sm font-bold text-gray-900 whitespace-nowrap">
-              <!-- {{ cycle.application }} -->
-                Operational Efficiency & Code Quality
-            </p>
-
-
-            <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full w-fit text-sm md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
-              {{ cycle.weight }}
-            </p>
-
-          </div>
-
-
-          <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-700 font-semibold leading-6">
-            {{ cycle.name }}
-          </p>
-
-
-          <!-- TARGET -->
-          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
-            <p >{{ cycle.targets }}</p>
-            <p>{{ cycle.targets }}</p>
-          </div>
-
-        </div>
-
-
-         <section>
-
-    <div class="mt-10 mx-5 mb-5">
-      <div class="space-y-2">
-        <p class="text-sm font-bold">MY RATING</p>
-
-        <div>
-          <p></p>
-          <p>out of 5</p>
-        </div>
-
-         <!-- <p class="text-sm font-bold">MY COMMENTS</p> -->
-          <select
-          class="w-full h-[43px] font-bold px-2 bg-[#F8F5F0] text-[#000000] border border-[#D9D9D9]"
-          >
-            <option>MY COMMENTS</option>
-            <option>User</option>
-            <option>Manager</option>
-            <option>CTO</option>
-          </select>
-       </div>
-       
-       <div class="mt-10 bg-[#EBF7FF4D] border border-[#E4E7EC] px-3 h-[100px rounded-[16px]">
-        <div class="flex gap-2 text-[#0084BD] mt-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square-icon lucide-messages-square"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></svg>
-          <span class="text-[18px]">MANAGER COMMENTS</span>
-        </div>
-        <div class="flex items-center gap-2">
-           <p class="text-[18px] text-[#000000] font-semibold">Manager rating:</p>
-            <p class="text-[18px] text-[#000000] font-semibold">-/5</p>
-        </div>
-       
-       </div>
-
-      </div>
-  </section>
-
-    </div>
-    </section>
-
-  }
-
-
-
-    <!-- manager set target -->
-     <div class="px-6 mt-5 border-2 border-gray-200 bg-blue-50 py-2 mt-10">
-    <div class="flex gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="18" 
-      viewBox="0 0 24 24" 
-      fill="none" stroke="currentColor" 
-      stroke-width="2" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      class="lucide lucide-lock-icon lucide-lock mt-0.5">
-      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>
-      <p>
-        The goal setting window has closed, so your targets are read- only.
-      </p>
-    </div>
-    </div>
-
-
-    <!-- cycle progress -->
-    <div class="md:flex gap-2 md:gap-4 mt-15 mb-8">
-      <div class="flex items-center text-sm md:text-[14px] font-bold">
-        CYCLE PROGRESS
-      </div>
-
-      <!-- toggle buttons -->
-      <div class="text-sm md:text-[14px] border py-1 rounded-[8px] overflow-auto ">
-        <div class="flex items-center gap-2 md:gap-15 md:px-10 whitespace-nowrap">
-         <button
-         type="button" 
-         (click)="tabActive('target')"
-         [class.bg-blue-500]="isActiveTab === 'manager'"
-         [class.text-white]="isActiveTab === 'manager'"
-         [class.text-gray-500]="isActiveTab !== 'manager'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition">
-          Targets
-         </button>
-
-         <button
-         (click)="tabActive('self-review')"
-         [class.bg-blue-500]="isActiveTab === 'manager'"
-         [class.text-white]="isActiveTab === 'manager'"
-         [class.text-gray-500]="isActiveTab !== 'manager'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Self-review
-        </button>
-
-         <button
-         (click)="tabActive('manager')"
-         [class.bg-blue-500]="isActiveTab === 'manager'"
-         [class.text-white]="isActiveTab === 'manager'"
-         [class.text-gray-500]="isActiveTab !== 'manager'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Manager Review
-        </button>
-
-         <button
-         (click)="tabActive('complete')"
-         [class.bg-green-500]="isActiveTab === 'manager'"
-         [class.text-white]="isActiveTab === 'manager'"
-         [class.text-gray-500]="isActiveTab !== 'manager'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Complete
-        </button>
-      </div>
-      </div>
-     </div>
-    <!-- </div> -->
-
-    <!-- </div> -->
-  </section>
-
-</main>
- }
-
-
-
-
-
-
-
- <!-- ///////////////////////////////////////////////////////////// -->
-
-
  <!-- ACTIVITIES -->
 
- @if (isActiveTab === 'complete') {
+ @if (isActiveTab === 'completed') {
 
 <main class="text-[#171717] overflow-x-auto">
 
   <!-- PAGE HEADER -->
-  <header class="pt-6">
+  <header class="pt-6 mx-5">
 
     <!-- Back button -->
     <button
       (click)="goToActivities()"
       type="button"
-      class="mx-5 md:mx-20 flex items-center gap-2 text-sm md:text-[13px] font-bold cursor-pointer hover:text-[#3f91df] transition">
+      class="mx-5 flex items-center gap-2 text-sm md:text-[13px] !text-[#807777] cursor-pointer hover:!text-gray-700 transition">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="21"
@@ -1273,24 +787,24 @@
 
     <!-- PAGE TITLE -->
      <div class="flex justify-between">
-    <div class="mx-5 sm:mx-8 md:mx-20 mt-9">
+    <div class="mt-8">
 
       <h2 class="text-xl md:text-lg font-semibold">
         ELEVATE – Q3 (July – September 2026)
       </h2>
 
-      <p class="mt-2 text-sm md:text-sm text-gray-500">
+      <p class="mt-2 text-sm md:text-sm text-[#807777]">
         Kindly set targets before agreed deadline
       </p>
 
     </div>
 
       <!-- total score card -->
-            <div class="border-2 border-blue-500 md:mx-20 w-[9rem] px-5 py-2 rounded-[12px]">
-              <p class="">TOTAL SCORE</p>
-              <div class="flex gap-3 mt-2">
-                <p class="font-bold text-[35px] text-blue-500">80</p>
-                <p class="mt-4">/ 100</p>
+            <div class="border-2 border-blue-500 mx-5 h-[80px] px-2 py-1 rounded-[12px]">
+              <span class="">TOTAL SCORE</span>
+              <div class="flex">
+                <span class="font-bold text-[35px] text-blue-500">80</span>
+                <span class="mt-5">/ 100</span>
               </div>
             </div>
 
@@ -1300,27 +814,26 @@
 
 
   <!-- PROGRESS SECTION -->
-   <section class="mx-5 sm:mx-8 md:mx-20 mt-9">
+   <section class="mx-5 mt-">
     <div class="bg-white border border-gray-300 rounded-xl ">
       <div class="py-8 h-[150px] overflow-y-hidden">
         <div class="px-5">
           <nz-steps
           class="complete-highlight"
           [nzCurrent]="
-          isActiveTab === 'complete' ? 3 :
-          isActiveTab === 'complete' ? 4 :
+          isActiveTab === 'completed' ? 3 :
+          isActiveTab === 'completed' ? 4 :
           3
           "
         >
           <nz-step nzTitle="Target"></nz-step>
           <nz-step nzTitle="Self Review"></nz-step>
           <nz-step nzTitle="Manager Review"></nz-step>
-          <nz-step nzTitle="Complete"
-          [class.complete-step]="isActiveTab === 'complete'"
+          <nz-step nzTitle="Completed"
+          class="completed-step"
           ></nz-step>
         </nz-steps>
         </div>
-        
     
 
           <!-- DIVIDER -->
@@ -1330,16 +843,16 @@
 
 
           <!-- INFORMATION -->
-          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-3">
+          <div class="md:px-5 py-3 flex flex-col md:flex-row md:items-center gap-1">
             <!-- PREVIEW -->
-            <div class="w-fit bg-green-200 px-4 border border-green-400 rounded-[10px] text-sm md:text-[12px] text-green-600 font-bold hover:bg-gray-300">
+            <div class="w-fit bg-[#DDFFE8] px-5 py-1.5 border border-[#DCDEE3] rounded-[10px] text-sm md:text-[12px] text-green-600 font-semibold">
               Complete
             </div>
 
             <!-- MESSAGE -->
-            <p class="text-base md:text-[13px] font-bold text-gray-700">
+            <span class="text-base md:text-[13px] font-bold text-gray-700">
               This cycle is complete, including your manager's rating and comments.
-            </p>
+            </span>
           </div>
 
           </div>
@@ -1348,7 +861,7 @@
 
 
   <!-- KPI SECTION -->
-  <section class="mx-5 sm:mx-8 md:mx-20 mt-10 pb-10">
+  <section class="mx-5 mt-5">
 
     <!-- TITLE -->
     <h3 class="px-2 sm:px-3 mb-4 text-sm md:text-[13px] font-bold">
@@ -1359,17 +872,17 @@
       @for (cycle of previousCycles; track $index) {
         <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
 
-        <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
+        <div class="px-5 py-2 border-gray-200 hover:bg-gray-50 transition">
 
           <!-- APPLICATION + WEIGHT -->
           <div class="flex items-start justify-between gap-4">
 
             <!-- APPLICATION -->
              <div>
-              <p class="text-base md:text-sm font-bold text-gray-900">
+            <p class="text-base md:text-sm font-bold">
               {{ cycle.application }}
             </p>
-            <div class="flex items-center gap-2 mt-2 bg-blue-50 text-blue-700 px-4 py-1 font-bold border rounded-[10px]">
+            <div class="flex items-center gap-2 mt-2 bg-blue-50 text-[#3B82F6] px-4 py-1 font-bold rounded-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-dot-icon lucide-refresh-ccw-dot"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/><circle cx="12" cy="12" r="1"/></svg>
               <span class="text-sm whitespace-nowrap">Automatically Calculated</span>
             </div>
@@ -1377,7 +890,7 @@
 
 
             <!-- WEIGHT -->
-            <p class="bg-gray-200 px-2 py-0.5 rounded-full text-base md:text-[12px] font-bold text-gray-900 whitespace-nowrap">
+            <p class="bg-[#EFECEC] text-[#6E6E6E] px-4 py-0.5 md:py-1.5 rounded-full text-base md:text-[12px] font-bold whitespace-nowrap">
               {{ cycle.weight }}
             </p>
 
@@ -1385,19 +898,22 @@
 
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-400 leading-6">
+          <div class="mt-3 text-sm md:text-sm text-[#807777] font-semibold">
             {{ cycle.name }}
-          </p>
+          </div>
 
 
           <!-- TARGET -->
-          <p class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
-            <p>{{ cycle.targets }}</p>
-            <p>{{ cycle.targets }}</p>
-
+          <div class="mt-2 text-sm md:text-sm text-gray-500">
+            <div class="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
+              <span>{{ cycle.targets }}</span>
+            </div>
+            <div class="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
+              <span>{{ cycle.targets }}</span>
+            </div>
         </div>
-
-      <!-- } -->
 
       </div>
      
@@ -1405,11 +921,11 @@
 
       <!-- Authomatic score -->
       <section>
-        <div class="border-2 border-gray-300 bg-blue-100 mt-10 rounded-xl">
+        <div class="border-2 border-gray-300 bg-blue-100 mt-3 mx-5 mb-3 rounded-xl">
 
             <div class="mx-5 text-sm space-y-2">
                 <!-- authomatic ascore -->
-                <div class="flex gap-2 text-blue-700">
+                <div class="flex gap-2 text-[#3B82F6]">
                     <svg xmlns="http://www.w3.org/2000/svg" 
                     width="20" 
                     height="20" 
@@ -1439,25 +955,25 @@
 
                 <!-- KPI -->
                 <div class="flex gap-2">
-                  <p class="text-blue-700">
+                  <span class="text-[#3B82F6]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-                  </p>
-                  <p>
+                  </span>
+                  <span>
                     This KPI is calculated based on the performance
                     of your team members.It is grnerated by the system 
                     and cannot be edited. 
-                  </p>
+                  </span>
                 </div>
 
-                <div class="flex gap-10 mt-8 mb-8">
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[4rem] w-[30rem] bg-white rounded-xl">
+                <div class="flex gap-10 mt-5 mb-3">
+                  <div class="border-2 border-gray-300 py-1 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
                      <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
                     <div class="flex gap-2">
                       <span class="font-bold text-[25px]">4</span>
                       <span class="text-sm flex items-center">/5</span>
                     </div>
                   </div>
-                  <div class="border-2 border-gray-300 py-1 px-5 h-[4rem] w-[30rem] bg-white rounded-xl">
+                  <div class="border-2 border-gray-300 py-1 px-5 h-[60px] w-[30rem] bg-white rounded-xl">
                     <span class="text-sm whitespace-nowrap">TEAM SCORE</span>
                     <div class="flex gap-2">
                       <span class="font-bold text-[25px]">48</span>
@@ -1469,27 +985,27 @@
 
         </div>
     </section>
-
+  </div>
 
     <!-- Operational efficiency -->
     <section>
-     <div class="mt-10 border-2 border-gray-300 rounded-xl">
-       <div class="px-5 mb-5 sm:px-6 py-1 border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
+     <div class="mt-5 border-2 border-gray-300 rounded-xl">
+       <div class="px-5 py-1 border-gray-200 transition">
 
-          <!-- APPLICATION + WEIGHT -->
+          <!-- Operational + WEIGHT -->
           <div class="items-start gap-4 ">
 
-            <!-- APPLICATION -->
+            <!-- Operational -->
  
-       <div class="flex flex-col md:flex-row justify-between bg-white md:h-[7rem] rounded-[10px]">
+       <div class="flex flex-col md:flex-row justify-between bg-white rounded-[10px]">
       <div>
-        <p class="font-bold mt-2">
+        <span class="font-bold mt-2">
           Operational Efficiency & Code Quality
-        </p>
-        <span class="py-3">Weight 15%</span>
+        </span>
+        <p class="py-1">Weight 15%</p>
       </div>
 
-          <div class="flex gap-5 mb-5 mx-5 md:mx-0">
+          <div class="flex gap-5 mb- 5 mx-5 md:mx-0">
             <div class="flex flex-col items-center">
             <p>PERFORMANCE</p>
             <hr class="mt-2 w-8 md:w-8 border-2">
@@ -1506,25 +1022,24 @@
           </div>
           </div>
           </div>
-
           </div>
 
 
           <!-- KPI NAME -->
-          <p class="mt-3 text-sm md:text-sm text-gray-700 font-semibold leading-6">
+          <div class="mt-  text-sm md:text-sm text-[#807777] font-semibold">
             {{ cycle.name }}
-          </p>
+          </div>
 
 
           <!-- TARGET -->
-          <div class="mt-2 text-sm md:text-sm font-medium text-gray-500 leading-6">
+          <div class="mt-2 text-sm md:text-sm text-gray-500">
             <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
-              <p >{{ cycle.targets }}</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
+              <span >{{ cycle.targets }}</span>
             </div>
             
             <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot text-blue-500"><circle cx="12" cy="12" r="1"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot "><circle cx="12" cy="12" r="1"/></svg>
               <p>{{ cycle.targets }}</p>
             </div>
           </div>
@@ -1534,66 +1049,104 @@
 
           <!-- PERFORMANCE -->
           <section>
-          <div class="mx-5">
-            <p>PERFORMANCE</p>
-            <p>
+          <div class="mx-5 mb-3">
+            <span class="font-semibold">PERFORMANCE</span>
+            <p class="text-[#807777]">
               Self assessed performance of - out of 5 against the agreed target for this API
             </p>
-          </div>
+          <!-- </div> -->
 
           <!-- COLARPSE -->
-           <div>
-            <nz-collapse nzAccordion nzExpandIconPosition="end">
-              <nz-collapse-panel nzHeader="Department Management">
-                MY COMMENTS
-                </nz-collapse-panel>
-            </nz-collapse>
+            <section>
+            <div class="mt-5">
+         
+              <!-- collapse -->
+    <nz-collapse
+  nzExpandIconPosition="end"
+  class="!bg-[#F8F5F0] !border-b-2 border-[#B9B9B9] !rounded-[12px]"
+>
+  <nz-collapse-panel [nzHeader]="myRatingHeader">
 
+    <ng-template #myRatingHeader>
+      <div class="flex items-center gap-2 text-[#626262]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 21a8 8 0 0 0-16 0" />
+          <circle cx="10" cy="8" r="5" />
+          <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+        </svg>
 
-            <!-- Manager comments -->
-            <nz-collapse nzAccordion nzExpandIconPosition="end">
-              <nz-collapse-panel nzHeader="Department Management">
-                MANAGER COMMENTS
-                </nz-collapse-panel>
-            </nz-collapse>
-            </div>
-
-
-         </section>
-        </section>
-
-        </div>
-        </section>
-
-  }
-
-
-
-    <!-- manager set target -->
-     <section class="flex justify-between px-6 mt-5 border-2 border-gray-200 py-2 mt-10">
-       <div>
-        <p>Learning & Development</p>
-        <span>Weight 15%</span>
+        <span class="tex-[#626262]">MY COMMENTS</span>
       </div>
-    <div class="flex gap-5 mb-5 mx-5 md:mx-0">
-            <div class="flex flex-col items-center">
-            <p>PERFORMANCE</p>
-            <hr class="mt-2 w-8 md:w-8 border-2">
-          </div>
+    </ng-template>
 
-            <div class="flex flex-col items-center">
-            <p>RATING</p>
-            <hr class="mt-2 w-6 md:w-8 border-2">
-          </div>
+    <p style="margin: 0;">
+      My comments goes here
+    </p>
 
-            <div  class="flex flex-col items-center">
-            <p>SCORE</p>
-            <hr class="mt-2 w-6 md:w-8 border-2">
-          </div>
-          </div>
-        </section>
+  </nz-collapse-panel>
+</nz-collapse>
 
-    
+            <!-- colapse -->
+              <div class="mt-5">
+             <nz-collapse
+  nzExpandIconPosition="end"
+  class="!bg-[#E4E7EC] !border-b-2 border-[#E4E7EC] !rounded-[12px]"
+>
+  <nz-collapse-panel [nzHeader]="managersCommentsHeader">
+
+    <ng-template #managersCommentsHeader>
+      <div class="flex items-center gap-2 text-[#0084BD]">
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+          />
+          <path
+            d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"
+          />
+        </svg>
+
+        <span class="text-[#0084BD]">MANAGERS COMMENTS</span>
+
+      </div>
+        </ng-template>
+
+        <p style="margin: 0;">
+          Managers comments goes here
+        </p>
+
+      </nz-collapse-panel>
+      </nz-collapse>
+      </div>
+      </div>
+      </section>
+      </div>
+    </section>
+
+  </section>
+  </div>
+  </section>
+  }
 
 
     <!-- cycle progress -->
@@ -1603,49 +1156,35 @@
       </div>
 
       <!-- toggle buttons -->
-      <div class="text-sm md:text-[14px] border py-1 rounded-[8px] overflow-auto ">
-        <div class="flex items-center gap-2 md:gap-15 md:px-10 whitespace-nowrap">
-         <button
-         type="button" 
-         (click)="tabActive('target')"
-         [class.bg-blue-500]="isActiveTab === 'complete'"
-         [class.text-white]="isActiveTab === 'complete'"
-         [class.text-gray-500]="isActiveTab !== 'complete'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition">
-          Targets
-         </button>
+       <nz-segmented
+          class="target-segmented"
+          [(ngModel)]="isActiveTab"
+          (ngModelChange)="tabsActive($event)"
+        >
 
-         <button
-         (click)="tabActive('self-review')"
-         [class.bg-blue-500]="isActiveTab === 'complete'"
-         [class.text-white]="isActiveTab === 'complete'"
-         [class.text-gray-500]="isActiveTab !== 'complete'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Self-review
-        </button>
+          <label
+            nz-segmented-item
+            nzValue="target"
+          >
+            Targets
+          </label>
 
-         <button
-         (click)="tabActive('manager')"
-         [class.bg-blue-500]="isActiveTab === 'complete'"
-         [class.text-white]="isActiveTab === 'complete'"
-         [class.text-gray-500]="isActiveTab !== 'complete'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Manager Review
-        </button>
+          <label
+            nz-segmented-item
+            nzValue="self-review"
+          >
+            Self-Review
+          </label>
 
-         <button
-         (click)="tabActive('complete')"
-         [class.bg-green-500]="isActiveTab === 'complete'"
-         [class.text-white]="isActiveTab === 'complete'"
-         [class.text-gray-500]="isActiveTab !== 'complete'"
-         class="cursor-pointer px-3 h-6 rounded-[6px] transition"
-         >
-          Complete
-        </button>
-      </div>
-      </div>
+          <!-- COMPLETED -->
+          <label
+            nz-segmented-item
+            nzValue="completed"
+            class="completed-segment"
+          >
+            Completed
+          </label>
+        </nz-segmented>
      </div>
     <!-- </div> -->
 
@@ -1655,6 +1194,6 @@
 </main>
  }
 
-<!-- } -->
+}
 
 

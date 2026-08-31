@@ -1,5 +1,5 @@
 <main class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-  <div class="relative mx-auto flex h-[65px] items-center px-6 md:px-20">
+  <div class="relative mx-auto flex h-[65px] items-center px-6 md:px-10">
 
     <!-- Logo -->
     <div class="flex items-center">
@@ -31,9 +31,9 @@
   </a>
 
   <a
-    routerLink="/my-activities"
+    routerLink="/activities-layout"
     routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
   >
     My activities
@@ -102,6 +102,6 @@
   </div>
 </main>
 
-<div class="min-h-screen bg-[#F5F7FA] pt-[65px]">
+<div class="bg-[#F5F7FA] pt-[65px]">
   <router-outlet></router-outlet>
 </div>

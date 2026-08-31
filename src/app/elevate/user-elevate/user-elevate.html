@@ -286,7 +286,7 @@
 
 
     <!-- EVALUATION STAGES -->
-    <div class="mt-8 flex items-center gap-3 px-8 pb-6">
+    <div class="flex items-center gap-1 px-8">
 
       <span class="whitespace-nowrap text-[14px] font-semibold text-[#171717]">
         EVALUATION STAGES:
@@ -324,18 +324,19 @@
     </div>
 
   </main>
-}
 
+}
+<!-- fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff -->
 
 @if (isActiveTab === 'self-review') {
-  <main class="overflow-x-auto py-6 text-[#171717]">
+  <main class="overflow-x-auto !text- [#807777]">
 
     <!-- BACK BUTTON -->
-    <div class="mx-8 mt-10 text-gray-400">
+    <div class="mx-8 mt-10 ">
       <button
         type="button"
         (click)="myactivities()"
-        class="mt-1 flex cursor-pointer items-center gap-2 text-sm transition hover:text-[#3f91df]"
+        class="mt-1 flex cursor-pointer items-center gap-2 text-sm transition hover:!text-gray-700"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -363,13 +364,13 @@
         ELEVATE – Q3 (July – September 2026)
       </h2>
 
-      <p class="mt-2 text-sm text-gray-500">
+      <div class="text-sm text-gray-500">
         @if (selfReviewSubmitted) {
           Your self-review has been submitted and is awaiting your manager's review.
         } @else {
           Rate your performance and add the necessary comments before the deadline.
         }
-      </p>
+      </div>
     </header>
 
 
@@ -858,7 +859,7 @@
 
 
       <!-- EVALUATION STAGES -->
-      <div class="mt-8 flex items-center gap-3 px-8 pb-6">
+      <div class="mt-8 flex items-center gap-3 px-8 ">
 
         <span class="whitespace-nowrap text-[14px] font-semibold text-[#171717]">
           EVALUATION STAGES:
@@ -951,9 +952,7 @@
 
 
         <!-- TOTAL SCORE -->
-        <div
-          class="flex h-[90px] w-[110px] flex-col items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-white"
-        >
+        <div class="flex h-[90px] w-[110px] flex-col items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-white">
 
           <span class="text-[14px] font-semibold text-gray-700">
             TOTAL SCORE
@@ -980,51 +979,31 @@
 
     <!-- PROGRESS SECTION -->
     <section class="mx-8 mt-6">
-
       <div class="rounded-xl border border-[#D0D0D0] bg-white">
-
         <!-- STEPPER -->
         <div class="px-5 py-7">
-
           <nz-steps [nzCurrent]="2">
-
             <nz-step nzTitle="Targets"></nz-step>
-
             <nz-step nzTitle="Self-Review"></nz-step>
-
-            <nz-step nzTitle="Completed"></nz-step>
-
+            <nz-step nzTitle="Completed" class="completed-step"></nz-step>
           </nz-steps>
-
         </div>
-
-
         <div class="h-px w-full bg-[#D0D0D0]"></div>
-
 
         <!-- COMPLETED MESSAGE -->
         <div class="flex items-center gap-3 px-5 py-4">
-
-          <span
-            class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[14px] font-medium text-[#6E6E6E]"
-          >
+          <span class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[14px] font-medium text-[#6E6E6E]">
             Complete
           </span>
-
           <span class="text-[15px] font-semibold text-gray-700">
             This cycle is complete, including your manager's rating and comments.
           </span>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- KPI SECTION -->
     <section class="mx-8 mt-6 pb-10">
-
       <h3 class="mb-4 text-[14px] font-bold">
         KEY PERFORMANCE INDICATORS
       </h3>
@@ -1342,68 +1321,45 @@
       <!-- ====================================================== -->
 
       <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white">
-
-        <div
-          class="flex items-center justify-between px-5 py-4"
-        >
+        <div class="flex items-center justify-between px-5 py-4">
 
           <div>
-
             <p class="text-[15px] font-semibold text-[#171717]">
               Learning & Development
             </p>
-
             <p class="mt-1 text-[14px] text-gray-500">
               Weight: 15%
             </p>
-
           </div>
 
-
           <div class="flex items-center gap-8">
-
             <div class="text-center">
-
               <p class="text-[14px] font-semibold">
                 MY RATING
               </p>
-
               <p class="text-[15px] text-gray-500">
                 —
               </p>
-
             </div>
 
-
             <div class="text-center">
-
               <p class="text-[14px] font-semibold">
                 MANAGER RATING
               </p>
-
               <p class="text-[15px] text-gray-500">
                 —
               </p>
-
             </div>
-
-
             <div class="text-center">
-
               <p class="text-[14px] font-semibold">
                 TOTAL SCORE
               </p>
-
               <p class="text-[15px] text-gray-500">
                 —
               </p>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
 
@@ -1442,13 +1398,9 @@
           >
             Completed
           </label>
-
         </nz-segmented>
-
       </div>
-
     </section>
-
   </main>
 }
 

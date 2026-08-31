@@ -8,6 +8,9 @@ import { DepartmentDetails } from './hr/departments/department-details/departmen
 import { EmployeeReview } from './hr/departments/employee-review/employee-review';
 import { ManagerElevate } from './elevate/manager-elevate/manager-elevate';
 import { UserElevate } from './elevate/user-elevate/user-elevate';
+import { MyActivities } from './my-activities/my-activities/my-activities'; 
+import { ActivitiesLayout } from './my-activities/activities-layout/activities-layout';
+import { PreviousCycles } from './my-activities/previous-cycles/previous-cycles';
 
 
 export const routes: Routes = [
@@ -23,23 +26,23 @@ export const routes: Routes = [
         path: 'dashboard', component: Dashboard
       },
 
-      
-      // {
-      //   path: 'elevate', component: Elevate
-      // },
 
       {path: "elevate", component: Elevate,
         children:[
             {path: "", redirectTo: 'user-elevate', pathMatch: 'full'},
-            {path: "user-elevate", component: UserElevate},
-            {path: "manager-elevate", component: ManagerElevate},
+            {path: "user-elevate", loadComponent: ()=>import("./elevate/user-elevate/user-elevate").then(m => m.UserElevate)},
+            {path: "manager-elevate", loadComponent: () => import("./elevate/manager-elevate/manager-elevate").then(m => m.ManagerElevate )},
         ]
      },
+    //  component: UserElevate},  component: ManagerElevate
 
-      {path: "my-activities", loadComponent: () => import ('./my-activities/my-activities/my-activities').then(m => m.MyActivities)}, 
-      {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
-
-
+     {path: "activities-layout", component: ActivitiesLayout,
+      children:[
+        {path: "", redirectTo: "my-activities", pathMatch: "full"},
+        {path: "my-activities", loadComponent: () => import ('./my-activities/my-activities/my-activities').then(m => m.MyActivities)},
+        {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
+      ]
+     },
 
       {
         path: 'hr/departments', loadComponent: ()=> import('./hr/departments/departments').then(m => m.Departments),
