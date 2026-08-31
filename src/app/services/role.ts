@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export type UserRole = 'employee' | 'manager' | 'hr' | 'executive' | 'admin';
+export type UserRole = 'employee' | 'manager' | 'hr' | 'executive' | 'admin' | 'cto';
 
 @Injectable({
   providedIn: 'root',

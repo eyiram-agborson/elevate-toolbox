@@ -1,8 +1,10 @@
 
 
     <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-@if(role === 'manager'){
+<!-- @if(role === 'manager'){ -->
     <!-- MANAGERS -->
+
+     @if (roleService.hasRole(['manager'])) {
      
 <!-- ACTIVITIES -->
 
@@ -1209,7 +1211,6 @@
             </div>
 
     </div>
-
   </header>
 
 

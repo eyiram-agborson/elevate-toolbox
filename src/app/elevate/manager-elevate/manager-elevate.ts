@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCollapseModule} from 'ng-zorro-antd/collapse'
@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { Role } from '../../services/role';
+
 
 
 @Component({
@@ -39,6 +41,12 @@ current = 3;
       ngOnInit(){
         
       }
+
+
+      // Roles
+      roleService = inject(Role);
+
+
 
       myactivities(){
         this.router.navigate(["/my-activities"])

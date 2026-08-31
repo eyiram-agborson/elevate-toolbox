@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Role } from '../../services/role';
 
 @Component({
   selector: 'app-my-activities',
@@ -100,41 +101,47 @@ export class MyActivities {
 
 
 
-// elevate = "manager"
-role = 'manager'
-previoursCycle = 'manager' 
+// elevate = "user"
+role = 'user'
+previoursCycle = 'user' 
 
 
-    goToElevate() {
-      switch (this.role) {
-      case 'user':
-        this.router.navigate(['/elevate/user-elevate']);
-        break;
 
-      case 'manager':
-        this.router.navigate(['/elevate/manager-elevate']);
-        break;
+  roleService = inject(Role);
 
-      default:
-        console.error('Unknown role:', this.role);
-        break;
+  // MANAGER
+    goToElevate(): void {
+    if (this.roleService.hasRole(['manager'])) {
+      this.router.navigate(['/elevate/manager-elevate']);
+    } else {
+      if (this.roleService.hasRole(['employee'])) {
+      this.router.navigate(['/elevate/user-elevate']);
+      }
+    }
+  }
+
+  goToPrevioursCycle(): void {
+    if (this.roleService.hasRole(['manager'])) {
+      this.router.navigate(['/activities-layout/previous-cycles']);
+    } else {
+      this.router.navigate(['/activities-layout/previous-cycles']);
     }
   }
 
 
 
     // Table button //
-    goToPrevioursCycle(){
-      switch(this.previoursCycle){
+    // goToPrevioursCycle(){
+    //   switch(this.previoursCycle){
 
-        case 'user':
-        this.router.navigate(["/activities-layout/previous-cycles"])
-        break
+    //     case 'user':
+    //     this.router.navigate(["/activities-layout/previous-cycles"])
+    //     break
 
-        case 'manager':
-        this.router.navigate(["/activities-layout/previous-cycles"])
-        break
-      }
+    //     case 'manager':
+    //     this.router.navigate(["/activities-layout/previous-cycles"])
+    //     break
+    //   }
       
-    }
+    // }
 }

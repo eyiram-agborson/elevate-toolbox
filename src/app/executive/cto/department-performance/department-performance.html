@@ -1,0 +1,158 @@
+
+
+  <!-- hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh -->
+
+  <main class="overflow-x-hidden">
+    <div class="mx-10 ">
+
+        <!-- head -->
+         <div class="mt-10 text-[#807777]">
+            <!-- Back to dashboard -->
+            <div class="flex gap-2">
+             <svg xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                class="lucide lucide-move-left-icon lucide-move-left">
+                <path d="M6 8L2 12L6 16"/>
+                <path d="M2 12H22"/>
+              </svg>
+                <button (click)="goToDashboard()" class="text-sm">
+                    Dashbord
+                </button>
+            </div>
+         </div>
+
+         <!-- Department performance -->
+          <div class="mt-2">
+            <p class="font-bold text-[32px] text-[#000000]">Department Perfornce</p>
+            <p class="text-[#807777] text[18px]">Campare the departments assigned to you in thecycle.</p>
+          </div>
+
+          <!-- Graph -->
+          <div class="border border-[#C0C0C0] mt-8 rounded-[16px]">
+            <div class="mx-5">
+                <p class="text-[#6E6E6E] text-[18px]">AVERAGE SCORE COMPAREISON</p>   
+            </div>
+          </div>
+
+            <!-- Table 1 -->
+             <div class=" border border-[#C0C0C0] mt-5 rounded-[16px]">
+
+                <div class="">
+            <!-- Department comparison -->
+            <div class="mx-5">
+                <p class text-[#6E6E6E] text-[18px]>DEPARTMENT COMPARISON</p>
+                <P class="text-[#807777] text-text-[18px]">Compare the preformance and team scores of all your assigned departments.</P>
+            </div>
+            </div>
+            
+                <table class="w-full mx- 5 text-left text-[#606060] mt-5">
+                    <thead>
+                        <tr>
+                            <th class="px-4 text-[#606060]">Department</th>
+                            <th class="px-4">Manager</th>
+                            <th class="px-4">Employees</th>
+                            <th class="px-4">Reviews</th>
+                            <th class="px-4 font-bold">Current team score</th>
+                            <th class="px-4">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr  class="border-b ">
+                            <td class="px-4 py-3">DevOps</td>
+                            <td class="px-4 py-3">Selly Smith</td>
+                            <td class="px-4 py-3">24</td>
+                            <td class="px-4 py-3">16/24 reviewed</td>
+                            <td class="px-4 py-3 font-bold">80/100</td>
+                            <td class="px-4 py-3">
+                                <button (click)="goToManagers()"
+                                class="flex gap-2 cursor-pointer text-[#5AA4FF] hover:text-blue-700">
+                                    View
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                    width="20" 
+                                    height="24" 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    class="lucide lucide-move-right-icon lucide-move-right">
+                                    <path d="M18 8L22 12L18 16"/>
+                                    <path d="M2 12H22"/>
+                                </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+
+                         <tr class="border-b">
+                            <td class="px-4 py-3">Technology</td>
+                            <td class="px-4 py-3">Selly Smith</td>
+                            <td class="px-4 py-3">24</td>
+                            <td class="px-4 v">16/24 reviewed</td>
+                            <td class="px-4 py-3 font-bold">80/100</td>
+                            <td class="px-4 py-3">
+                                <button (click)="goToManagers()"
+                                class="flex gap-2 cursor-pointer text-[#5AA4FF] hover:text-blue-700">
+                                    View
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                    width="20" 
+                                    height="24" 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    class="lucide lucide-move-right-icon lucide-move-right">
+                                    <path d="M18 8L22 12L18 16"/>
+                                    <path d="M2 12H22"/>
+                                </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-4 py-3">Technology</td>
+                            <td class="px-4 py-3">Selly Smith</td>
+                            <td class="px-4 py-3">24</td>
+                            <td class="px-4 v">16/24 reviewed</td>
+                            <td class="px-4 py-3 font-bold">80/100</td>
+                            <td class="px-4 py-3">
+                                <button (click)="goToManagers()"
+                                class="flex gap-2 cursor-pointer text-[#5AA4FF] hover:text-blue-700">
+                                    View
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                    width="20" 
+                                    height="24" 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    class="lucide lucide-move-right-icon lucide-move-right">
+                                    <path d="M18 8L22 12L18 16"/>
+                                    <path d="M2 12H22"/>
+                                </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+             </div> 
+
+    </div>
+</main>
+
+
+
