@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-my-activities',
   imports: [],
@@ -9,65 +10,9 @@ import { Router } from '@angular/router';
 })
 export class MyActivities {
 
-  
-      activeTab = 'target';
-      isActiveTab = 'target';
-      currentStep = 1;
-      message = ""
+  constructor(private router: Router) {}
 
-
-
-  constructor(private router: Router){}
-
-  
-      ngOnInit(){
-        
-      }
-
-      // first toggle //
-  // setTab(tab: string) {
-  //   this.activeTab = tab;
-  // }
-
-  //  second toggle //
-  // tabActive(tab: string){ 
-  //   this.isActiveTab = tab
-  // }
-
-
-   // ELEVATE //
-   currentCycle = {
-    name: '',
-    targets: 'TARGET',
-    performance: ''
-  };
-
-  previousCycles = [
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-  ];
-
-
-   currentCycles = {
+  currentCycles = {
     name: 'ELEVATE - Q3 (July - September 2026)',
     targets: '22 Jul - 30 Jul 2026',
     performance: '29 Sept - 7 Oct 2026'
@@ -91,23 +36,19 @@ export class MyActivities {
     }
   ];
 
- 
+  role = 'employee';
 
-  goBack() {
-    this.router.navigate(["/"])
+  previousCycleRole = 'employee';
+
+
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 
 
-
-
-// elevate = "manager"
-role = 'manager'
-previoursCycle = 'manager' 
-
-
-    goToElevate() {
-      switch (this.role) {
-      case 'user':
+  goToElevate(): void {
+    switch (this.role) {
+      case 'employee':
         this.router.navigate(['/elevate/user-elevate']);
         break;
 
@@ -122,19 +63,20 @@ previoursCycle = 'manager'
   }
 
 
+  goToPreviousCycle(): void {
+    switch (this.previousCycleRole) {
+      case 'employee':
+        this.router.navigate(['/activities-layout/previous-cycles']);
+        break;
 
-    // Table button //
-    goToPrevioursCycle(){
-      switch(this.previoursCycle){
+      case 'manager':
+        this.router.navigate(['/activities-layout/previous-cycles']);
+        break;
 
-        case 'user':
-        this.router.navigate(["/activities-layout/previous-cycles"])
-        break
-
-        case 'manager':
-        this.router.navigate(["/activities-layout/previous-cycles"])
-        break
-      }
-      
+      default:
+        console.error('Unknown role:', this.previousCycleRole);
+        break;
     }
+  }
+
 }
