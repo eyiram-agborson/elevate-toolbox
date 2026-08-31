@@ -822,12 +822,12 @@
     <div class="bg-white border border-gray-300 rounded-xl ">
       <div class="py-8 h-[150px] overflow-y-hidden">
       <div class="px-5">
-        <nz-steps [nzCurrent]="1">
+        <!-- <nz-steps [nzCurrent]="2">
             <nz-step nzTitle="Targets"></nz-step>
             <nz-step nzTitle="Self Review"></nz-step>
             <nz-step nzTitle="Manger Review"></nz-step>
             <nz-step nzTitle="Completed"></nz-step>
-          </nz-steps>
+          </nz-steps> -->
       </div>
        
 
@@ -1221,8 +1221,8 @@
           <nz-steps
           class="complete-highlight"
           [nzCurrent]="
+          isActiveTab === 'completed' ? 2 :
           isActiveTab === 'completed' ? 3 :
-          isActiveTab === 'completed' ? 4 :
           3
           "
         >
@@ -1234,6 +1234,17 @@
           ></nz-step>
         </nz-steps>
         </div>
+
+
+
+        <!-- <div class="px-5">
+        <nz-steps [nzCurrent]="2">
+            <nz-step nzTitle="Targets"></nz-step>
+            <nz-step nzTitle="Self Review"></nz-step>
+            <nz-step nzTitle="Manger Review"></nz-step>
+            <nz-step nzTitle="Completed"></nz-step>
+          </nz-steps>
+      </div> -->
     
 
           <!-- DIVIDER -->

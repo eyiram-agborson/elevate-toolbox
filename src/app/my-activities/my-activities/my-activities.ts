@@ -102,7 +102,7 @@ export class MyActivities {
 
 // elevate = "manager"
 role = 'manager'
-previoursCycle = 'user' 
+previoursCycle = 'manager' 
 
 
     goToElevate() {
