@@ -35,8 +35,8 @@ export class UserElevate {
   isActiveTab: 'targets' | 'self-review' | 'completed' = 'targets';
   
 // I set it to true for the demo purposes, but it should be false, when the APIs come in.
-  selfReviewOpen = true; 
-  selfReviewSubmitted = false;
+  selfReviewOpen = true;
+  selfReviewSubmitted = true;
   managerReviewCompleted = true;
 
   pages = [1, 2, 3, 4, 5];

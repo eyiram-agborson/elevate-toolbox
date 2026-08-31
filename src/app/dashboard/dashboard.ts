@@ -20,10 +20,9 @@ export class Dashboard {
     this.router.navigate(['/elevate']);
   }
 
-  goToMyActivities() {
-    this.router.navigate(['/my-activities']);
-    console.log("Button clicked")
-  }
+goToMyActivities() {
+  this.router.navigate(['/activities-layout/my-activities']);
+}
 
   go() {
     this.router.navigate(['/manager-performance']);

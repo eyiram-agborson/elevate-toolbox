@@ -10,8 +10,11 @@
       />
     </div>
 
+    
     <!-- Center Navigation -->
     <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
+
+      @if (roleService.hasRole(['manager', 'employee'])) {
       <a
         routerLink="/dashboard"
         routerLinkActive="nav-link-active"
@@ -19,10 +22,76 @@
         class="nav-link">
         Dashboard
       </a>
+    }
+
+  
+
+      <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+      @if (roleService.hasRole(['cto'])) {
+  <!-- <a
+    routerLink="/dashboard"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Dashboard
+  </a> -->
+
+  <a
+    routerLink="/department-performance"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Department
+  </a>
+
+  <a
+    routerLink="/manager-performance"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Managers
+  </a>
+
+   <a
+    routerLink="/employee-performance"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Employees
+  </a>
+}
+
+
+<!-- MANAGER -->
+ @if (roleService.hasRole(['manager'])) {
+  <a
+    routerLink="/"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Set Target
+  </a>
+
+  <a
+    routerLink="/"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Team Review
+  </a>
+}
+
+
 
 @if (roleService.hasRole(['manager', 'employee'])) {
   <a
-    routerLink="/elevate"
+    routerLink="/elevate/user-elevate"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
@@ -36,9 +105,14 @@
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
   >
-    My activities
+    My Activities
   </a>
 }
+
+
+
+
+
 
   @if (roleService.hasRole('hr')) {
     <a

@@ -11,6 +11,8 @@ import { UserElevate } from './elevate/user-elevate/user-elevate';
 import { MyActivities } from './my-activities/my-activities/my-activities'; 
 import { ActivitiesLayout } from './my-activities/activities-layout/activities-layout';
 import { PreviousCycles } from './my-activities/previous-cycles/previous-cycles';
+import { ExecutivepageLayout } from './executive/cto/executivepage-layout/executivepage-layout'; 
+import { ManagerPerformance } from './executive/cto/manager-performance/manager-performance';
 
 
 export const routes: Routes = [
@@ -43,6 +45,19 @@ export const routes: Routes = [
         {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
       ]
      },
+
+// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+      {path: "executivepage-layout", component: ExecutivepageLayout,
+      children:[
+        {path: "", redirectTo: "dashboard", pathMatch: "full"},
+        {path: "dashboard", component: Dashboard },
+        {path: "department-performance", loadComponent: () => import ('./executive/cto/department-performance/department-performance').then(m => m.DepartmentPerformance)},
+        {path: "manager-performance", component: ManagerPerformance },
+        {path: "dashboard", component: Dashboard },
+      ]
+     },
+
+
 
       {
         path: 'hr/departments', loadComponent: ()=> import('./hr/departments/departments').then(m => m.Departments),

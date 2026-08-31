@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Role } from '../../services/role';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class MyActivities {
 
+  roleService = inject(Role)
+  
   constructor(private router: Router) {}
 
   currentCycles = {
