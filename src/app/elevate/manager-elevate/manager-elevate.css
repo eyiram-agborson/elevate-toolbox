@@ -17,8 +17,9 @@
 
 
  /* ```scss */
+/* ```scss */
 .target-segmented {
-  width: 40%;
+  width: 35%;
   display: block;
   background: white;
   padding: 4px;
@@ -69,17 +70,5 @@
     background: #57ec00 !important;
     color: #ffffff !important;
   }
-}
-
-
-
-
-/* Nz zorro collapse */
-::ng-deep .ant-collapse-header {
-  min-height: 30px !important;
-  height: 30px !important;
-  padding: 0 16px !important;
-  display: flex !important;
-  align-items: center !important;
 }
 

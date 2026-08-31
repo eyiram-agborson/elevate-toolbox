@@ -20,9 +20,9 @@ export class Dashboard {
     this.router.navigate(['/elevate']);
   }
 
-  goToMyActivities() {
-    this.router.navigate(['/my-activities']);
-  }
+goToMyActivities() {
+  this.router.navigate(['/activities-layout/my-activities']);
+}
 
   go() {
     this.router.navigate(['/manager-performance']);
