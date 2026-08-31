@@ -144,25 +144,5 @@ goToActivities(){
   }
 
 
-
-
-
-
-
-
-//  readonly panels = [
-//     {
-//       active: true,
-//       name: 'This is panel header 1'
-//     },
-//     {
-//       active: false,
-//       name: 'This is panel header 2'
-//     },
-//     {
-//       active: false,
-//       name: 'This is panel header 3'
-//     }
-//   ];
   
 }

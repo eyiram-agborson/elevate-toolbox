@@ -102,30 +102,47 @@ export class MyActivities {
 
 
 // elevate = "user"
-role = 'user'
-previoursCycle = 'user' 
+// role = 'user'
+// previoursCycle = 'user' 
 
-
+// /elevate/manager-elevate
+// /elevate/user-elevate
 
   roleService = inject(Role);
 
   // MANAGER
-    goToElevate(): void {
+    goToElevate(){
     if (this.roleService.hasRole(['manager'])) {
-      this.router.navigate(['/elevate/manager-elevate']);
+      this.router.navigate(['elevate/manager-elevate']); 
     } else {
       if (this.roleService.hasRole(['employee'])) {
-      this.router.navigate(['/elevate/user-elevate']);
+      this.router.navigate(['elevate/user-elevate']); 
       }
     }
   }
+  
 
-  goToPrevioursCycle(): void {
-    if (this.roleService.hasRole(['manager'])) {
+
+// goToElevate(): void {
+//   const role = this.roleService.getRole();
+
+//   if (role === 'manager') {
+//     this.router.navigate(['/elevate/manager-elevate']);
+//   } else if (role === 'employee') {
+//     this.router.navigate(['/elevate/user-elevate']);
+//   }
+// }
+
+
+
+  goToPrevioursCycle() {
+    // if (this.roleService.hasRole(['manager'])) {
+    //   this.router.navigate(['/activities-layout/previous-cycles']);
+    // } else {
+    //   if (this.roleService.hasRole(['employee'])) {
       this.router.navigate(['/activities-layout/previous-cycles']);
-    } else {
-      this.router.navigate(['/activities-layout/previous-cycles']);
-    }
+    //   }
+    // }
   }
 
 

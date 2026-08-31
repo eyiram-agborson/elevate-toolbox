@@ -1,26 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCollapseModule} from 'ng-zorro-antd/collapse'
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzProgressModule } from 'ng-zorro-antd/progress';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { Role } from '../../services/role';
 
 @Component({
-  selector: 'app-previous-cycles',
-  imports: [NzStepsModule, NzCollapseModule, NzAvatarModule],
-  templateUrl: './previous-cycles.html',
-  styleUrl: './previous-cycles.css',
+  selector: 'app-manager-previouscyle',
+  imports: [NzAvatarModule, NzCollapseModule, NzStepsModule],
+  templateUrl: './manager-previouscyle.html',
+  styleUrl: './manager-previouscyle.css',
 })
-export class PreviousCycles {
+export class ManagerPreviouscyle {
 
   
-
       // activeTab = 'target';
       isActiveTab = 'target';
       currentStep = 1;
@@ -35,7 +27,7 @@ export class PreviousCycles {
         
       }
 
-      roleService = inject(Role);
+      // roleService = inject(Role);
 
   
 
@@ -125,6 +117,5 @@ isActiveTabs = 'complete'
 tabActive(tab: string){
   this.isActiveTabs = tab
 }
-
 
 }

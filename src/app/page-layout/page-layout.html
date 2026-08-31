@@ -28,15 +28,6 @@
 
       <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
       @if (roleService.hasRole(['cto'])) {
-  <!-- <a
-    routerLink="/dashboard"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Dashboard
-  </a> -->
-
   <a
     routerLink="/department-performance"
     routerLinkActive="nav-link-active"
@@ -85,19 +76,24 @@
   >
     Team Review
   </a>
-}
 
+}
 
 
 @if (roleService.hasRole(['manager', 'employee'])) {
   <a
-    routerLink="/elevate/user-elevate"
+    [routerLink]="
+      roleService.hasRole('employee')
+        ? '/elevate/user-elevate'
+        : '/elevate/manager-elevate' 
+    "
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
   >
     Elevate
   </a>
+  
 
   <a
     routerLink="/activities-layout"
@@ -108,8 +104,6 @@
     My activities
   </a>
 }
-
-
 
 
 

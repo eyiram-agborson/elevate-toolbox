@@ -13,30 +13,28 @@ import { ActivitiesLayout } from './my-activities/activities-layout/activities-l
 import { PreviousCycles } from './my-activities/previous-cycles/previous-cycles';
 import { ExecutivepageLayout } from './executive/cto/executivepage-layout/executivepage-layout'; 
 import { ManagerPerformance } from './executive/cto/manager-performance/manager-performance';
+import { ManagerPreviouscyle } from './manager-previouscyle/manager-previouscyle';
+import { elevateRedirectGuard } from './elevate-redirect.guard';
+import { ElevateRedirect } from './elevate-redirect';
 
 
 export const routes: Routes = [
   {
     path: '', component: PageLayout,
     children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard', component: Dashboard
-      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      { path: 'dashboard', component: Dashboard},
 
 
-      {path: "elevate", component: Elevate,
-        children:[
-            {path: "", redirectTo: 'user-elevate', pathMatch: 'full'},
-            {path: "user-elevate", loadComponent: ()=>import("./elevate/user-elevate/user-elevate").then(m => m.UserElevate)},
-            {path: "manager-elevate", loadComponent: () => import("./elevate/manager-elevate/manager-elevate").then(m => m.ManagerElevate )},
-        ]
-     },
-    //  component: UserElevate},  component: ManagerElevate
+  {
+  path: 'elevate', component: Elevate,
+     children: [
+    { path: '', redirectTo: 'manager-elevate', pathMatch: 'full'},
+    { path: 'user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate)},
+    { path: 'manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate)}
+  ]
+},
+
 
      {path: "activities-layout", component: ActivitiesLayout,
       children:[
@@ -46,7 +44,7 @@ export const routes: Routes = [
       ]
      },
 
-// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
       {path: "executivepage-layout", component: ExecutivepageLayout,
       children:[
         {path: "", redirectTo: "dashboard", pathMatch: "full"},
