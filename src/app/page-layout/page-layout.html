@@ -60,7 +60,7 @@
 <!-- MANAGER -->
  @if (roleService.hasRole(['manager'])) {
   <a
-    routerLink="/"
+    routerLink="set-target"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
@@ -69,7 +69,7 @@
   </a>
 
   <a
-    routerLink="/"
+    routerLink="team-review"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"

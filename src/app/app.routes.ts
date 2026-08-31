@@ -16,6 +16,8 @@ import { ManagerPerformance } from './executive/cto/manager-performance/manager-
 import { ManagerPreviouscyle } from './manager-previouscyle/manager-previouscyle';
 import { elevateRedirectGuard } from './elevate-redirect.guard';
 import { ElevateRedirect } from './elevate-redirect';
+import { SetTarget } from './set-target/set-target/set-target';
+import { TeamReview } from './set-target/team-review/team-review';
 
 
 export const routes: Routes = [
@@ -54,6 +56,10 @@ export const routes: Routes = [
         {path: "dashboard", component: Dashboard },
       ]
      },
+
+
+     {path: "set-target", component: SetTarget },
+     {path: "team-review", component: TeamReview },
 
 
 
