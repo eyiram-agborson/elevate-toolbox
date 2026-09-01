@@ -16,7 +16,13 @@ export class PerformanceCycles {
   
   goToDepartments(){
     this.route.navigate(['/hr/departments'])
+
+    window.scrollTo({
+      top: 0,
+    behavior: 'smooth'
+    })
   }
+  
   isEditModal = false;
 
   selectedCycle = '';
