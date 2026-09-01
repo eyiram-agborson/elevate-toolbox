@@ -99,7 +99,7 @@
 
   <!-- Q3 ACTIVE -->
   <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
-    <div (click)="goToDepartments()" class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
       <div class="flex items-start justify-between gap-[20px]">
         <div>
           <div class="mb-[12px] inline-flex items-center rounded-full bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
@@ -107,7 +107,7 @@
             Active
           </div>
 
-          <h2 class="text-[20px] font-semibold text-[#0F172A]">
+          <h2 (click)="goToDepartments()" class="text-[20px] font-semibold text-[#0F172A] cursor-pointer transition-colors duration-150 hover:text-[#428FEF]">
             ELEVATE – Q3 (July – September 2026)
           </h2>
 

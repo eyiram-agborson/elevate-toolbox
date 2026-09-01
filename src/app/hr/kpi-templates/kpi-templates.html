@@ -16,13 +16,13 @@
       <p class="mt-2 text-[15px] text-[#60758F]">Define the standard KPIs that apply to employees by department and job role.</p>
     </div>
 
-    <button (click)="openAddTemplate()"
+    <!-- <button (click)="openAddTemplate()"
       type="button"
       class=" button-press inline-flex items-center gap-2 rounded-lg bg-[#347DEB] px-5 py-3 text-[15px] font-semibold !text-white transition-colors hover:bg-[#286FD8]"
     >
       <i class="fa-solid fa-plus text-[13px]"></i>
       Add KPI Template
-    </button>
+    </button> -->
   </div>
 
   <!-- SEARCH + FILTERS -->
@@ -172,31 +172,49 @@
   </div>
 
   <!-- EDIT KPI MODAL -->
-  @if (isEditKpi) {
-    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-        <div class="w-full max-w-[850px] overflow-hidden rounded-xl bg-[#F7F9FC] shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
-        <!-- MODAL HEADER -->
-<div class="flex items-center justify-between border-b border-[#E4E8ED] bg-white px-7 py-4">
-  <h2 class="text-[18px] font-semibold text-[#172B4D]">Edit KPI Template</h2>
+@if (isEditKpi) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
 
-  <button
-    type="button"
-    (click)="closeEditKpi()"
-    class="button-press flex h-9 w-9 items-center justify-center rounded-full text-[#344054] transition-colors hover:bg-[#F2F4F7]"
-  >
-    <i class="fa-solid fa-xmark text-[18px]"></i>
-  </button>
-</div>
-        <!-- MODAL CONTENT -->
-    <div class="max-h-[68vh] overflow-y-auto bg-[#F7F9FC] px-7 py-6">
+    <div class="w-full max-w-[850px] overflow-hidden rounded-xl bg-[#F7F9FC] shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
+
+      <!-- MODAL HEADER -->
+      <div class="flex items-center justify-between border-b border-[#E4E8ED] bg-white px-7 py-4">
+        <h2 class="text-[18px] font-semibold text-[#172B4D]">
+          Edit KPI Template
+        </h2>
+
+        <button
+          type="button"
+          (click)="closeEditKpi()"
+          class="button-press flex h-9 w-9 items-center justify-center rounded-full text-[#344054] transition-colors hover:bg-[#F2F4F7]"
+        >
+          <i class="fa-solid fa-xmark text-[18px]"></i>
+        </button>
+      </div>
+
+      <!-- MODAL CONTENT -->
+      <form [formGroup]="kpiForm">
+
+        <div class="max-h-[68vh] overflow-y-auto bg-[#F7F9FC] px-7 py-6">
+
           <!-- TEMPLATE SCOPE -->
           <div class="mb-6">
-            <p class="mb-3 text-[15px] font-semibold text-[#344054]">Template scope</p>
+            <p class="mb-3 text-[15px] font-semibold text-[#344054]">
+              Template scope
+            </p>
 
             <div class="grid grid-cols-2 gap-4">
+
+              <!-- DEPARTMENT -->
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Department</label>
-                <select class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-2 block text-[15px] font-medium text-[#344054]">
+                  Department
+                </label>
+
+                <select
+                  formControlName="department"
+                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
+                >
                   <option>Client-side Engineering</option>
                   <option>Technology</option>
                   <option>Human Resources</option>
@@ -206,10 +224,16 @@
                 </select>
               </div>
 
+              <!-- JOB ROLE -->
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Job role</label>
+                <label class="mb-2 block text-[15px] font-medium text-[#344054]">
+                  Job role
+                </label>
 
-                <select class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <select
+                  formControlName="jobRole"
+                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
+                >
                   <option>Software Engineer</option>
                   <option>Backend Engineer</option>
                   <option>HR Business Partner</option>
@@ -218,184 +242,132 @@
                   <option>Marketing Manager</option>
                 </select>
               </div>
+
             </div>
           </div>
+
 
           <!-- KPI HEADER -->
           <div class="mb-4 flex items-end justify-between">
-            <p class="text-[15px] font-semibold text-[#344054]">Key Performance Indicators</p>
 
-            <span class="text-[15px] font-semibold text-[#16A36A]">
-              Total weight: 100%
+            <p class="text-[15px] font-semibold text-[#344054]">
+              Key Performance Indicators
+            </p>
+
+            <span
+              class="text-[15px] font-semibold"
+              [class.text-[#16A36A]]="totalWeight === 100"
+              [class.text-[#D92D20]]="totalWeight !== 100"
+            >
+              Total weight: {{ totalWeight }}%
             </span>
+
           </div>
 
-          <!-- KPI 1 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-5">
-            <div class="mb-3 flex items-center justify-between">
-              <span class="text-[15px] font-semibold text-[#344054]">KPI 1</span>
+
+          <!-- KPI LIST -->
+          <div formArrayName="kpis">
+
+            @for (kpi of kpis.controls; track kpi; let i = $index) {
+
+              <div
+                [formGroupName]="i"
+                class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-5"
+              >
+
+                <!-- KPI HEADER -->
+                <div class="mb-3 flex items-center justify-between">
+
+                  <span class="text-[15px] font-semibold text-[#344054]">
+                    KPI {{ i + 1 }}
+                  </span>
+
+                  <button
+                    type="button"
+                    (click)="removeKpi(i)"
+                    class="text-[14px] font-medium !text-red-400 transition-colors hover:text-[#B42318]"
+                  >
+                    Remove
+                  </button>
+
+                </div>
 
 
-            </div>
+                <!-- KPI NAME + WEIGHT -->
+                <div class="grid grid-cols-[1fr_125px] gap-3">
 
-            <div class="grid grid-cols-[1fr_125px] gap-3">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
+                  <!-- KPI NAME -->
+                  <div>
+                    <label class="mb-2 block text-[15px] font-medium text-[#344054]">
+                      KPI name
+                    </label>
 
-                <input
-                  type="text"
-                  value="Application Development & Delivery"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
+                    <input
+                      type="text"
+                      formControlName="name"
+                      class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
+                    >
+                  </div>
+
+
+                  <!-- WEIGHT -->
+                  <div>
+                    <label class="mb-2 block text-[15px] font-medium text-[#344054]">
+                      Weight (%)
+                    </label>
+
+                    <input
+                      type="number"
+                      formControlName="weight"
+                      class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
+                    >
+                  </div>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="mt-3">
+
+                  <label class="mb-2 block text-[15px] font-medium text-[#344054]">
+                    Description
+                  </label>
+
+                  <textarea
+                    rows="3"
+                    formControlName="description"
+                    class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
+                  ></textarea>
+
+                </div>
+
               </div>
 
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
+            }
 
-                <input
-                  type="number"
-                  value="60"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-            </div>
-
-            <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-
-              <textarea
-                rows="3"
-                class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-              >Deliver assigned work within agreed sprint timelines.</textarea>
-            </div>
           </div>
 
-          <!-- KPI 2 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-5">
-            <div class="mb-3 flex items-center justify-between">
-              <span class="text-[15px] font-semibold text-[#344054]">KPI 2</span>
 
+          <!-- ADD KPI BUTTON -->
+          <button
+            type="button"
+            (click)="addKpi()"
+            class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-[#BFC7D1] bg-white py-3 text-[15px] font-medium text-[#347DEB] transition-colors hover:border-[#347DEB] hover:bg-[#F8FAFC]"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Add KPI
+          </button>
 
-            </div>
-
-            <div class="grid grid-cols-[1fr_125px] gap-3">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-
-                <input
-                  type="text"
-                  value="Operational Efficiency & Code Quality"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-
-                <input
-                  type="number"
-                  value="15"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-            </div>
-
-            <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-
-              <textarea
-                rows="3"
-                class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-              >Maintain code quality and review standards.</textarea>
-            </div>
-          </div>
-
-          <!-- KPI 3 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-5">
-            <div class="mb-3 flex items-center justify-between">
-              <span class="text-[15px] font-semibold text-[#344054]">KPI 3</span>
-
-
-            </div>
-
-            <div class="grid grid-cols-[1fr_125px] gap-3">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-
-                <input
-                  type="text"
-                  value="Learning & Development"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-
-                <input
-                  type="number"
-                  value="15"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-            </div>
-
-            <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-
-              <textarea
-                rows="3"
-                class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-              >Complete agreed development goals.</textarea>
-            </div>
-          </div>
-
-          <!-- KPI 4 -->
-          <div class="rounded-lg border border-[#DCE2E8] bg-[#FCFDFE] p-4">
-            <div class="mb-3 flex items-center justify-between">
-              <span class="text-[15px] font-semibold text-[#344054]">KPI 4</span>
-
-
-            </div>
-
-            <div class="grid grid-cols-[1fr_125px] gap-3">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-
-                <input
-                  type="text"
-                  value="Collaboration & Communication"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-
-                <input
-                  type="number"
-                  value="10"
-                  class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-                >
-              </div>
-            </div>
-
-            <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-
-              <textarea
-                rows="3"
-                class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]"
-              >Demonstrate effective collaboration with team members.</textarea>
-            </div>
-          </div>
         </div>
 
+
         <!-- MODAL ACTIONS -->
-<div class="flex items-center justify-end gap-3 border-t border-[#E4E8ED] bg-white px-7 py-4">          <button
+        <div class="flex items-center justify-end gap-3 border-t border-[#E4E8ED] bg-white px-7 py-4">
+
+          <button
             type="button"
             (click)="closeEditKpi()"
-            class=" button-press rounded-lg border border-[#D0D5DD] bg-white px-5 py-2.5 text-[15px] font-medium text-[#344054] transition-colors hover:bg-[#F8FAFC]"
+            class="button-press rounded-lg border border-[#D0D5DD] bg-white px-5 py-2.5 text-[15px] font-medium text-[#344054] transition-colors hover:bg-[#F8FAFC]"
           >
             Cancel
           </button>
@@ -403,18 +375,23 @@
           <button
             type="button"
             (click)="saveTemplate()"
-            class=" button-press rounded-lg bg-[#347DEB] px-5 py-2.5 text-[15px] font-medium !text-white transition-colors hover:bg-[#286FD8]"
+            class="button-press rounded-lg bg-[#347DEB] px-5 py-2.5 text-[15px] font-medium !text-white transition-colors hover:bg-[#286FD8]"
           >
             Save Changes
           </button>
+
         </div>
-      </div>
+
+      </form>
+
     </div>
-  }
+
+  </div>
+}
 </div>
 
 
-@if (showAddTemplateModal) {
+<!-- @if (showAddTemplateModal) {
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" (click)="closeAddTemplate()">
     <div class="w-full max-w-[850px] overflow-hidden rounded-xl bg-[#F7F9FC] shadow-[0_20px_50px_rgba(0,0,0,0.18)]" (click)="$event.stopPropagation()">
 
@@ -575,4 +552,4 @@
       </div>
     </div>
   </div>
-}
+} -->
