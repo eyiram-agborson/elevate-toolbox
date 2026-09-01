@@ -49,13 +49,11 @@ export const routes: Routes = [
 
       {path: "executivepage-layout", component: ExecutivepageLayout,
       children:[
-        {path: "", redirectTo: "dashboard", pathMatch: "full"},
-        {path: "dashboard", component: Dashboard },
+        {path: "", redirectTo: "department-performance", pathMatch: "full"},
         {path: "department-performance", loadComponent: () => import ('./executive/cto/department-performance/department-performance').then(m => m.DepartmentPerformance)},
         {path: "manager-performance", component: ManagerPerformance },
-        {path: "dashboard", component: Dashboard },
       ]
-     },
+     }, 
 
 
      {path: "set-target", component: SetTarget },
