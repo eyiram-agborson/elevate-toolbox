@@ -98,68 +98,72 @@
   </div>
 
   <!-- Q3 ACTIVE -->
-  <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">
-    <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
-      <div class="flex items-start justify-between gap-[20px]">
-        <div>
-          <div class="mb-[12px] inline-flex items-center rounded-full bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
-            <span class="mr-[5px] text-[10px]">•</span>
-            Active
-          </div>
-
-          <h2 (click)="goToDepartments()" class="text-[20px] font-semibold text-[#0F172A] cursor-pointer transition-colors duration-150 hover:text-[#428FEF]">
-            ELEVATE – Q3 (July – September 2026)
-          </h2>
-
-          <p class="mt-[8px] text-[14px] text-[#64748B]">
-            Review period: Q3 2026 • 22 Jul 2026 – 7 Oct 2026
-          </p>
+<div
+  class="mb-[20px] cursor-pointer rounded-[14px] border border-[#E2E8F0] bg-white transition-all duration-300 hover:border-[#2562B2] hover:bg-[#E2F4FF]"
+  (click)="goToDepartments()"
+>
+  <div class="border-b border-[#E2E8F0] px-[28px] py-[22px]">
+    <div class="flex items-start justify-between gap-[20px]">
+      <div>
+        <div class="mb-[12px] inline-flex items-center rounded-full bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+          <span class="mr-[5px] text-[10px]">•</span>
+          Active
         </div>
 
-        <button
-          type="button"
-          (click)="openEditModal('Q3')"
-          class="button-press h-[40px] rounded-[8px] border border-[#D1D5DB] bg-white px-[18px] text-[14px] font-medium text-[#111827] hover:bg-[#F7F8FA]">
-          <i class="fa-solid fa-pen mr-[7px] text-[12px]"></i>
-          Edit cycle
-        </button>
-      </div>
-    </div>
+        <h2 class="text-[20px] font-semibold text-[#0F172A]">
+          ELEVATE – Q3 (July – September 2026)
+        </h2>
 
-    <!-- Active cycle workflow -->
-    <div class="border-b border-[#E2E8F0] px-[28px] py-[18px]">
-      <nz-steps nzSize="small" [nzCurrent]="0">
-        <nz-step nzTitle="Targets"></nz-step>
-        <nz-step nzTitle="Performance Review"></nz-step>
-        <nz-step nzTitle="Manager Review"></nz-step>
-        <nz-step nzTitle="Completed"></nz-step>
-      </nz-steps>
-    </div>
-
-    <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
-      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
-        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
-          <i class="fa-regular fa-calendar"></i>
-          TARGET SETTING WINDOW
-        </div>
-
-        <p class="text-[15px] font-medium text-[#0F172A]">
-          22 Jul – 30 Jul 2026
+        <p class="mt-[8px] text-[14px] text-[#64748B]">
+          Review period: Q3 2026 • 22 Jul 2026 – 7 Oct 2026
         </p>
       </div>
 
-      <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
-        <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
-          <i class="fa-regular fa-calendar"></i>
-          PERFORMANCE REVIEW WINDOW
-        </div>
-
-        <p class="text-[15px] font-medium text-[#0F172A]">
-          29 Sep – 7 Oct 2026
-        </p>
-      </div>
+      <button
+        type="button"
+        (click)="$event.stopPropagation(); openEditModal('Q3')"
+        class="button-press h-[40px] rounded-[8px] border border-[#D1D5DB] bg-white px-[18px] text-[14px] font-medium text-[#111827] hover:bg-[#F7F8FA]"
+      >
+        <i class="fa-solid fa-pen mr-[7px] text-[12px]"></i>
+        Edit cycle
+      </button>
     </div>
   </div>
+
+  <!-- Active cycle workflow -->
+  <div class="border-b border-[#E2E8F0] px-[28px] py-[18px]">
+    <nz-steps nzSize="small" [nzCurrent]="0">
+      <nz-step nzTitle="Targets"></nz-step>
+      <nz-step nzTitle="Performance Review"></nz-step>
+      <nz-step nzTitle="Manager Review"></nz-step>
+      <nz-step nzTitle="Completed"></nz-step>
+    </nz-steps>
+  </div>
+
+  <div class="grid grid-cols-2 gap-[18px] px-[28px] py-[16px]">
+    <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+      <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+        <i class="fa-regular fa-calendar"></i>
+        TARGET SETTING WINDOW
+      </div>
+
+      <p class="text-[15px] font-medium text-[#0F172A]">
+        22 Jul – 30 Jul 2026
+      </p>
+    </div>
+
+    <div class="rounded-[10px] border border-[#E7E3DE] bg-[#FAF9F7] px-[18px] py-[15px]">
+      <div class="mb-[7px] flex items-center gap-[8px] text-[14px] font-medium text-[#64748B]">
+        <i class="fa-regular fa-calendar"></i>
+        PERFORMANCE REVIEW WINDOW
+      </div>
+
+      <p class="text-[15px] font-medium text-[#0F172A]">
+        29 Sep – 7 Oct 2026
+      </p>
+    </div>
+  </div>
+</div>
 
   <!-- Q4 UPCOMING -->
   <div class="mb-[20px] rounded-[14px] border border-[#E2E8F0] bg-white">

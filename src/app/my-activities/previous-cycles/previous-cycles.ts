@@ -52,24 +52,7 @@ export class PreviousCycles {
 
   // ELEVATE
 
-<<<<<<< HEAD
-
-      ngOnInit(){
-        
-      }
-
-      roleService = inject(Role);
-
-  
-
-
-
-
-   // ELEVATE //
-   currentCycle = {
-=======
   currentCycle = {
->>>>>>> eyiram
     name: '',
     targets: 'TARGET',
     performance: ''
