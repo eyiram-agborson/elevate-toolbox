@@ -39,11 +39,11 @@ cycles = [
     }
 ];
 
-isHistoricalCycle = true;
+isHistoricalCycle = false;
 
 onCycleChange(): void {
-  this.cycles.find(cycle => cycle.status === 'Completed')
-    console.log('Selected cycle:', this.selectedCycle);
+  this.isHistoricalCycle =  this.cycles.find(cycle => cycle.value === this.selectedCycle)?.status === 'Completed';
+  console.log('Selected cycle:', this.selectedCycle);
 }
 
 }
