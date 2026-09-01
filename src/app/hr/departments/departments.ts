@@ -18,7 +18,7 @@ export class Departments {
     this.router.navigate(['hr/departments/:id'])
   }
 
-selectedCycle = 'Q1';
+selectedCycle = 'Q3';
 
 cycles = [
     { value: 'Q1', label: 'ELEVATE – Q1 (January – March 2026)' },
@@ -27,7 +27,10 @@ cycles = [
     { value: 'Q4', label: 'ELEVATE – Q4 (October – December 2026)' }
 ];
 
+isHistoricalCycle = true;
+
 onCycleChange(): void {
+  this.isHistoricalCycle = this.selectedCycle !== 'Q3';
     console.log('Selected cycle:', this.selectedCycle);
 }
 
