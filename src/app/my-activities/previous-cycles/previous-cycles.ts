@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
@@ -27,7 +27,7 @@ import { Role } from '../../services/role';
   templateUrl: './previous-cycles.html',
   styleUrl: './previous-cycles.css',
 })
-export class PreviousCycles {
+export class PreviousCycles implements OnInit{
 
 
   roleService = inject(Role);
@@ -52,24 +52,7 @@ export class PreviousCycles {
 
   // ELEVATE
 
-<<<<<<< HEAD
-
-      ngOnInit(){
-        
-      }
-
-      roleService = inject(Role);
-
-  
-
-
-
-
-   // ELEVATE //
-   currentCycle = {
-=======
   currentCycle = {
->>>>>>> eyiram
     name: '',
     targets: 'TARGET',
     performance: ''
