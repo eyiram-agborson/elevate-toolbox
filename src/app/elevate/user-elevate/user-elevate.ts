@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { Role } from '../../services/role';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+
 
 @Component({
   selector: 'app-user-elevate',
@@ -18,7 +20,8 @@ import { Role } from '../../services/role';
     NzProgressModule,
     NzButtonModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    NzCollapseModule
   ],
   templateUrl: './user-elevate.html',
   styleUrl: './user-elevate.css',
@@ -101,6 +104,11 @@ export class UserElevate {
 
     this.isActiveTab =
       tab as 'targets' | 'self-review' | 'completed';
+
+      window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
   }
 
   goToSelfReviewPage(){

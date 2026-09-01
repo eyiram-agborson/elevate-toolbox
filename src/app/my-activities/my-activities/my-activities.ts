@@ -10,65 +10,11 @@ import { Role } from '../../services/role';
 })
 export class MyActivities {
 
-  
-      activeTab = 'target';
-      isActiveTab = 'target';
-      currentStep = 1;
-      message = ""
+  roleService = inject(Role);
 
+  constructor(private router: Router) {}
 
-
-  constructor(private router: Router){}
-
-  
-      ngOnInit(){
-        
-      }
-
-      // first toggle //
-  // setTab(tab: string) {
-  //   this.activeTab = tab;
-  // }
-
-  //  second toggle //
-  // tabActive(tab: string){ 
-  //   this.isActiveTab = tab
-  // }
-
-
-   // ELEVATE //
-   currentCycle = {
-    name: '',
-    targets: 'TARGET',
-    performance: ''
-  };
-
-  previousCycles = [
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-  ];
-
-
-   currentCycles = {
+  currentCycles = {
     name: 'ELEVATE - Q3 (July - September 2026)',
     targets: '22 Jul - 30 Jul 2026',
     performance: '29 Sept - 7 Oct 2026'
@@ -92,73 +38,30 @@ export class MyActivities {
     }
   ];
 
- 
-
-  goBack() {
-    this.router.navigate(["/"])
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 
+  goToElevate(): void {
+    const role = this.roleService.getRole();
 
+    switch (role) {
+      case 'employee':
+        this.router.navigate(['/elevate/user-elevate']);
+        break;
 
+      case 'manager':
+        this.router.navigate(['/elevate/manager-elevate']);
+        break;
 
-// elevate = "user"
-// role = 'user'
-// previoursCycle = 'user' 
-
-// /elevate/manager-elevate
-// /elevate/user-elevate
-
-  roleService = inject(Role);
-
-  // MANAGER
-    goToElevate(){
-    if (this.roleService.hasRole(['manager'])) {
-      this.router.navigate(['elevate/manager-elevate']); 
-    } else {
-      if (this.roleService.hasRole(['employee'])) {
-      this.router.navigate(['elevate/user-elevate']); 
-      }
+      default:
+        console.error('Unsupported role for Elevate:', role);
+        break;
     }
   }
   
 
-
-// goToElevate(): void {
-//   const role = this.roleService.getRole();
-
-//   if (role === 'manager') {
-//     this.router.navigate(['/elevate/manager-elevate']);
-//   } else if (role === 'employee') {
-//     this.router.navigate(['/elevate/user-elevate']);
-//   }
-// }
-
-
-
-  goToPrevioursCycle() {
-    // if (this.roleService.hasRole(['manager'])) {
-    //   this.router.navigate(['/activities-layout/previous-cycles']);
-    // } else {
-    //   if (this.roleService.hasRole(['employee'])) {
-      this.router.navigate(['/activities-layout/previous-cycles']);
-    //   }
-    // }
+  goToPreviousCycle(): void {
+    this.router.navigate(['/activities-layout/previous-cycles']);
   }
-
-
-
-    // Table button //
-    // goToPrevioursCycle(){
-    //   switch(this.previoursCycle){
-
-    //     case 'user':
-    //     this.router.navigate(["/activities-layout/previous-cycles"])
-    //     break
-
-    //     case 'manager':
-    //     this.router.navigate(["/activities-layout/previous-cycles"])
-    //     break
-    //   }
-      
-    // }
 }

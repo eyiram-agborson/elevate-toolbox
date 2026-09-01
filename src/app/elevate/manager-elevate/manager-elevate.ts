@@ -7,9 +7,9 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { FormsModule } from '@angular/forms';
-import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { Role } from '../../services/role';
+import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 
 @Component({
   selector: 'app-manager-elevate',

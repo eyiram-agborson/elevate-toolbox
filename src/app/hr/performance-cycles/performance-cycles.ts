@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-performance-cycles',
@@ -12,6 +12,11 @@ import { RouterLink } from "@angular/router";
 })
 export class PerformanceCycles {
 
+  constructor(private route: Router){}
+  
+  goToDepartments(){
+    this.route.navigate(['/hr/departments'])
+  }
   isEditModal = false;
 
   selectedCycle = '';
