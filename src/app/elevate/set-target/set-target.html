@@ -152,32 +152,29 @@
 
         <!-- KEY PERFORMANCE INDICATORS -->
         <section class="mt-[28px]">
-
             <div class="mb-[10px]">
-
                 <span class="text-[15px] font-semibold uppercase tracking-wide text-[#6E6E6E]">
                     Key Performance Indicators
                 </span>
-
             </div>
 
 
             <!-- KPI 1 -->
             <div class="rounded-[10px] border border-[#D0D0D0] bg-white px-[20px] py-[18px]">
+            <!-- KPI HEADER -->
+            <div class="flex items-center justify-between gap-[20px]">
 
-                <!-- KPI HEADER -->
-                <div class="flex items-center justify-between gap-[20px]">
+                <!-- KPI NAME -->
+                <div class="flex items-center gap-[7px]">
+                    <span class="text-[16px] font-semibold text-[#111827]">
+                        Application Development &amp; Delivery
+                    </span>
 
-                    <div class="flex items-center gap-[7px]">
-
-                        <span class="text-[16px] font-semibold text-[#111827]">
-                            Application Development &amp; Delivery
-                        </span>
-
-
-                        <button type="button" class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
-                        >
-                            <svg
+                    <button type="button"
+                        (click)="openEditKpi('Application Development & Delivery', 60)"
+                        class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
+                    >
+                                                    <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
                                 height="16"
@@ -191,23 +188,23 @@
                                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                 <path d="m15 5 4 4"/>
                             </svg>
-                        </button>
-                    </div>
+                    </button>
+                </div>
 
+                <!-- WEIGHT -->
+                <div class="flex items-center gap-[7px] rounded-full bg-[#EFECEC] px-[12px] py-[7px]">
+                    <span class="text-[15px] font-semibold text-[#6E6E6E]">
+                        Weight 60%
+                    </span>
 
-                    <!-- WEIGHT -->
-                    <div class="flex items-center gap-[7px] rounded-full bg-[#EFECEC] px-[12px] py-[7px]">
-                        <span class="text-[15px] text-[#6E6E6E] font-semibold">
-                            Weight 60%
-                        </span>
-                        <button
-                            type="button"
-                            class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
-                        >
-                            <svg
+                    <button type="button"
+                        (click)="openEditKpi('Application Development & Delivery', 60)"
+                        class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
+                    >
+                                    <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
+                                width="16"
+                                height="16"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -218,18 +215,15 @@
                                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                 <path d="m15 5 4 4"/>
                             </svg>
-                        </button>
-                    </div>
+                    </button>
                 </div>
 
+            </div>
 
                 <!-- TARGET -->
                 <div class="mt-[20px] border-t border-[#E5E7EB] pt-[18px]">
-                    <p class="text-[15px] font-medium uppercase text-[#807777]">
-                        Target
-                    </p>
-                    <textarea
-                        placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines."
+                    <p class="text-[15px] font-medium uppercase text-[#807777]">Target</p>
+                    <textarea placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines."
                         class="mt-[8px] h-[100px] w-full resize-none rounded-[10px] border border-[#DDDDDD] bg-[#F8F5F0] px-[14px] py-[12px] text-[15px] text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10"
                     ></textarea>
                     <p class="mt-[6px] text-[15px] text-[#98A2B3]">
@@ -248,12 +242,11 @@
                             Operational Efficiency &amp; Code Quality
                         </span>
 
-
-                        <button
-                            type="button"
-                            class="cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
-                        >
-                            <svg
+                    <button type="button"
+                        (click)="openEditKpi('Operational Efficiency & Code Quality', 15)"
+                        class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
+                    >
+                                                    <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
                                 height="16"
@@ -267,7 +260,7 @@
                                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                 <path d="m15 5 4 4"/>
                             </svg>
-                        </button>
+                    </button>
                     </div>
 
 
@@ -276,14 +269,14 @@
                         <span class="text-[15px] text-[#6E6E6E] font-semibold">
                             Weight 60%
                         </span>
-                        <button
-                            type="button"
-                            class="cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
-                        >
-                            <svg
+                    <button type="button"
+                        (click)="openEditKpi('Operational Efficiency & Code Quality', 15)"
+                        class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
+                    >
+                                                    <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
+                                width="16"
+                                height="16"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -294,10 +287,9 @@
                                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                 <path d="m15 5 4 4"/>
                             </svg>
-                        </button>
+                    </button>
                     </div>
                 </div>
-
 
                 <!-- TARGET -->
                 <div class="mt-[20px] border-t border-[#E5E7EB] pt-[18px]">
@@ -373,3 +365,89 @@
         </div>
     </div>
 </div>
+
+@if (showEditModal) {
+    <div (click)="closeEditModal()" class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4">
+
+        <!-- MODAL -->
+        <div
+            class="w-full max-w-[480px] rounded-[12px] border border-[#E1E4E8] bg-white p-[24px] shadow-[0_12px_35px_rgba(0,0,0,0.12)]"
+            (click)="$event.stopPropagation()"
+        >
+
+            <!-- HEADER -->
+            <div class="flex items-start justify-between">
+
+                <div class="flex flex-col gap-[5px]">
+                    <h2 class="text-[18px] font-semibold text-[#111827]">
+                        Edit KPI
+                    </h2>
+
+                    <p class="text-[14px] text-[#64748B]">
+                        Update the KPI name and weight.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    (click)="closeEditModal()"
+                    class="flex h-[30px] w-[30px] items-center justify-center rounded-full text-[#64748B] transition hover:bg-[#F3F4F6] hover:text-[#111827]"
+                >
+                    <i class="fa-solid fa-xmark text-[15px]"></i>
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+            <div class="mt-[22px] flex flex-col gap-[18px]">
+
+                <!-- KPI NAME -->
+                <div>
+                    <label class="mb-[7px] block text-[15px] font-medium text-[#344054]">
+                        KPI Name
+                    </label>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="selectedKpi.name"
+                        class="h-[46px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-[14px] text-[15px] text-[#111827] outline-none transition focus:border-[#5AA4FF]"
+                    />
+                </div>
+
+
+                <!-- WEIGHT -->
+                <div>
+                    <label class="mb-[7px] block text-[15px] font-medium text-[#344054]">
+                        Weight</label>
+
+                    <div class="relative">
+                        <input type="number" [(ngModel)]="selectedKpi.weight" min="0" max="100"
+                            class="h-[46px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-[14px] pr-[45px] text-[15px] text-[#111827] outline-none transition focus:border-[#5AA4FF]"
+                        />
+
+                        <span class="absolute right-[14px] top-1/2 -translate-y-1/2 text-[14px] text-[#64748B]">
+                            %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- FOOTER -->
+            <div class="mt-[26px] flex justify-end gap-[10px] border-t border-[#E5E7EB] pt-[18px]">
+                <button type="button" (click)="closeEditModal()"
+                    class="h-[42px] rounded-[8px] border border-[#D0D0D0] bg-white px-[18px] text-[15px] font-medium text-[#344054] transition hover:bg-[#F8F9FA]"
+                >
+                    Cancel
+                </button>
+
+                <button type="button" (click)="saveKpi()"
+                    class="h-[42px] rounded-[8px] bg-[#5AA4FF] px-[20px] text-[15px] font-medium !text-white transition hover:bg-[#428FEF]"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+}
