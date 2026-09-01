@@ -11,13 +11,12 @@ import { UserElevate } from './elevate/user-elevate/user-elevate';
 import { MyActivities } from './my-activities/my-activities/my-activities'; 
 import { ActivitiesLayout } from './my-activities/activities-layout/activities-layout';
 import { PreviousCycles } from './my-activities/previous-cycles/previous-cycles';
-import { ExecutivepageLayout } from './executive/cto/executivepage-layout/executivepage-layout'; 
-import { ManagerPerformance } from './executive/cto/manager-performance/manager-performance';
 import { ManagerPreviouscyle } from './manager-previouscyle/manager-previouscyle';
 import { elevateRedirectGuard } from './elevate-redirect.guard';
 import { ElevateRedirect } from './elevate-redirect';
-import { SetTarget } from './set-target/set-target/set-target';
-import { TeamReview } from './set-target/team-review/team-review';
+import { SetTarget } from './elevate/set-target/set-target';
+import { TeamReview } from './elevate/team-review/team-review';
+import { ManagerPerformance } from './executives/manager-performance/manager-performance';
 
 
 export const routes: Routes = [
@@ -47,13 +46,13 @@ export const routes: Routes = [
      },
 
 
-      {path: "executivepage-layout", component: ExecutivepageLayout,
-      children:[
+      // {path: "executivepage-layout", component: ExecutivepageLayout,
+      // children:[
         {path: "", redirectTo: "department-performance", pathMatch: "full"},
-        {path: "department-performance", loadComponent: () => import ('./executive/cto/department-performance/department-performance').then(m => m.DepartmentPerformance)},
+        {path: "department-performance", loadComponent: () => import ('./executives/department-performance/department-performance').then(m => m.DepartmentPerformance)},
         {path: "manager-performance", component: ManagerPerformance },
-      ]
-     }, 
+    //   ]
+    //  }, 
 
 
      {path: "set-target", component: SetTarget },
