@@ -21,16 +21,28 @@ export class Departments {
 selectedCycle = 'Q3';
 
 cycles = [
-    { value: 'Q1', label: 'ELEVATE – Q1 (January – March 2026)' },
-    { value: 'Q2', label: 'ELEVATE – Q2 (April – June 2026)' },
-    { value: 'Q3', label: 'ELEVATE – Q3 (July – September 2026)' },
-    { value: 'Q4', label: 'ELEVATE – Q4 (October – December 2026)' }
+    { value: 'Q1',
+      label: 'ELEVATE – Q1 (January – March 2026)',
+      status: 'Completed'
+    },
+    { value: 'Q2',
+      label: 'ELEVATE – Q2 (April – June 2026)',
+      status: 'Completed'
+    },
+    { value: 'Q3',
+      label: 'ELEVATE – Q3 (July – September 2026)',
+      status: 'Active'
+    },
+    { value: 'Q4',
+      label: 'ELEVATE – Q4 (October – December 2026)',
+      status: 'Upcoming'
+    }
 ];
 
 isHistoricalCycle = true;
 
 onCycleChange(): void {
-  this.isHistoricalCycle = this.selectedCycle !== 'Q3';
+  this.cycles.find(cycle => cycle.status === 'Completed')
     console.log('Selected cycle:', this.selectedCycle);
 }
 
