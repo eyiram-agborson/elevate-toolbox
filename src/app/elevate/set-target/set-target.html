@@ -48,20 +48,20 @@
 
 <!-- TEAM / ASSIGN TO -->
 <section>
-    <div class="rounded-[10px] border border-[#E1E4E8] bg-white px-[22px] py-[20px]">
+    <div class="rounded-[10px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
 
         <!-- TOP INFORMATION -->
-        <div class="grid grid-cols-4 items-center gap-[24px]">
+        <div class="grid grid-cols-3 items-start gap-[40px]">
 
             <!-- MANAGER -->
-            <div class="col-span-1">
+            <div>
                 <span class="text-[15px] font-medium uppercase tracking-wide text-[#64748B]">
                     Manager
                 </span>
 
-                <div class="mt-[12px] flex items-center gap-[12px]">
+                <div class="mt-[10px] flex items-center gap-[12px]">
                     <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[8px] bg-[#EFF6FF]">
-                        <i class="fa-solid fa-user text-[18px] text-[#5AA4FF]"></i>
+                        <i class="fa-solid fa-user text-[17px] text-[#5AA4FF]"></i>
                     </div>
 
                     <div class="flex flex-col gap-[3px]">
@@ -76,15 +76,16 @@
                 </div>
             </div>
 
+
             <!-- TEAM / DEPARTMENT -->
-            <div class="col-span-1">
+            <div>
                 <span class="text-[15px] font-medium uppercase tracking-wide text-[#64748B]">
                     Team / Department
                 </span>
 
-                <div class="mt-[12px] flex items-center gap-[12px]">
+                <div class="mt-[10px] flex items-center gap-[12px]">
                     <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[8px] bg-[#EFF6FF]">
-                        <i class="fa-solid fa-users text-[18px] text-[#5AA4FF]"></i>
+                        <i class="fa-solid fa-users text-[17px] text-[#5AA4FF]"></i>
                     </div>
 
                     <div class="flex flex-col gap-[3px]">
@@ -99,37 +100,50 @@
                 </div>
             </div>
 
+
             <!-- ASSIGN TO -->
             <div>
                 <span class="text-[15px] font-medium uppercase tracking-wide text-[#64748B]">
                     Assign To
                 </span>
-                <label class="mt-[7px] block text-[15px] font-medium text-[#344054] flex gap-2">
+                <div class=" mt-1 flex flex-col gap-1">
+                        <label class=" flex items-center gap-[6px] text-[15px] font-medium text-[#344054]">
                     Employee
-                    <span class="font-normal text-[#94A3B8]">(Optional)</span>
+                    <span class="font-normal text-[#94A3B8]">
+                        (Optional)
+                    </span>
                 </label>
 
-                <select class="mt-5 h-[44px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-[120px] text-left align-left text-[15px] font-medium text-[#111827] outline-none focus:border-[#5AA4FF]"
+                <select
+                    class="mt-2 h-[44px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-[14px] text-[15px] font-medium text-[#111827] outline-none transition focus:border-[#5AA4FF]"
                 >
                     <option value="">All Team Members</option>
-                    <option value="user">User</option>
-                    <option value="manager">Manager</option>
-                    <option value="hr">HR</option>
-                    <option value="cto">CTO</option>
-                    <option value="coo">COO</option>
+                    <option value="">Ama Boateng</option>
+                    <option value="">David Opong</option>
+                    <option value="">Joan Salomey</option>
+                    <option value="">Michael Mensah</option>
                 </select>
+                </div>
+
             </div>
 
         </div>
 
-        <!-- ASSIGNMENT NOTE -->
-        <div class="mt-[20px] border-t border-[#E5E7EB] pt-[16px] flex justify-between">
+
+        <!-- ASSIGNMENT INFORMATION -->
+        <div class="mt-[18px] flex items-center justify-between border-t border-[#E5E7EB] pt-[14px]">
+
             <p class="text-[14px] text-[#94A3B8]">
                 Leave as "All Team Members" to apply these targets to everyone in the department.
             </p>
-            <p class="text-[14px] text-[#94A3B8]">
-                Target setting window: 1 July 2026 – 30 July 2026
+
+            <p class="shrink-0 text-[14px] text-[#94A3B8]">
+                Target setting window:
+                <span class="font-medium text-[#64748B]">
+                    1 July 2026 – 30 July 2026
+                </span>
             </p>
+
         </div>
 
     </div>
@@ -161,9 +175,7 @@
                         </span>
 
 
-                        <button
-                            type="button"
-                            class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
+                        <button type="button" class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +192,6 @@
                                 <path d="m15 5 4 4"/>
                             </svg>
                         </button>
-
                     </div>
 
 
@@ -225,7 +236,6 @@
                         One target per line.
                     </p>
                 </div>
-
             </div>
 
 
@@ -258,7 +268,6 @@
                                 <path d="m15 5 4 4"/>
                             </svg>
                         </button>
-
                     </div>
 
 
@@ -292,26 +301,20 @@
 
                 <!-- TARGET -->
                 <div class="mt-[20px] border-t border-[#E5E7EB] pt-[18px]">
-
                     <p class="text-[15px] font-medium uppercase text-[#807777]">
                         Target
                     </p>
-
 
                     <textarea
                         placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines."
                         class="mt-[8px] h-[100px] w-full resize-none rounded-[10px] border border-[#DDDDDD] bg-[#F8F5F0] px-[14px] py-[12px] text-[15px] text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10"
                     ></textarea>
 
-
                     <p class="mt-[6px] text-[15px] text-[#98A2B3]">
                         One target per line.
                     </p>
-
                 </div>
-
             </div>
-
         </section>
 
 
@@ -321,7 +324,7 @@
             <!-- SAVE DRAFT -->
             <button
                 type="button"
-                class="flex h-[45px] items-center gap-[7px] rounded-[8px] border border-[#DDDDDD] bg-white px-[24px] text-[15px] font-medium text-[#344054] shadow-[0_4px_10px_rgba(0,0,0,0.08)] transition hover:bg-[#F9FAFB]"
+                class="button-press flex h-[45px] items-center gap-[7px] rounded-[8px] border border-[#DDDDDD] bg-white px-[24px] text-[15px] font-medium text-[#344054] shadow-[0_4px_10px_rgba(0,0,0,0.08)] transition hover:bg-[#F9FAFB]"
             >
 
                 <svg
@@ -348,9 +351,8 @@
             <!-- PUBLISH TARGETS -->
             <button
                 type="button"
-                class="flex h-[45px] items-center gap-[8px] rounded-[8px] bg-[#5AA4FF] px-[24px] text-[15px] font-medium !text-white transition hover:bg-[#428FEF]"
+                class="button-press flex h-[45px] items-center gap-[8px] rounded-[8px] bg-[#5AA4FF] px-[24px] text-[15px] font-medium !text-white transition hover:bg-[#428FEF]"
             >
-
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="19"
@@ -367,11 +369,7 @@
                 </svg>
 
                 Publish Targets
-
             </button>
-
         </div>
-
     </div>
-
 </div>
