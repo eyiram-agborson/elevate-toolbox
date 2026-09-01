@@ -8,8 +8,8 @@ export const managerElevateGuard: CanMatchFn = () => {
 
   return roleService.getRole() === 'manager';
 };
-`
-export co`nst employeeElevateGuard: CanMatchFn = () => {
+
+export const employeeElevateGuard: CanMatchFn = () => {
   const roleService = inject(Role);
 
   return roleService.getRole() === 'employee';
