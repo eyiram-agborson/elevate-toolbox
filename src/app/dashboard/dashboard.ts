@@ -43,4 +43,18 @@ goToMyActivities() {
   goToPerformanceCycles(){
     this.router.navigate(['/hr/performance-cycles'])
   }
+
+  notificationsOpen = false;
+
+hasTargetChange = true;
+
+toggleNotifications(): void {
+  this.notificationsOpen = !this.notificationsOpen;
+}
+
+reviewTargetChanges(): void {
+  this.notificationsOpen = false;
+
+  this.router.navigate(['/set-target']);
+}
 }
