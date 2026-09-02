@@ -16,6 +16,7 @@ import { ElevateRedirect } from './elevate-redirect';
 import { SetTarget } from './elevate/set-target/set-target';
 import { TeamReview } from './elevate/team-review/team-review';
 import { ManagerPerformance } from './executives/manager-performance/manager-performance';
+import { TeamreviewTotalscore } from './elevate/teamreview-totalscore/teamreview-totalscore';
 
 
 export const routes: Routes = [
@@ -56,6 +57,7 @@ export const routes: Routes = [
 
      {path: "set-target", component: SetTarget },
      {path: "team-review", component: TeamReview },
+     {path: "elevate/teamreview-totalscore", component: TeamreviewTotalscore },
 
 
 
