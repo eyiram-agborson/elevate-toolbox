@@ -49,6 +49,9 @@ export class PreviousCycles implements OnInit{
     window.scrollTo(0, 0);
   }
 
+  myactivities(): void {
+    this.router.navigate(['/my-activities']);
+  }
 
   // ELEVATE
 
@@ -62,21 +65,7 @@ export class PreviousCycles implements OnInit{
     {
       weight: 'Weight: 60%',
       application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
+      name: 'TARGEt',
       targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
       performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
     }
