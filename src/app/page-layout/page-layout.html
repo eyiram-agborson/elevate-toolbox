@@ -26,7 +26,7 @@
   
 
       <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-      @if (roleService.hasRole(['cto'])) {
+      @if (roleService.hasRole(['executive'])) {
   <a
     routerLink="/department-performance"
     routerLinkActive="nav-link-active"
@@ -56,28 +56,6 @@
 }
 
 
-<!-- MANAGER -->
- @if (roleService.hasRole(['manager'])) {
-  <a
-    routerLink="set-target"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Set Target
-  </a>
-
-  <a
-    routerLink="team-review"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Team Review
-  </a>
-
-}
-
 
 @if (roleService.hasRole(['manager', 'employee'])) {
   <a
@@ -105,7 +83,27 @@
 }
 
 
+<!-- MANAGER -->
+ @if (roleService.hasRole(['manager'])) {
+  <a
+    routerLink="set-target"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Set Targets
+  </a>
 
+  <a
+    routerLink="team-review"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="nav-link"
+  >
+    Team Review
+  </a>
+
+}
 
   @if (roleService.hasRole('hr')) {
     <a

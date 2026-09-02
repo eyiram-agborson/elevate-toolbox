@@ -42,13 +42,17 @@ export class PreviousCycles implements OnInit{
   constructor(private router: Router) {}
 
     goToActivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
+    console.log('Activities tab clicked')
   }
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
   }
 
+  myactivities(): void {
+    this.router.navigate(['/activities-layout', 'my-activities']);
+  }
 
   // ELEVATE
 
@@ -62,21 +66,7 @@ export class PreviousCycles implements OnInit{
     {
       weight: 'Weight: 60%',
       application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
+      name: 'TARGEt',
       targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
       performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
     }
@@ -107,7 +97,7 @@ export class PreviousCycles implements OnInit{
   ];
 
   goBack(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   toggleActive(): void {
