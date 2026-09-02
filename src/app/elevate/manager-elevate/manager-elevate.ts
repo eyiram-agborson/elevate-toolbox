@@ -84,18 +84,22 @@ export class ManagerElevate {
 
   myactivities(): void {
     this.router.navigate(['/my-activities']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   goToElevate(): void {
     this.router.navigate(['/elevate']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   goToActivities(): void {
     this.router.navigate(['/my-activities']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   goToDashboard(): void {
     this.router.navigate(['/dashboard']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   tabsActive(tab: string): void {
@@ -111,11 +115,14 @@ export class ManagerElevate {
       return;
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     this.isActiveTab = 'self-review';
   }
 
   goToPage(page: number): void {
     this.currentPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   submitSelfReview(): void {
