@@ -1,4 +1,4 @@
-<div class="mx-5 mt-8">
+<div class="mx-5 mt-8 md:h-screen overflow-y-auto">
 
     <section>
         <div class="flex gap-1 hover:!text-gray-500 cursor-pointer">
@@ -16,12 +16,11 @@
     <section class="mt-8">
         <h2>TEAM MEMBER</h2>
 
-
-<div class=" w-full overflow-hidden rounded-lg border border-[#E2E8F0]">
-    <table class="w-full">
+<div class=" w-full rounded-lg border border-[#E2E8F0]">
+    <table class="w-full whitespace-nowrap">
         
         <tbody>
-            <tr class="border-b border-[#E2E8F0]">
+            <tr class="border-b border-[#E2E8F0] overflow-x-auto">
                 <td class="px-3 py-2">
                     <div class="flex items-center gap-2">
                         <div class="flex justify-center items-center bg-[#F1F5F9] w-[48px] h-[48px] text-[#475569] text-[14px] font-bold rounded-full">EA</div>
@@ -169,7 +168,7 @@
                     Submitted on 29 Sept 2026
                 </td>
 
-                <td class="px-6 py-2 text-right">
+                <td class="px-6 md:py-2 text-right whitespace-nowrap">
                     <button (click)="route()"
                         class="cursor-pointer rounded-lg bg-[#E2E8F0] px-2 py-2 !text-[#475569] font-bold hover:bg-gray-300"
                     >
