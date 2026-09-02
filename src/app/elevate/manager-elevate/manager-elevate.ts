@@ -83,7 +83,7 @@ export class ManagerElevate {
   ];
 
   myactivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -93,7 +93,7 @@ export class ManagerElevate {
   }
 
   goToActivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -107,6 +107,7 @@ export class ManagerElevate {
       return;
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.isActiveTab = tab as 'targets' | 'self-review' | 'completed';
   }
 

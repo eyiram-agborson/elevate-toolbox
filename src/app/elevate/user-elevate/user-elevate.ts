@@ -82,11 +82,11 @@ export class UserElevate {
   ];
 
   myactivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   goToActivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   goToElevate(): void {
