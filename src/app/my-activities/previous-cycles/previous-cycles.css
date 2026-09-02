@@ -15,16 +15,8 @@
 
 
 
-/* Nz zorro collapse */
-::ng-deep .ant-collapse-header {
-  min-height: 30px !important;
-  height: 30px !important;
-  padding: 0 16px !important;
-  display: flex !important;
-  align-items: center !important;
-}
 
-/* ```scss */
+ /* ```scss */
 .target-segmented {
   width: 35%;
   display: block;
