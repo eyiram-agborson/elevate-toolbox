@@ -42,7 +42,8 @@ export class PreviousCycles implements OnInit{
   constructor(private router: Router) {}
 
     goToActivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
+    console.log('Activities tab clicked')
   }
 
   ngOnInit(): void {
@@ -50,7 +51,7 @@ export class PreviousCycles implements OnInit{
   }
 
   myactivities(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   // ELEVATE
@@ -96,7 +97,7 @@ export class PreviousCycles implements OnInit{
   ];
 
   goBack(): void {
-    this.router.navigate(['/my-activities']);
+    this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   toggleActive(): void {

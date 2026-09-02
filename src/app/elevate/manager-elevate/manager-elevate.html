@@ -4,32 +4,36 @@
 <!-- ACTIVITIES -->
 
 @if (isActiveTab === 'targets') {
-  <main class="text-[#171717] overflow-x-auto">
+  <main class="text-[#171717] py-6 overflow-x-auto">
+    <div class="mx-8 mt-5 text-gray-400">
+      <button
+        type="button"
+        (click)="myactivities()"
+        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+
+        My Activities
+      </button>
+    </div>
+
 
     <!-- PAGE HEADER -->
-    <header class="mt-8">
-      <div class="mx-5">
-        <button
-          type="button"
-          (click)="goToActivities()"
-          class="flex items-center gap-2 text-[14px] text-[#807777] cursor-pointer hover:text-[#3F91DF] transition">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
-          <span>My Activities</span>
-        </button>
-      </div>
-
+    <header class="mt-8 mx-6">
+    
       <div class="mx-5 mt-6">
         <h2 class="text-[19px] font-semibold text-[#171717]">
           ELEVATE – Q3 (July – September 2026)
@@ -41,7 +45,7 @@
     </header>
 
     <!-- PROGRESS STEPS -->
-    <section class="mx-5 mt-7">
+    <section class="mx-8 mt-6">
       <div class="bg-white border border-[#D9D9D9] rounded-xl overflow-hidden">
         <div class="px-5 py-5">
           <nz-steps [nzCurrent]="0">
@@ -67,7 +71,7 @@
     </section>
 
     <!-- KPI SECTION -->
-    <section class="mx-5 mt-7 mb-6">
+    <section class="mx-8 mt-6 pb-8">
       <h3 class="mb-4 text-[15px] font-bold text-[#000000]">
         KEY PERFORMANCE INDICATORS
       </h3>
@@ -229,7 +233,7 @@
       </div>
 
       <!-- KPI 3 -->
-      <div class="bg-white rounded-xl border border-[#DDDDDD] overflow-hidden shadow-sm mb-5">
+      <div class="bg-white rounded-xl border border-[#DDDDDD] overflow-hidden shadow-sm ">
         <div class="px-5 py-5 sm:px-7">
 
           <div class="flex items-start justify-between gap-4">
@@ -265,7 +269,7 @@
     </section>
 
     <!-- READ ONLY NOTICE -->
-    <div class="mx-5 mt-5 px-4 py-3 bg-[#F5F8FB] border border-[#E4E7EC] rounded-[6px]">
+    <div class="mx-8 px-4 py-3 bg-[#F5F8FB] border border-[#E4E7EC] rounded-[6px]">
       <div class="flex items-center gap-2 text-[14px] text-[#6E6E6E]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +317,7 @@
     </div>
 
     <!-- EVALUATION STAGES: -->
-    <div class="mx-5 mt-5 mb-6 flex flex-col md:flex-row md:items-center gap-3">
+    <div class="mx-8 mt-5 mb-6 flex flex-col md:flex-row md:items-center gap-3">
       <div class="text-[14px] font-semibold whitespace-nowrap">
         EVALUATION STAGES:
       </div>
@@ -347,11 +351,12 @@
   <main class="overflow-x-auto text-[#171717]">
 
     <!-- BACK BUTTON -->
-    <div class="mx-8 mt-8">
+    <div class="mx-8 mt-8 text-gray-400">
       <button
         type="button"
         (click)="myactivities()"
-        class="flex items-center gap-2 text-[15px] text-[#807777] cursor-pointer hover:text-gray-700 transition">
+        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -361,16 +366,18 @@
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
-          stroke-linejoin="round">
+          stroke-linejoin="round"
+        >
           <path d="m12 19-7-7 7-7" />
           <path d="M19 12H5" />
         </svg>
-        <span>My Activities</span>
+
+        My Activities
       </button>
     </div>
 
     <!-- PAGE HEADER -->
-    <header class="mx-8 mt-7">
+    <header class="mx-8 mt-8">
       <h2 class="text-[19px] font-semibold">
         ELEVATE – Q3 (July – September 2026)
       </h2>
@@ -385,7 +392,7 @@
     </header>
 
     <!-- PROGRESS SECTION -->
-    <section class="mx-8 mt-7">
+    <section class="mx-8 mt-6">
       <div class="rounded-xl border border-[#D0D0D0] bg-white overflow-hidden">
 
         <div class="px-5 py-7">
@@ -422,7 +429,7 @@
     </section>
 
     <!-- KPI SECTION -->
-    <section class="mx-8 mt-7 pb-8">
+    <section class="mx-8 mt-6 pb-8">
 
       <h3 class="mb-4 text-[15px] font-bold">
         KEY PERFORMANCE INDICATORS
@@ -828,19 +835,33 @@
 
 @if (isActiveTab === 'completed') {
 <main class="text-[#171717] overflow-x-auto">
+    <div class="mx-8 mt-8 text-gray-400">
+      <button
+        type="button"
+        (click)="myactivities()"
+        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+
+        My Activities
+      </button>
+    </div>
 
   <!-- PAGE HEADER -->
-  <header class="pt-6 mx-5">
-    <button
-      (click)="goToActivities()"
-      type="button"
-      class="mx-5 flex items-center gap-2 text-[15px] !text-[#807777] cursor-pointer hover:!text-gray-700 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m12 19-7-7 7-7" />
-        <path d="M19 12H5" />
-      </svg>
-      <span>My Activities</span>
-    </button>
+  <header class="mx-8 mt-8">
 
     <div class="mt-8 flex justify-between">
       <div>
@@ -866,7 +887,7 @@
   </header>
 
   <!-- PROGRESS -->
-  <section class="mx-5 mt-6">
+  <section class="mx-8 mt-6">
     <div class="bg-white border border-gray-300 rounded-xl overflow-hidden">
       <div class="px-5 py-7">
         <nz-steps [nzCurrent]="2">
@@ -890,7 +911,7 @@
   </section>
 
   <!-- KPI SECTION -->
-  <section class="mx-5 mt-6 pb-10">
+  <section class="mx-8 mt-6 pb-8">
 
     <h3 class="mb-4 px-2 text-[15px] font-bold">
       KEY PERFORMANCE INDICATORS

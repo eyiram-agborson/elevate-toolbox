@@ -1,42 +1,38 @@
 <main class="px-[24px] py-[20px] text-[15px] text-[#171717]">
 
-  <!-- Back -->
-  <div class="mt-5 mb-5">
+            <!-- BACK TO DASHBOARD -->
+            <div (click)="goBack()" class="flex items-center gap-[8px] mt-5 mb-5 cursor-pointer">
 
-    <button
-      type="button"
-      (click)="goBack()"
-      class="mb-[18px] flex w-fit cursor-pointer items-center gap-[9px] text-[16px] font-medium !text-[#807777] transition hover:!text-[#5BA2F7]"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M6 8L2 12L6 16" />
-        <path d="M2 12H22" />
-      </svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[#807777]"
+                >
+                    <path d="m12 19-7-7 7-7"/>
+                    <path d="M19 12H5"/>
+                </svg>
 
-      Dashboard
-    </button>
+                <span class="text-[15px] font-medium text-[#807777]">
+                    Dashboard
+                </span>
 
-  </div>
+            </div>
 
 
   <!-- Page title -->
-  <div class="mb-[24px]">
+  <div class="mb-[30px] flex flex-col ">
 
     <h1 class="text-[28px] font-semibold text-[#0F172A]">
       My Activities
     </h1>
-
-    <p class="mt-[6px] text-[15px] text-[#64748B]">
+    <p class=" text-[15px] text-[#64748B]">
       Current and previous performance cycles.
     </p>
 
