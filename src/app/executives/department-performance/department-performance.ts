@@ -23,4 +23,5 @@ export class DepartmentPerformance {
   goToDashboad(){
     this.router.navigate(["/dashboard"])
   }
+
 }
