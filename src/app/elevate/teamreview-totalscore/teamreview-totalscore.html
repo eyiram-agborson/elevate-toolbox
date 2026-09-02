@@ -1,0 +1,168 @@
+<div class="mt-10 mx-5 py-5">
+
+    <section>
+        <div>
+            <!-- BACK TO DASHBOARD -->
+            <div>
+                <span class="text-[#807777] text-[20px]">Team Reviews</span>
+            </div>
+            <div class="flex justify-between mt-5">
+                <div>
+                    <div class="flex items-center gap-5">
+                        <span class="text-[24px] font-medium">Sally Smith</span>
+                        <span class="bg-[#EEF2F6] px-5 py-0.5 text-[#3B82F6] rounded-[100px]">Submitted</span>
+                    </div>
+                    <p class="text-[#64748B]">Software Engineer • Client-Side Engineering</p>
+                </div>
+                <div class="border-2 border-[#2F87DA] rounded-[12px] px-4 py-">
+                    <span class="text-[13px]">TOTAL SCORE</span>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[40px] text-[#2F87DA]">0</span>
+                        <span>/ 100</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <h2>KEY PERFORMANCE INDICATORS</h2>
+
+        <div class="border border-[#DDDDDDDD] px-3 py-3 rounded-[8px] bg-white">
+
+        <!-- APLLICATION + RATING -->
+        <div class="flex justify-between items-centewr border-[#E4E7EC] border-b">
+            <div>
+                <span class="text-[18px] font-medium">Application Development & Delivery</span>
+                <p class="text-[#807777]">Weight 60%</p>
+            </div>
+
+            <div class="flex gap-4">
+                <div>
+                    <span>RATING</span>
+                    <P>—</P>
+                </div>
+                <div>
+                    <span>RATING</span>
+                    <P>—</P>
+                </div>
+                <div>
+                    <span>RATING</span>
+                    <P>—</P>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <!-- TARGET -->
+            <div class="mt-5 text-[#807777]">
+                <p class="text-[16px] font-medium">TARGET</p>
+                 <span>• Deliver 100% of assigned tasks within agreed sprint timelines.</span>
+                 <p>• Deliver 100% of assigned tasks within agreed sprint timelines.</p>
+            </div>
+
+            <!-- PERFORMANCE -->
+             <div class="mt-5">
+                <span class="font-medium">PERFORMANCE</span>
+                <P class="text-[#807777] text-[17px]">Self-assessed performance of — out of 5 against the agreed targets for the KPI.</P>
+             </div>
+        </div>
+
+        <div class="text-[#626262] font-medium  bg-[#F8F5F0] w-full px-3 py-4 border border-[#D9D9D9] rounded-[8px]">
+            <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round-icon lucide-users-round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+            <span >
+                STAFF COMMENTS
+            </span>
+            </div>
+            <div class="py-1">I delivered 2100% of assigned tasks within agreed sprint timelines.</div>
+        </div>
+
+        <!-- MANAGER REVIEW -->
+        <div class="bg-[#EEF9FF] h-full mt-5 mb-2">
+         <div class="px-4 py-3">
+            <div>
+                <span class="flex items-center gap-1  text-[#0084BD] text-[18px] font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square-icon lucide-messages-square"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></svg>
+                    MANAGER REVIEW
+                </span>
+                <div class="text-[#6E6E6E] font-medium mt-2">MANAGER RATING</div>
+            </div>
+
+            <!-- PAGINATION -->
+             <div class="mt-2 flex items-center gap-2">
+                 @for (page of pages; track page) {
+                <button
+                    type="button"
+                    (click)="currentPage = page"
+                    class="flex h-10 w-10 items-center justify-center rounded-md border-2 border-[#C0C0C0] text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                    [ngClass]="currentPage === page
+                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'">
+                    {{ page }}
+                </button>
+            }
+             </div>
+
+
+        <div class="mt-5 ">
+            <p class="text-[#6E6E6E] font-medium">MANAGER COMMENTS</p>
+           
+            <div class="flex items-center w-full px-3 h-[75px] border border-[#C0C0C0] bg-white text-[#000000] rounded-[8px] font-medium">
+                As how?
+            </div>
+            <!-- class="w-full px-3 py-4 border border-[#C0C0C0] bg-white text-[#000000] rounded-[8px]" -->
+            
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+    
+
+    <div class="flex justify-between items-center bg-white mt-5 px-3 w-full h-[86px] border border-[#E4E7EC] rounded-[8px]">
+        <div>
+            <span class="text-[18px] font-medium">Operational Efficiency & Code Quality</span>
+            <p class="text-[#807777]">Weight 15%</p>
+        </div>
+        <div class="flex items-center gap-5 text-[16px]">
+            <div>
+                <span>RATING</span>
+                <P class="text-center">—</P>
+            </div>
+            <div>
+                <span>PERFORMANCE</span>
+                <P class="text-center">—</P>
+            </div>
+            <div>
+                <span>SCORE</span>
+                <P class="text-center">—</P>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center bg-white mt-5 px-3 w-full h-[86px] border border-[#E4E7EC] rounded-[8px]">
+        <div>
+            <span class="text-[18px] font-medium">Learning & Development</span>
+            <p class="text-[#807777]">Weight 15%</p>
+        </div>
+        <div class="flex items-center gap-5 text-[16px]">
+            <div>
+                <span>RATING</span>
+                <P class="text-center">—</P>
+            </div>
+            <div>
+                <span>PERFORMANCE</span>
+                <P class="text-center">—</P>
+            </div>
+            <div>
+                <span>SCORE</span>
+                <P class="text-center">—</P>
+            </div>
+        </div>
+    </div>
+
+
+</div>

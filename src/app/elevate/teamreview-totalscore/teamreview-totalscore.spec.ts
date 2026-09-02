@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerPreviouscyle } from './manager-previouscyle';
+import { TeamreviewTotalscore } from './teamreview-totalscore';
 
-describe('ManagerPreviouscyle', () => {
-  let component: ManagerPreviouscyle;
-  let fixture: ComponentFixture<ManagerPreviouscyle>;
+describe('TeamreviewTotalscore', () => {
+  let component: TeamreviewTotalscore;
+  let fixture: ComponentFixture<TeamreviewTotalscore>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ManagerPreviouscyle],
+      imports: [TeamreviewTotalscore],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ManagerPreviouscyle);
+    fixture = TestBed.createComponent(TeamreviewTotalscore);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
