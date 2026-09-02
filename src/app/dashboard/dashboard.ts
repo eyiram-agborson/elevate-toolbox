@@ -57,4 +57,19 @@ reviewTargetChanges(): void {
 
   this.router.navigate(['/set-target']);
 }
+
+//executive dashboard
+
+goToDepartmentPerformance() {
+  this.router.navigate(['executives/department-performance']);
+}
+
+goToManagerPerformance() {
+  this.router.navigate(['executives/manager-performance']);
+}
+
+goToEmployeePerformance() {
+  this.router.navigate(['executives/employee-performance']);
+}
+
 }
