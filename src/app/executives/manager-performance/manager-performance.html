@@ -1,9 +1,9 @@
 <!-- CTO MANAGERS -->
 <main>
     <div class="min-h-screen bg-[#F7F8FA]">
-        <div class="w-full px-[30px] py-[24px]">
+        <div class="w-full px-[30px] py-[40px]">
             <!-- BACK TO DASHBOARD -->
-            <button type="button" class="mb-[18px] flex cursor-pointer items-center gap-[8px] text-[15px] text-[#64748B] hover:text-[#4D9BF6]">
+            <button type="button" class="pb-[18px] flex cursor-pointer items-center gap-[8px] text-[16px] font-medium text-[#64748B] hover:!text-[#4D9BF6]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M6 8L2 12L6 16"/>
                     <path d="M2 12H22"/>
@@ -34,7 +34,7 @@
                             Submitted
                         </span>
                     </div>
-                    <span class="mt-[4px] block text-[15px] text-gray-500">
+                    <span class="mt-[4px] block text-[14px] text-gray-500">
                         Software Engineer • Technology
                     </span>
                 </div>
@@ -50,13 +50,13 @@
                             <span class="text-[26px] font-medium leading-none text-[#4D9BF6]">
                                 0
                             </span>
-                            <span class="ml-[4px] text-[12px] font-medium text-[#111827]">
+                            <span class="ml-[4px] text-[15px] font-medium text-[#111827]">
                                 /100
                             </span>
                         </div>
                     </div>
                     <!-- REVIEW MANAGER -->
-                    <button type="button" class="button-press flex items-center gap-[10px] rounded-[8px] bg-[#5BA2F7] px-[16px] py-[10px] text-[15px] font-medium !text-white shadow-sm">
+                    <button (click)="goToManagerDetails()" type="button" class="button-press flex items-center gap-[10px] rounded-[8px] bg-[#5BA2F7] px-[16px] py-[10px] text-[15px] font-medium !text-white shadow-sm">
                         <span class="!text-white">Review Manager</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="!text-white">
                             <path d="M18 8L22 12L18 16"/>
@@ -68,32 +68,14 @@
 
             <!-- MANAGER PERFORMANCE -->
             <section class="mb-[18px]">
-                <span class="text-[15px] uppercase text-gray-500">
+                <span class="text-[15px] uppercase text-gray-500 font-semibold">
                     Manager Performance
                 </span>
 
                 <div class="mt-[8px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
                     <!-- TEAM SCORE -->
                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                        <span class="text-[15px] font-medium text-[#111827]">
-                            Application Development &amp; Delivery
-                        </span>
-
-                        <div class="flex w-[205px] items-center justify-end gap-[30px]">
-                            <div class="w-[80px] text-center">
-                                <span class="text-[12px] uppercase text-[#64748B]">
-                                    Team Score
-                                </span>
-                                <p class="mt-[1px] text-[15px] text-[#111827]">
-                                    54
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PERFORMANCE ROW 1 -->
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                        <span class="text-[15px] text-[#111827]">
+                        <span class="text-[15px] font-semibold text-[#111827]">
                             Application Development &amp; Delivery
                         </span>
 
@@ -107,7 +89,34 @@
                                 </p>
                             </div>
 
-                            <div class="w-[100px] text-center">
+                            <div class="w-[120px] text-center">
+                                <span class="text-[12px] uppercase text-[#64748B]">
+                                    Executive Rating
+                                </span>
+                                <p class="mt-[1px] text-[15px] text-[#111827]">
+                                    —
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PERFORMANCE ROW 1 -->
+                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
+                        <span class="text-[15px] font-semibold text-[#111827]">
+                            Operational Efficiency &amp; Code Quality
+                        </span>
+
+                        <div class="flex items-center gap-[30px]">
+                            <div class="w-[80px] text-center">
+                                <span class="text-[12px] uppercase text-[#64748B]">
+                                    Self-Rating
+                                </span>
+                                <p class="mt-[1px] text-[15px] text-[#111827]">
+                                    4
+                                </p>
+                            </div>
+
+                            <div class="w-[120px] text-center">
                                 <span class="text-[12px] uppercase text-[#64748B]">
                                     Executive Rating
                                 </span>
@@ -120,8 +129,8 @@
 
                     <!-- PERFORMANCE ROW 2 -->
                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                        <span class="text-[15px] text-[#111827]">
-                            Application Development &amp; Delivery
+                        <span class="text-[15px] font-semibold text-[#111827]">
+                            Learning &amp; Development
                         </span>
 
                         <div class="flex items-center gap-[30px]">
@@ -134,7 +143,7 @@
                                 </p>
                             </div>
 
-                            <div class="w-[100px] text-center">
+                            <div class="w-[120px] text-center">
                                 <span class="text-[12px] uppercase text-[#64748B]">
                                     Executive Rating
                                 </span>
@@ -147,7 +156,7 @@
 
                     <!-- PERFORMANCE ROW 3 -->
                     <div class="flex items-center justify-between px-[18px] py-[9px]">
-                        <span class="text-[15px] text-[#111827]">
+                        <span class="text-[15px] font-semibold text-[#111827]">
                             Application Development &amp; Delivery
                         </span>
 
@@ -161,7 +170,7 @@
                                 </p>
                             </div>
 
-                            <div class="w-[100px] text-center">
+                            <div class="w-[120px] text-center">
                                 <span class="text-[12px] uppercase text-[#64748B]">
                                     Executive Rating
                                 </span>
@@ -181,7 +190,7 @@
                         TEAM PERFORMANCE
                     </span>
                     <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">
-                        80<span class="text-[21px]">/100</span>
+                        80<span class="text-[25px]">/100</span>
                     </div>
                 </div>
 
@@ -199,7 +208,7 @@
                         SELF-REVIEWS COMPLETED
                     </span>
                     <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">
-                        22<span class="text-[21px]">/24</span>
+                        22<span class="text-[25px]">/24</span>
                     </div>
                 </div>
 
@@ -208,14 +217,14 @@
                         MANAGER REVIEWS COMPLETED
                     </span>
                     <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">
-                        16<span class="text-[21px]">/24</span>
+                        16<span class="text-[25px]">/24</span>
                     </div>
                 </div>
             </div>
 
             <!-- TEAM MEMBERS -->
             <section class="pb-[40px]">
-                <span class="text-[15px] uppercase text-gray-500">
+                <span class="text-[15px] font-semibold uppercase text-gray-500">
                     Team Members
                 </span>
 
