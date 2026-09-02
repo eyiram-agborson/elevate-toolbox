@@ -16,8 +16,8 @@ export class ManagerDetails {
 
   constructor(private router: Router) {}
 
-  goToTeamReviews() {
-    this.router.navigate(['/team-review']);
-  }
+goToManagerPerformance() {
+  this.router.navigate(['/executives/manager-performance']);
 
+}
 }

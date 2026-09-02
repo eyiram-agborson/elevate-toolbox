@@ -11,12 +11,17 @@ export class ManagerPerformance {
 
   constructor(private router: Router) {}
 
+  goToDepartmentPerformance() {
+    this.router.navigate(['executives/department-performance']);
+  }
+
+  goToManagerDetails() {
+    this.router.navigate(['executives/manager-performance/:id']);
+  }
+
   goToEmployeePerformance() {
     this.router.navigate(['executives/employee-performance']);
   }
 
-goToManagerDetails() {
-  this.router.navigate(['executives/manager-details']);
-}
 
 }
