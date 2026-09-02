@@ -28,7 +28,7 @@
       <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
       @if (roleService.hasRole(['executive'])) {
   <a
-    routerLink="/department-performance"
+    routerLink="executives/department-performance"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
@@ -37,7 +37,7 @@
   </a>
 
   <a
-    routerLink="/manager-performance"
+    routerLink="executives/manager-performance"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"
@@ -46,7 +46,7 @@
   </a>
 
    <a
-    routerLink="/employee-performance"
+    routerLink="executives/employee-performance"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
     class="nav-link"

@@ -524,7 +524,7 @@
             <section class="mt-[28px]">
                 <div class="flex items-center justify-between">
                     <span class="text-[15px] uppercase text-gray-500">Assigned Departments</span>
-                    <a routerLink="/hr/departments" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</a>
+                    <button (click)="goToDepartmentPerformance()" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</button>
                 </div>
 
                 <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
@@ -575,6 +575,7 @@
                 </div>
             </section>
 
+            <!-- MANAGERS -->
             <section class="mt-[28px] pb-[40px]">
                 <span class="text-[15px] uppercase text-gray-500">Managers</span>
 
@@ -590,7 +591,7 @@
                         <div class="flex items-center gap-[30px]">
                             <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
                     </div>
 
@@ -605,7 +606,7 @@
                         <div class="flex items-center gap-[30px]">
                             <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
                     </div>
 
@@ -620,7 +621,7 @@
                         <div class="flex items-center gap-[30px]">
                             <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
                             <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
                     </div>
                 </div>

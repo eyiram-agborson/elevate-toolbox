@@ -84,6 +84,18 @@ export const routes: Routes = [
       {
         path: 'hr/validation', loadComponent: ()=> import('./hr/validation/validation').then(m => m.Validation),
         canActivate: [roleGuard], data: {role: 'hr'}
+      },
+      {
+        path: 'executives/department-performance', loadComponent: () => import('./executives/department-performance/department-performance').then(m =>m.DepartmentPerformance),
+        canActivate: [roleGuard], data: {role: 'executive'}
+      },
+      {
+        path: 'executives/employee-performance', loadComponent: () => import('./executives/employee-performance/employee-performance').then(m => m.EmployeePerformance),
+        canActivate: [roleGuard], data: {role: 'executive'}
+      },
+      {
+        path: 'executives/manager-performance', loadComponent: () => import('./executives/manager-performance/manager-performance').then(m => m.ManagerPerformance),
+        canActivate: [roleGuard], data: {role: 'executive'}
       }
     ]
   },
