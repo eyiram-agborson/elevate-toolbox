@@ -62,7 +62,7 @@
     [routerLink]="
       roleService.hasRole('employee')
         ? '/elevate/user-elevate'
-        : '/elevate/manager-elevate' 
+        : '/elevate/manager-elevate'
     "
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: false }"
@@ -70,7 +70,6 @@
   >
     Elevate
   </a>
-  
 
   <a
     routerLink="/activities-layout"
