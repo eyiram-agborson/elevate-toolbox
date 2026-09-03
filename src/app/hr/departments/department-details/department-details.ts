@@ -14,9 +14,9 @@ export class DepartmentDetails implements OnInit {
 
   // DEMO (TESTING THE HISTORICAL ROUTE)
   
-  // selectedCycle = 'Q2'; demo purposes
+//   selectedCycle = 'Q2'; //demo purposes
 
- // ngOnInit(): void {
+//  ngOnInit(): void {
 //   this.selectedCycle = 'Q2';
 
 //   this.isHistoricalCycle =

@@ -29,7 +29,7 @@ export class DepartmentPerformance {
   }
 
   goToManagers() {
-    this.router.navigate(['/manager-performance']);
+    this.router.navigate(['executives/manager-performance']);
   }
 
   goToDashboad() {
