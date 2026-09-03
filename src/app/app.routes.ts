@@ -96,6 +96,10 @@ export const routes: Routes = [
       {
         path: 'executives/manager-performance', loadComponent: () => import('./executives/manager-performance/manager-performance').then(m => m.ManagerPerformance),
         canActivate: [roleGuard], data: {role: 'executive'}
+      },
+      {
+        path: 'executives/manager-performance/:id', loadComponent: () => import('./executives/manager-details/manager-details').then(m => m.ManagerDetails),
+        canActivate: [roleGuard], data: {role: 'executive'}
       }
     ]
   },
