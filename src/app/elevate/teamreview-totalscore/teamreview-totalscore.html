@@ -1,47 +1,74 @@
-<div class="mx-5 mt-10 pb-8">
+<div class="mx-5 mt-8 pb-8">
 
     <!-- EMPLOYEE HEADER -->
     <section>
-        <div (click)="goToTeamReviews()" class="flex items-center text-[16px] font-medium text-[#64748B]">
+
+        <!-- BACK TO TEAM REVIEWS -->
+        <button
+            type="button"
+            (click)="goToTeamReviews()"
+            class="flex items-center text-[16px] font-medium text-[#64748B] hover:text-[#111827]"
+        >
             <span>←</span>
             <span class="ml-2">Team Review</span>
-        </div>
+        </button>
 
-        <div class="mt-5 flex items-start justify-between">
+        <!-- EMPLOYEE INFORMATION + TOTAL SCORE -->
+        <div class="mt-5 flex items-start justify-between gap-6">
+
             <div>
                 <div class="flex items-center gap-3">
+
                     <span class="text-[24px] font-semibold text-[#111827]">
                         Sally Smith
                     </span>
 
-                    <span class="rounded-full bg-[#EEF6FF] px-3 py-1 text-[15px] font-medium text-[#3B82F6]">
-                        Submitted
-                    </span>
+                    <!-- SUBMITTED -->
+                    @if (!isReadOnly) {
+                        <span class="rounded-full bg-[#EEF6FF] px-3 py-1 text-[15px] font-medium text-[#3B82F6]">
+                            Submitted
+                        </span>
+                    }
+
+                    <!-- REVIEWED -->
+                    @if (isReadOnly) {
+                        <span class="flex items-center rounded-full bg-[#ECFDF5] px-3 py-1 text-[15px] font-medium text-[#008A63]">
+                            <span class="mr-1 text-[11px]">●</span>
+                            Reviewed
+                        </span>
+                    }
+
                 </div>
 
-                <p class="mt-1 text-[15px] text-[#64748B]">
+                <p class="m-0 mt-1 text-[15px] text-[#64748B]">
                     Software Engineer • Client-Side Engineering
                 </p>
             </div>
 
             <!-- TOTAL SCORE -->
             <div class="flex min-w-[115px] flex-col items-center rounded-[12px] border-2 border-[#3B91F6] bg-white px-4 py-3">
+
                 <span class="text-[13px] font-medium text-[#111827]">
                     TOTAL SCORE
                 </span>
 
                 <div class="mt-1 flex items-baseline gap-1">
+
                     <span class="text-[38px] leading-none text-[#2F87DA]">
-                        0
+                        {{ getTotalScore() }}
                     </span>
 
                     <span class="text-[15px] text-[#111827]">
                         / 100
                     </span>
+
                 </div>
             </div>
+
         </div>
+
     </section>
+
 
     <!-- KEY PERFORMANCE INDICATORS -->
     <section class="mt-7">
@@ -52,487 +79,278 @@
             </span>
         </div>
 
+
         <!-- ====================================================== -->
-        <!-- KPI 1 -->
+        <!-- KPI CARDS -->
         <!-- ====================================================== -->
 
-        <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
+        @for (kpi of kpis; track kpi.title) {
 
-            <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
+            <div
+                class="rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]"
+                [class.mt-[18px]]="$index > 0"
+            >
 
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
-                        Application Development &amp; Delivery
-                    </span>
+                <!-- KPI HEADER -->
+                <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
 
-                    <p class="mt-1 text-[15px] text-[#807777]">
-                        Weight: 60%
-                    </p>
-                </div>
-
-                <!-- RATINGS -->
-                <div class="flex items-start gap-[28px]">
-
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            RATING
+                    <!-- KPI NAME -->
+                    <div>
+                        <span class="text-[16px] font-semibold text-[#111827]">
+                            {{ kpi.title }}
                         </span>
 
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
+                        <p class="m-0 mt-1 text-[15px] text-[#807777]">
+                            Weight: {{ kpi.weight }}%
                         </p>
                     </div>
 
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            PERFORMANCE
-                        </span>
 
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
+                    <!-- RATING / PERFORMANCE / SCORE -->
+                    <div class="flex items-start gap-[28px]">
+
+                        <!-- RATING -->
+                        <div class="text-center">
+
+                            <span class="text-[13px] font-medium text-[#64748B]">
+                                RATING
+                            </span>
+
+                            <p class="m-0 mt-1 text-[17px] text-[#111827]">
+                                @if (isReadOnly) {
+                                    {{ kpi.rating }}
+                                } @else {
+                                    —
+                                }
+                            </p>
+
+                        </div>
+
+
+                        <!-- PERFORMANCE -->
+                        <div class="text-center">
+
+                            <span class="text-[13px] font-medium text-[#64748B]">
+                                PERFORMANCE
+                            </span>
+
+                            <p class="m-0 mt-1 text-[17px] text-[#111827]">
+                                @if (isReadOnly) {
+                                    {{ kpi.performance }}
+                                } @else {
+                                    —
+                                }
+                            </p>
+
+                        </div>
+
+
+                        <!-- SCORE -->
+                        <div class="text-center">
+
+                            <span class="text-[13px] font-medium text-[#64748B]">
+                                SCORE
+                            </span>
+
+                            <p class="m-0 mt-1 text-[17px] font-medium text-[#111827]">
+                                @if (isReadOnly) {
+                                    {{ kpi.score }}
+                                } @else {
+                                    —
+                                }
+                            </p>
+
+                        </div>
+
+
+                        <!-- COLLAPSE / EXPAND ICON -->
+                        <div class="pt-[6px] text-[18px] text-[#111827]">
+                            ↑
+                        </div>
+
                     </div>
 
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            SCORE
-                        </span>
-
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
-                    </div>
-
-                    <div class="pt-[6px] text-[18px] text-[#111827]">
-                        ↑
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- TARGET -->
-            <div class="pt-[18px]">
 
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Target
-                </p>
+                <!-- TARGET -->
+                <div class="pt-[18px]">
 
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
-                    <p>
-                        • Deliver 100% of assigned tasks within agreed sprint timelines.
+                    <p class="m-0 text-[15px] font-medium uppercase text-[#111827]">
+                        Target
                     </p>
 
-                    <p>
-                        • Maintain agreed quality standards across all deliverables.
-                    </p>
-                </div>
+                    <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
 
-            </div>
-
-            <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Performance
-                </p>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
-                    Self-assessed performance of — out of 5 against the agreed targets for this KPI.
-                </p>
-
-            </div>
-
-            <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
-
-                    <span>
-                        STAFF COMMENTS
-                    </span>
-                </div>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
-                    I delivered 100% of assigned tasks within agreed sprint timelines.
-                </p>
-
-            </div>
-
-            <!-- MANAGER REVIEW -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
-
-                    <span>
-                        MANAGER REVIEW
-                    </span>
-                </div>
-
-                <!-- MANAGER RATING -->
-                <div class="mt-[16px]">
-
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Rating
-                    </p>
-
-                    <div class="mt-2 flex items-center gap-2">
-
-                        @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
-                                [ngClass]="currentPage === page
-                                    ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
-                                {{ page }}
-                            </button>
+                        @for (target of kpi.targets; track target) {
+                            <p class="m-0">
+                                • {{ target }}
+                            </p>
                         }
 
                     </div>
 
                 </div>
 
-                <!-- MANAGER COMMENTS -->
-                <div class="mt-[16px]">
 
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Comments
+                <!-- PERFORMANCE -->
+                <div class="mt-[20px]">
+
+                    <p class="m-0 text-[15px] font-medium uppercase text-[#111827]">
+                        Performance
                     </p>
 
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
-                        As how?
-                    </div>
+                    <p class="m-0 mt-2 text-[15px] leading-6 text-[#807777]">
+
+                        @if (isReadOnly) {
+                            Self-assessed performance of
+                            <span class="font-medium text-[#111827]">
+                                {{ kpi.performance }}
+                            </span>
+                            out of 5 against the agreed targets for this KPI.
+                        } @else {
+                            Self-assessed performance of — out of 5 against the agreed targets for this KPI.
+                        }
+
+                    </p>
 
                 </div>
 
-            </div>
 
-        </div>
+                <!-- STAFF COMMENTS -->
+                <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
 
+                    <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
 
-        <!-- ====================================================== -->
-        <!-- KPI 2 -->
-        <!-- ====================================================== -->
+                        <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
 
-        <div class="mt-[18px] rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
-
-            <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
-
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
-                        Operational Efficiency &amp; Code Quality
-                    </span>
-
-                    <p class="mt-1 text-[15px] text-[#807777]">
-                        Weight: 20%
-                    </p>
-                </div>
-
-                <div class="flex items-start gap-[28px]">
-
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            RATING
+                        <span>
+                            STAFF COMMENTS
                         </span>
 
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
                     </div>
 
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            PERFORMANCE
+                    <p class="m-0 mt-2 text-[15px] leading-6 text-[#626262]">
+                        {{ kpi.staffComments }}
+                    </p>
+
+                </div>
+
+
+                <!-- MANAGER REVIEW -->
+                <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
+
+                    <!-- MANAGER REVIEW HEADER -->
+                    <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
+
+                        <i class="fa-regular fa-comments text-[17px]"></i>
+
+                        <span>
+                            MANAGER REVIEW
                         </span>
 
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
+                    </div>
+
+
+                    <!-- MANAGER RATING -->
+                    <div class="mt-[16px]">
+
+                        <p class="m-0 text-[13px] font-medium uppercase text-[#6E6E6E]">
+                            Manager Rating
                         </p>
+
+                        <div class="mt-2 flex items-center gap-2">
+
+                            @for (page of pages; track page) {
+
+                                <button
+                                    type="button"
+                                    [disabled]="isReadOnly"
+                                    (click)="selectRating(kpi, page)"
+                                    class="button-press flex h-[30px] w-[30px] items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors disabled:cursor-default"
+                                    [ngClass]="kpi.rating === page
+                                        ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
+                                        : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA] disabled:hover:border-[#D0D5DD] disabled:hover:text-[#64748B]'"
+                                >
+                                    {{ page }}
+                                </button>
+
+                            }
+
+                        </div>
+
                     </div>
 
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            SCORE
-                        </span>
 
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
+                    <!-- MANAGER COMMENTS -->
+                    <div class="mt-[16px]">
+
+                        <p class="m-0 text-[13px] font-medium uppercase text-[#6E6E6E]">
+                            Manager Comments
                         </p>
-                    </div>
 
-                    <div class="pt-[6px] text-[18px] text-[#111827]">
-                        ↑
-                    </div>
 
-                </div>
-            </div>
+                        <!-- EDITABLE SUBMITTED VERSION -->
+                        @if (!isReadOnly) {
 
-            <!-- TARGET -->
-            <div class="pt-[18px]">
+                            <textarea
+                                [(ngModel)]="kpi.managerComments"
+                                placeholder="Enter your comments..."
+                                class="mt-2 min-h-[75px] w-full resize-none rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10"
+                            ></textarea>
 
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Target
-                </p>
+                        }
 
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
-                    <p>
-                        • Maintain agreed code quality standards across all deliverables.
-                    </p>
 
-                    <p>
-                        • Complete assigned development tasks within agreed timelines.
-                    </p>
-                </div>
+                        <!-- READ-ONLY REVIEWED VERSION -->
+                        @if (isReadOnly) {
 
-            </div>
+                            <textarea
+                                [value]="kpi.managerComments"
+                                disabled
+                                class="mt-2 min-h-[75px] w-full resize-none rounded-[8px] border border-[#C0C0C0] bg-[#F5F5F5] px-[12px] py-[12px] text-[15px] text-[#626262] disabled:cursor-default disabled:opacity-100"
+                            ></textarea>
 
-            <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Performance
-                </p>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
-                    Self-assessed performance of — out of 5 against the agreed targets for this KPI.
-                </p>
-
-            </div>
-
-            <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
-
-                    <span>
-                        STAFF COMMENTS
-                    </span>
-                </div>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
-                    Employee comments will appear here.
-                </p>
-
-            </div>
-
-            <!-- MANAGER REVIEW -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
-
-                    <span>
-                        MANAGER REVIEW
-                    </span>
-                </div>
-
-                <div class="mt-[16px]">
-
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Rating
-                    </p>
-
-                    <div class="mt-2 flex items-center gap-2">
-
-                        @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
-                                [ngClass]="currentPage === page
-                                    ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
-                                {{ page }}
-                            </button>
                         }
 
                     </div>
 
                 </div>
 
-                <div class="mt-[16px]">
-
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Comments
-                    </p>
-
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
-                        Manager comments will appear here.
-                    </div>
-
-                </div>
-
             </div>
 
-        </div>
+        }
 
 
         <!-- ====================================================== -->
-        <!-- KPI 3 -->
+        <!-- REVIEW ACTIONS -->
+        <!-- ONLY SHOWN FOR SUBMITTED REVIEWS -->
         <!-- ====================================================== -->
 
-        <div class="mt-[18px] rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
+        @if (!isReadOnly) {
 
-            <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
+            <div class="mt-5 flex items-center justify-end gap-3 border-t border-[#E1E4E8] pt-4">
 
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
-                        Learning &amp; Development
-                    </span>
+                <button
+                    type="button"
+                    (click)="saveDraft()"
+                    class="button-press rounded-[8px] border border-[#D0D5DD] bg-white px-5 py-2.5 text-[15px] font-medium text-[#344054] hover:bg-[#F8FAFC]"
+                >
+                    Save Draft
+                </button>
 
-                    <p class="mt-1 text-[15px] text-[#807777]">
-                        Weight: 20%
-                    </p>
-                </div>
-
-                <div class="flex items-start gap-[28px]">
-
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            RATING
-                        </span>
-
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
-                    </div>
-
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            PERFORMANCE
-                        </span>
-
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
-                    </div>
-
-                    <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
-                            SCORE
-                        </span>
-
-                        <p class="mt-1 text-[17px] text-[#111827]">
-                            —
-                        </p>
-                    </div>
-
-                    <div class="pt-[6px] text-[18px] text-[#111827]">
-                        ↑
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- TARGET -->
-            <div class="pt-[18px]">
-
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Target
-                </p>
-
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
-                    <p>
-                        • Complete relevant professional development activities during the review cycle.
-                    </p>
-
-                    <p>
-                        • Apply newly acquired skills to assigned responsibilities.
-                    </p>
-                </div>
+                <button
+                    type="button"
+                    (click)="submitReview()"
+                    class="button-press rounded-[8px] bg-[#5AA4FF] px-7 py-2.5 text-[15px] font-medium !text-white hover:bg-[#428FEA]"
+                >
+                    Submit Review
+                </button>
 
             </div>
 
-            <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
-                    Performance
-                </p>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
-                    Self-assessed performance of — out of 5 against the agreed targets for this KPI.
-                </p>
-
-            </div>
-
-            <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
-
-                    <span>
-                        STAFF COMMENTS
-                    </span>
-                </div>
-
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
-                    Employee comments will appear here.
-                </p>
-
-            </div>
-
-            <!-- MANAGER REVIEW -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
-
-                    <span>
-                        MANAGER REVIEW
-                    </span>
-                </div>
-
-                <div class="mt-[16px]">
-
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Rating
-                    </p>
-
-                    <div class="mt-2 flex items-center gap-2">
-
-                        @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
-                                [ngClass]="currentPage === page
-                                    ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
-                                {{ page }}
-                            </button>
-                        }
-
-                    </div>
-
-                </div>
-
-                <div class="mt-[16px]">
-
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                        Manager Comments
-                    </p>
-
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
-                        Manager comments will appear here.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        }
 
     </section>
+
 </div>

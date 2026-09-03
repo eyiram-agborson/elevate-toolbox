@@ -21,16 +21,13 @@
                     @if (roleService.hasRole(['manager'])) {
                         <div class="relative">
 
-                            <button
-                                type="button"
-                                (click)="toggleNotifications()"
+                            <button type="button" (click)="toggleNotifications()"
                                 class="button-press relative flex h-[44px] w-[44px] items-center justify-center rounded-[8px] border border-[#E1E4E8] bg-white text-[#64748B] transition hover:bg-[#F8FAFC] hover:text-[#3F91DF]"
                             >
                                 <i class="fa-regular fa-bell text-[18px]"></i>
 
                                 @if (hasTargetChange) {
-                                    <span
-                                        class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white"
+                                    <span class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white"
                                     >
                                         1
                                     </span>
