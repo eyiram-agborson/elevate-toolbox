@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { Router } from '@angular/router';
 import {
   ChartComponent,
