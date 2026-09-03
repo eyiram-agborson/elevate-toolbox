@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-performance',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './employee-performance.html',
   styleUrl: './employee-performance.css',
 })
-export class EmployeePerformance {}
+export class EmployeePerformance {
+
+   constructor(private router: Router){}
+
+   goToDashboad(){
+    this.router.navigate(["/dashboard"])
+  }
+}
