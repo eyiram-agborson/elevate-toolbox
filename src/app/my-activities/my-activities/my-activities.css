@@ -1,0 +1,86 @@
+
+/* STEP CSS */
+::ng-deep .completed-step .ant-steps-item-icon {
+  border-color: red !important;
+  background-color: red !important;
+}
+
+::ng-deep .completed-step .ant-steps-icon {
+  color: white !important;
+}
+
+/* ::ng-deep .completed-step .ant-steps-item-title {
+  color: red !important;
+} */
+
+
+
+
+ /* ```scss */
+.target-segmented {
+  width: 35%;
+  display: block;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1px solid #c0c0c0;
+}
+
+::ng-deep .target-segmented .ant-segmented-group {
+  width: 100%;
+  display: flex;
+}
+
+::ng-deep .target-segmented .ant-segmented-item {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  border-radius: 9999px;
+  color: #919191;
+  font-weight: 500;
+}
+
+/* Only the selected segment gets the blue background */
+::ng-deep .target-segmented .ant-segmented-item-selected {
+  background: #2f87da !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(47, 135, 218, 0.2);
+}
+
+/* Don't make an unselected segment look selected on hover */
+::ng-deep .target-segmented .ant-segmented-item:hover {
+  color: #919191;
+}
+
+/* Keep selected segment blue when hovered */
+::ng-deep .target-segmented .ant-segmented-item-selected:hover {
+  background: #2f87da !important;
+  color: #ffffff !important;
+}
+
+/* Completed selected state */
+::ng-deep .target-segmented .ant-segmented-item.completed-segment.ant-segmented-item-selected {
+  background: #57ec00 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep .target-segmented .ant-segmented-item.completed-segment.ant-segmented-item-selected:hover {
+  background: #57ec00 !important;
+  color: #ffffff !important;
+}
+
+.manager-comments-collapse {
+    border: 1px solid #dceaf7;
+    border-radius: 10px;
+    background: #f5faff;
+    overflow: hidden;
+}
+
+.staff-comments-collapse {
+    margin-bottom: 10px;
+    border: 1px solid #e7e3de;
+    border-radius: 10px;
+    background: #f8f6f2;
+    overflow: hidden;
+}
