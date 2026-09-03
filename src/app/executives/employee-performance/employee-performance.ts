@@ -23,11 +23,9 @@ export class EmployeePerformance {
 
   showEmployeeModal = false;
 
-  isStatusNotSubmitted = true;
-
+  // isStatusNotSubmitted = true;
 
 openEmployeeDetails(employeeName: string): void {
-  // later this will select the actual employee from your API data
   this.showEmployeeModal = true;
 }
 
