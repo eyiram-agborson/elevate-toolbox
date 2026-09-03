@@ -32,7 +32,7 @@ export const routes: Routes = [
      children: [
     { path: '', redirectTo: 'manager-elevate', pathMatch: 'full'},
     { path: 'user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate)},
-    { path: 'manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate)}
+    { path: 'manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate)},
   ]
 },
 
@@ -48,7 +48,7 @@ export const routes: Routes = [
 
       // {path: "executivepage-layout", component: ExecutivepageLayout,
       // children:[
-        {path: "", redirectTo: "department-performance", pathMatch: "full"},
+        // {path: "", redirectTo: "department-performance", pathMatch: "full"},
         {path: "department-performance", loadComponent: () => import ('./executives/department-performance/department-performance').then(m => m.DepartmentPerformance)},
         {path: "manager-performance", component: ManagerPerformance },
     //   ]
