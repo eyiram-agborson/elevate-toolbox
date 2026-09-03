@@ -1,229 +1,693 @@
- <!-- <div class="mt-15 w-full overflow-x- auto hidden md:mx-6"> -->
-<div class="mx-2 md:mx-5 mt-10 overflow-auto">
-  <!-- HEADER -->
-  <section class="w-full">
+<div class="min-h-screen bg-[#F5F7FA]">
 
-    <div class="hover:text-gray-500">
-      <button
-        (click)="goToDashboad()"
-        class="flex items-center gap-1 text-[14px] text-[#807777] cursor-pointer hover:text-gray-700"
-      >
-       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left text-[#6E6E6E] hover:text-gray-500"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Dashboard
-      </button>
+        <!-- head -->
+         <div class="mt-10 ml-10 text-[#807777]">
+            <!-- Back to dashboard -->
+            <div class="flex gap-2">
+             <svg xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                class="lucide lucide-move-left-icon lucide-move-left">
+                <path d="M6 8L2 12L6 16"/>
+                <path d="M2 12H22"/>
+              </svg>
+                <button (click)="goToManagerPerformance()" class="!text-[16px] font-medium text-[#807777] hover:!text-[#000000]">
+                    Managers
+                </button>
+            </div>
+         </div>
+
+  <!-- PAGE HEADER -->
+  <section class="px-8 pt-8 pb-5">
+    <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+      <div>
+        <h1 class="text-[28px] font-semibold leading-tight !text-[#102A43]">
+          Employee Performance
+        </h1>
+
+        <p class="mt-2 text-[15px] !text-[#60758F]">
+          Employee reviews for your assigned department.
+        </p>
+      </div>
+
+
+      <!-- SEARCH + STATUS FILTER -->
+      <div class="flex w-full flex-col gap-2 sm:flex-row md:w-auto">
+
+        <div class="relative w-full sm:w-[300px]">
+          <i
+            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] !text-[#7C91A8]"
+          ></i>
+
+          <input
+            type="text"
+            placeholder="Search employees..."
+            class="h-[50px] w-full rounded-[10px] border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB]"
+          />
+        </div>
+
+
+        <div class="employee-filter relative">
+          <select
+            class="employee-performance-select h-[50px] w-full appearance-none rounded-[10px] border border-[#D8DEE6] bg-white px-4 pr-11 text-[15px] !text-[#102A43] outline-none focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB]"
+            aria-label="Filter employees by submission status"
+          >
+            <option value="all">All Employees</option>
+            <option value="submitted">Submitted</option>
+            <option value="not-submitted">Not Submitted</option>
+          </select>
+
+          <i
+            class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[14px] !text-[#60758F]"
+          ></i>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- EMPLOYEE TABLE -->
+  <section class="px-8 pb-8">
+
+    <div class="mb-3 text-[15px] font-medium uppercase !text-[#60758F]">
+      Employees (24)
     </div>
 
-    <div class="md:flex justify-between items-center mt-6 whitespace-nowrap">
-        <div>
-            <span class="md:!text-[32px] font-semibold">
-            Employee Performance
-            </span>
+    <div class="overflow-x-auto rounded-xl border border-[#DCE1E6] bg-white">
 
-            <p class="text-[13px] text-[#807777]">
-            Employee reviews for your assinged department.
-            </p>
-        </div>
-        <!-- Search input -->
-        <div class="flex gap-4">
-            <div class="flex items-center">
-                <div class="relative left-5 md:left-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-searc text-[#667085]"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-                </div> 
-                    <input
-                    type="text"
-                    placeholder="Search employees..."
-                    class="text-[#667085] !text-[18px] border border-[#CBCBCB] md:w-[324px] h-[54px] px-5 md:px-11 py-2 rounded-[12px] focus:outline focus:border-[#3B82F6] focus:border-[#3B82F6] "
-                    >
-            </div>
-            <!-- Filter button -->
-            <button class="flex items-center justify-center border border-[#CBCBCB] w-[47px] h-[54px] rounded-[12px] cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal-icon lucide-sliders-horizontal"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg>
-            </button>
-        </div>
+      <table class="w-full min-w-[850px] border-collapse">
+
+        <!-- TABLE HEADER -->
+        <thead>
+          <tr class="border-b border-[#DCE1E6] text-left">
+
+            <th class="px-5 py-4 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+              Employee
+            </th>
+
+            <th class="px-5 py-4 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+              Job Role
+            </th>
+
+            <th class="px-5 py-4 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+              Submission Status
+            </th>
+
+            <th class="px-5 py-4 text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+              Validation Score
+            </th>
+
+            <th class="px-5 py-4 text-right text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+              Total Score
+            </th>
+
+          </tr>
+        </thead>
+
+
+        <!-- TABLE BODY -->
+        <tbody>
+
+          <!-- EMPLOYEE 1 -->
+          <tr
+            (click)="openEmployeeDetails('Sally Smith')"
+            class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]"
+          >
+
+            <td class="px-5 py-5">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-user text-[18px] !text-[#7C91A8]"></i>
+                <div class="text-[15px] font-medium !text-[#102A43]">Sally Smith</div>
+              </div>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Backend Engineer</td>
+            <td class="px-5 py-5">
+              <span class="inline-flex rounded-full bg-[#EAF3FF] px-3 py-1 text-[15px] font-medium !text-[#347DEB]">
+                Submitted
+              </span>
+            </td>
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#60758F]">80 / 100</td>
+            <td class="px-5 py-5 text-right text-[15px] font-semibold !text-[#102A43]">82 / 100</td>
+          </tr>
+
+
+          <!-- EMPLOYEE 2 -->
+          <tr (click)="openEmployeeDetails('Janet Doe')"
+            class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]"
+          >
+
+            <td class="px-5 py-5">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-user text-[18px] !text-[#7C91A8]"></i>
+                <div class="text-[15px] font-medium !text-[#102A43]">Janet Doe</div>
+              </div>
+            </td>
+
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Software Engineer</td>
+            <td class="px-5 py-5">
+              <span class="inline-flex rounded-full bg-[#F1F5F9] px-3 py-1 text-[15px] font-medium !text-[#60758F]"
+              >
+                Not Submitted</span>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+            <td class="px-5 py-5 text-right text-[15px] font-medium !text-[#60758F]">
+              —
+            </td>
+          </tr>
+
+
+          <!-- EMPLOYEE 3 -->
+          <tr (click)="openEmployeeDetails('Kofi Asante')"
+            class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]"
+          >
+
+            <td class="px-5 py-5">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-user text-[18px] !text-[#7C91A8]"></i>
+                <div class="text-[15px] font-medium !text-[#102A43]">Kofi Asante</div>
+              </div>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Account Executive</td>
+            <td class="px-5 py-5">
+                <span class="inline-flex rounded-full bg-[#EAF3FF] px-3 py-1 text-[15px] font-medium !text-[#347DEB]"
+              >
+                Submitted
+              </span>
+            </td>
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#60758F]"> 78 / 100</td>
+            <td class="px-5 py-5 text-right text-[15px] font-semibold !text-[#102A43]">82 / 100</td>
+          </tr>
+
+
+          <!-- EMPLOYEE 4 -->
+          <tr (click)="openEmployeeDetails('Michael Brown')"
+            class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]"
+          >
+
+            <td class="px-5 py-5">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-user text-[18px] !text-[#7C91A8]"></i>
+                <div class="text-[15px] font-medium !text-[#102A43]">Michael Brown</div>
+              </div>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Product Designer</td>
+            <td class="px-5 py-5">
+              <span class="inline-flex rounded-full bg-[#F1F5F9] px-3 py-1 text-[15px] font-medium !text-[#60758F]"
+              >
+                Not Submitted
+              </span>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#60758F]">
+              —
+            </td>
+            <td class="px-5 py-5 text-right text-[15px] font-medium !text-[#60758F]">
+              —
+            </td>
+          </tr>
+
+
+          <!-- EMPLOYEE 5 -->
+          <tr (click)="openEmployeeDetails('Ama Mensah')"
+            class="cursor-pointer transition-colors hover:bg-[#F8FAFC]"
+          >
+
+            <td class="px-5 py-5">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-user text-[18px] !text-[#7C91A8]"></i>
+                <div class="text-[15px] font-medium !text-[#102A43]">Ama Mensah</div>
+              </div>
+            </td>
+            <td class="px-5 py-5 text-[15px] !text-[#102A43]">QA Engineer</td>
+            <td class="px-5 py-5">
+              <span class="inline-flex rounded-full bg-[#EAF3FF] px-3 py-1 text-[15px] font-medium !text-[#347DEB]">
+                Submitted
+              </span>
+            </td>
+            <td class="px-5 py-5 text-[15px] font-medium !text-[#60758F]">86 / 100</td>
+            <td class="px-5 py-5 text-right text-[15px] font-semibold !text-[#102A43]">88 / 100</td>
+          </tr>
+        </tbody>
+     </table>
+
     </div>
-</section>
 
 
-    <!-- Table -->
-     <!-- RECENT SUBMISSIONS -->
-        <section class="mt-5">
-            <span class="text-[#6E6E6E] text-[18px] font-medium">EMPLOYEE</span>
-            <div class="bg-white border border-[#E1E4E8] rounded-[12px] overflow-hidden mt-[10px] whitespace-nowrap overflow-x-auto">
+    <!-- PAGINATION -->
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-[15px] !text-[#60758F]">Showing 1–5 of 15 employees</span>
+      <div class="flex items-center gap-2">
+        <button type="button"
+          class="flex h-[38px] w-[38px] items-center justify-center rounded-lg border border-[#D8DEE6] bg-white text-[15px] !text-[#60758F] transition-colors hover:bg-[#F8FAFC]"
+        >
+          <i class="fa-solid fa-chevron-left text-[14px]"></i>
+        </button>
 
-                <!-- SUBMISSION 1 -->
-                <div class="flex items-center justify-between px-[18px] py-2 border-b border-[#E5E7EB] hover:bg-blue-50">
-                    <div class="flex items-center gap-[12px]">
-                        <div class="w-[38px] h-[38px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium">Sally Smith</span>
-                            <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                        </div>
-                    </div>
+        <button type="button"
+          class="flex h-[38px] w-[38px] items-center justify-center rounded-lg bg-[#347DEB] text-[15px] font-medium !text-white"
+        >
+          1
+        </button>
 
-                    <div class="flex items-center gap-[30px]">
-                        <span class="bg-[#EAF3FF] text-[#4D9BF6] px-[12px] py-[6px] rounded-full text-[15px] font-medium">Submitted</span>
-                        <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
+        <button type="button"
+          class="flex h-[38px] w-[38px] items-center justify-center rounded-lg border border-[#D8DEE6] bg-white text-[15px] !text-[#102A43] transition-colors hover:bg-[#F8FAFC]"
+        >
+          2
+        </button>
 
-                        <span class="text-[15px] font-medium">—</span>
-                    </div>
-                </div>
-
-                <!-- SUBMISSION 2 -->
-                <div class="flex items-center justify-between px-[18px] py-2 border-b border-[#E5E7EB] hover:bg-blue-50">
-                    <div class="flex items-center gap-[12px]">
-                        <div class="w-[38px] h-[38px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium">Sally Smith</span>
-                            <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-[30px]">
-                        <span class="bg-[#EAF3FF] text-[#4D9BF6] px-[12px] py-[6px] rounded-full text-[15px] font-medium">Submitted</span>
-                        <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                        <span class="text-[15px] font-medium">—</span>
-                    </div>
-                </div>
-
-                <!-- SUBMISSION 3 -->
-                <div class="flex items-center justify-between px-[18px] py-2 border-b border-[#E5E7EB] hover:bg-blue-50">
-                    <div class="flex items-center gap-[12px]">
-                        <div class="w-[38px] h-[38px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium">Sally Smith</span>
-                            <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-[30px]">
-                        <span class="bg-[#F1F5F9] text-[#475569] px-[12px] py-[6px] rounded-full text-[15px] font-medium">In Progress</span>
-                        <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                        <span class="text-[15px] font-medium">—</span>
-                    </div>
-                </div>
+        <button type="button"
+          class="flex h-[38px] w-[38px] items-center justify-center rounded-lg border border-[#D8DEE6] bg-white text-[15px] !text-[#60758F] transition-colors hover:bg-[#F8FAFC]"
+        >
+          <i class="fa-solid fa-chevron-right text-[14px]"></i>
+        </button>
+      </div>
+    </div>
+  </section>
 
 
-                <!-- SUBMISSION 4 -->
-                <div class="flex items-center justify-between px-[18px] py-2 border-b border-[#E5E7EB] hover:bg-blue-50">
-                    <div class="flex items-center gap-[12px]">
-                        <div class="w-[38px] h-[38px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium">Sally Smith</span>
-                            <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                        </div>
-                    </div>
+  <!-- READ-ONLY EMPLOYEE DETAILS MODAL -->
+  @if (showEmployeeModal) {
 
-                    <div class="flex items-center gap-[30px]">
-                        <span class="bg-[#DDFBE5] text-[#16A34A] px-[12px] py-[6px] rounded-full text-[15px] font-medium">Reviewed</span>
-                        <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                        <span class="text-[15px] font-medium">84</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-    <!-- MANAGER INFO -->
-     <section>
     <div
-      class="w-full md:flex items-center justify-between mt-5"
+      class="employee-details-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-5"
+      (click)="closeEmployeeDetails()"
     >
 
-      <!-- MANAGER -->
-      <div>
-        <div class="md:!text-[32px] font-semibold">
-            Janet Doe
+      <div
+        class="employee-details-modal flex max-h-[92vh] w-full max-w-[900px] flex-col overflow-hidden rounded-xl bg-[#F7F9FC] shadow-xl"
+        (click)="$event.stopPropagation()"
+      >
+
+        <!-- MODAL HEADER -->
+        <header
+          class="flex shrink-0 items-center justify-between border-b border-[#E1E5EA] bg-white px-9 py-4"
+        >
+
+          <h2 class="text-[18px] font-semibold !text-[#102A43]">
+            Performance Details
+          </h2>
+
+          <button
+            type="button"
+            (click)="closeEmployeeDetails()"
+            class="flex h-8 w-8 items-center justify-center rounded-md text-[18px] !text-[#60758F] transition-colors hover:bg-[#F3F5F7] hover:!text-[#102A43]"
+            aria-label="Close modal"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+        </header>
+
+
+        <!-- MODAL CONTENT -->
+        <div class="min-h-0 flex-1 overflow-y-auto px-9 py-5">
+
+          <!-- EMPLOYEE SUMMARY -->
+          <section class="mb-5">
+
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+              <div>
+                <h3 class="text-[22px] font-semibold leading-none !text-[#102A43]">
+                  Sally Smith
+                </h3>
+
+                <p class="mt-[3px] text-[14px] font-medium uppercase tracking-wide !text-[#617896]">
+                  Backend Engineer · Technology
+                </p>
+              </div>
+
+
+              <div class="flex items-center gap-7">
+
+                <div class="text-right">
+                  <p class="text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+                    Validation Score
+                  </p>
+
+                  <p class="mt-1 text-[18px] font-semibold !text-[#347DEB]">
+                    80 / 100
+                  </p>
+                </div>
+
+
+                <div class="h-10 w-px bg-[#DCE1E6]"></div>
+
+
+                <div class="text-right">
+                  <p class="text-[14px] font-medium uppercase tracking-wide !text-[#60758F]">
+                    Total Score
+                  </p>
+
+                  <p class="mt-1 text-[18px] font-semibold !text-[#102A43]">
+                    82 / 100
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- KPI 1 -->
+          <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-5 py-4">
+
+            <!-- KPI HEADER -->
+            <div class="flex flex-col gap-3 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
+
+              <h3 class="text-[18px] font-semibold !text-[#102A43]">
+                Application Development &amp; Delivery
+              </h3>
+
+              <span
+                class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[15px] font-medium !text-[#6E6E6E]"
+              >
+                Weight: 60%
+              </span>
+
+            </div>
+
+
+            <!-- TARGET -->
+            <div class="mt-4">
+
+              <p class="text-[14px] font-semibold uppercase tracking-wide !text-[#617896]">
+                Target
+              </p>
+
+              <ul class="mt-2 space-y-1 text-[15px] leading-6 !text-[#617896]">
+                <li>
+                  • Deliver 100% of assigned tasks within agreed sprint timelines.
+                </li>
+
+                <li>
+                  • Maintain agreed quality standards across all deliverables.
+                </li>
+              </ul>
+
+            </div>
+
+
+            <!-- EMPLOYEE COMMENT -->
+            <div class="mt-4 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#6F6255]">
+                  <i class="fa-solid fa-user mr-2 text-[14px] !text-[#8A7967]"></i>
+                  Employee Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Employee rating: 4 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Delivered all sprint commitments except one item carried over in Sprint 4.
+              </p>
+
+            </div>
+
+
+            <!-- MANAGER COMMENT -->
+            <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#347DEB]">
+                  <i class="fa-solid fa-user-tie mr-2 text-[14px] !text-[#4B91ED]"></i>
+                  Manager Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Manager rating: 4 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Consistent delivery and good ownership of release pipeline work.
+              </p>
+
+            </div>
+
+
+            <!-- KPI WEIGHTED SCORE -->
+            <div class="mt-4 flex items-center justify-between border-t border-[#E5E7EB] pt-3">
+
+              <span class="text-[15px] font-medium !text-[#60758F]">
+                Weighted Score
+              </span>
+
+              <span class="text-[15px] font-semibold !text-[#347DEB]">
+                48 / 60
+              </span>
+
+            </div>
+
+          </section>
+
+
+          <!-- KPI 2 -->
+          <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-5 py-4">
+
+            <!-- KPI HEADER -->
+            <div class="flex flex-col gap-3 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
+
+              <h3 class="text-[18px] font-semibold !text-[#102A43]">
+                Operational Efficiency &amp; Code Quality
+              </h3>
+
+              <span
+                class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[15px] font-medium !text-[#6E6E6E]"
+              >
+                Weight: 15%
+              </span>
+
+            </div>
+
+
+            <!-- TARGET -->
+            <div class="mt-4">
+
+              <p class="text-[14px] font-semibold uppercase tracking-wide !text-[#617896]">
+                Target
+              </p>
+
+              <ul class="mt-2 space-y-1 text-[15px] leading-6 !text-[#617896]">
+                <li>
+                  • Maintain agreed code quality standards across all deliverables.
+                </li>
+
+                <li>
+                  • Complete assigned development tasks within agreed timelines.
+                </li>
+              </ul>
+
+            </div>
+
+
+            <!-- EMPLOYEE COMMENT -->
+            <div class="mt-4 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#6F6255]">
+                  <i class="fa-solid fa-user mr-2 text-[14px] !text-[#8A7967]"></i>
+                  Employee Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Employee rating: 3 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Maintained agreed development standards throughout the review period.
+              </p>
+
+            </div>
+
+
+            <!-- MANAGER COMMENT -->
+            <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#347DEB]">
+                  <i class="fa-solid fa-user-tie mr-2 text-[14px] !text-[#4B91ED]"></i>
+                  Manager Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Manager rating: 3 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Quality was generally good, although some deliverables required additional review.
+              </p>
+
+            </div>
+
+
+            <!-- KPI WEIGHTED SCORE -->
+            <div class="mt-4 flex items-center justify-between border-t border-[#E5E7EB] pt-3">
+
+              <span class="text-[15px] font-medium !text-[#60758F]">
+                Weighted Score
+              </span>
+
+              <span class="text-[15px] font-semibold !text-[#347DEB]">
+                9 / 15
+              </span>
+
+            </div>
+
+          </section>
+
+
+          <!-- KPI 3 -->
+          <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-5 py-4">
+
+            <!-- KPI HEADER -->
+            <div class="flex flex-col gap-3 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
+
+              <h3 class="text-[18px] font-semibold !text-[#102A43]">
+                Learning &amp; Development
+              </h3>
+
+              <span
+                class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[15px] font-medium !text-[#6E6E6E]"
+              >
+                Weight: 15%
+              </span>
+
+            </div>
+
+
+            <!-- TARGET -->
+            <div class="mt-4">
+
+              <p class="text-[14px] font-semibold uppercase tracking-wide !text-[#617896]">
+                Target
+              </p>
+
+              <ul class="mt-2 space-y-1 text-[15px] leading-6 !text-[#617896]">
+                <li>
+                  • Complete required learning and development activities.
+                </li>
+
+                <li>
+                  • Demonstrate continuous improvement in assigned responsibilities.
+                </li>
+              </ul>
+
+            </div>
+
+
+            <!-- EMPLOYEE COMMENT -->
+            <div class="mt-4 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#6F6255]">
+                  <i class="fa-solid fa-user mr-2 text-[14px] !text-[#8A7967]"></i>
+                  Employee Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Employee rating: 4 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Completed the required learning activities and applied the new knowledge to assigned responsibilities.
+              </p>
+
+            </div>
+
+
+            <!-- MANAGER COMMENT -->
+            <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-4 py-3">
+
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+
+                <span class="text-[15px] font-medium !text-[#347DEB]">
+                  <i class="fa-solid fa-user-tie mr-2 text-[14px] !text-[#4B91ED]"></i>
+                  Manager Comment
+                </span>
+
+                <span class="text-[15px] font-medium !text-[#374151]">
+                  Manager rating: 4 / 5
+                </span>
+
+              </div>
+
+              <p class="mt-2 text-[15px] leading-6 !text-[#617896]">
+                Demonstrated consistent improvement and a positive approach to professional development.
+              </p>
+
+            </div>
+
+
+            <!-- KPI WEIGHTED SCORE -->
+            <div class="mt-4 flex items-center justify-between border-t border-[#E5E7EB] pt-3">
+
+              <span class="text-[15px] font-medium !text-[#60758F]">
+                Weighted Score
+              </span>
+
+              <span class="text-[15px] font-semibold !text-[#347DEB]">
+                12 / 15
+              </span>
+
+            </div>
+
+          </section>
+
+
+
+
         </div>
-        <span class="md:text-[13px] text-[#667085] mt-1">
-          Software Engineer • Technology • Manager: Sally Smith
-        </span>
+
+
+        <!-- MODAL FOOTER -->
+        <footer
+          class="flex shrink-0 justify-end border-t border-[#E1E5EA] bg-white px-9 py-3"
+        >
+
+          <button
+            type="button"
+            (click)="closeEmployeeDetails()"
+            class="rounded-lg border border-[#D8DEE6] bg-white px-5 py-2.5 text-[15px] font-medium !text-[#102A43] transition-colors hover:bg-[#F8FAFC]"
+          >
+            Close
+          </button>
+
+        </footer>
+
       </div>
 
-      <!-- SCORE + BUTTON -->
-      <div class="flex items-center gap-3 mt-2 md:mt-0">
-        <div class="border-2 border-[#2F87DA] px-3 py-1 h-[85px] rounded-[16px] flex flex-col w-full">
-          <span class="md:text-[16px]">Total Score</span>
-          <div class="flex items-center gap-1 px-2">
-            <span class="text-[#2F87DA] text-[32px] font-semibold">82</span>
-            <span class="mt-2">/100</span>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <section class="mt-5">
-    <h2 class="text-[#6E6E6E]">KEY PERFORMANCE INDICATORS</h2>
+  }
 
-    <div class="border border-[#807777] rounded-[16px] mt-2">
-        <!-- Application + Weight -->
-        <div class="px-3 py-1">
-         <div class="md:flex justify-between border-b border-[#E4E7EC] whitespace-nowrap">
-            <div class="mb-3">
-                <span class="text-[18px] text-[#000000] font-semibold">Application Development & Delivery</span>
-                <p class="text-[#807777] text-[]">Weight: 60%</p>
-            </div>
-            <div class="flex items-center gap-4">
-                <!-- Rating 1 -->
-                <div class="text-center">
-                    <span class="md:text-[16px]">STAFF RATING</span>
-                    <p class="text-[] text-[20px]">4</p>
-                </div>
-                 <!-- Rating 2 -->
-                <div class="text-center">
-                    <span class="md:text-[16px]">STAFF RATING</span>
-                    <p class="text-[] text-[20px]">4</p>
-                </div>
-                 <!-- Total score -->
-                <div class="text-center">
-                    <span class="md:text-[16px]">TOTAL SCORE</span>
-                    <p class="text-[#2F87DA] text-[20px]">48</p>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="text-[#6E6E6E] px-3 mt-2">
-            <p class="font-medium">TARGET</p>
-            <span class="text-[#807777]">• Deliver 100% of assigned tasks within agreed sprint timelines</span>
-            <p class="text-[#807777]"> • Deliver 100% of assigned tasks within agreed sprint timelines</p>
-        </div>
-
-        <!-- Staff Comments -->
-        <div class="bg-[#F8F5F0] mx-3 px-3 py-2 border border-[#D9D9D9] rounded-[8px] mb-3">
-            <div class="flex">
-               <span class="text-[#807777] text-[18px] font-semibold">STAFF COMMENTS</span>
-            </div>
-            <p class="text-[#807777] text-[17px]">• I delivered 100% of assigned tasks within agreed sprint timelines</p>
-        </div>
-    </div>
-
-       <!-- Total Score -->
-      <div class="mt-5 border border-[#C0C0C0] rounded-[8px] mb-3">
-        <div class="md:flex justify-between px-3">
-            <div>
-                <span class="text-[18px] font-medium">Operation Efficiency & Code Quality</span>
-                <p class="text-[#807777] text-[16px]">Weight 15%</p>
-            </div>
-            <div class="flex items-center gap-4">
-                <div>
-                    <span class="md:text-[16px]">MY RATING</span>
-                    <p class="text-center text-[20px]">4</p>
-                </div>
-                <div>
-                    <span class="md:text-[16px]">MY RATING</span>
-                    <p class="text-center text-[20px]">4</p>
-                </div>
-                <div>
-                    <span class="md:text-[16px]">MY RATING</span>
-                    <p class="text-center text-[20px]">10</p>
-                </div>
-            </div>
-        </div>
-      </div>
-  </section>
-
-  <!-- </div> -->
-   </div>
-
-
-
+</div>

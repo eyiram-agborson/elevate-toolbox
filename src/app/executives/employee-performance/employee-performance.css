@@ -1,0 +1,65 @@
+.manager-comments-collapse {
+    border: 1px solid #dceaf7;
+    border-radius: 10px;
+    background: #f5faff;
+    overflow: hidden;
+}
+
+.staff-comments-collapse {
+    margin-bottom: 10px;
+    border: 1px solid #e7e3de;
+    border-radius: 10px;
+    background: #f8f6f2;
+    overflow: hidden;
+}
+
+/* Employee Performance */
+
+.employee-details-backdrop {
+  animation: employee-details-fade-in 160ms ease-out;
+}
+
+.employee-details-modal {
+  animation: employee-details-slide-in 180ms ease-out;
+}
+
+/* Keep the modal scrollbar subtle without changing the page layout. */
+.employee-details-modal > div {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.employee-details-modal > div::-webkit-scrollbar {
+  width: 7px;
+}
+
+.employee-details-modal > div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.employee-details-modal > div::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+@keyframes employee-details-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes employee-details-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
