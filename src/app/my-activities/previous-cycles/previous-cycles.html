@@ -46,20 +46,22 @@
             </p>
           </div>
 
-      <!-- TOTAL SCORE -->
-      <div class="flex h-[90px] w-[110px] shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
-        <span class="text-[14px] font-semibold text-gray-700">
-          TOTAL SCORE
-        </span>
-        <div class="mt-1">
-          <span class="text-[32px] font-semibold !text-[#2F87DA]">
-            0
-          </span>
-          <span class="text-[14px]">
-            / 100
-          </span>
-        </div>
-      </div>
+          <!-- TOTAL SCORE -->
+          <div class="flex h-[90px] w-[110px] shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
+            <span class="text-[14px] font-semibold text-gray-700">
+              TOTAL SCORE
+            </span>
+
+            <div class="mt-1">
+              <span class="text-[32px] font-semibold !text-[#2F87DA]">
+                0
+              </span>
+
+              <span class="text-[14px]">
+                / 100
+              </span>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -415,6 +417,7 @@
       <ng-template #staffCommentsHeader>
         <div class="flex items-center gap-[9px]">
           <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
+
           <span class="text-[15px] font-medium text-[#555]">
             My Comments
           </span>
@@ -425,6 +428,7 @@
         <div class="flex w-full items-center justify-between pr-[8px]">
           <div class="flex items-center gap-[9px]">
             <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
+
             <span class="text-[15px] font-medium text-[#4D9BF6]">
               Manager Comments
             </span>
@@ -466,19 +470,19 @@
 
   <!-- MOBILE VIEW -->
   <section class="block md:hidden">
-    <main class="overflow-x-hidden py-4 text-[15px] text-[#171717]">
+    <main class="overflow-x-hidden py-4 text-[13px] text-[#171717]">
 
       <!-- BACK BUTTON -->
       <div class="mx-4 mt-4 text-gray-400">
         <button
           type="button"
           (click)="goToActivities()"
-          class="mt-1 flex items-center gap-2 text-[16px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+          class="mt-1 flex items-center gap-2 text-[13px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -500,29 +504,31 @@
 
           <!-- PAGE HEADER -->
           <div>
-            <h2 class="text-[22px] font-semibold leading-tight">
+            <h2 class="text-[18px] font-semibold leading-6">
               ELEVATE – Q3 (July – September 2026)
             </h2>
 
-            <p class="mt-2 text-[15px] text-gray-500">
+            <p class="mt-2 text-[13px] text-gray-500">
               Your performance review for this cycle has been completed.
             </p>
           </div>
 
           <!-- TOTAL SCORE -->
-      <div class="flex h-[90px] w-full shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
-        <span class="text-[14px] font-semibold text-gray-700">
-          TOTAL SCORE
-        </span>
-        <div class="">
-          <span class="text-[32px] font-semibold !text-[#2F87DA]">
-            80
-          </span>
-          <span class="text-[27px]">
-            / 100
-          </span>
-        </div>
-      </div>
+          <div class="flex h-[80px] w-full shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
+            <span class="text-[11px] font-semibold text-gray-700">
+              TOTAL SCORE
+            </span>
+
+            <div>
+              <span class="text-[24px] font-semibold !text-[#2F87DA]">
+                80
+              </span>
+
+              <span class="text-[12px]">
+                / 100
+              </span>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -544,13 +550,15 @@
 
           <!-- COMPLETED MESSAGE -->
           <div class="flex flex-col items-start gap-3 px-4 py-4">
-            <span class="rounded-[8px] border border-[#B7E4C7] bg-[#E8F5E9] px-3 py-1 text-[14px] font-medium text-[#2E7D32]">
+
+            <span class="rounded-[8px] border border-[#B7E4C7] bg-[#E8F5E9] px-3 py-1 text-[12px] font-medium text-[#2E7D32]">
               Complete
             </span>
 
-            <span class="text-[15px] font-semibold leading-5 text-gray-700">
+            <span class="text-[13px] font-semibold leading-5 text-gray-700">
               This cycle is complete, including your manager's rating and comments.
             </span>
+
           </div>
 
         </div>
@@ -561,7 +569,7 @@
 
         <!-- KEY PERFORMANCE INDICATORS -->
         <section>
-          <div class="mb-[12px] text-[15px] font-medium uppercase text-[#222]">
+          <div class="mb-[12px] text-[13px] font-medium uppercase text-[#222]">
             Key Performance Indicators
           </div>
 
@@ -569,44 +577,47 @@
           <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
             <!-- KPI HEADER -->
-            <div class="border-b border-[#E5E7EB] pb-[16px]">
-              <div class="flex flex-col gap-[4px]">
-                <span class="text-[16px] font-semibold leading-5 text-[#111827]">
+            <div class="border-b border-[#E5E7EB] pb-[14px]">
+
+              <!-- APPLICATION + WEIGHT -->
+              <div class="flex items-start justify-between gap-4">
+                <span class="text-[14px] font-semibold leading-5 text-[#111827]">
                   Application Development &amp; Delivery
                 </span>
 
-                <span class="text-[15px] text-gray-400">
-                  Weight: 60%
+                <span class="shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+                  60%
                 </span>
               </div>
 
+              <!-- RATINGS -->
               <div class="mt-4 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     My Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     4
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Manager Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     4
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Total Score
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#4D9BF6]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#4D9BF6]">
                     48
                   </div>
                 </div>
@@ -614,29 +625,29 @@
             </div>
 
             <!-- TARGET -->
-            <div class="mb-[20px] mt-[18px]">
-              <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[18px] mt-[16px]">
+              <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
                 Target
               </div>
 
-              <div class="flex flex-col gap-[6px]">
-                <span class="text-[15px] text-gray-500">
+              <div class="flex flex-col gap-[5px]">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Deliver 100% of assigned tasks within agreed sprint timelines.
                 </span>
 
-                <span class="text-[15px] text-gray-500">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Maintain agreed quality standards across all deliverables.
                 </span>
               </div>
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mb-[18px]">
-              <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[16px]">
+              <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
                 Performance
               </div>
 
-              <p class="m-0 text-[15px] text-gray-500">
+              <p class="m-0 text-[13px] leading-5 text-gray-500">
                 Self-assessed performance against the agreed targets for this KPI.
               </p>
             </div>
@@ -647,7 +658,7 @@
                 [nzActive]="false"
                 [nzHeader]="staffCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   I delivered 100% of assigned tasks within agreed sprint timelines.
                 </p>
               </nz-collapse-panel>
@@ -659,7 +670,7 @@
                 [nzActive]="false"
                 [nzHeader]="managerCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   Manager comments for this KPI.
                 </p>
               </nz-collapse-panel>
@@ -668,47 +679,50 @@
           </div>
 
           <!-- KPI 2 -->
-          <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
+          <div class="mt-[12px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
             <!-- KPI HEADER -->
-            <div class="border-b border-[#E5E7EB] pb-[16px]">
-              <div class="flex flex-col gap-[4px]">
-                <span class="text-[16px] font-semibold leading-5 text-[#111827]">
+            <div class="border-b border-[#E5E7EB] pb-[14px]">
+
+              <!-- APPLICATION + WEIGHT -->
+              <div class="flex items-start justify-between gap-4">
+                <span class="text-[14px] font-semibold leading-5 text-[#111827]">
                   Operational Efficiency &amp; Code Quality
                 </span>
 
-                <span class="text-[15px] text-gray-400">
-                  Weight: 15%
+                <span class="shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+                  15%
                 </span>
               </div>
 
+              <!-- RATINGS -->
               <div class="mt-4 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     My Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Manager Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Total Score
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
@@ -716,29 +730,29 @@
             </div>
 
             <!-- TARGET -->
-            <div class="mb-[20px] mt-[18px]">
-              <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[18px] mt-[16px]">
+              <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
                 Target
               </div>
 
-              <div class="flex flex-col gap-[6px]">
-                <span class="text-[15px] text-gray-500">
+              <div class="flex flex-col gap-[5px]">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Maintain agreed code quality standards across all deliverables.
                 </span>
 
-                <span class="text-[15px] text-gray-500">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Complete assigned development tasks within agreed timelines.
                 </span>
               </div>
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mb-[18px]">
-              <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[16px]">
+              <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
                 Performance
               </div>
 
-              <p class="m-0 text-[15px] text-gray-500">
+              <p class="m-0 text-[13px] leading-5 text-gray-500">
                 Performance information submitted for this KPI.
               </p>
             </div>
@@ -749,7 +763,7 @@
                 [nzActive]="false"
                 [nzHeader]="staffCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   I delivered 100% of assigned tasks within agreed sprint timelines.
                 </p>
               </nz-collapse-panel>
@@ -761,7 +775,7 @@
                 [nzActive]="false"
                 [nzHeader]="managerCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   Manager comments for this KPI.
                 </p>
               </nz-collapse-panel>
@@ -770,47 +784,50 @@
           </div>
 
           <!-- KPI 3 -->
-          <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
+          <div class="mt-[12px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
             <!-- KPI HEADER -->
-            <div class="border-b border-[#E5E7EB] pb-[16px]">
-              <div class="flex flex-col gap-[4px]">
-                <span class="text-[16px] font-semibold leading-5 text-[#111827]">
+            <div class="border-b border-[#E5E7EB] pb-[14px]">
+
+              <!-- APPLICATION + WEIGHT -->
+              <div class="flex items-start justify-between gap-4">
+                <span class="text-[14px] font-semibold leading-5 text-[#111827]">
                   Learning &amp; Development
                 </span>
 
-                <span class="text-[15px] text-gray-400">
-                  Weight: 15%
+                <span class="shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+                  15%
                 </span>
               </div>
 
+              <!-- RATINGS -->
               <div class="mt-4 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     My Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Manager Rating
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
 
                 <div>
-                  <div class="text-[12px] uppercase leading-4 text-gray-500">
+                  <div class="text-[11px] uppercase leading-4 text-gray-500">
                     Total Score
                   </div>
 
-                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                  <div class="mt-[4px] text-[14px] font-medium text-[#111827]">
                     —
                   </div>
                 </div>
@@ -818,29 +835,29 @@
             </div>
 
             <!-- TARGET -->
-            <div class="mb-[20px] mt-[18px]">
-              <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[18px] mt-[16px]">
+              <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
                 Target
               </div>
 
-              <div class="flex flex-col gap-[6px]">
-                <span class="text-[15px] text-gray-500">
+              <div class="flex flex-col gap-[5px]">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Complete required learning and development activities.
                 </span>
 
-                <span class="text-[15px] text-gray-500">
+                <span class="text-[13px] leading-5 text-gray-500">
                   • Demonstrate continuous improvement in assigned responsibilities.
                 </span>
               </div>
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mb-[18px]">
-              <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+            <div class="mb-[16px]">
+              <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
                 Performance
               </div>
 
-              <p class="m-0 text-[15px] text-gray-500">
+              <p class="m-0 text-[13px] leading-5 text-gray-500">
                 Performance information submitted for this KPI.
               </p>
             </div>
@@ -851,7 +868,7 @@
                 [nzActive]="false"
                 [nzHeader]="staffCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   I delivered 100% of assigned tasks within agreed sprint timelines.
                 </p>
               </nz-collapse-panel>
@@ -863,7 +880,7 @@
                 [nzActive]="false"
                 [nzHeader]="managerCommentsHeader"
               >
-                <p class="m-0 text-[15px] text-gray-600">
+                <p class="m-0 text-[13px] text-gray-600">
                   Manager comments for this KPI.
                 </p>
               </nz-collapse-panel>
@@ -878,7 +895,8 @@
       <ng-template #staffCommentsHeader>
         <div class="flex items-center gap-[9px]">
           <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
-          <span class="text-[14px] font-medium text-[#555]">
+
+          <span class="text-[13px] font-medium text-[#555]">
             My Comments
           </span>
         </div>
@@ -888,12 +906,13 @@
         <div class="flex w-full items-center justify-between pr-[8px]">
           <div class="flex items-center gap-[9px]">
             <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-            <span class="text-[14px] font-medium text-[#4D9BF6]">
+
+            <span class="text-[13px] font-medium text-[#4D9BF6]">
               Manager Comments
             </span>
           </div>
 
-          <span class="text-[14px] text-gray-500">
+          <span class="text-[12px] text-gray-500">
             Manager rating: —
           </span>
         </div>
@@ -928,8 +947,7 @@
   </section>
 
 }
-                                                  c -->
-
+                            
 @if(roleService.hasRole('manager')){
 
   <!-- Large Screens -->
@@ -957,7 +975,6 @@
             <path d="m12 19-7-7 7-7" />
             <path d="M19 12H5" />
           </svg>
-
           My Activities
         </button>
       </div>
@@ -1027,181 +1044,206 @@
       </section>
 
       <!-- KPI SECTION -->
-      <section class="mx-5 mt-6 pb-10">
+      <section class="mx-8 mt-6 pb-10">
 
-        <h3 class="mb-4 px-2 text-[15px] font-bold">
+        <h3 class="mb-4 text-[15px] font-bold">
           KEY PERFORMANCE INDICATORS
         </h3>
 
         <!-- KPI 1 -->
         @for (cycle of previousCycles; track $index) {
-          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-            <div class="px-5 py-4">
+          <div class="overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white p-[20px]">
 
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <p class="text-[15px] font-semibold text-[#171717]">
-                    {{ cycle.application }}
-                  </p>
+            <!-- KPI HEADER -->
+            <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
 
-                  <div class="mt-2 flex w-fit items-center gap-2 rounded-[8px] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                      <path d="M21 3v6h-6" />
-                    </svg>
+        <div class="flex flex-col gap-1">
 
-                    <span>Automatically Calculated</span>
+        <span class="text-[15px] font-semibold leading-5 text-[#111827]">
+            {{ cycle.application }}
+        </span>
+
+        <span class="text-[13px] text-gray-400">
+            Weight: {{ cycle.weight }}
+        </span>
+
+        </div>
+
+              <div class="flex items-center gap-[30px] text-center">
+
+                <div class="min-w-[70px]">
+                  <div class="text-[14px] uppercase text-gray-500">
+                    My Rating
+                  </div>
+                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                    4
                   </div>
                 </div>
 
-                <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]">
-                  {{ cycle.weight }}
-                </span>
+                <div class="min-w-[90px]">
+                  <div class="text-[14px] uppercase text-gray-500">
+                    Manager Rating
+                  </div>
+                  <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                    4
+                  </div>
+                </div>
+
+                <div class="min-w-[70px]">
+                  <div class="text-[14px] uppercase text-gray-500">
+                    Total Score
+                  </div>
+                  <div class="mt-[4px] text-[15px] font-medium text-[#4D9BF6]">
+                    48
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TARGET -->
+            <div class="mb-[20px] mt-[18px]">
+              <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+                Target
               </div>
 
-              <p class="mt-4 text-[15px] font-medium text-gray-500">
-                {{ cycle.name }}
+              <div class="flex flex-col gap-[6px]">
+                <span class="text-[15px] text-gray-500">
+                  • {{ cycle.targets }}
+                </span>
+
+                <span class="text-[15px] text-gray-500">
+                  • {{ cycle.targets }}
+                </span>
+              </div>
+            </div>
+
+            <!-- PERFORMANCE -->
+            <div class="mb-[18px]">
+              <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+                Performance
+              </div>
+
+              <p class="m-0 text-[15px] text-gray-500">
+                Performance information submitted for this KPI.
               </p>
-
-              <div class="mt-2 space-y-1 text-[15px] leading-6 text-gray-500">
-                <div class="flex items-start gap-1">
-                  <span class="text-[#4D9BF6]">•</span>
-                  <span>{{ cycle.targets }}</span>
-                </div>
-
-                <div class="flex items-start gap-1">
-                  <span class="text-[#4D9BF6]">•</span>
-                  <span>{{ cycle.targets }}</span>
-                </div>
-              </div>
-
-              <!-- AUTOMATIC SCORE -->
-              <div class="mt-5 rounded-xl border border-[#D3E8F8] bg-[#EAF6FF] p-4">
-
-                <div class="flex items-center gap-2 text-[#2F87DA]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="19"
-                    height="19"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="8" r="5" />
-                    <path d="M2 21a8 8 0 0 1 10.43-7.62" />
-                    <circle cx="18" cy="18" r="3" />
-                    <path d="m18 16.5.01 3" />
-                    <path d="m16.5 18 .01.01" />
-                    <path d="m19.5 18 .01.01" />
-                  </svg>
-
-                  <span class="text-[15px] font-semibold">
-                    AUTOMATIC SCORE
-                  </span>
-                </div>
-
-                <div class="mt-2 flex items-start gap-2 text-[14px] text-[#6E6E6E]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="shrink-0"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" x2="12" y1="8" y2="12" />
-                    <line x1="12" x2="12.01" y1="16" y2="16" />
-                  </svg>
-
-                  <span>
-                    This KPI is calculated based on the performance of your team members.
-                    It is generated by the system and cannot be edited.
-                  </span>
-                </div>
-
-                <div class="mt-4 grid grid-cols-2 gap-4">
-                  <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-4 py-2">
-                    <span class="text-[13px] text-[#626262]">
-                      TEAM SCORE
-                    </span>
-
-                    <div class="flex items-center gap-2">
-                      <span class="text-[25px] font-bold">
-                        4
-                      </span>
-
-                      <span class="text-[15px]">
-                        / 5
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-4 py-2">
-                    <span class="text-[13px] text-[#626262]">
-                      TEAM CONTRIBUTION
-                    </span>
-
-                    <div class="flex items-center gap-2">
-                      <span class="text-[25px] font-bold">
-                        48
-                      </span>
-
-                      <span class="text-[15px]">
-                        / 60
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
             </div>
-          </div>
 
-          <!-- COLLAPSE HEADERS -->
-          <ng-template #staffCommentsHeader>
-            <div class="flex items-center gap-[9px]">
-              <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
+            <!-- AUTOMATIC SCORE -->
+            <div class="rounded-xl border border-[#D3E8F8] bg-[#EAF6FF] p-4">
 
-              <span class="text-[15px] font-medium text-[#555]">
-                My Comments
-              </span>
-            </div>
-          </ng-template>
+              <div class="flex items-center gap-2 text-[#2F87DA]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="5" />
+                  <path d="M2 21a8 8 0 0 1 10.43-7.62" />
+                  <circle cx="18" cy="18" r="3" />
+                  <path d="m18 16.5.01 3" />
+                  <path d="m16.5 18 .01.01" />
+                  <path d="m19.5 18 .01.01" />
+                </svg>
 
-          <ng-template #managerCommentsHeader>
-            <div class="flex w-full items-center justify-between pr-[8px]">
-              <div class="flex items-center gap-[9px]">
-                <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-
-                <span class="text-[15px] font-medium text-[#4D9BF6]">
-                  Manager Comments
+                <span class="text-[15px] font-semibold">
+                  AUTOMATIC SCORE
                 </span>
               </div>
 
-              <span class="text-[15px] text-gray-500">
-                Manager rating: —
-              </span>
+              <div class="mt-2 flex items-start gap-2 text-[14px] text-[#6E6E6E]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="shrink-0"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+
+                <span>
+                  This KPI is calculated based on the performance of your team members.
+                  It is generated by the system and cannot be edited.
+                </span>
+              </div>
+
+              <!-- TEAM SCORE + TEAM CONTRIBUTION -->
+              <div class="mt-4 flex flex-col gap-3">
+
+                <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-4 py-2">
+                  <span class="text-[13px] text-[#626262]">
+                    TEAM SCORE
+                  </span>
+
+                  <div class="flex items-center gap-2">
+                    <span class="text-[25px] font-bold">
+                      4
+                    </span>
+
+                    <span class="text-[15px]">
+                      / 5
+                    </span>
+                  </div>
+                </div>
+
+                <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-4 py-2">
+                  <span class="text-[13px] text-[#626262]">
+                    TEAM CONTRIBUTION
+                  </span>
+
+                  <div class="flex items-center gap-2">
+                    <span class="text-[25px] font-bold">
+                      48
+                    </span>
+
+                    <span class="text-[15px]">
+                      / 60
+                    </span>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </ng-template>
+
+            <!-- MY COMMENTS -->
+            <nz-collapse class="staff-comments-collapse mt-[10px] mb-[10px]">
+              <nz-collapse-panel
+                [nzActive]="false"
+                [nzHeader]="staffCommentsHeader"
+              >
+                <p class="m-0 text-[15px] text-gray-600">
+                  I delivered 100% of assigned tasks within agreed sprint timelines.
+                </p>
+              </nz-collapse-panel>
+            </nz-collapse>
+
+            <!-- MANAGER COMMENTS -->
+            <nz-collapse class="manager-comments-collapse">
+              <nz-collapse-panel
+                [nzActive]="false"
+                [nzHeader]="managerCommentsHeader"
+              >
+                <p class="m-0 text-[15px] text-gray-600">
+                  Manager comments for this KPI.
+                </p>
+              </nz-collapse-panel>
+            </nz-collapse>
+
+          </div>
         }
 
         <!-- KPI 2 -->
@@ -1209,6 +1251,7 @@
 
           <!-- KPI HEADER -->
           <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
+
             <div class="flex flex-col gap-[4px]">
               <span class="text-[16px] font-semibold text-[#111827]">
                 Operational Efficiency &amp; Code Quality
@@ -1220,12 +1263,12 @@
             </div>
 
             <div class="flex items-center gap-[30px] text-center">
+
               <div class="min-w-[70px]">
                 <div class="text-[14px] uppercase text-gray-500">
                   My Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
@@ -1234,8 +1277,7 @@
                 <div class="text-[14px] uppercase text-gray-500">
                   Manager Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
@@ -1244,11 +1286,11 @@
                 <div class="text-[14px] uppercase text-gray-500">
                   Total Score
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -1311,6 +1353,7 @@
 
           <!-- KPI HEADER -->
           <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
+
             <div class="flex flex-col gap-[4px]">
               <span class="text-[16px] font-semibold text-[#111827]">
                 Learning &amp; Development
@@ -1322,12 +1365,12 @@
             </div>
 
             <div class="flex items-center gap-[30px] text-center">
+
               <div class="min-w-[70px]">
                 <div class="text-[14px] uppercase text-gray-500">
                   My Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
@@ -1336,8 +1379,7 @@
                 <div class="text-[14px] uppercase text-gray-500">
                   Manager Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
@@ -1346,11 +1388,11 @@
                 <div class="text-[14px] uppercase text-gray-500">
                   Total Score
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-[4px] text-[15px] font-medium">
                   —
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -1409,52 +1451,25 @@
         </div>
 
       </section>
-
-      <!-- COLLAPSE HEADERS -->
-      <ng-template #staffCommentsHeader>
-        <div class="flex items-center gap-[9px]">
-          <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
-
-          <span class="text-[15px] font-medium text-[#555]">
-            My Comments
-          </span>
-        </div>
-      </ng-template>
-
-      <ng-template #managerCommentsHeader>
-        <div class="flex w-full items-center justify-between pr-[8px]">
-          <div class="flex items-center gap-[9px]">
-            <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-
-            <span class="text-[15px] font-medium text-[#4D9BF6]">
-              Manager Comments
-            </span>
-          </div>
-
-          <span class="text-[15px] text-gray-500">
-            Manager rating: —
-          </span>
-        </div>
-      </ng-template>
-
     </main>
   </section>
 
+
   <!-- MOBILE VIEW -->
   <section class="block md:hidden">
-    <main class="overflow-x-hidden py-4 text-[15px] text-[#171717]">
+    <main class="overflow-x-hidden text-[13px] text-[#171717]">
 
       <!-- BACK BUTTON -->
-      <div class="mx-4 mt-4 text-gray-400">
+      <div class="mx-5 mt-6 text-gray-400">
         <button
           type="button"
           (click)="myactivities()"
-          class="mt-1 flex items-center gap-2 text-[16px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+          class="flex items-center gap-2 text-[13px] !text-[#807777] link-select cursor-pointer transition"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -1471,46 +1486,46 @@
       </div>
 
       <!-- PAGE HEADER + TOTAL SCORE -->
-      <section class="mx-4 mt-6">
-        <div class="flex flex-col gap-5">
+      <section class="mx-5 mt-6">
 
-          <!-- PAGE HEADER -->
-          <div>
-            <h2 class="text-[22px] font-semibold leading-tight">
-              ELEVATE – Q3 (July – September 2026)
-            </h2>
+        <!-- PAGE HEADER -->
+        <div>
+          <h2 class="text-[18px] font-semibold leading-6">
+            ELEVATE – Q3 (July – September 2026)
+          </h2>
 
-            <p class="mt-2 text-[15px] text-gray-500">
-              Your performance review for this cycle has been completed.
-            </p>
-          </div>
+          <p class="mt-2 text-[13px] leading-5 text-gray-500">
+            Your performance review for this cycle has been completed.
+          </p>
+        </div>
 
-          <!-- TOTAL SCORE -->
-          <div class="w-full rounded-[12px] border-2 border-[#4D9BF6] px-3 py-2">
-            <span class="text-[13px] font-semibold">
-              TOTAL SCORE
+        <!-- TOTAL SCORE -->
+        <div class="mt-4 flex h-[75px] w-[105px] flex-col items-center justify-center rounded-[10px] border border-[#4D9BF6] bg-white">
+
+          <span class="text-[10px] font-semibold text-gray-700">
+            TOTAL SCORE
+          </span>
+
+          <div class="mt-1">
+            <span class="text-[22px] font-semibold text-[#2F87DA]">
+              80
             </span>
 
-            <div class="flex items-center gap-1">
-              <span class="text-[35px] font-bold text-[#2F87DA]">
-                80
-              </span>
-
-              <span class="mt-3 text-[15px]">
-                / 100
-              </span>
-            </div>
+            <span class="text-[12px] text-gray-500">
+              / 100
+            </span>
           </div>
 
         </div>
+
       </section>
 
       <!-- PROGRESS SECTION -->
-      <section class="mx-4 mt-5">
-        <div class="rounded-xl border border-[#D0D0D0] bg-white">
+      <section class="mx-5 mt-5">
+        <div class="overflow-hidden rounded-xl border border-[#D0D0D0] bg-white">
 
           <!-- STEPPER -->
-          <div class="overflow-x-auto px-4 py-6">
+          <div class="overflow-x-auto px-5 py-5">
             <nz-steps [nzCurrent]="2">
               <nz-step nzTitle="Targets"></nz-step>
               <nz-step nzTitle="Self-Review"></nz-step>
@@ -1521,281 +1536,334 @@
           <div class="h-px w-full bg-[#D0D0D0]"></div>
 
           <!-- COMPLETED MESSAGE -->
-          <div class="flex flex-col items-start gap-3 px-4 py-4">
-            <span class="rounded-[8px] border border-[#D8F0DF] bg-[#DDFFE8] px-3 py-1 text-[14px] font-medium text-green-600">
+          <div class="flex flex-col items-start gap-3 px-5 py-4">
+
+            <span class="rounded-[8px] border border-[#D8F0DF] bg-[#DDFFE8] px-3 py-1 text-[12px] font-medium text-green-600">
               Complete
             </span>
 
-            <span class="text-[15px] font-semibold leading-5 text-gray-700">
+            <span class="text-[13px] font-semibold leading-5 text-gray-700">
               This cycle is complete, including your superior's rating and comments.
             </span>
+
           </div>
 
         </div>
       </section>
 
       <!-- KPI SECTION -->
-      <section class="mx-4 mt-5 pb-6">
+      <section class="mx-5 mt-6 pb-8">
 
-        <h3 class="mb-4 text-[15px] font-bold">
+        <h3 class="mb-4 text-[13px] font-bold">
           KEY PERFORMANCE INDICATORS
         </h3>
 
         <!-- KPI 1 -->
         @for (cycle of previousCycles; track $index) {
-          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-            <div class="px-4 py-4">
+          <div class="overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
-              <div class="flex items-start justify-between gap-3">
-                <div class="min-w-0">
-                  <p class="text-[15px] font-semibold text-[#171717]">
-                    {{ cycle.application }}
-                  </p>
+            <!-- KPI HEADER -->
+            <div class="border-b border-[#E5E7EB] pb-[14px]">
 
-                  <div class="mt-2 flex w-fit max-w-full items-center gap-2 rounded-[8px] bg-[#EAF3FF] px-3 py-1 text-[13px] font-medium text-[#4D9BF6]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="shrink-0"
-                    >
-                      <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                      <path d="M21 3v6h-6" />
-                    </svg>
+              <!-- APPLICATION + WEIGHT -->
+            <div class="flex flex-col gap-1">
 
-                    <span>Automatically Calculated</span>
+            <span class="text-[15px] font-semibold leading-5 text-[#111827]">
+                {{ cycle.application }}
+            </span>
+
+            <span class="text-[13px] text-gray-400">
+                Weight: {{ cycle.weight }}
+            </span>
+
+            </div>
+
+              <!-- RATINGS -->
+              <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+
+                <div>
+                  <div class="text-[11px] uppercase text-gray-500">
+                    My Rating
+                  </div>
+
+                  <div class="mt-1 text-[14px] font-medium text-[#111827]">
+                    4
                   </div>
                 </div>
 
-                <span class="shrink-0 whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]">
-                  {{ cycle.weight }}
+                <div>
+                  <div class="text-[11px] uppercase text-gray-500">
+                    Manager Rating
+                  </div>
+
+                  <div class="mt-1 text-[14px] font-medium text-[#111827]">
+                    4
+                  </div>
+                </div>
+
+                <div>
+                  <div class="text-[11px] uppercase text-gray-500">
+                    Total Score
+                  </div>
+
+                  <div class="mt-1 text-[14px] font-medium text-[#4D9BF6]">
+                    48
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- TARGET -->
+            <div class="mb-[18px] mt-[16px]">
+
+              <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
+                Target
+              </div>
+
+              <div class="flex flex-col gap-[5px]">
+                <span class="text-[13px] leading-5 text-gray-500">
+                  • {{ cycle.targets }}
+                </span>
+
+                <span class="text-[13px] leading-5 text-gray-500">
+                  • {{ cycle.targets }}
                 </span>
               </div>
 
-              <p class="mt-4 text-[15px] font-medium text-gray-500">
-                {{ cycle.name }}
+            </div>
+
+            <!-- PERFORMANCE -->
+            <div class="mb-[16px]">
+
+              <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
+                Performance
+              </div>
+
+              <p class="m-0 text-[13px] leading-5 text-gray-500">
+                Performance information submitted for this KPI.
               </p>
 
-              <div class="mt-2 space-y-1 text-[15px] leading-6 text-gray-500">
-                <div class="flex items-start gap-1">
-                  <span class="text-[#4D9BF6]">•</span>
-                  <span>{{ cycle.targets }}</span>
-                </div>
-
-                <div class="flex items-start gap-1">
-                  <span class="text-[#4D9BF6]">•</span>
-                  <span>{{ cycle.targets }}</span>
-                </div>
-              </div>
-
-              <!-- AUTOMATIC SCORE -->
-              <div class="mt-5 rounded-xl border border-[#D3E8F8] bg-[#EAF6FF] p-4">
-
-                <div class="flex items-center gap-2 text-[#2F87DA]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="19"
-                    height="19"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="8" r="5" />
-                    <path d="M2 21a8 8 0 0 1 10.43-7.62" />
-                    <circle cx="18" cy="18" r="3" />
-                    <path d="m18 16.5.01 3" />
-                    <path d="m16.5 18 .01.01" />
-                    <path d="m19.5 18 .01.01" />
-                  </svg>
-
-                  <span class="text-[15px] font-semibold">
-                    AUTOMATIC SCORE
-                  </span>
-                </div>
-
-                <div class="mt-2 flex items-start gap-2 text-[14px] text-[#6E6E6E]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="shrink-0"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" x2="12" y1="8" y2="12" />
-                    <line x1="12" x2="12.01" y1="16" y2="16" />
-                  </svg>
-
-                  <span>
-                    This KPI is calculated based on the performance of your team members.
-                    It is generated by the system and cannot be edited.
-                  </span>
-                </div>
-
-                <div class="mt-4 grid grid-cols-2 gap-3">
-                  <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-3 py-2">
-                    <span class="text-[13px] text-[#626262]">
-                      TEAM SCORE
-                    </span>
-
-                    <div class="flex items-center gap-2">
-                      <span class="text-[25px] font-bold">
-                        4
-                      </span>
-
-                      <span class="text-[15px]">
-                        / 5
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-3 py-2">
-                    <span class="text-[13px] text-[#626262]">
-                      TEAM CONTRIBUTION
-                    </span>
-
-                    <div class="flex items-center gap-2">
-                      <span class="text-[25px] font-bold">
-                        48
-                      </span>
-
-                      <span class="text-[15px]">
-                        / 60
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
             </div>
-          </div>
 
-          <!-- COLLAPSE HEADERS -->
-          <ng-template #staffCommentsHeader>
-            <div class="flex items-center gap-[9px]">
-              <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
+            <!-- AUTOMATIC SCORE -->
+            <div class="rounded-xl border border-[#D3E8F8] bg-[#EAF6FF] p-3">
 
-              <span class="text-[14px] font-medium text-[#555]">
-                My Comments
-              </span>
-            </div>
-          </ng-template>
+              <div class="flex items-center gap-2 text-[#2F87DA]">
 
-          <ng-template #managerCommentsHeader>
-            <div class="flex w-full items-center justify-between gap-2 pr-[8px]">
-              <div class="flex items-center gap-[9px]">
-                <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="5" />
+                  <path d="M2 21a8 8 0 0 1 10.43-7.62" />
+                  <circle cx="18" cy="18" r="3" />
+                  <path d="m18 16.5.01 3" />
+                  <path d="m16.5 18 .01.01" />
+                  <path d="m19.5 18 .01.01" />
+                </svg>
 
-                <span class="text-[14px] font-medium text-[#4D9BF6]">
-                  Manager Comments
+                <span class="text-[13px] font-semibold">
+                  AUTOMATIC SCORE
                 </span>
+
               </div>
 
-              <span class="text-[14px] text-gray-500">
-                Manager rating: —
-              </span>
+              <div class="mt-2 flex items-start gap-2 text-[12px] leading-5 text-[#6E6E6E]">
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-[1px] shrink-0"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+
+                <span>
+                  This KPI is calculated based on the performance of your team members.
+                  It is generated by the system and cannot be edited.
+                </span>
+
+              </div>
+
+              <!-- TEAM SCORE + TEAM CONTRIBUTION -->
+              <div class="mt-3 flex flex-col gap-2">
+
+                <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-3 py-2">
+
+                  <span class="text-[11px] text-[#626262]">
+                    TEAM SCORE
+                  </span>
+
+                  <div class="flex items-center gap-2">
+                    <span class="text-[20px] font-bold">
+                      4
+                    </span>
+
+                    <span class="text-[13px]">
+                      / 5
+                    </span>
+                  </div>
+
+                </div>
+
+                <div class="rounded-[10px] border border-[#D9D9D9] bg-white px-3 py-2">
+
+                  <span class="text-[11px] text-[#626262]">
+                    TEAM CONTRIBUTION
+                  </span>
+
+                  <div class="flex items-center gap-2">
+                    <span class="text-[20px] font-bold">
+                      48
+                    </span>
+
+                    <span class="text-[13px]">
+                      / 60
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
-          </ng-template>
+
+            <!-- MY COMMENTS -->
+            <nz-collapse class="staff-comments-collapse mt-[10px] mb-[8px]">
+              <nz-collapse-panel
+                [nzActive]="false"
+                [nzHeader]="staffCommentsHeader"
+              >
+                <p class="m-0 text-[13px] text-gray-600">
+                  I delivered 100% of assigned tasks within agreed sprint timelines.
+                </p>
+              </nz-collapse-panel>
+            </nz-collapse>
+
+            <!-- MANAGER COMMENTS -->
+            <nz-collapse class="manager-comments-collapse">
+              <nz-collapse-panel
+                [nzActive]="false"
+                [nzHeader]="managerCommentsHeader"
+              >
+                <p class="m-0 text-[13px] text-gray-600">
+                  Manager comments for this KPI.
+                </p>
+              </nz-collapse-panel>
+            </nz-collapse>
+
+          </div>
         }
 
         <!-- KPI 2 -->
-        <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
+        <div class="mt-[12px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
           <!-- KPI HEADER -->
-          <div class="border-b border-[#E5E7EB] pb-[16px]">
-            <div class="flex flex-col gap-[4px]">
-              <span class="text-[16px] font-semibold leading-5 text-[#111827]">
+          <div class="border-b border-[#E5E7EB] pb-[14px]">
+
+            <div class="flex flex-col gap-1">
+
+              <span class="text-[15px] font-semibold leading-5 text-[#111827]">
                 Operational Efficiency &amp; Code Quality
               </span>
 
-              <span class="text-[15px] text-gray-400">
+              <span class="text-[13px] text-gray-400">
                 Weight: 15%
               </span>
+
             </div>
 
+            <!-- RATINGS -->
             <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   My Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
 
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   Manager Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
 
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   Total Score
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
+
             </div>
+
           </div>
 
           <!-- TARGET -->
-          <div class="mb-[20px] mt-[18px]">
-            <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+          <div class="mb-[18px] mt-[16px]">
+
+            <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
               Target
             </div>
 
-            <div class="flex flex-col gap-[6px]">
-              <span class="text-[15px] text-gray-500">
+            <div class="flex flex-col gap-[5px]">
+              <span class="text-[13px] leading-5 text-gray-500">
                 • Maintain agreed code quality standards across all deliverables.
               </span>
 
-              <span class="text-[15px] text-gray-500">
+              <span class="text-[13px] leading-5 text-gray-500">
                 • Complete assigned development tasks within agreed timelines.
               </span>
             </div>
+
           </div>
 
           <!-- PERFORMANCE -->
-          <div class="mb-[18px]">
-            <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+          <div class="mb-[16px]">
+
+            <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
               Performance
             </div>
 
-            <p class="m-0 text-[15px] text-gray-500">
+            <p class="m-0 text-[13px] leading-5 text-gray-500">
               Performance information submitted for this KPI.
             </p>
+
           </div>
 
           <!-- MY COMMENTS -->
-          <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse class="staff-comments-collapse mb-[8px]">
             <nz-collapse-panel
               [nzActive]="false"
               [nzHeader]="staffCommentsHeader"
             >
-              <p class="m-0 text-[15px] text-gray-600">
+              <p class="m-0 text-[13px] text-gray-600">
                 I delivered 100% of assigned tasks within agreed sprint timelines.
               </p>
             </nz-collapse-panel>
@@ -1807,7 +1875,7 @@
               [nzActive]="false"
               [nzHeader]="managerCommentsHeader"
             >
-              <p class="m-0 text-[15px] text-gray-600">
+              <p class="m-0 text-[13px] text-gray-600">
                 Manager comments for this KPI.
               </p>
             </nz-collapse-panel>
@@ -1816,88 +1884,96 @@
         </div>
 
         <!-- KPI 3 -->
-        <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
+        <div class="mt-[12px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px]">
 
           <!-- KPI HEADER -->
-          <div class="border-b border-[#E5E7EB] pb-[16px]">
-            <div class="flex flex-col gap-[4px]">
-              <span class="text-[16px] font-semibold leading-5 text-[#111827]">
+          <div class="border-b border-[#E5E7EB] pb-[14px]">
+
+            <div class="flex flex-col gap-1">
+
+              <span class="text-[15px] font-semibold leading-5 text-[#111827]">
                 Learning &amp; Development
               </span>
 
-              <span class="text-[15px] text-gray-400">
+              <span class="text-[13px] text-gray-400">
                 Weight: 15%
               </span>
+
             </div>
 
+            <!-- RATINGS -->
             <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   My Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
 
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   Manager Rating
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
 
               <div>
-                <div class="text-[12px] uppercase leading-4 text-gray-500">
+                <div class="text-[11px] uppercase text-gray-500">
                   Total Score
                 </div>
-
-                <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
+                <div class="mt-1 text-[14px] font-medium">
                   —
                 </div>
               </div>
+
             </div>
+
           </div>
 
           <!-- TARGET -->
-          <div class="mb-[20px] mt-[18px]">
-            <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
+          <div class="mb-[18px] mt-[16px]">
+
+            <div class="mb-[7px] text-[13px] font-medium uppercase text-[#222]">
               Target
             </div>
 
-            <div class="flex flex-col gap-[6px]">
-              <span class="text-[15px] text-gray-500">
+            <div class="flex flex-col gap-[5px]">
+              <span class="text-[13px] leading-5 text-gray-500">
                 • Complete required learning and development activities.
               </span>
 
-              <span class="text-[15px] text-gray-500">
+              <span class="text-[13px] leading-5 text-gray-500">
                 • Demonstrate continuous improvement in assigned responsibilities.
               </span>
             </div>
+
           </div>
 
           <!-- PERFORMANCE -->
-          <div class="mb-[18px]">
-            <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
+          <div class="mb-[16px]">
+
+            <div class="mb-[6px] text-[13px] font-medium uppercase text-[#222]">
               Performance
             </div>
 
-            <p class="m-0 text-[15px] text-gray-500">
+            <p class="m-0 text-[13px] leading-5 text-gray-500">
               Performance information submitted for this KPI.
             </p>
+
           </div>
 
           <!-- MY COMMENTS -->
-          <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse class="staff-comments-collapse mb-[8px]">
             <nz-collapse-panel
               [nzActive]="false"
               [nzHeader]="staffCommentsHeader"
             >
-              <p class="m-0 text-[15px] text-gray-600">
+              <p class="m-0 text-[13px] text-gray-600">
                 I delivered 100% of assigned tasks within agreed sprint timelines.
               </p>
             </nz-collapse-panel>
@@ -1909,7 +1985,7 @@
               [nzActive]="false"
               [nzHeader]="managerCommentsHeader"
             >
-              <p class="m-0 text-[15px] text-gray-600">
+              <p class="m-0 text-[13px] text-gray-600">
                 Manager comments for this KPI.
               </p>
             </nz-collapse-panel>
@@ -1918,36 +1994,38 @@
         </div>
 
       </section>
-
-      <!-- COLLAPSE HEADERS -->
-      <ng-template #staffCommentsHeader>
-        <div class="flex items-center gap-[9px]">
-          <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
-
-          <span class="text-[15px] font-medium text-[#555]">
-            My Comments
-          </span>
-        </div>
-      </ng-template>
-
-      <ng-template #managerCommentsHeader>
-        <div class="flex w-full items-center justify-between gap-2 pr-[8px]">
-          <div class="flex items-center gap-[9px]">
-            <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-
-            <span class="text-[15px] font-medium text-[#4D9BF6]">
-              Manager Comments
-            </span>
-          </div>
-
-          <span class="text-[15px] text-gray-500">
-            Manager rating: —
-          </span>
-        </div>
-      </ng-template>
-
     </main>
   </section>
+
+
+  <!-- COLLAPSE HEADERS -->
+  <ng-template #staffCommentsHeader>
+    <div class="flex items-center gap-[9px]">
+      <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
+
+      <span class="text-[14px] font-medium text-[#555]">
+        My Comments
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template #managerCommentsHeader>
+    <div class="flex w-full items-center justify-between pr-[8px]">
+
+      <div class="flex items-center gap-[9px]">
+        <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
+
+        <span class="text-[14px] font-medium text-[#4D9BF6]">
+          Manager Comments
+        </span>
+      </div>
+
+      <span class="text-[13px] text-gray-500">
+        Manager rating: —
+      </span>
+
+    </div>
+  </ng-template>
 
 }
 
@@ -1959,7 +2037,8 @@
 
 
 
-  
+
+
 
 
 
