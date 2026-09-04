@@ -16,7 +16,7 @@ export class TeamreviewTotalscore {
   // DEMO STATE
   // false = Submitted / manager can review
   // true  = Reviewed / read-only
-  isReadOnly = true;
+  isReadOnly = false;
 
   kpis = [
     {
