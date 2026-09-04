@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- HEADER ACTIONS -->
-                <div class="flex items-center gap-[10px]">
+                <div class="md:flex items-center gap-[10px]">
 
                     <!-- MANAGER NOTIFICATIONS -->
                     @if (roleService.hasRole(['manager'])) {
@@ -110,7 +110,7 @@
                     }
 
                     <!-- MY ACTIVITIES -->
-                     <div class="mt-1 md:mt-0 mx-4 md:mx-0">
+                     <div class="mt-1 md:mt-0 mx-4 md:mx-0 hidden md:block">
                     <button type="button" (click)="goToMyActivities()"
                         class="button-press rounded-[8px] border border-[#E1E4E8] bg-white px-[22px] py-[11px] text-[15px] font-medium text-[#555]"
                     >
@@ -140,7 +140,7 @@
 
                             <!-- CYCLE DETAILS -->
                             <div class="flex flex-col gap-[3px]">
-                                <span class="text-[18px] font-semibold text-[#111827] whitespace-nowrap">
+                                <span class="md:text-[18px] text-[11px] font-semibold text-[#111827] whitespace-nowrap">
                                     ELEVATE – Q3 (July – September 2026)
                                 </span>
 
@@ -151,7 +151,7 @@
                         </div>
 
                         <!-- VIEW TARGETS -->
-                         <div class="relative top-[-83px] right-[140px] md:right-0 md:top-0 whitespace-nowrap">
+                         <div class="relative top-[-83px] right-[140px] md:right-0 md:top-0 hidden md:block whitespace-nowrap">
                         <button
                             type="button"
                             (click)="goToElevate()"

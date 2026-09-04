@@ -16,15 +16,14 @@
 
 
 
- /* ```scss */
-/* ```scss */
-.target-segmented {
+ .target-segmented {
   width: 35%;
   display: block;
   background: white;
   padding: 4px;
   border-radius: 9999px;
   border: 1px solid #c0c0c0;
+  box-sizing: border-box;
 
   ::ng-deep .ant-segmented-group {
     width: 100%;
@@ -39,13 +38,14 @@
     border-radius: 9999px;
     color: #919191;
     font-weight: 500;
+    white-space: nowrap;
   }
 
   ::ng-deep .ant-segmented-item:hover {
     color: #2f87da;
   }
 
-  /* // Normal selected tabs = blue */
+  /* Normal selected tabs = blue */
   ::ng-deep .ant-segmented-item-selected {
     background: #2f87da !important;
     color: #ffffff !important;
@@ -58,7 +58,7 @@
     color: #ffffff !important;
   }
 
-  /* // Completed selected tab = green */
+  /* Completed selected tab = green */
   ::ng-deep .ant-segmented-item.completed-segment.ant-segmented-item-selected {
     background: #57ec00 !important;
     color: #ffffff !important;
@@ -72,3 +72,53 @@
   }
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .target-segmented {
+    width: 60%;
+  }
+
+  .target-segmented ::ng-deep .ant-segmented-group {
+    gap: 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .target-segmented {
+    width: 100%;
+    max-width: 100%;
+    padding: 3px;
+    border-width: 1px;
+  }
+
+  .target-segmented ::ng-deep .ant-segmented-group {
+    width: 100%;
+    gap: 4px;
+  }
+
+  .target-segmented ::ng-deep .ant-segmented-item {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 13px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .target-segmented {
+    padding: 2px;
+  }
+
+  .target-segmented ::ng-deep .ant-segmented-group {
+    gap: 2px;
+  }
+
+  .target-segmented ::ng-deep .ant-segmented-item {
+    padding: 5px 4px;
+    font-size: 12px;
+  }
+}
