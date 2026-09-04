@@ -130,10 +130,8 @@
                     <div class="flex items-start justify-between">
 
                         <div class="flex flex-col gap-[8px]">
-
                             <!-- STATUS -->
-                            <span
-                                class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[11px] font-medium text-[#16A34A]"
+                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[11px] font-medium text-[#16A34A]"
                             >
                                 • Active
                             </span>
@@ -152,9 +150,7 @@
 
                         <!-- VIEW TARGETS -->
                          <div class="relative top-[-83px] right-[140px] md:right-0 md:top-0 hidden md:block whitespace-nowrap">
-                        <button
-                            type="button"
-                            (click)="goToElevate()"
+                        <button type="button" (click)="goToElevate()"
                             class="button-press rounded-[8px] bg-[#5BA2F7] px-[22px] py-[11px] text-[15px] font-medium !text-white shadow-sm"
                         >
                             View Targets
@@ -216,35 +212,69 @@
 
 
 @if (roleService.hasRole('hr')) {
-    <div class="min-h-screen bg-[#F7F8FA]">
+
+    <!-- ==================== lgscreens ==================== -->
+    <div
+        id="lgscreens"
+        class="hidden min-h-screen bg-[#F7F8FA] md:block"
+    >
         <div class="w-full px-[30px] py-[35px]">
-            <div class="mb-[28px] flex items-center justify-between">
+
+            <!-- PAGE HEADER -->
+            <div class="mb-[28px] flex flex-row items-center justify-between">
                 <div class="flex flex-col gap-[6px]">
-                    <span class="text-[28px] font-medium text-[#111827]">Overview</span>
-                    <span class="text-[15px] text-gray-400">Goals, performance and employee development</span>
+                    <span class="text-[28px] font-medium text-[#111827]">
+                        Overview
+                    </span>
+
+                    <span class="text-[15px] text-gray-400">
+                        Goals, performance and employee development
+                    </span>
                 </div>
             </div>
 
+            <!-- PERFORMANCE CYCLE -->
             <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
+
+                <!-- CYCLE INFORMATION -->
                 <div class="px-[22px] py-[20px]">
-                    <div class="flex items-start justify-between">
-                        <div class="flex flex-col gap-[10px]">
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[15px] font-medium text-[#16A34A]">• Active</span>
-                            <div class="flex flex-col gap-[5px]">
-                                <span class="text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
-                                <span class="text-[15px] text-gray-500">Goal setting is open. Add measurable targets for your KPIs before the agreed deadline</span>
+                    <div class="flex flex-row items-start justify-between gap-6">
+
+                        <div class="min-w-0 flex-1">
+                            <div class="flex flex-col gap-[10px]">
+
+                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 text-[15px] font-medium text-[#16A34A]">
+                                    • Active
+                                </span>
+
+                                <div class="flex flex-col gap-[5px]">
+                                    <span class="break-words text-[18px] font-semibold text-[#111827]">
+                                        ELEVATE – Q3 (July – September 2026)
+                                    </span>
+
+                                    <span class="text-[15px] leading-5 text-gray-500">
+                                        Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
-                        <button (click)="goToPerformanceCycles()"
-                            class=" button-press cursor-pointer rounded-[8px] bg-[#5BA2F7] px-[24px] py-[12px] text-[15px] font-medium !text-white shadow-sm"
+
+                        <!-- KEEP HIDDEN -->
+                        <button
+                            type="button"
+                            (click)="goToPerformanceCycles()"
+                            class="hidden button-press w-auto shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-[24px] py-3 text-[15px] font-medium !text-white shadow-sm"
                         >
                             Manage cycle
                         </button>
+
                     </div>
                 </div>
 
-                <div class="border-b border-t border-[#E5E7EB] px-[22px] py-[18px]">
-                    <nz-steps [nzCurrent]="0" >
+                <!-- STEPS -->
+                <div class="border-b border-t border-[#E5E7EB] px-[20px] py-[14px]">
+                    <nz-steps [nzCurrent]="0">
                         <nz-step nzTitle="Targets"></nz-step>
                         <nz-step nzTitle="Performance Review"></nz-step>
                         <nz-step nzTitle="Manager Review"></nz-step>
@@ -252,214 +282,1090 @@
                     </nz-steps>
                 </div>
 
-                <div class="flex gap-[40px] px-[22px] py-[18px]">
-                    <div class="flex-1 rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-[28px] py-[18px]">
+                <!-- REVIEW WINDOWS -->
+                <div class="grid grid-cols-2 gap-[40px] px-[22px] py-[18px]">
+
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-[28px] py-[18px]">
                         <div class="flex flex-col gap-[5px]">
-                            <span class="text-[15px] uppercase text-[#94A3B8]">Target Setting Window</span>
-                            <span class="text-[15px] font-medium text-[#4D9BF6]">22 Jul – 30 Jul 2026</span>
+                            <span class="text-[15px] uppercase text-[#94A3B8]">
+                                Target Setting Window
+                            </span>
+
+                            <span class="text-[15px] font-medium text-[#4D9BF6]">
+                                22 Jul – 30 Jul 2026
+                            </span>
                         </div>
                     </div>
-                    <div class="flex-1 rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-[28px] py-[18px]">
+
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-[28px] py-[18px]">
                         <div class="flex flex-col gap-[5px]">
-                            <span class="text-[15px] uppercase text-[#94A3B8]">Performance Review Window</span>
-                            <span class="text-[15px] font-medium text-[#111827]">29 Sept – 7 Oct 2026</span>
+                            <span class="text-[15px] uppercase text-[#94A3B8]">
+                                Performance Review Window
+                            </span>
+
+                            <span class="text-[15px] font-medium text-[#111827]">
+                                29 Sept – 7 Oct 2026
+                            </span>
                         </div>
                     </div>
+
                 </div>
             </div>
 
+            <!-- SUMMARY CARDS -->
             <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Departments</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">10</div>
-                    <span class="text-[15px] text-gray-400">All departments in this cycle</span>
+
+                <!-- DEPARTMENTS -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Departments
+                    </span>
+
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
+                        10
+                    </div>
+
+                    <span class="text-[15px] leading-5 text-gray-400">
+                        All departments in this cycle
+                    </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Employees</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">120</div>
-                    <span class="text-[15px] text-gray-400">Total number of employees</span>
+                <!-- EMPLOYEES -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Employees
+                    </span>
+
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
+                        120
+                    </div>
+
+                    <span class="text-[15px] leading-5 text-gray-400">
+                        Total number of employees
+                    </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Review Completion</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">10%</div>
-                    <span class="text-[15px] text-gray-400">Manager reviews completed</span>
+                <!-- REVIEW COMPLETION -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Review Completion
+                    </span>
+
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
+                        10%
+                    </div>
+
+                    <span class="text-[15px] leading-5 text-gray-400">
+                        Manager reviews completed
+                    </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Targets Awaiting Review</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">18</div>
-                    <span class="text-[15px] text-gray-400">Employee submissions pending manager review</span>
+                <!-- TARGETS AWAITING REVIEW -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Targets Awaiting Review
+                    </span>
+
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
+                        18
+                    </div>
+
+                    <span class="text-[15px] leading-5 text-gray-400">
+                        Employee submissions pending manager review
+                    </span>
                 </div>
+
             </div>
 
-            <section class="mt-[28px]">
+            <!-- DEPARTMENT PROGRESS -->
+            <section class="mt-7">
+
                 <div class="flex items-center justify-between">
-                    <span class="text-[15px] uppercase text-gray-500">Department Progress</span>
-                    <a routerLink="/hr/departments" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</a>
+                    <span class="text-[15px] uppercase text-gray-500">
+                        Department Progress
+                    </span>
+
+                    <a
+                        routerLink="/hr/departments"
+                        class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]"
+                    >
+                        View all
+                    </a>
                 </div>
 
                 <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Technology</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
+
+                    <!-- TECHNOLOGY -->
+                    <div class="flex flex-row items-center justify-between gap-6 border-b border-[#E5E7EB] px-[18px] py-[16px]">
+
+                        <div class="flex min-w-0 w-[40%] items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium">
+                                    Technology
+                                </span>
+
+                                <span class="truncate text-[15px] text-gray-400">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
+
                         <div class="w-[36%]">
-                            <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">8/24 manager reviews completed</span>
+                            <nz-progress
+                                [nzPercent]="26"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[15px] text-gray-400">
+                                8/24 manager reviews completed
+                            </span>
                         </div>
-                        <button (click)="goToDepartmentDetails()" class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Finance</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
+                    <!-- FINANCE -->
+                    <div class="flex flex-row items-center justify-between gap-6 border-b border-[#E5E7EB] px-[18px] py-[16px]">
+
+                        <div class="flex min-w-0 w-[40%] items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium">
+                                    Finance
+                                </span>
+
+                                <span class="truncate text-[15px] text-gray-400">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
+
                         <div class="w-[36%]">
-                            <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">16/24 manager reviews completed</span>
+                            <nz-progress
+                                [nzPercent]="66"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[15px] text-gray-400">
+                                16/24 manager reviews completed
+                            </span>
                         </div>
-                        <button (click)="goToDepartmentDetails()" class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Human Resources</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
+                    <!-- HUMAN RESOURCES -->
+                    <div class="flex flex-row items-center justify-between gap-6 border-b border-[#E5E7EB] px-[18px] py-[16px]">
+
+                        <div class="flex min-w-0 w-[40%] items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium">
+                                    Human Resources
+                                </span>
+
+                                <span class="truncate text-[15px] text-gray-400">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
+
                         <div class="w-[36%]">
-                            <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">24/24 manager reviews completed</span>
+                            <nz-progress
+                                [nzPercent]="100"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[15px] text-gray-400">
+                                24/24 manager reviews completed
+                            </span>
                         </div>
-                        <button (click)="goToDepartmentDetails()" class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Operations</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
+                    <!-- OPERATIONS -->
+                    <div class="flex flex-row items-center justify-between gap-6 border-b border-[#E5E7EB] px-[18px] py-[16px]">
+
+                        <div class="flex min-w-0 w-[40%] items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium">
+                                    Operations
+                                </span>
+
+                                <span class="truncate text-[15px] text-gray-400">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
+
                         <div class="w-[36%]">
-                            <nz-progress [nzPercent]="83" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">20/24 manager reviews completed</span>
+                            <nz-progress
+                                [nzPercent]="83"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[15px] text-gray-400">
+                                20/24 manager reviews completed
+                            </span>
                         </div>
-                        <button (click)="goToDepartmentDetails()" class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Marketing</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
+                    <!-- MARKETING -->
+                    <div class="flex flex-row items-center justify-between gap-6 px-[18px] py-[16px]">
+
+                        <div class="flex min-w-0 w-[40%] items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium">
+                                    Marketing
+                                </span>
+
+                                <span class="truncate text-[15px] text-gray-400">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
+
                         <div class="w-[36%]">
-                            <nz-progress [nzPercent]="0" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">0/24 manager reviews completed</span>
+                            <nz-progress
+                                [nzPercent]="0"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[15px] text-gray-400">
+                                0/24 manager reviews completed
+                            </span>
                         </div>
-                        <button (click)="goToDepartmentDetails()" class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+
                     </div>
+
                 </div>
             </section>
 
-            <section class="mt-[28px] pb-[40px]">
-                <span class="text-[15px] uppercase text-gray-500">Recent Submissions</span>
+            <!-- RECENT SUBMISSIONS -->
+            <section class="mt-7 w-full pb-[40px]">
+
+                <span class="text-[14px] uppercase text-gray-500">
+                    Recent Submissions
+                </span>
+
+                <div class="mt-[10px] w-full overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+
+                    <!-- SUBMISSION 1 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-[18px] py-[13px]">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[15px] font-medium text-gray-900">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#EAF3FF] px-2.5 py-0.5 text-[12px] font-medium text-[#4D9BF6]">
+                                        Submitted
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[14px] text-gray-400">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            (click)="goToEmployeeDetails()"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 2 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-[18px] py-[13px]">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[15px] font-medium text-gray-900">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#EAF3FF] px-2.5 py-0.5 text-[12px] font-medium text-[#4D9BF6]">
+                                        Submitted
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[14px] text-gray-400">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 3 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-[18px] py-[13px]">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[15px] font-medium text-gray-900">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[12px] font-medium text-[#16A34A]">
+                                        Reviewed
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[14px] text-gray-400">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 4 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-[18px] py-[13px]">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[15px] font-medium text-gray-900">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[12px] font-medium text-[#16A34A]">
+                                        Reviewed
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[14px] text-gray-400">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 5 -->
+                    <div class="flex items-center justify-between gap-3 px-[18px] py-[13px]">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[15px] font-medium text-gray-900">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[12px] font-medium text-[#16A34A]">
+                                        Reviewed
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[14px] text-gray-400">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+    <!-- ==================== moile screens ==================== -->
+    <div
+        id="moile-screens"
+        class="block min-h-screen bg-[#F7F8FA] md:hidden"
+    >
+        <div class="w-full px-4 py-5 sm:px-5 sm:py-6">
+
+            <!-- PAGE HEADER -->
+            <div class="mb-6 flex flex-col gap-3">
+                <div class="flex flex-col gap-[6px]">
+                    <span class="text-[24px] font-medium text-[#111827] sm:text-[25px]">
+                        Overview
+                    </span>
+
+                    <span class="text-[14px] text-gray-400 sm:text-[15px]">
+                        Goals, performance and employee development
+                    </span>
+                </div>
+            </div>
+
+            <!-- PERFORMANCE CYCLE -->
+            <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
+
+                <!-- CYCLE INFORMATION -->
+                <div class="px-4 py-5 sm:px-5 sm:py-5">
+                    <div class="flex flex-col gap-5">
+
+                        <div class="min-w-0 flex-1">
+                            <div class="flex flex-col gap-[10px]">
+
+                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 text-[13px] font-medium text-[#16A34A] sm:text-[14px]">
+                                    • Active
+                                </span>
+
+                                <div class="flex flex-col gap-[5px]">
+                                    <span class="break-words text-[16px] font-semibold text-[#111827] sm:text-[17px]">
+                                        ELEVATE – Q3 (July – September 2026)
+                                    </span>
+
+                                    <span class="text-[14px] leading-5 text-gray-500 sm:text-[15px]">
+                                        Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- KEEP HIDDEN -->
+                        <button
+                            type="button"
+                            (click)="goToPerformanceCycles()"
+                            class="hidden button-press w-full shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-5 py-3 text-[14px] font-medium !text-white shadow-sm"
+                        >
+                            Manage cycle
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- STEPS -->
+                <div class="overflow-x-auto border-b border-t border-[#E5E7EB] px-4 py-[14px] sm:px-5 sm:py-[16px]">
+                    <nz-steps [nzCurrent]="0">
+                        <nz-step nzTitle="Targets"></nz-step>
+                        <nz-step nzTitle="Performance Review"></nz-step>
+                        <nz-step nzTitle="Manager Review"></nz-step>
+                        <nz-step nzTitle="Completed"></nz-step>
+                    </nz-steps>
+                </div>
+
+                <!-- REVIEW WINDOWS -->
+                <div class="grid grid-cols-1 gap-3 px-4 py-[18px] sm:grid-cols-2 sm:gap-4 sm:px-5">
+
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-[16px] sm:px-5 sm:py-[18px]">
+                        <div class="flex flex-col gap-[5px]">
+                            <span class="text-[13px] uppercase text-[#94A3B8] sm:text-[14px]">
+                                Target Setting Window
+                            </span>
+
+                            <span class="text-[14px] font-medium text-[#4D9BF6] sm:text-[15px]">
+                                22 Jul – 30 Jul 2026
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-[16px] sm:px-5 sm:py-[18px]">
+                        <div class="flex flex-col gap-[5px]">
+                            <span class="text-[13px] uppercase text-[#94A3B8] sm:text-[14px]">
+                                Performance Review Window
+                            </span>
+
+                            <span class="text-[14px] font-medium text-[#111827] sm:text-[15px]">
+                                29 Sept – 7 Oct 2026
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SUMMARY CARDS -->
+            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+
+                <!-- DEPARTMENTS -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
+                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
+                        Departments
+                    </span>
+
+                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
+                        10
+                    </div>
+
+                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
+                        All departments in this cycle
+                    </span>
+                </div>
+
+                <!-- EMPLOYEES -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
+                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
+                        Employees
+                    </span>
+
+                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
+                        120
+                    </div>
+
+                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
+                        Total number of employees
+                    </span>
+                </div>
+
+                <!-- REVIEW COMPLETION -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
+                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
+                        Review Completion
+                    </span>
+
+                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
+                        10%
+                    </div>
+
+                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
+                        Manager reviews completed
+                    </span>
+                </div>
+
+                <!-- TARGETS AWAITING REVIEW -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
+                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
+                        Targets Awaiting Review
+                    </span>
+
+                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
+                        18
+                    </div>
+
+                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
+                        Employee submissions pending manager review
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- DEPARTMENT PROGRESS -->
+            <section class="mt-7">
+
+                <div class="flex items-center justify-between">
+                    <span class="text-[13px] uppercase text-gray-500 sm:text-[14px]">
+                        Department Progress
+                    </span>
+
+                    <a
+                        routerLink="/hr/departments"
+                        class="link-select cursor-pointer pr-1 text-[13px] font-medium hover:text-[#4D9BF6] sm:pr-2"
+                    >
+                        View all
+                    </a>
+                </div>
 
                 <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
+
+                    <!-- TECHNOLOGY -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 sm:px-5 sm:py-4">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[14px] font-medium sm:text-[15px]">
+                                    Technology
+                                </span>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
-                            <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                            <button (click)="goToEmployeeDetails()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+
+                        <div class="w-full">
+                            <nz-progress
+                                [nzPercent]="26"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[13px] text-gray-400 sm:text-[14px]">
+                                8/24 manager reviews completed
+                            </span>
                         </div>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
+                    <!-- FINANCE -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 sm:px-5 sm:py-4">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[14px] font-medium sm:text-[15px]">
+                                    Finance
+                                </span>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
-                            <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+
+                        <div class="w-full">
+                            <nz-progress
+                                [nzPercent]="66"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[13px] text-gray-400 sm:text-[14px]">
+                                16/24 manager reviews completed
+                            </span>
                         </div>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
+                    <!-- HUMAN RESOURCES -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 sm:px-5 sm:py-4">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[14px] font-medium sm:text-[15px]">
+                                    Human Resources
+                                </span>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                            <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+
+                        <div class="w-full">
+                            <nz-progress
+                                [nzPercent]="100"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[13px] text-gray-400 sm:text-[14px]">
+                                24/24 manager reviews completed
+                            </span>
                         </div>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
+                    <!-- OPERATIONS -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 sm:px-5 sm:py-4">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[14px] font-medium sm:text-[15px]">
+                                    Operations
+                                </span>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                            <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+
+                        <div class="w-full">
+                            <nz-progress
+                                [nzPercent]="83"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[13px] text-gray-400 sm:text-[14px]">
+                                20/24 manager reviews completed
+                            </span>
                         </div>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
                     </div>
 
-                    <div class="flex items-center justify-between px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
+                    <!-- MARKETING -->
+                    <div class="flex flex-col gap-4 px-4 py-4 sm:px-5 sm:py-4">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[17px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="text-[14px] font-medium sm:text-[15px]">
+                                    Marketing
+                                </span>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Sally Smith • 24 team members
+                                </span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                            <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
+
+                        <div class="w-full">
+                            <nz-progress
+                                [nzPercent]="0"
+                                [nzShowInfo]="false"
+                                [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"
+                            ></nz-progress>
+
+                            <span class="text-[13px] text-gray-400 sm:text-[14px]">
+                                0/24 manager reviews completed
+                            </span>
                         </div>
+
+                        <button
+                            type="button"
+                            (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
                     </div>
+
+                </div>
+            </section>
+
+            <!-- RECENT SUBMISSIONS -->
+            <section class="mt-7 w-full pb-8 sm:pb-9">
+                <span class="text-[12px] uppercase text-gray-500 sm:text-[13px]">
+                    Recent Submissions
+                </span>
+
+                <div class="mt-[10px] w-full overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+
+                    <!-- SUBMISSION 1 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-4 sm:py-3">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[14px] font-medium text-gray-900 sm:text-[15px]">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#EAF3FF] px-2.5 py-0.5 text-[11px] font-medium text-[#4D9BF6] sm:text-[12px]">
+                                        Submitted
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            (click)="goToEmployeeDetails()"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 2 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-4 sm:py-3">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[14px] font-medium text-gray-900 sm:text-[15px]">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#EAF3FF] px-2.5 py-0.5 text-[11px] font-medium text-[#4D9BF6] sm:text-[12px]">
+                                        Submitted
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 3 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-4 sm:py-3">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[14px] font-medium text-gray-900 sm:text-[15px]">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[11px] font-medium text-[#16A34A] sm:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+                    <!-- SUBMISSION 4 -->
+                    <div class="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-4 sm:py-3">
+
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[14px] font-medium text-gray-900 sm:text-[15px]">
+                                        Sally Smith
+                                    </span>
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[11px] font-medium text-[#16A34A] sm:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
+                    <!-- SUBMISSION 5 -->
+                    <div class="flex items-center justify-between gap-3 px-3 py-3 sm:px-4 sm:py-3">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white">
+                                <i class="fa-solid fa-user text-[16px] text-[#93C5FD]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[14px] font-medium text-gray-900 sm:text-[15px]">
+                                        Sally Smith
+                                    </span>
+
+                                    <span class="rounded-full bg-[#DDFBE5] px-2.5 py-0.5 text-[11px] font-medium text-[#16A34A] sm:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+                                <span class="truncate text-[13px] text-gray-400 sm:text-[14px]">
+                                    Software Engineer • Client-side Engineering
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
+                        >
+                            View →
+                        </button>
+
+                    </div>
+
                 </div>
             </section>
         </div>
     </div>
+
 }
 
 @if (roleService.hasRole('executive')) {
