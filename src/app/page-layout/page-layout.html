@@ -1,5 +1,5 @@
 <main class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-  <div class="relative mx-auto flex h-[65px] items-center px-6 md:px-10">
+  <div class="relative mx-auto flex justify-between h-[65px] items-center px-6 md:px-10">
 
     <!-- Logo -->
     <div class="flex items-center">
@@ -9,10 +9,9 @@
         class="h-6 w-auto object-contain"
       />
     </div>
-
     
     <!-- Center Navigation -->
-    <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
+    <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 hidden md:block">
 
       <a
         routerLink="/dashboard"
@@ -22,11 +21,7 @@
         Dashboard
       </a>
     
-
-  
-
-      <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-      @if (roleService.hasRole(['executive'])) {
+  @if (roleService.hasRole(['executive'])) {
   <a
     routerLink="executives/department-performance"
     routerLinkActive="nav-link-active"
@@ -55,8 +50,6 @@
   </a>
 }
 
-
-
 @if (roleService.hasRole(['manager', 'employee'])) {
   <a
     [routerLink]="
@@ -80,7 +73,6 @@
     My Activities
   </a>
 }
-
 
 <!-- MANAGER -->
  @if (roleService.hasRole(['manager'])) {
@@ -111,27 +103,21 @@
       class="nav-link">
       KPI Templates
     </a>
-  }
-
-  @if (roleService.hasRole('hr')) {
+    
     <a
       routerLink="hr/performance-cycles"
       routerLinkActive="nav-link-active"
       class="nav-link">
       Performance Cycles
     </a>
-  }
 
-  @if (roleService.hasRole('hr')) {
-    <a
+      <a
       routerLink="hr/departments"
       routerLinkActive="nav-link-active"
       class="nav-link">
       Departments
     </a>
-  }
 
-    @if (roleService.hasRole('hr')) {
     <a
       routerLink="hr/validation"
       routerLinkActive="nav-link-active"
@@ -140,10 +126,11 @@
     </a>
   }
 
+
     </nav>
 
     <!-- User -->
-    <div class="ml-auto flex items-center gap-3">
+    <div class="ml-auto flex items-center gap-3 hidden md:flex">
 
       <div class="flex flex-col text-right">
         <span class="text-[13px] font-semibold text-gray-900">
@@ -163,9 +150,209 @@
 
     </div>
 
+    <div class="flex items-center gap-[4px] block md:hidden">
+        <a nz-dropdown nzTrigger="click">
+          <i class="fa-solid fa-sort-down"
+            style="color: rgb(255, 255, 255);">
+          </i>
+        </a>
+        <button (click)="openSideNav()">
+          <i class=" fa-solid fa-bars fa-xl items-center"
+            style="color: rgb(177, 177, 177);">
+          </i>
+        </button>
+      </div>
   </div>
 </main>
 
 <div class="bg-[#F5F7FA] pt-[65px]">
   <router-outlet></router-outlet>
 </div>
+
+  <nz-drawer [nzClosable]="false" [nzVisible]="isSideNav" nzPlacement="right"
+[nzWidth]="280" (nzOnClose)="close()">
+
+<ng-container *nzDrawerContent> 
+  <div class="flex h-full flex-col">
+
+  <!-- USER PROFILE -->
+  <div class="mb-5 border-b border-gray-200 pb-5">
+    <div class="flex items-center gap-3">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EAF3FC]">
+        <i class="fa-solid fa-user text-[17px] text-[#2F87DA]"></i>
+      </div>
+
+      <div>
+        <div class="text-[15px] font-semibold text-[#171717]">
+          Sally Smith
+        </div>
+        <div class="mt-0.5 text-[14px] text-gray-500">
+          Customer Support
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="flex-1 space-y-4">
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="nav-link-active"
+      [routerLinkActiveOptions]="{ exact: true }" (click)="close()"
+      class="nav-link flex items-center rounded-lg px-5 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+    >
+      <i class="fa-solid fa-house mr-2 w-4 text-center text-[14px]"></i>
+      Dashboard
+    </a>
+
+    @if (roleService.hasRole(['executive'])) {
+
+      <a
+        routerLink="executives/department-performance"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-building mr-2 w-4 text-center text-[14px]"></i>
+        Departments
+      </a>
+
+      <a
+        routerLink="executives/manager-performance"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-user-tie mr-2 w-4 text-center text-[14px]"></i>
+        Managers
+      </a>
+
+      <a
+        routerLink="executives/employee-performance"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-users mr-2 w-4 text-center text-[14px]"></i>
+        Employees
+      </a>
+
+    }
+
+    @if (roleService.hasRole(['manager', 'employee'])) {
+
+      <a
+        [routerLink]="
+          roleService.hasRole('employee')
+            ? '/elevate/user-elevate'
+            : '/elevate/manager-elevate'
+        "
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-chart-line mr-2 w-4 text-center text-[14px]"></i>
+        Elevate
+      </a>
+
+      <a
+        routerLink="/activities-layout"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-list-check mr-2 w-4 text-center text-[14px]"></i>
+        My Activities
+      </a>
+
+    }
+
+    <!-- MANAGER -->
+    @if (roleService.hasRole(['manager'])) {
+
+      <a
+        routerLink="set-target"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-bullseye mr-2 w-4 text-center text-[14px]"></i>
+        Set Targets
+      </a>
+
+      <a
+        routerLink="team-review"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: false }" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-clipboard-check mr-2 w-4 text-center text-[14px]"></i>
+        Team Review
+      </a>
+
+    }
+
+    @if (roleService.hasRole('hr')) {
+
+      <a
+        routerLink="hr/kpi-templates"
+        routerLinkActive="nav-link-active" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-file-lines mr-2 w-4 text-center text-[14px]"></i>
+        KPI Templates
+      </a>
+
+      <a
+        routerLink="hr/performance-cycles"
+        routerLinkActive="nav-link-active" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-calendar-days mr-2 w-4 text-center text-[14px]"></i>
+        Performance Cycles
+      </a>
+
+      <a
+        routerLink="hr/departments"
+        routerLinkActive="nav-link-active" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-building mr-2 w-4 text-center text-[14px]"></i>
+        Departments
+      </a>
+
+      <a
+        routerLink="hr/validation"
+        routerLinkActive="nav-link-active" (click)="close()"
+        class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]"
+      >
+        <i class="fa-solid fa-circle-check mr-2 w-4 text-center text-[14px]"></i>
+        Validation
+      </a>
+
+    }
+
+  </nav>
+
+  <!-- BACK TO TOOLBOX -->
+  <div class="border-t border-gray-200 pt-4">
+    <button type="button" (click)="close()"
+      class="flex w-full items-center gap-2 rounded-lg px-2 py-3 text-[15px] font-medium !text-red-500 transition hover:bg-red-50 hover:text-red-600"
+    >
+      <i class="fa-solid fa-right-from-bracket w-4 text-center text-[14px]"></i>
+      Back to Toolbox
+    </button>
+  </div>
+
+</div>
+
+
+  </ng-container>
+</nz-drawer>
+
+
+
+
+
+    
