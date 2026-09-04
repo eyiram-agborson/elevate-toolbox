@@ -74,7 +74,7 @@ export class ManagerElevate {
   // KPI data
   previousCycles = [
     {
-      weight: 'Weight: 60%',
+      weight: '60%',
       application: 'Application Development & Delivery',
       name: 'TARGET',
       targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',

@@ -72,3 +72,24 @@
   }
 }
 
+/* MOBILE */
+@media (max-width: 767px) {
+.target-segmented {
+width: 100%;
+}
+}
+
+.manager-comments-collapse {
+border: 1px solid #dceaf7;
+border-radius: 10px;
+background: #f5faff;
+overflow: hidden;
+}
+
+.staff-comments-collapse {
+margin-bottom: 10px;
+border: 1px solid #e7e3de;
+border-radius: 10px;
+background: #f8f6f2;
+overflow: hidden;
+}
