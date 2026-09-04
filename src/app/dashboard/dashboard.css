@@ -1,4 +1,3 @@
-
 /* Mobile - vertical steps */
 @media (max-width: 767px) {
   ::ng-deep .ant-steps {
@@ -9,16 +8,22 @@
 
   ::ng-deep .ant-steps-item {
     display: flex !important;
-    width: 100% !important;
-    max-width: none !important;
     flex: none !important;
-    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 60px !important;
     padding: 0 0 20px 0 !important;
+    margin: 0 !important;
+  }
+
+  ::ng-deep .ant-steps-item:last-child {
+    padding-bottom: 0 !important;
   }
 
   ::ng-deep .ant-steps-item-container {
     display: flex !important;
     width: 100% !important;
+    position: relative !important;
   }
 
   ::ng-deep .ant-steps-item-content {
@@ -26,16 +31,25 @@
     flex: 1 !important;
   }
 
-  /* Show the vertical connecting line */
+  /* SINGLE vertical connector line */
   ::ng-deep .ant-steps-item-tail {
     display: block !important;
     position: absolute !important;
     left: 15px !important;
     top: 32px !important;
-    height: calc(100% - 12px) !important;
+    bottom: 0 !important;
+    width: 1px !important;
+    height: auto !important;
+    padding: 0 !important;
+    background: #d9d9d9 !important;
   }
 
-  /* Allow long titles to wrap */
+  /* Remove NG-Zorro's generated line */
+  ::ng-deep .ant-steps-item-tail::after {
+    display: none !important;
+  }
+
+  /* Step title */
   ::ng-deep .ant-steps-item-title {
     white-space: normal !important;
     word-break: normal !important;
@@ -43,13 +57,13 @@
   }
 }
 
-/* Desktop - horizontal steps */
 @media (min-width: 768px) {
   ::ng-deep .ant-steps {
     display: flex !important;
     flex-direction: row !important;
   }
 }
+
 
 
 
