@@ -37,7 +37,7 @@ export class ManagerElevate {
 
   // Demo values for now. These should come from the APIs later.
   selfReviewOpen = true;
-  selfReviewSubmitted = false;
+  selfReviewSubmitted = true;
   managerReviewCompleted = true;
 
   pages = [1, 2, 3, 4, 5];
@@ -74,7 +74,7 @@ export class ManagerElevate {
   // KPI data
   previousCycles = [
     {
-      weight: 'Weight: 60%',
+      weight: '60%',
       application: 'Application Development & Delivery',
       name: 'TARGET',
       targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',

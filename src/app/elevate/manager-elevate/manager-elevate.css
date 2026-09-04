@@ -1,8 +1,9 @@
 
 /* STEP CSS */
 ::ng-deep .completed-step .ant-steps-item-icon {
-  border-color: red !important;
-  background-color: red !important;
+  border-color: #57ec00 !important;
+  background-color: #57ec00 !important;
+  font-weight: 600 !important;
 }
 
 ::ng-deep .completed-step .ant-steps-icon {
@@ -72,6 +73,22 @@
   }
 }
 
+
+.manager-comments-collapse {
+border: 1px solid #dceaf7;
+border-radius: 10px;
+background: #f5faff;
+overflow: hidden;
+}
+
+.staff-comments-collapse {
+margin-bottom: 10px;
+border: 1px solid #e7e3de;
+border-radius: 10px;
+background: #f8f6f2;
+overflow: hidden;
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .target-segmented {
@@ -83,28 +100,11 @@
   }
 }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 767px) {
-  .target-segmented {
-    width: 100%;
-    max-width: 100%;
-    padding: 3px;
-    border-width: 1px;
-  }
-
-  .target-segmented ::ng-deep .ant-segmented-group {
-    width: 100%;
-    gap: 4px;
-  }
-
-  .target-segmented ::ng-deep .ant-segmented-item {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 6px 8px;
-    font-size: 13px;
-    line-height: 20px;
-    white-space: nowrap;
-  }
+.target-segmented {
+width: 100%;
+}
 }
 
 /* Very small phones */
@@ -122,3 +122,5 @@
     font-size: 12px;
   }
 }
+
+
