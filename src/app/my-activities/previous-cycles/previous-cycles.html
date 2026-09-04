@@ -979,40 +979,39 @@
         </button>
       </div>
 
-      <!-- PAGE HEADER + TOTAL SCORE -->
-      <section class="mx-8 mt-8">
-        <div class="flex items-start justify-between gap-6">
+<section class="mx-8 mt-8 flex items-start justify-between gap-6">
 
-          <!-- PAGE HEADER -->
-          <div>
-            <h2 class="text-[25px] font-semibold">
-              ELEVATE – Q3 (July – September 2026)
-            </h2>
+  <!-- PAGE HEADER -->
+  <div>
+    <h2 class="text-[25px] font-semibold">
+      ELEVATE – Q3 (July – September 2026)
+    </h2>
 
-            <p class="mt-2 text-[15px] text-gray-500">
-              Your performance review for this cycle has been completed.
-            </p>
-          </div>
+    <p class="mt-2 text-[15px] text-gray-500">
+      Your performance review for this cycle has been completed.
+    </p>
+  </div>
 
-          <!-- TOTAL SCORE -->
-          <div class="mx-5 h-[80px] rounded-[12px] border-2 border-[#4D9BF6] px-3 py-1">
-            <span class="text-[13px] font-semibold">
-              TOTAL SCORE
-            </span>
+  <!-- TOTAL SCORE -->
+  <div
+    class="flex h-[90px] w-[110px] shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white"
+  >
+    <span class="text-[14px] font-semibold text-gray-700">
+      TOTAL SCORE
+    </span>
 
-            <div class="flex items-center gap-1">
-              <span class="text-[35px] font-bold text-[#2F87DA]">
-                80
-              </span>
+    <div class="mt-1">
+      <span class="text-[32px] font-semibold !text-[#2F87DA]">
+        0
+      </span>
 
-              <span class="mt-3 text-[15px]">
-                / 100
-              </span>
-            </div>
-          </div>
+      <span class="text-[14px]">
+        / 100
+      </span>
+    </div>
+  </div>
 
-        </div>
-      </section>
+</section>
 
       <!-- PROGRESS SECTION -->
       <section class="mx-8 mt-6">
@@ -1020,7 +1019,7 @@
 
           <!-- STEPPER -->
           <div class="px-5 py-7">
-            <nz-steps [nzCurrent]="2">
+            <nz-steps [nzCurrent]="2" nzSize="small">
               <nz-step nzTitle="Targets"></nz-step>
               <nz-step nzTitle="Self-Review"></nz-step>
               <nz-step nzTitle="Completed" class="completed-step"></nz-step>
@@ -1500,23 +1499,21 @@
         </div>
 
         <!-- TOTAL SCORE -->
-        <div class="mt-4 flex h-[75px] w-[105px] flex-col items-center justify-center rounded-[10px] border border-[#4D9BF6] bg-white">
-
-          <span class="text-[10px] font-semibold text-gray-700">
-            TOTAL SCORE
-          </span>
-
-          <div class="mt-1">
-            <span class="text-[22px] font-semibold text-[#2F87DA]">
-              80
+          <div class="flex h-[80px] w-full shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
+            <span class="text-[11px] font-semibold text-gray-700">
+              TOTAL SCORE
             </span>
 
-            <span class="text-[12px] text-gray-500">
-              / 100
-            </span>
+            <div>
+              <span class="text-[24px] font-semibold !text-[#2F87DA]">
+                80
+              </span>
+
+              <span class="text-[12px]">
+                / 100
+              </span>
+            </div>
           </div>
-
-        </div>
 
       </section>
 
@@ -1526,7 +1523,7 @@
 
           <!-- STEPPER -->
           <div class="overflow-x-auto px-5 py-5">
-            <nz-steps [nzCurrent]="2">
+            <nz-steps [nzCurrent]="2" nzSize="small">
               <nz-step nzTitle="Targets"></nz-step>
               <nz-step nzTitle="Self-Review"></nz-step>
               <nz-step nzTitle="Completed" class="completed-step"></nz-step>
@@ -2028,7 +2025,6 @@
   </ng-template>
 
 }
-
 
 
 
