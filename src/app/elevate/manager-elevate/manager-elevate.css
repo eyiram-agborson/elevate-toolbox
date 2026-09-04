@@ -1,8 +1,9 @@
 
 /* STEP CSS */
 ::ng-deep .completed-step .ant-steps-item-icon {
-  border-color: red !important;
-  background-color: red !important;
+  border-color: #57ec00 !important;
+  background-color: #57ec00 !important;
+  font-weight: 600 !important;
 }
 
 ::ng-deep .completed-step .ant-steps-icon {

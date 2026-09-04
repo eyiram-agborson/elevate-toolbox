@@ -37,7 +37,7 @@ export class ManagerElevate {
 
   // Demo values for now. These should come from the APIs later.
   selfReviewOpen = true;
-  selfReviewSubmitted = false;
+  selfReviewSubmitted = true;
   managerReviewCompleted = true;
 
   pages = [1, 2, 3, 4, 5];
