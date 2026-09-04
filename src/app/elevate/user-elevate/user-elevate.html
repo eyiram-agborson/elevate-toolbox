@@ -1,15 +1,14 @@
-
- @if (roleService.hasRole('employee')) {
+@if (roleService.hasRole('employee')) {
 
 @if (isActiveTab === 'targets') {
-  <main class="overflow-x-auto py-6 text-[#171717]">
 
+<!-- Large Screens-->
+<section class="hidden md:block">
+  <main class="overflow-x-auto py-6 text-[#171717]">
     <!-- BACK BUTTON -->
-    <div class="mx-8 mt-5 text-gray-400">
-      <button
-        type="button"
-        (click)="myactivities()"
-        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
+    <div class="mx-6 mt-4 lg:mx-8 lg:mt-5 text-gray-400">
+      <button type="button" (click)="myactivities()"
+        class="mt-1 flex items-center gap-2 !text-[14px] lg:!text-[15px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,30 +24,25 @@
           <path d="m12 19-7-7 7-7" />
           <path d="M19 12H5" />
         </svg>
-
         My Activities
       </button>
     </div>
 
-
     <!-- PAGE HEADER -->
-    <header class="mx-8 mt-8">
-      <h2 class="text-[25px] font-semibold">
+    <header class="mx-6 mt-7 lg:mx-8 lg:mt-8">
+      <h2 class="text-[22px] lg:text-[25px] font-semibold">
         ELEVATE – Q3 (July – September 2026)
       </h2>
-
-      <p class="mt-2 text-sm text-gray-500">
+      <p class="mt-2 text-[14px] lg:text-sm text-gray-500">
         Kindly review your targets before the agreed deadline.
       </p>
     </header>
 
-
     <!-- PROGRESS SECTION -->
-    <section class="mx-8 mt-6">
+    <section class="mx-6 mt-5 lg:mx-8 lg:mt-6">
       <div class="rounded-xl border border-[#D0D0D0] bg-white">
-
-        <div class="px-5 py-7">
-          <nz-steps [nzCurrent]="0">
+        <div class="px-5 py-6 lg:py-7">
+          <nz-steps [nzCurrent]="0" nzSize="small">
             <nz-step nzTitle="Targets"></nz-step>
             <nz-step nzTitle="Self Review"></nz-step>
             <nz-step nzTitle="Completed"></nz-step>
@@ -56,169 +50,137 @@
         </div>
 
         <div class="h-px w-full bg-[#D0D0D0]"></div>
-
         <div class="flex items-center gap-3 px-5 py-4">
-
-          <span
-            class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]"
-          >
+          <span class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[13px] lg:text-[14px] font-medium text-[#4D9BF6]">
             Preview targets
           </span>
-
-          <span class="text-[14px] font-semibold text-gray-700">
+          <span
+            class="text-[13px] lg:text-[14px] font-semibold text-gray-700">
             Your manager has published targets for this cycle. Review each KPI to guide your progress.
           </span>
-
         </div>
       </div>
     </section>
 
-
     <!-- KPI SECTION -->
-    <section class="mx-8 mt-6 pb-8">
-
-      <h3 class="mb-3 text-[14px] font-bold">
+    <section class="mx-6 mt-5 pb-7 lg:mx-8 lg:mt-6 lg:pb-8">
+      <h3 class="mb-3 text-[13px] lg:text-[14px] font-bold">
         KEY PERFORMANCE INDICATORS
       </h3>
 
-
       <!-- KPI 1 -->
       <div class="rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
-
         <div class="flex items-start justify-between gap-4">
-
-          <p class="text-[14px] font-semibold text-[#171717]">
+          <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
             Application Development & Delivery
           </p>
-
-          <span
-            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-          >
+          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
             Weight 60%
           </span>
-
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">
+        <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
           TARGET
         </p>
 
-        <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
-
+        <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
 
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
-
         </div>
-
       </div>
-
 
       <!-- KPI 2 -->
       <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
-
         <div class="flex items-start justify-between gap-4">
-
-          <p class="text-[14px] font-semibold text-[#171717]">
+          <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
             Operational Efficiency & Code Quality
           </p>
-
-          <span
-            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-          >
+          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
             Weight 15%
           </span>
-
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">
+        <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
           TARGET
         </p>
 
-        <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
 
+        <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
 
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
-
         </div>
-
       </div>
-
 
       <!-- KPI 3 -->
       <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
-
         <div class="flex items-start justify-between gap-4">
-
-          <p class="text-[14px] font-semibold text-[#171717]">
+          <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
             Learning & Development
           </p>
-
-          <span
-            class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-          >
+          <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
             Weight 15%
           </span>
-
         </div>
 
-        <p class="mt-4 text-[14px] font-medium text-gray-500">
+        <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
           TARGET
         </p>
 
-        <div class="mt-2 space-y-1 text-[14px] text-[#807777]">
-
+        <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
 
           <div class="flex items-start gap-1">
-            <span class="text-[#4D9BF6]">•</span>
-
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
             <span>
               Deliver 100% of assigned tasks within agreed sprint timelines.
             </span>
           </div>
-
         </div>
-
       </div>
-
 
       <!-- LOCK MESSAGE -->
       <div
-        class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[14px] text-[#6E6E6E]"
+        class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[13px] lg:text-[14px] text-[#6E6E6E]"
       >
-
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -230,35 +192,20 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <rect
-            width="18"
-            height="11"
-            x="3"
-            y="11"
-            rx="2"
-            ry="2"
-          />
 
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
-
         <span>
           Targets are set by your manager, so there is nothing to edit here.
         </span>
-
       </div>
 
-
       <!-- CONTINUE -->
-      <div class="mt-6 flex justify-end">
-
-        <button
-          type="button"
-          (click)="goToSelfReviewPage()"
-          [disabled]="!selfReviewOpen"
-          class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-10 py-2.5 text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8] disabled:cursor-not-allowed disabled:bg-[#D9DEE5] disabled:!text-white"
+      <div class="mt-5 lg:mt-6 flex justify-end">
+        <button type="button" (click)="goToSelfReviewPage()" [disabled]="!selfReviewOpen"
+          class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-8 lg:px-10 py-2.5 text-[13px] lg:text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8] disabled:cursor-not-allowed disabled:bg-[#D9DEE5] disabled:!text-white"
         >
-
           Continue
 
           <svg
@@ -275,68 +222,37 @@
             <path d="M5 12h14" />
             <path d="m13 6 6 6-6 6" />
           </svg>
-
         </button>
-
       </div>
-
     </section>
 
-
     <!-- EVALUATION STAGES -->
-    <div class="flex items-center gap-1 px-8">
-
-      <span class="whitespace-nowrap text-[14px] font-semibold text-gray-500">
+    <div class="flex items-center gap-1 px-6 lg:px-8">
+      <span class="whitespace-nowrap text-[13px] lg:text-[14px] font-semibold text-gray-500">
         EVALUATION STAGES:
       </span>
 
-<nz-segmented
-  class="target-segmented"
-  [ngModel]="isActiveTab"
-  (ngModelChange)="tabsActive($event)"
->
-  <label
-    nz-segmented-item
-    nzValue="targets"
-  >
-    Targets
-  </label>
-
-  <label
-    nz-segmented-item
-    nzValue="self-review"
-  >
-    Self-Review
-  </label>
-
-  <label
-    nz-segmented-item
-    nzValue="completed"
-  >
-    Completed
-  </label>
-</nz-segmented>
-
+      <nz-segmented class="target-segmented" [ngModel]="isActiveTab" (ngModelChange)="tabsActive($event)">
+        <label nz-segmented-item nzValue="targets">Targets</label>
+        <label nz-segmented-item nzValue="self-review">Self-Review</label>
+        <label nz-segmented-item nzValue="completed">Completed</label>
+      </nz-segmented>
     </div>
-
   </main>
+</section>
 
-}
 
-@if (isActiveTab === 'self-review') {
-  <main class="overflow-x-auto !text- [#807777]">
-
+<!-- MOBILE VIEW -->
+<section class="block md:hidden">
+  <main class="overflow-x-hidden py-4 text-[#171717]">
     <!-- BACK BUTTON -->
-    <div class="mx-8 mt-5 text-gray-400">
-      <button
-        type="button"
-        (click)="myactivities()"
-        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
-      >
+    <div class="mx-4 mt-3">
+      <button type="button" (click)="myactivities()"
+        class="mt-1 flex items-center gap-2 !text-[14px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="18"
+          height="18"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -347,1111 +263,1999 @@
           <path d="m12 19-7-7 7-7" />
           <path d="M19 12H5" />
         </svg>
-
         My Activities
       </button>
     </div>
 
 
     <!-- PAGE HEADER -->
-    <header class="mx-8 mt-8">
-      <h2 class="text-[25px] font-semibold">
+    <header class="mx-4 mt-6">
+      <h2 class="text-[18px] font-semibold leading-6">
         ELEVATE – Q3 (July – September 2026)
       </h2>
-
-      <div class="text-sm text-gray-500">
-        @if (selfReviewSubmitted) {
-          Your self-review has been submitted and is awaiting your manager's review.
-        } @else {
-          Rate your performance and add the necessary comments before the deadline.
-        }
-      </div>
+      <p class="mt-2 text-[13px] leading-5 text-gray-500">
+        Kindly review your targets before the agreed deadline.
+      </p>
     </header>
 
-
     <!-- PROGRESS SECTION -->
-    <section class="mx-8 mt-6">
+    <section class="mx-4 mt-5">
       <div class="rounded-xl border border-[#D0D0D0] bg-white">
-
-        <div class="px-5 py-7">
-          <nz-steps [nzCurrent]="1">
+        <div class="overflow-x-auto px-4 py-6">
+          <nz-steps [nzCurrent]="0" nzSize="small">
             <nz-step nzTitle="Targets"></nz-step>
-            <nz-step nzTitle="Self-Review"></nz-step>
+            <nz-step nzTitle="Self Review"></nz-step>
             <nz-step nzTitle="Completed"></nz-step>
           </nz-steps>
         </div>
 
         <div class="h-px w-full bg-[#D0D0D0]"></div>
-
-        <div class="flex items-center gap-3 px-5 py-4">
-
-          @if (selfReviewSubmitted) {
-
-            <span
-              class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[14px] font-medium text-[#6E6E6E]"
-            >
-              Awaiting manager review
-            </span>
-
-            <span class="text-[14px] font-semibold text-gray-700">
-              Your self-review has been submitted and is awaiting your manager's rating.
-            </span>
-
-          } @else {
-
-            <span
-              class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[14px] font-medium text-[#4D9BF6]"
-            >
-              Self-review open
-            </span>
-
-            <span class="text-[14px] font-semibold text-gray-700">
-              Rate your performance and add the necessary comments before the deadline.
-            </span>
-
-          }
-
+        <div class="flex flex-col gap-2 px-4 py-4">
+          <span class="w-fit rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[13px] font-medium text-[#4D9BF6]">
+            Preview targets
+          </span>
+          <span class="text-[13px] font-semibold leading-5 text-gray-700">
+            Your manager has published targets for this cycle. Review each KPI to guide your progress.
+          </span>
         </div>
       </div>
     </section>
 
-
     <!-- KPI SECTION -->
-    <section class="mx-8 mt-6 pb-10">
-
-      <h3 class="mb-4 text-[14px] font-bold">
+    <section class="mx-4 mt-5 pb-6">
+      <h3 class="mb-3 text-[13px] font-bold">
         KEY PERFORMANCE INDICATORS
       </h3>
 
-
       <!-- KPI 1 -->
-
-      <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-
-        <div class="px-5 py-4">
-
-          <!-- KPI HEADER -->
-          <div class="flex items-start justify-between gap-4">
-
-            <p class="text-[14px] font-semibold text-[#171717]">
-              Application Development & Delivery
-            </p>
-
-            <span
-              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-            >
-              Weight 60%
-            </span>
-
-          </div>
-
-
-          <!-- TARGET -->
-          <p class="mt-4 text-[14px] font-medium text-gray-500">
-            TARGET
+      <div class="rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+            Application Development & Delivery
           </p>
+          <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            60%
+          </span>
+        </div>
 
-          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
+        <p class="mt-4 text-[12px] font-medium text-gray-500">
+          TARGET
+        </p>
 
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Deliver 100% of assigned tasks within agreed sprint timelines.
-              </span>
-            </div>
-
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Maintain agreed quality standards across all deliverables.
-              </span>
-            </div>
-
+        <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
           </div>
 
-
-          <!-- PERFORMANCE RATING -->
-          <div class="mt-5">
-
-            <p class="text-[14px] font-semibold">
-              MY PERFORMANCE RATING
-            </p>
-
-            <div class="mt-2 flex items-center gap-2">
-
-              @for (page of pages; track page) {
-
-                <button
-                  type="button"
-                  (click)="currentPage = page"
-                  [disabled]="selfReviewSubmitted"
-                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-                  [ngClass]="currentPage === page
-                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
-                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                >
-                  {{ page }}
-                </button>
-
-              }
-
-              <span class="ml-1 text-[14px] text-gray-500">
-                out of 5
-              </span>
-
-            </div>
-
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
           </div>
-
-
-          <!-- MY COMMENTS -->
-          <div class="mt-5">
-
-            <p class="mb-2 text-[14px] font-semibold">
-              MY COMMENTS
-            </p>
-
-            <textarea
-              [(ngModel)]="message"
-              name="message"
-              [disabled]="selfReviewSubmitted"
-              placeholder="Describe what you delivered against this KPI."
-              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
-            ></textarea>
-
-          </div>
-
         </div>
       </div>
-
 
       <!-- KPI 2 -->
-
-      <div class="mt-4 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-
-        <div class="px-5 py-4">
-
-          <!-- KPI HEADER -->
-          <div class="flex items-start justify-between gap-4">
-
-            <p class="text-[14px] font-semibold text-[#171717]">
-              Operational Efficiency & Code Quality
-            </p>
-
-            <span
-              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-            >
-              Weight 15%
-            </span>
-
-          </div>
-
-
-          <!-- TARGET -->
-          <p class="mt-4 text-[14px] font-medium text-gray-500">
-            TARGET
+      <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+            Operational Efficiency & Code Quality
           </p>
+          <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            15%
+          </span>
+        </div>
 
-          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
+        <p class="mt-4 text-[12px] font-medium text-gray-500">
+          TARGET
+        </p>
 
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Deliver 100% of assigned tasks within agreed sprint timelines.
-              </span>
-            </div>
-
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Maintain agreed quality standards across all deliverables.
-              </span>
-            </div>
-
+        <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
           </div>
 
-
-          <!-- PERFORMANCE RATING -->
-          <div class="mt-5">
-
-            <p class="text-[14px] font-semibold">
-              MY PERFORMANCE RATING
-            </p>
-
-            <div class="mt-2 flex items-center gap-2">
-
-              @for (page of pages; track page) {
-
-                <button
-                  type="button"
-                  (click)="currentPage = page"
-                  [disabled]="selfReviewSubmitted"
-                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-                  [ngClass]="currentPage === page
-                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
-                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                >
-                  {{ page }}
-                </button>
-
-              }
-
-              <span class="ml-1 text-[14px] text-gray-500">
-                out of 5
-              </span>
-
-            </div>
-
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
           </div>
-
-
-          <!-- MY COMMENTS -->
-          <div class="mt-5">
-
-            <p class="mb-2 text-[14px] font-semibold">
-              MY COMMENTS
-            </p>
-
-            <textarea
-              [(ngModel)]="message"
-              name="message"
-              [disabled]="selfReviewSubmitted"
-              placeholder="Describe what you delivered against this KPI."
-              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
-            ></textarea>
-
-          </div>
-
         </div>
       </div>
-
 
       <!-- KPI 3 -->
-
-      <div class="mt-4 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-
-        <div class="px-5 py-4">
-
-          <!-- KPI HEADER -->
-          <div class="flex items-start justify-between gap-4">
-
-            <p class="text-[14px] font-semibold text-[#171717]">
-              Learning & Development
-            </p>
-
-            <span
-              class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[14px] font-semibold text-[#6E6E6E]"
-            >
-              Weight 15%
-            </span>
-
-          </div>
-
-
-          <!-- TARGET -->
-          <p class="mt-4 text-[14px] font-medium text-gray-500">
-            TARGET
+      <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+            Learning & Development
           </p>
-
-          <div class="mt-2 space-y-1 text-[14px] leading-6 text-gray-500">
-
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Deliver 100% of assigned tasks within agreed sprint timelines.
-              </span>
-            </div>
-
-            <div class="flex items-start gap-1">
-              <span class="text-[#4D9BF6]">•</span>
-
-              <span>
-                Maintain agreed quality standards across all deliverables.
-              </span>
-            </div>
-
-          </div>
-
-
-          <!-- PERFORMANCE RATING -->
-          <div class="mt-5">
-
-            <p class="text-[14px] font-semibold">
-              MY PERFORMANCE RATING
-            </p>
-
-            <div class="mt-2 flex items-center gap-2">
-
-              @for (page of pages; track page) {
-
-                <button
-                  type="button"
-                  (click)="currentPage = page"
-                  [disabled]="selfReviewSubmitted"
-                  class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-                  [ngClass]="currentPage === page
-                    ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
-                    : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                >
-                  {{ page }}
-                </button>
-
-              }
-
-              <span class="ml-1 text-[14px] text-gray-500">
-                out of 5
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- MY COMMENTS -->
-          <div class="mt-5">
-
-            <p class="mb-2 text-[14px] font-semibold">
-              MY COMMENTS
-            </p>
-
-            <textarea
-              [(ngModel)]="message"
-              name="message"
-              [disabled]="selfReviewSubmitted"
-              placeholder="Describe what you delivered against this KPI."
-              class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
-            ></textarea>
-
-          </div>
-
-        </div>
-      </div>
-
-
-      <!-- ACTIONS -->
-      @if (!selfReviewSubmitted) {
-
-        <div class="mt-6 flex justify-end gap-3">
-
-          <!-- CONTINUE LATER -->
-          <button
-            type="button"
-            class="flex items-center gap-2 rounded-[8px] border border-[#D1D5DB] bg-white px-5 py-2.5 text-[14px] font-medium text-[#374151] transition hover:bg-[#F7F8FA]"
-          >
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
-              />
-
-              <path
-                d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"
-              />
-
-              <path
-                d="M7 3v4a1 1 0 0 0 1 1h7"
-              />
-            </svg>
-
-            Continue later
-
-          </button>
-
-
-          <!-- SUBMIT SELF REVIEW -->
-          <button
-            type="button"
-            (click)="submitSelfReview()"
-            class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-8 py-2.5 text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8]"
-          >
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0 .024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
-              />
-
-              <path
-                d="m21.854 2.147-10.94 10.939"
-              />
-            </svg>
-
-            Submit Self Review
-
-          </button>
-
-        </div>
-
-      }
-
-
-      <!-- READ-ONLY MESSAGE -->
-      @if (selfReviewSubmitted) {
-
-        <div
-          class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[14px] text-[#6E6E6E]"
-        >
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect
-              width="18"
-              height="11"
-              x="3"
-              y="11"
-              rx="2"
-              ry="2"
-            />
-
-            <path
-              d="M7 11V7a5 5 0 0 1 10 0v4"
-            />
-          </svg>
-
-          <span>
-            Your self-review has been submitted and can no longer be edited.
+          <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            15%
           </span>
-
         </div>
 
-      }
+        <p class="mt-4 text-[12px] font-medium text-gray-500">
+          TARGET
+        </p>
 
+        <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
+          </div>
 
-      <!-- EVALUATION STAGES -->
-      <div class="mt-8 flex items-center gap-3 px-8 ">
-
-        <span class="whitespace-nowrap text-[14px] font-semibold text-[#171717]">
-          EVALUATION STAGES:
-        </span>
-
-        <nz-segmented
-          class="target-segmented"
-          [(ngModel)]="isActiveTab"
-          (ngModelChange)="tabsActive($event)"
-        >
-
-          <label
-            nz-segmented-item
-            nzValue="targets"
-          >
-            Targets
-          </label>
-
-          <label
-            nz-segmented-item
-            nzValue="self-review"
-          >
-            Self-Review
-          </label>
-
-          <label
-            nz-segmented-item
-            nzValue="completed"
-          >
-            Completed
-          </label>
-
-        </nz-segmented>
-
+          <div class="flex items-start gap-1">
+            <span class="text-[#4D9BF6]">
+              •
+            </span>
+            <span>
+              Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
+          </div>
+        </div>
       </div>
 
-    </section>
-
-  </main>
-}
-
-@if (isActiveTab === 'completed') {
-  <main class="overflow-x-auto text-[15px] text-[#171717]">
-
-    <!-- BACK BUTTON -->
-    <div class="mx-8 mt-5 text-gray-400">
-      <button
-        type="button"
-        (click)="myactivities()"
-        class="mt-1 flex items-center font-medium gap-2 !text-[15px] !text-[#807777] link-select cursor-pointer transition hover:text-[#3f91df]"
-      >
+      <!-- LOCK MESSAGE -->
+      <div class="mt-5 flex items-start gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[13px] leading-5 text-[#6E6E6E]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="18"
+          height="18"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
+          class="mt-0.5 shrink-0"
         >
-          <path d="m12 19-7-7 7-7" />
-          <path d="M19 12H5" />
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
 
-        My Activities
-      </button>
+        <span>
+          Targets are set by your manager, so there is nothing to edit here.
+        </span>
+      </div>
+
+      <!-- CONTINUE -->
+      <div class="mt-5">
+        <button type="button" (click)="goToSelfReviewPage()" [disabled]="!selfReviewOpen"
+          class="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#4D9BF6] px-6 py-2.5 text-[13px] font-medium !text-white transition hover:bg-[#3D8DE8] disabled:cursor-not-allowed disabled:bg-[#D9DEE5] disabled:!text-white"
+        >
+          Continue
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- EVALUATION STAGES -->
+    <div class="flex flex-col gap-2 px-4 pb-4">
+      <span class="text-[12px] font-semibold text-gray-500">
+        EVALUATION STAGES:
+      </span>
+
+      <nz-segmented class="target-segmented w-full" [ngModel]="isActiveTab" (ngModelChange)="tabsActive($event)">
+        <label nz-segmented-item nzValue="targets">Targets</label>
+        <label nz-segmented-item nzValue="self-review">Self-Review</label>
+        <label nz-segmented-item nzValue="completed">Completed</label>
+      </nz-segmented>
+    </div>
+  </main>
+</section>
+}
+
+@if (isActiveTab === 'self-review') {
+
+  <!-- Large Screens -->
+
+  <section class="hidden md:block">
+    <main class="overflow-x-auto py-6 text-[#171717]">
+
+
+  <!-- BACK BUTTON -->
+  <div class="mx-6 mt-4 lg:mx-8 lg:mt-5 text-gray-400">
+    <button type="button" (click)="myactivities()"
+      class="mt-1 flex items-center gap-2 !text-[14px] lg:!text-[15px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+      My Activities
+    </button>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="mx-6 mt-7 lg:mx-8 lg:mt-8">
+    <h2 class="text-[22px] lg:text-[25px] font-semibold">
+      ELEVATE – Q3 (July – September 2026)
+    </h2>
+    <p class="mt-2 text-[14px] lg:text-sm text-gray-500">
+      @if (selfReviewSubmitted) {
+        Your self-review has been submitted and is awaiting your manager's review.
+      } @else {
+        Rate your performance and add the necessary comments before the deadline.
+      }
+    </p>
+  </header>
+
+  <!-- PROGRESS SECTION -->
+  <section class="mx-6 mt-5 lg:mx-8 lg:mt-6">
+    <div class="rounded-xl border border-[#D0D0D0] bg-white">
+      <div class="px-5 py-6 lg:py-7">
+        <nz-steps [nzCurrent]="1" nzSize="small">
+          <nz-step nzTitle="Targets"></nz-step>
+          <nz-step nzTitle="Self-Review"></nz-step>
+          <nz-step nzTitle="Completed"></nz-step>
+        </nz-steps>
+      </div>
+
+      <div class="h-px w-full bg-[#D0D0D0]"></div>
+      <div class="flex items-center gap-3 px-5 py-4">
+        @if (selfReviewSubmitted) {
+          <span class="rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[13px] lg:text-[14px] font-medium text-[#6E6E6E]">
+            Awaiting manager review
+          </span>
+          <span class="text-[13px] lg:text-[14px] font-semibold text-gray-700">
+            Your self-review has been submitted and is awaiting your manager's rating.
+          </span>
+        } @else {
+          <span class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[13px] lg:text-[14px] font-medium text-[#4D9BF6]">
+            Self-review open
+          </span>
+          <span class="text-[13px] lg:text-[14px] font-semibold text-gray-700">
+            Rate your performance and add the necessary comments before the deadline.
+          </span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI SECTION -->
+  <section class="mx-6 mt-5 pb-7 lg:mx-8 lg:mt-6 lg:pb-8">
+    <h3 class="mb-3 text-[13px] lg:text-[14px] font-bold">
+      KEY PERFORMANCE INDICATORS
+    </h3>
+
+    <!-- KPI 1 -->
+    <div class="rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
+      <div class="flex items-start justify-between gap-4">
+        <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
+          Application Development & Delivery
+        </p>
+        <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
+          Weight 60%
+        </span>
+      </div>
+
+      <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
+        TARGET
+      </p>
+
+      <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] lg:text-[14px] font-semibold">
+          MY RATING
+        </p>
+
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] lg:text-[14px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] lg:text-[14px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] lg:text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
     </div>
 
+    <!-- KPI 2 -->
+    <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
+      <div class="flex items-start justify-between gap-4">
+        <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
+          Operational Efficiency & Code Quality
+        </p>
+        <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
+          Weight 15%
+        </span>
+      </div>
 
-    <!-- PAGE HEADER + TOTAL SCORE -->
-    <section class="mx-8 mt-8">
+      <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
+        TARGET
+      </p>
 
-      <div class="flex items-start justify-between gap-6">
+      <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
 
-        <!-- PAGE HEADER -->
-        <div>
-          <h2 class="text-[25px] font-semibold">
-            ELEVATE – Q3 (July – September 2026)
-          </h2>
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] lg:text-[14px] font-semibold">
+          MY RATING
+        </p>
 
-          <p class="mt-2 text-[15px] text-gray-500">
-            Your performance review for this cycle has been completed.
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] lg:text-[14px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] lg:text-[14px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] lg:text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- KPI 3 -->
+    <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-5 py-4">
+      <div class="flex items-start justify-between gap-4">
+        <p class="text-[13px] lg:text-[14px] font-semibold text-[#171717]">
+          Learning & Development
+        </p>
+        <span class="whitespace-nowrap rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] lg:text-[14px] font-semibold text-[#6E6E6E]">
+          Weight 15%
+        </span>
+      </div>
+
+      <p class="mt-4 text-[13px] lg:text-[14px] font-medium text-gray-500">
+        TARGET
+      </p>
+
+      <div class="mt-2 space-y-1 text-[13px] lg:text-[14px] text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] lg:text-[14px] font-semibold">
+          MY RATING
+        </p>
+
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-10 w-10 items-center justify-center rounded-md border text-[14px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] lg:text-[14px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] lg:text-[14px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] lg:text-[14px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    @if (!selfReviewSubmitted) {
+      <div class="mt-5 lg:mt-6 flex justify-end gap-3">
+
+        <!-- CONTINUE LATER -->
+        <button
+          type="button"
+          class="flex items-center gap-2 rounded-[8px] border border-[#D1D5DB] bg-white px-5 py-2.5 text-[13px] lg:text-[14px] font-medium text-[#374151] transition hover:bg-[#F7F8FA]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+            <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+            <path d="M7 3v4a1 1 0 0 0 1 1h7" />
+          </svg>
+          Continue later
+        </button>
+
+        <!-- SUBMIT SELF REVIEW -->
+        <button
+          type="button"
+          (click)="submitSelfReview()"
+          class="flex items-center gap-2 rounded-[8px] bg-[#4D9BF6] px-8 lg:px-10 py-2.5 text-[13px] lg:text-[14px] font-medium !text-white transition hover:bg-[#3D8DE8]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0 .024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+            <path d="m21.854 2.147-10.94 10.939" />
+          </svg>
+          Submit Self Review
+        </button>
+      </div>
+    }
+
+    <!-- READ-ONLY MESSAGE -->
+    @if (selfReviewSubmitted) {
+      <div class="mt-5 flex items-center gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[13px] lg:text-[14px] text-[#6E6E6E]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        <span>
+          Your self-review has been submitted and can no longer be edited.
+        </span>
+      </div>
+    }
+  </section>
+
+  <!-- EVALUATION STAGES -->
+  <div class="flex items-center gap-1 px-6 lg:px-8">
+    <span class="whitespace-nowrap text-[13px] lg:text-[14px] font-semibold text-gray-500">
+      EVALUATION STAGES:
+    </span>
+
+    <nz-segmented
+      class="target-segmented"
+      [ngModel]="isActiveTab"
+      (ngModelChange)="tabsActive($event)"
+    >
+      <label nz-segmented-item nzValue="targets">Targets</label>
+      <label nz-segmented-item nzValue="self-review">Self-Review</label>
+      <label nz-segmented-item nzValue="completed">Completed</label>
+    </nz-segmented>
+  </div>
+
+</main>
+
+
+  </section>
+
+  <!-- MOBILE VIEW -->
+
+  <section class="block md:hidden">
+    <main class="overflow-x-hidden py-4 text-[#171717]">
+
+
+  <!-- BACK BUTTON -->
+  <div class="mx-4 mt-3">
+    <button type="button" (click)="myactivities()"
+      class="mt-1 flex items-center gap-2 !text-[14px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+      My Activities
+    </button>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="mx-4 mt-6">
+    <h2 class="text-[18px] font-semibold leading-6">
+      ELEVATE – Q3 (July – September 2026)
+    </h2>
+    <p class="mt-2 text-[13px] leading-5 text-gray-500">
+      @if (selfReviewSubmitted) {
+        Your self-review has been submitted and is awaiting your manager's review.
+      } @else {
+        Rate your performance and add the necessary comments before the deadline.
+      }
+    </p>
+  </header>
+
+  <!-- PROGRESS SECTION -->
+  <section class="mx-4 mt-5">
+    <div class="rounded-xl border border-[#D0D0D0] bg-white">
+      <div class="overflow-x-auto px-4 py-6">
+        <nz-steps [nzCurrent]="1" nzSize="small">
+          <nz-step nzTitle="Targets"></nz-step>
+          <nz-step nzTitle="Self Review"></nz-step>
+          <nz-step nzTitle="Completed"></nz-step>
+        </nz-steps>
+      </div>
+
+      <div class="h-px w-full bg-[#D0D0D0]"></div>
+      <div class="flex flex-col gap-2 px-4 py-4">
+        @if (selfReviewSubmitted) {
+          <span class="w-fit rounded-[8px] border border-[#E4E7EC] bg-[#F4F5F7] px-3 py-1 text-[13px] font-medium text-[#6E6E6E]">
+            Awaiting manager review
+          </span>
+          <span class="text-[13px] font-semibold leading-5 text-gray-700">
+            Your self-review has been submitted and is awaiting your manager's rating.
+          </span>
+        } @else {
+          <span class="w-fit rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[13px] font-medium text-[#4D9BF6]">
+            Self-review open
+          </span>
+          <span class="text-[13px] font-semibold leading-5 text-gray-700">
+            Rate your performance and add the necessary comments before the deadline.
+          </span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI SECTION -->
+  <section class="mx-4 mt-5 pb-6">
+    <h3 class="mb-3 text-[13px] font-bold">
+      KEY PERFORMANCE INDICATORS
+    </h3>
+
+    <!-- KPI 1 -->
+    <div class="rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+      <div class="flex items-start justify-between gap-3">
+        <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+          Application Development & Delivery
+        </p>
+        <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+          60%
+        </span>
+      </div>
+
+      <p class="mt-4 text-[12px] font-medium text-gray-500">
+        TARGET
+      </p>
+
+      <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] font-semibold">
+          MY RATING
+        </p>
+
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-9 w-9 items-center justify-center rounded-md border text-[13px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- KPI 2 -->
+    <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+      <div class="flex items-start justify-between gap-3">
+        <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+          Operational Efficiency & Code Quality
+        </p>
+        <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+          15%
+        </span>
+      </div>
+
+      <p class="mt-4 text-[12px] font-medium text-gray-500">
+        TARGET
+      </p>
+
+      <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] font-semibold">
+          MY RATING
+        </p>
+
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-9 w-9 items-center justify-center rounded-md border text-[13px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- KPI 3 -->
+    <div class="mt-4 rounded-xl border border-[#D0D0D0] bg-white px-4 py-4">
+      <div class="flex items-start justify-between gap-3">
+        <p class="text-[13px] font-semibold leading-5 text-[#171717]">
+          Learning & Development
+        </p>
+        <span class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+          15%
+        </span>
+      </div>
+
+      <p class="mt-4 text-[12px] font-medium text-gray-500">
+        TARGET
+      </p>
+
+      <div class="mt-2 space-y-2 text-[13px] leading-5 text-[#807777]">
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+        </div>
+        <div class="flex items-start gap-1">
+          <span class="text-[#4D9BF6]">•</span>
+          <span>
+            Maintain agreed quality standards across all deliverables.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE RATING -->
+      <div class="mt-5">
+        <p class="text-[13px] font-semibold">
+          MY RATING
+        </p>
+
+        <div class="mt-2 flex items-center gap-2">
+          @for (page of pages; track page) {
+            <button
+              type="button"
+              (click)="currentPage = page"
+              [disabled]="selfReviewSubmitted"
+              class="flex h-9 w-9 items-center justify-center rounded-md border text-[13px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              [ngClass]="currentPage === page
+                ? 'border-[#E4E7EC] bg-[#2F87DA] !text-white'
+                : 'border-[#E4E7EC] bg-white text-[#807777] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
+            >
+              {{ page }}
+            </button>
+          }
+          <span class="ml-1 text-[13px] text-gray-500">
+            out of 5
+          </span>
+        </div>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] font-semibold">
+          MY COMMENTS
+        </p>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          [disabled]="selfReviewSubmitted"
+          placeholder="Describe what you delivered against this KPI."
+          class="h-28 w-full resize-none rounded-[10px] border border-[#B9B9B9] bg-[#F8F5F0] px-4 py-3 text-[13px] text-[#374151] outline-none disabled:cursor-not-allowed disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    @if (!selfReviewSubmitted) {
+      <div class="mt-5 flex flex-col gap-3">
+
+        <!-- CONTINUE LATER -->
+        <button
+          type="button"
+          class="flex w-full items-center justify-center gap-2 rounded-[8px] border border-[#D1D5DB] bg-white px-5 py-2.5 text-[13px] font-medium text-[#374151] transition hover:bg-[#F7F8FA]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+            <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+            <path d="M7 3v4a1 1 0 0 0 1 1h7" />
+          </svg>
+          Continue later
+        </button>
+
+        <!-- SUBMIT SELF REVIEW -->
+        <button
+          type="button"
+          (click)="submitSelfReview()"
+          class="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#4D9BF6] px-5 py-2.5 text-[13px] font-medium !text-white transition hover:bg-[#3D8DE8]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0 .024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+            <path d="m21.854 2.147-10.94 10.939" />
+          </svg>
+          Submit Self Review
+        </button>
+      </div>
+    }
+
+    <!-- READ-ONLY MESSAGE -->
+    @if (selfReviewSubmitted) {
+      <div class="mt-5 flex items-start gap-2 rounded-[8px] border border-[#E4E7EC] bg-[#EEF4FA] px-4 py-3 text-[13px] leading-5 text-[#6E6E6E]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mt-0.5 shrink-0"
+        >
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        <span>
+          Your self-review has been submitted and can no longer be edited.
+        </span>
+      </div>
+    }
+  </section>
+
+  <!-- EVALUATION STAGES -->
+  <div class="flex flex-col gap-2 px-4 pb-4">
+    <span class="text-[12px] font-semibold text-gray-500">
+      EVALUATION STAGES:
+    </span>
+
+    <nz-segmented
+      class="target-segmented w-full"
+      [ngModel]="isActiveTab"
+      (ngModelChange)="tabsActive($event)"
+    >
+      <label nz-segmented-item nzValue="targets">Targets</label>
+      <label nz-segmented-item nzValue="self-review">Self-Review</label>
+      <label nz-segmented-item nzValue="completed">Completed</label>
+    </nz-segmented>
+  </div>
+
+</main>
+</section>
+
+}
+
+@if (isActiveTab === 'completed') {
+
+  <!-- Large Screens -->
+
+  <section class="hidden md:block">
+    <main class="overflow-x-auto py-6 text-[#171717]">
+
+
+  <!-- BACK BUTTON -->
+  <div class="mx-6 mt-4 lg:mx-8 lg:mt-5 text-gray-400">
+    <button type="button" (click)="myactivities()"
+      class="mt-1 flex items-center gap-2 !text-[14px] lg:!text-[15px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+      My Activities
+    </button>
+  </div>
+
+  <!-- PAGE HEADER + TOTAL SCORE -->
+  <section class="mx-6 mt-7 lg:mx-8 lg:mt-8">
+    <div class="flex items-start justify-between gap-6">
+
+      <!-- PAGE HEADER -->
+      <div>
+        <h2 class="text-[22px] lg:text-[25px] font-semibold">
+          ELEVATE – Q3 (July – September 2026)
+        </h2>
+        <p class="mt-2 text-[14px] lg:text-[15px] text-gray-500">
+          Your performance review for this cycle has been completed.
+        </p>
+      </div>
+
+      <!-- TOTAL SCORE -->
+      <div class="flex h-[90px] w-[110px] shrink-0 flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
+        <span class="text-[14px] font-semibold text-gray-700">
+          TOTAL SCORE
+        </span>
+        <div class="mt-1">
+          <span class="text-[32px] font-semibold text-[#2F87DA]">
+            0
+          </span>
+          <span class="text-[14px]">
+            / 100
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROGRESS SECTION -->
+  <section class="mx-6 mt-5 lg:mx-8 lg:mt-6">
+    <div class="rounded-xl border border-[#D0D0D0] bg-white">
+
+      <!-- STEPPER -->
+      <div class="px-5 py-6 lg:py-7">
+        <nz-steps [nzCurrent]="2" nzSize="small">
+          <nz-step nzTitle="Targets"></nz-step>
+          <nz-step nzTitle="Self-Review"></nz-step>
+          <nz-step nzTitle="Completed" class="completed-step"></nz-step>
+        </nz-steps>
+      </div>
+
+      <div class="h-px w-full bg-[#D0D0D0]"></div>
+
+      <!-- COMPLETED MESSAGE -->
+      <div class="flex items-center gap-3 px-5 py-4">
+        <span class="rounded-[8px] border border-[#B7E4C7] bg-[#E8F5E9] px-3 py-1 text-[13px] lg:text-[14px] font-medium text-[#2E7D32]">
+          Complete
+        </span>
+        <span class="text-[13px] lg:text-[15px] font-semibold text-gray-700">
+          This cycle is complete, including your manager's rating and comments.
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KPI SECTION -->
+  <section class="mx-6 mt-5 pb-7 lg:mx-8 lg:mt-6 lg:pb-8">
+
+    <!-- KEY PERFORMANCE INDICATORS -->
+    <section>
+      <div class="mb-3 text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+        Key Performance Indicators
+      </div>
+
+      <!-- KPI 1 -->
+      <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-4 lg:p-[20px]">
+
+        <!-- KPI HEADER -->
+        <div class="flex items-start justify-between gap-4 border-b border-[#E5E7EB] pb-4">
+          <div class="flex min-w-0 flex-col gap-1">
+            <span class="text-[14px] lg:text-[16px] font-semibold text-[#111827]">
+              Application Development &amp; Delivery
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-400">
+              Weight: 60%
+            </span>
+          </div>
+
+          <div class="flex shrink-0 items-center gap-4 lg:gap-[30px] text-center">
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                My Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                4
+              </div>
+            </div>
+
+            <div class="min-w-[70px] lg:min-w-[90px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Manager Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                4
+              </div>
+            </div>
+
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Total Score
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#4D9BF6]">
+                48
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARGET -->
+        <div class="mb-5 mt-4 lg:mt-[18px]">
+          <div class="mb-2 text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Target
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Deliver 100% of assigned tasks within agreed sprint timelines.
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Maintain agreed quality standards across all deliverables.
+            </span>
+          </div>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="mb-[18px]">
+          <div class="mb-[7px] text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Performance
+          </div>
+          <p class="m-0 text-[13px] lg:text-[15px] text-gray-500">
+            Self-assessed performance against the agreed targets for this KPI.
           </p>
         </div>
 
+        <!-- MY COMMENTS -->
+        <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="staffCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              I delivered 100% of assigned tasks within agreed sprint timelines.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
 
-        <!-- TOTAL SCORE -->
-        <div class="flex h-[90px] w-[110px] flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
+        <!-- MANAGER COMMENTS -->
+        <nz-collapse class="manager-comments-collapse">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="managerCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              Manager comments for this KPI.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
 
-          <span class="text-[14px] font-semibold text-gray-700">
-            TOTAL SCORE
-          </span>
+      </div>
 
-          <div>
+      <!-- KPI 2 -->
+      <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4 lg:p-[20px]">
 
-            <div>
-            <span class="text-[22px] font-semibold text-[40px] text-[#2F87DA]">
-              0
+        <!-- KPI HEADER -->
+        <div class="flex items-start justify-between gap-4 border-b border-[#E5E7EB] pb-4">
+          <div class="flex min-w-0 flex-col gap-1">
+            <span class="text-[14px] lg:text-[16px] font-semibold text-[#111827]">
+              Operational Efficiency &amp; Code Quality
             </span>
-
-            <span class="text-[14px]">
-              / 100
+            <span class="text-[13px] lg:text-[15px] text-gray-400">
+              Weight: 15%
             </span>
-            </div>
-
           </div>
 
+          <div class="flex shrink-0 items-center gap-4 lg:gap-[30px] text-center">
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                My Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[70px] lg:min-w-[90px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Manager Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Total Score
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- TARGET -->
+        <div class="mb-5 mt-4 lg:mt-[18px]">
+          <div class="mb-2 text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Target
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Maintain agreed code quality standards across all deliverables.
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Complete assigned development tasks within agreed timelines.
+            </span>
+          </div>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="mb-[18px]">
+          <div class="mb-[7px] text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Performance
+          </div>
+          <p class="m-0 text-[13px] lg:text-[15px] text-gray-500">
+            Performance information submitted for this KPI.
+          </p>
+        </div>
+
+        <!-- MY COMMENTS -->
+        <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="staffCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              I delivered 100% of assigned tasks within agreed sprint timelines.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
+
+        <!-- MANAGER COMMENTS -->
+        <nz-collapse class="manager-comments-collapse">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="managerCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              Manager comments for this KPI.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
+
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4 lg:p-[20px]">
+
+        <!-- KPI HEADER -->
+        <div class="flex items-start justify-between gap-4 border-b border-[#E5E7EB] pb-4">
+          <div class="flex min-w-0 flex-col gap-1">
+            <span class="text-[14px] lg:text-[16px] font-semibold text-[#111827]">
+              Learning &amp; Development
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-400">
+              Weight: 15%
+            </span>
+          </div>
+
+          <div class="flex shrink-0 items-center gap-4 lg:gap-[30px] text-center">
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                My Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[70px] lg:min-w-[90px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Manager Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Total Score
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARGET -->
+        <div class="mb-5 mt-4 lg:mt-[18px]">
+          <div class="mb-2 text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Target
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Complete required learning and development activities.
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Demonstrate continuous improvement in assigned responsibilities.
+            </span>
+          </div>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="mb-[18px]">
+          <div class="mb-[7px] text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Performance
+          </div>
+          <p class="m-0 text-[13px] lg:text-[15px] text-gray-500">
+            Performance information submitted for this KPI.
+          </p>
+        </div>
+
+        <!-- MY COMMENTS -->
+        <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="staffCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              I delivered 100% of assigned tasks within agreed sprint timelines.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
+
+        <!-- MANAGER COMMENTS -->
+        <nz-collapse class="manager-comments-collapse">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="managerCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              Manager comments for this KPI.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
+
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4 lg:p-[20px]">
+
+        <!-- KPI HEADER -->
+        <div class="flex items-start justify-between gap-4 border-b border-[#E5E7EB] pb-4">
+          <div class="flex min-w-0 flex-col gap-1">
+            <span class="text-[14px] lg:text-[16px] font-semibold text-[#111827]">
+              Collaboration &amp; Team Contribution
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-400">
+              Weight: 10%
+            </span>
+          </div>
+
+          <div class="flex shrink-0 items-center gap-4 lg:gap-[30px] text-center">
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                My Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[70px] lg:min-w-[90px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Manager Rating
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+
+            <div class="min-w-[55px] lg:min-w-[70px]">
+              <div class="text-[12px] lg:text-[14px] uppercase text-gray-500">
+                Total Score
+              </div>
+              <div class="mt-1 text-[14px] lg:text-[15px] font-medium text-[#111827]">
+                —
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARGET -->
+        <div class="mb-5 mt-4 lg:mt-[18px]">
+          <div class="mb-2 text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Target
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Contribute effectively to team projects and shared objectives.
+            </span>
+            <span class="text-[13px] lg:text-[15px] text-gray-500">
+              • Support colleagues and communicate effectively across the team.
+            </span>
+          </div>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="mb-[18px]">
+          <div class="mb-[7px] text-[13px] lg:text-[15px] font-medium uppercase text-[#222]">
+            Performance
+          </div>
+          <p class="m-0 text-[13px] lg:text-[15px] text-gray-500">
+            Performance information submitted for this KPI.
+          </p>
+        </div>
+
+        <!-- MY COMMENTS -->
+        <nz-collapse class="staff-comments-collapse mb-[10px]">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="staffCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              I delivered 100% of assigned tasks within agreed sprint timelines.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
+
+        <!-- MANAGER COMMENTS -->
+        <nz-collapse class="manager-comments-collapse">
+          <nz-collapse-panel
+            [nzActive]="false"
+            [nzHeader]="managerCommentsHeader"
+          >
+            <p class="m-0 text-[13px] lg:text-[15px] text-gray-600">
+              Manager comments for this KPI.
+            </p>
+          </nz-collapse-panel>
+        </nz-collapse>
 
       </div>
 
     </section>
+  </section>
+
+  <!-- EVALUATION STAGES -->
+  <div class="flex items-center gap-1 px-6 lg:px-8">
+    <span class="whitespace-nowrap text-[13px] lg:text-[14px] font-semibold text-gray-500">
+      EVALUATION STAGES:
+    </span>
+
+    <nz-segmented
+      class="target-segmented"
+      [(ngModel)]="isActiveTab"
+      (ngModelChange)="tabsActive($event)"
+    >
+      <label nz-segmented-item nzValue="targets">Targets</label>
+      <label nz-segmented-item nzValue="self-review">Self-Review</label>
+      <label nz-segmented-item nzValue="completed" class="completed-segment">
+        Completed
+      </label>
+    </nz-segmented>
+  </div>
+
+</main>
 
 
-    <!-- PROGRESS SECTION -->
-    <section class="mx-8 mt-6">
-      <div class="rounded-xl border border-[#D0D0D0] bg-white">
-        <!-- STEPPER -->
-        <div class="px-5 py-7">
-          <nz-steps [nzCurrent]="2">
-            <nz-step nzTitle="Targets"></nz-step>
-            <nz-step nzTitle="Self-Review"></nz-step>
-            <nz-step nzTitle="Completed" class="completed-step"></nz-step>
-          </nz-steps>
-        </div>
-        <div class="h-px w-full bg-[#D0D0D0]"></div>
+  </section>
 
-        <!-- COMPLETED MESSAGE -->
-        <div class="flex items-center gap-3 px-5 py-4">
-        <span class="rounded-[8px] border border-[#B7E4C7] bg-[#E8F5E9] px-3 py-1 text-[14px] font-medium text-[#2E7D32]">
+  <!-- MOBILE VIEW -->
+
+  <section class="block md:hidden">
+    <main class="overflow-x-hidden py-4 text-[#171717]">
+
+
+  <!-- BACK BUTTON -->
+  <div class="mx-4 mt-3">
+    <button type="button" (click)="myactivities()"
+      class="mt-1 flex items-center gap-2 !text-[14px] !text-[#807777] link-select cursor-pointer font-medium transition hover:text-[#3f91df]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+      My Activities
+    </button>
+  </div>
+
+  <!-- PAGE HEADER + TOTAL SCORE -->
+  <section class="mx-4 mt-6">
+
+    <!-- PAGE HEADER -->
+    <div>
+      <h2 class="text-[18px] font-semibold leading-6">
+        ELEVATE – Q3 (July – September 2026)
+      </h2>
+      <p class="mt-2 text-[13px] leading-5 text-gray-500">
+        Your performance review for this cycle has been completed.
+      </p>
+    </div>
+
+    <!-- TOTAL SCORE -->
+    <div class="mt-4 flex h-[82px] w-full items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white flex flex-col">
+      <span class="text-[13px] font-semibold text-gray-600">
+        TOTAL SCORE:
+      </span>
+      <div class=" items-center flex gap-3">
+        <span class="text-[30px] font-semibold text-[#2F87DA]">
+          0
+        </span>
+        <span class="text-[24px]">
+           / 100
+        </span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROGRESS SECTION -->
+  <section class="mx-4 mt-5">
+    <div class="rounded-xl border border-[#D0D0D0] bg-white">
+
+      <!-- STEPPER -->
+      <div class="overflow-x-auto px-4 py-6">
+        <nz-steps [nzCurrent]="2" nzSize="small">
+          <nz-step nzTitle="Targets"></nz-step>
+          <nz-step nzTitle="Self-Review"></nz-step>
+          <nz-step nzTitle="Completed" class="completed-step"></nz-step>
+        </nz-steps>
+      </div>
+
+      <div class="h-px w-full bg-[#D0D0D0]"></div>
+
+      <!-- COMPLETED MESSAGE -->
+      <div class="flex flex-col gap-2 px-4 py-4">
+        <span class="w-fit rounded-[8px] border border-[#B7E4C7] bg-[#E8F5E9] px-3 py-1 text-[13px] font-medium text-[#2E7D32]">
           Complete
         </span>
-          <span class="text-[15px] font-semibold text-gray-700">
-            This cycle is complete, including your manager's rating and comments.
+        <span class="text-[13px] font-semibold leading-5 text-gray-700">
+          This cycle is complete, including your manager's rating and comments.
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KPI SECTION -->
+  <section class="mx-4 mt-5 pb-6">
+
+    <div class="mb-3 text-[13px] font-medium uppercase text-[#222]">
+      Key Performance Indicators
+    </div>
+
+    <!-- KPI 1 -->
+    <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-4">
+
+      <!-- KPI HEADER -->
+      <div class="border-b border-[#E5E7EB] pb-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[14px] font-semibold leading-5 text-[#111827]">
+              Application Development &amp; Delivery
+            </span>
+            <span class="mt-1 block text-[13px] text-gray-400">
+              Weight: 60%
+            </span>
+          </div>
+
+          <div class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            60%
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">My Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">4</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Manager Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">4</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Total Score</div>
+            <div class="mt-1 text-[14px] font-medium text-[#4D9BF6]">48</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARGET -->
+      <div class="mb-5 mt-4">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Target
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Deliver 100% of assigned tasks within agreed sprint timelines.
+          </span>
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Maintain agreed quality standards across all deliverables.
           </span>
         </div>
       </div>
-    </section>
 
-    <!-- KPI SECTION -->
-    <section class="mx-8 mt-6 pb-10">
-
-        <!-- KEY PERFORMANCE INDICATORS -->
-        <section>
-            <div class="mb-[12px] text-[15px] font-medium uppercase text-[#222]">
-                Key Performance Indicators
-            </div>
-
-            <!-- KPI 1 -->
-            <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-[20px]">
-
-                <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
-                    <div class="flex flex-col gap-[4px]">
-                        <span class="text-[16px] font-semibold text-[#111827]">
-                            Application Development &amp; Delivery
-                        </span>
-                        <span class="text-[15px] text-gray-400">
-                            Weight: 60%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center gap-[30px] text-center">
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                My Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                4
-                            </div>
-                        </div>
-
-                        <div class="min-w-[90px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Manager Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                4
-                            </div>
-                        </div>
-
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Total Score
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#4D9BF6]">
-                                48
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TARGET -->
-                <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
-                        Target
-                    </div>
-
-                    <div class="flex flex-col gap-[6px]">
-                        <span class="text-[15px] text-gray-500">
-                            • Deliver 100% of assigned tasks within agreed sprint timelines.
-                        </span>
-                        <span class="text-[15px] text-gray-500">
-                            • Maintain agreed quality standards across all deliverables.
-                        </span>
-                    </div>
-                </div>
-
-                <!-- PERFORMANCE -->
-                <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
-                        Performance
-                    </div>
-
-                    <p class="m-0 text-[15px] text-gray-500">
-                        Self-assessed performance against the agreed targets for this KPI.
-                    </p>
-                </div>
-
-                <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            I delivered 100% of assigned tasks within agreed sprint timelines.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-
-                <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            Manager comments for this KPI.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-            </div>
-
-            <!-- KPI 2 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[20px]">
-
-                <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
-                    <div class="flex flex-col gap-[4px]">
-                        <span class="text-[16px] font-semibold text-[#111827]">
-                            Operational Efficiency &amp; Code Quality
-                        </span>
-                        <span class="text-[15px] text-gray-400">
-                            Weight: 15%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center gap-[30px] text-center">
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                My Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[90px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Manager Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Total Score
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TARGET -->
-                <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
-                        Target
-                    </div>
-
-                    <div class="flex flex-col gap-[6px]">
-                        <span class="text-[15px] text-gray-500">
-                            • Maintain agreed code quality standards across all deliverables.
-                        </span>
-                        <span class="text-[15px] text-gray-500">
-                            • Complete assigned development tasks within agreed timelines.
-                        </span>
-                    </div>
-                </div>
-
-                <!-- PERFORMANCE -->
-                <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
-                        Performance
-                    </div>
-
-                    <p class="m-0 text-[15px] text-gray-500">
-                        Performance information submitted for this KPI.
-                    </p>
-                </div>
-
-                <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            I delivered 100% of assigned tasks within agreed sprint timelines.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-
-                <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            Manager comments for this KPI.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-            </div>
-
-            <!-- KPI 3 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[20px]">
-
-                <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
-                    <div class="flex flex-col gap-[4px]">
-                        <span class="text-[16px] font-semibold text-[#111827]">
-                            Learning &amp; Development
-                        </span>
-                        <span class="text-[15px] text-gray-400">
-                            Weight: 15%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center gap-[30px] text-center">
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                My Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[90px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Manager Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Total Score
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TARGET -->
-                <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
-                        Target
-                    </div>
-
-                    <div class="flex flex-col gap-[6px]">
-                        <span class="text-[15px] text-gray-500">
-                            • Complete required learning and development activities.
-                        </span>
-                        <span class="text-[15px] text-gray-500">
-                            • Demonstrate continuous improvement in assigned responsibilities.
-                        </span>
-                    </div>
-                </div>
-
-                <!-- PERFORMANCE -->
-                <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
-                        Performance
-                    </div>
-
-                    <p class="m-0 text-[15px] text-gray-500">
-                        Performance information submitted for this KPI.
-                    </p>
-                </div>
-
-                <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            I delivered 100% of assigned tasks within agreed sprint timelines.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-
-                <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            Manager comments for this KPI.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-            </div>
-
-            <!-- KPI 4 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[20px]">
-
-                <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
-                    <div class="flex flex-col gap-[4px]">
-                        <span class="text-[16px] font-semibold text-[#111827]">
-                            Collaboration &amp; Team Contribution
-                        </span>
-                        <span class="text-[15px] text-gray-400">
-                            Weight: 10%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center gap-[30px] text-center">
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                My Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[90px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Manager Rating
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-
-                        <div class="min-w-[70px]">
-                            <div class="text-[14px] uppercase text-gray-500">
-                                Total Score
-                            </div>
-                            <div class="mt-[4px] text-[15px] font-medium text-[#111827]">
-                                —
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TARGET -->
-                <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[15px] font-medium uppercase text-[#222]">
-                        Target
-                    </div>
-
-                    <div class="flex flex-col gap-[6px]">
-                        <span class="text-[15px] text-gray-500">
-                            • Contribute effectively to team projects and shared objectives.
-                        </span>
-                        <span class="text-[15px] text-gray-500">
-                            • Support colleagues and communicate effectively across the team.
-                        </span>
-                    </div>
-                </div>
-
-                <!-- PERFORMANCE -->
-                <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[15px] font-medium uppercase text-[#222]">
-                        Performance
-                    </div>
-
-                    <p class="m-0 text-[15px] text-gray-500">
-                        Performance information submitted for this KPI.
-                    </p>
-                </div>
-
-                <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            I delivered 100% of assigned tasks within agreed sprint timelines.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-
-                <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
-                    <nz-collapse-panel
-                        [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader"
-                    >
-                        <p class="m-0 text-[15px] text-gray-600">
-                            Manager comments for this KPI.
-                        </p>
-                    </nz-collapse-panel>
-                </nz-collapse>
-            </div>
-        </section>
-
-
-      <!-- EVALUATION STAGES -->
-      <!-- <section> -->
-      <div class="mt-8 flex items-center gap-3 ">
-
-        <span class="text-[14px] font-semibold text-[#171717]">
-          EVALUATION STAGES:
-        </span>
-
-        <nz-segmented
-          class="target-segmented"
-          [(ngModel)]="isActiveTab"
-          (ngModelChange)="tabsActive($event)"
-        >
-
-          <label
-            nz-segmented-item
-            nzValue="targets"
-          >
-            Targets
-          </label>
-
-          <label
-            nz-segmented-item
-            nzValue="self-review"
-          >
-            Self-Review
-          </label>
-
-          <!-- COMPLETED -->
-          <label
-            nz-segmented-item
-            nzValue="completed"
-            class="completed-segment"
-          >
-            Completed
-          </label>
-        </nz-segmented>
+      <!-- PERFORMANCE -->
+      <div class="mb-[18px]">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Performance
+        </div>
+        <p class="m-0 text-[13px] leading-5 text-gray-500">
+          Self-assessed performance against the agreed targets for this KPI.
+        </p>
       </div>
-    </section>
-     
-  </main>
+
+      <!-- MY COMMENTS -->
+      <nz-collapse class="staff-comments-collapse mb-[10px]">
+        <nz-collapse-panel
+          [nzActive]="false"
+          [nzHeader]="staffCommentsHeader"
+        >
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            I delivered 100% of assigned tasks within agreed sprint timelines.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+      <!-- MANAGER COMMENTS -->
+      <nz-collapse class="manager-comments-collapse">
+        <nz-collapse-panel
+          [nzActive]="false"
+          [nzHeader]="managerCommentsHeader"
+        >
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            Manager comments for this KPI.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+    </div>
+
+    <!-- KPI 2 -->
+    <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4">
+
+      <!-- KPI HEADER -->
+      <div class="border-b border-[#E5E7EB] pb-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[14px] font-semibold leading-5 text-[#111827]">
+              Operational Efficiency &amp; Code Quality
+            </span>
+            <span class="mt-1 block text-[13px] text-gray-400">
+              Weight: 15%
+            </span>
+          </div>
+
+          <div class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            15%
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">My Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Manager Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Total Score</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARGET -->
+      <div class="mb-5 mt-4">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Target
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Maintain agreed code quality standards across all deliverables.
+          </span>
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Complete assigned development tasks within agreed timelines.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div class="mb-[18px]">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Performance
+        </div>
+        <p class="m-0 text-[13px] leading-5 text-gray-500">
+          Performance information submitted for this KPI.
+        </p>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <nz-collapse class="staff-comments-collapse mb-[10px]">
+        <nz-collapse-panel
+          [nzActive]="false"
+          [nzHeader]="staffCommentsHeader"
+        >
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            I delivered 100% of assigned tasks within agreed sprint timelines.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+      <!-- MANAGER COMMENTS -->
+      <nz-collapse class="manager-comments-collapse">
+        <nz-collapse-panel
+          [nzActive]="false"
+          [nzHeader]="managerCommentsHeader"
+        >
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            Manager comments for this KPI.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+    </div>
+
+    <!-- KPI 3 -->
+    <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4">
+
+      <!-- KPI HEADER -->
+      <div class="border-b border-[#E5E7EB] pb-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[14px] font-semibold leading-5 text-[#111827]">
+              Learning &amp; Development
+            </span>
+            <span class="mt-1 block text-[13px] text-gray-400">
+              Weight: 15%
+            </span>
+          </div>
+
+          <div class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            15%
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">My Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Manager Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Total Score</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARGET -->
+      <div class="mb-5 mt-4">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Target
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Complete required learning and development activities.
+          </span>
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Demonstrate continuous improvement in assigned responsibilities.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div class="mb-[18px]">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Performance
+        </div>
+        <p class="m-0 text-[13px] leading-5 text-gray-500">
+          Performance information submitted for this KPI.
+        </p>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <nz-collapse class="staff-comments-collapse mb-[10px]">
+        <nz-collapse-panel [nzActive]="false" [nzHeader]="staffCommentsHeader">
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            I delivered 100% of assigned tasks within agreed sprint timelines.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+      <!-- MANAGER COMMENTS -->
+      <nz-collapse class="manager-comments-collapse">
+        <nz-collapse-panel [nzActive]="false" [nzHeader]="managerCommentsHeader">
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            Manager comments for this KPI.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+    </div>
+
+    <!-- KPI 4 -->
+    <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white p-4">
+
+      <!-- KPI HEADER -->
+      <div class="border-b border-[#E5E7EB] pb-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[14px] font-semibold leading-5 text-[#111827]">
+              Collaboration &amp; Team Contribution
+            </span>
+            <span class="mt-1 block text-[13px] text-gray-400">
+              Weight: 10%
+            </span>
+          </div>
+
+          <div class="shrink-0 rounded-full bg-[#EFECEC] px-2.5 py-1 text-[12px] font-semibold text-[#6E6E6E]">
+            10%
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">My Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Manager Rating</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase text-gray-500">Total Score</div>
+            <div class="mt-1 text-[14px] font-medium text-[#111827]">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARGET -->
+      <div class="mb-5 mt-4">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Target
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Contribute effectively to team projects and shared objectives.
+          </span>
+          <span class="text-[13px] leading-5 text-gray-500">
+            • Support colleagues and communicate effectively across the team.
+          </span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div class="mb-[18px]">
+        <div class="mb-2 text-[12px] font-medium uppercase text-[#222]">
+          Performance
+        </div>
+        <p class="m-0 text-[13px] leading-5 text-gray-500">
+          Performance information submitted for this KPI.
+        </p>
+      </div>
+
+      <!-- MY COMMENTS -->
+      <nz-collapse class="staff-comments-collapse mb-[10px]">
+        <nz-collapse-panel [nzActive]="false" [nzHeader]="staffCommentsHeader">
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            I delivered 100% of assigned tasks within agreed sprint timelines.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+
+      <!-- MANAGER COMMENTS -->
+      <nz-collapse class="manager-comments-collapse">
+        <nz-collapse-panel [nzActive]="false" [nzHeader]="managerCommentsHeader">
+          <p class="m-0 text-[13px] leading-5 text-gray-600">
+            Manager comments for this KPI.
+          </p>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+
+  </section>
+
+  <!-- EVALUATION STAGES -->
+  <div class="flex flex-col gap-2 px-4 pb-4">
+    <span class="text-[12px] font-semibold text-gray-500">
+      EVALUATION STAGES:
+    </span>
+
+    <nz-segmented
+      class="target-segmented w-full"
+      [(ngModel)]="isActiveTab"
+      (ngModelChange)="tabsActive($event)"
+    >
+      <label nz-segmented-item nzValue="targets">Targets</label>
+      <label nz-segmented-item nzValue="self-review">Self-Review</label>
+      <label nz-segmented-item nzValue="completed" class="completed-segment">
+        Completed
+      </label>
+    </nz-segmented>
+  </div>
+
+</main>
+
+
+  </section>
+
 }
 
-        <!-- COLLAPSE HEADERS -->
-        <ng-template #staffCommentsHeader>
-            <div class="flex items-center gap-[9px]">
-                <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
-                <span class="text-[15px] font-medium text-[#555]">
-                    My Comments
-                </span>
-            </div>
-        </ng-template>
+    <!-- COLLAPSE HEADERS -->
 
-        <ng-template #managerCommentsHeader>
-            <div class="flex w-full items-center justify-between pr-[8px]">
-                <div class="flex items-center gap-[9px]">
-                    <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-                    <span class="text-[15px] font-medium text-[#4D9BF6]">
-                        Manager Comments
-                    </span>
-                </div>
+    <ng-template #staffCommentsHeader>
 
-                <span class="text-[15px] text-gray-500">
-                    Manager rating: —
-                </span>
-            </div>
-        </ng-template>
+      <div class="flex items-center gap-[9px]">
+        <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
+        <span class="text-[13px] lg:text-[15px] font-medium text-[#555]">
+          My Comments
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template #managerCommentsHeader>
+
+      <div class="flex w-full items-center justify-between pr-[8px]">
+        <div class="flex items-center gap-[9px]">
+          <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
+          <span class="text-[13px] lg:text-[15px] font-medium text-[#4D9BF6]">
+            Manager Comments
+          </span>
+        </div>
+
+
+    <span class="text-[13px] lg:text-[15px] text-gray-500">
+      Manager rating: —
+    </span>
+
+
+      </div>
+    </ng-template>
 
   }
 

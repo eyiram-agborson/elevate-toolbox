@@ -36,7 +36,7 @@ export class UserElevate {
   
 // I set it to true for the demo purposes, but it should be false, when the APIs come in.
   selfReviewOpen = true;
-  selfReviewSubmitted = true;
+  selfReviewSubmitted = false;
   managerReviewCompleted = true;
 
   pages = [1, 2, 3, 4, 5];
