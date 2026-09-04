@@ -27,14 +27,14 @@ export const routes: Routes = [
       { path: 'dashboard', component: Dashboard},
 
 
-  {
-  path: 'elevate', component: Elevate,
-     children: [
-    { path: '', redirectTo: 'manager-elevate', pathMatch: 'full'},
-    { path: 'user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate)},
-    { path: 'manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate)}
-  ]
-},
+
+      { path: 'elevate/user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate), 
+        canActivate: [roleGuard], data: { role: 'employee' }
+      },
+      { path: 'elevate/manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate),
+        canActivate: [roleGuard], data: { role: 'manager' }
+      },
+
 
 
      {path: "activities-layout", component: ActivitiesLayout,
@@ -44,15 +44,6 @@ export const routes: Routes = [
         {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
       ]
      },
-
-
-      // {path: "executivepage-layout", component: ExecutivepageLayout,
-      // children:[
-        {path: "", redirectTo: "department-performance", pathMatch: "full"},
-        {path: "department-performance", loadComponent: () => import ('./executives/department-performance/department-performance').then(m => m.DepartmentPerformance)},
-        {path: "manager-performance", component: ManagerPerformance },
-    //   ]
-    //  }, 
 
 
      {path: "set-target", component: SetTarget },

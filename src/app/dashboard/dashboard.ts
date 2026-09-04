@@ -16,9 +16,20 @@ export class Dashboard {
 
   constructor(private router: Router){}
 
-  goToElevate() {
-    this.router.navigate(['/elevate']);
+ 
+  // goToElevate() {
+  //   this.router.navigate(['/elevate']);
+  // }
+ goToElevate() {
+  const role = this.roleService.getRole();
+
+  if (role === 'employee') {
+    this.router.navigate(['/elevate/user-elevate']);
+  } else if (role === 'manager') {
+    this.router.navigate(['/elevate/manager-elevate']);
   }
+}
+
 
 goToMyActivities() {
   this.router.navigate(['/activities-layout/my-activities']);
