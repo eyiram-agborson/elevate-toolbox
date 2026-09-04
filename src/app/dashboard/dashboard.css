@@ -1,0 +1,132 @@
+/* @media (max-width: 767px) {
+  ::ng-deep .ant-steps {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    gap: 24px 16px !important;
+    overflow: visible !important;
+  }
+
+  ::ng-deep .ant-steps-item {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  ::ng-deep .ant-steps-item-container {
+    width: max-content !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+
+  ::ng-deep .ant-steps-item-content {
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+
+  ::ng-deep .ant-steps-item-title {
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  ::ng-deep .ant-steps-item-tail {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  ::ng-deep .ant-steps {
+    display: flex !important;
+  }
+} */
+
+/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */
+
+/* 
+@media (max-width: 767px) {
+  ::ng-deep .ant-steps {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    gap: 20px 16px !important;
+  }
+
+  ::ng-deep .ant-steps-item {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ::ng-deep .ant-steps-item-container {
+    width: 100% !important;
+  }
+
+  ::ng-deep .ant-steps-item-tail {
+    display: none !important;
+  }
+
+  ::ng-deep .ant-steps-item-content {
+    width: calc(100% - 32px) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  ::ng-deep .ant-steps {
+    display: flex !important;
+  }
+} */
+
+
+
+
+
+@media (max-width: 767px) {
+  ::ng-deep .ant-steps {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    gap: 20px 16px !important;
+  }
+
+  ::ng-deep .ant-steps-item {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ::ng-deep .ant-steps-item-container {
+    width: 100% !important;
+  }
+
+  ::ng-deep .ant-steps-item-tail {
+    display: none !important;
+  }
+
+  ::ng-deep .ant-steps-item-content {
+    width: calc(100% - 32px) !important;
+  }
+
+  /* Allow Performance Review to wrap */
+  ::ng-deep .ant-steps-item:nth-child(2) .ant-steps-item-title {
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+@media (min-width: 768px) {
+  ::ng-deep .ant-steps {
+    display: flex !important;
+  }
+}

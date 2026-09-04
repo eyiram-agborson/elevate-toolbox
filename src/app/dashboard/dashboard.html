@@ -1,15 +1,15 @@
 @if (roleService.hasRole(['employee', 'manager'])) {
-    <div class="min-h-screen bg-[#F7F8FA]">
-        <div class="w-full px-[30px] py-[24px]">
+    <div class="min-h- screen bg-[#F7F8FA]">
+        <div class="w-full px-1 md:px-[30px] py-[24px]">
 
             <!-- PAGE HEADER -->
-            <div class="mb-[20px] flex items-center justify-between">
+            <div class="mb-[20px] md:flex items-center justify-between mx-1 md:mx-0">
                 <div class="flex flex-col gap-[4px]">
                     <span class="text-[28px] font-medium text-[#111827]">
                         Overview
                     </span>
 
-                    <span class="text-[15px] text-gray-400">
+                    <span class="text-[15px] text-gray-400 whitespace-nowrap">
                         Goals, performance and employee development
                     </span>
                 </div>
@@ -110,17 +110,19 @@
                     }
 
                     <!-- MY ACTIVITIES -->
+                     <div class="mt-1 md:mt-0 mx-4 md:mx-0">
                     <button type="button" (click)="goToMyActivities()"
                         class="button-press rounded-[8px] border border-[#E1E4E8] bg-white px-[22px] py-[11px] text-[15px] font-medium text-[#555]"
                     >
                         My Activities
                     </button>
+                    </div>
                 </div>
             </div>
 
             <!-- ACTIVE CYCLE -->
             <div
-                class="overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
+                class="md:overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
             >
 
                 <!-- CYCLE HEADER -->
@@ -138,17 +140,18 @@
 
                             <!-- CYCLE DETAILS -->
                             <div class="flex flex-col gap-[3px]">
-                                <span class="text-[18px] font-semibold text-[#111827]">
+                                <span class="text-[18px] font-semibold text-[#111827] whitespace-nowrap">
                                     ELEVATE – Q3 (July – September 2026)
                                 </span>
 
-                                <span class="text-[15px] text-gray-500">
+                                <span class="text-[15px] text-gray-500 whitespace- nowrap">
                                     Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
                                 </span>
                             </div>
                         </div>
 
                         <!-- VIEW TARGETS -->
+                         <div class="relative top-[-83px] right-[140px] md:right-0 md:top-0 whitespace-nowrap">
                         <button
                             type="button"
                             (click)="goToElevate()"
@@ -156,21 +159,23 @@
                         >
                             View Targets
                         </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- CYCLE STEPS -->
+                <!-- CYCLE STEPS --> 
                 <div class="border-b border-t border-[#E5E7EB] px-[20px] py-[14px]">
-                    <nz-steps [nzCurrent]="0">
-                        <nz-step nzTitle="Targets"></nz-step>
-                        <nz-step nzTitle="Performance Review"></nz-step>
-                        <nz-step nzTitle="Manager Review"></nz-step>
-                        <nz-step nzTitle="Completed"></nz-step>
-                    </nz-steps>
+                <nz-steps [nzCurrent]="0">
+                    <nz-step nzTitle="Targets"></nz-step>
+                    <nz-step nzTitle="Performance Review"></nz-step>
+                    <nz-step nzTitle="Manager Review"></nz-step>
+                    <nz-step nzTitle="Completed"></nz-step>
+                </nz-steps>
                 </div>
 
+
                 <!-- REVIEW WINDOWS -->
-                <div class="flex gap-[24px] px-[20px] py-[14px]">
+                <div class="md:flex gap-[24px] px-[20px] py-[14px]">
 
                     <!-- TARGET SETTING WINDOW -->
                     <div
@@ -189,7 +194,7 @@
 
                     <!-- PERFORMANCE REVIEW WINDOW -->
                     <div
-                        class="flex-1 rounded-[9px] border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
+                        class="flex-1 rounded-[9px] mt-3 md:mt-0 border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
                     >
                         <div class="flex flex-col gap-[3px]">
                             <span class="text-[15px] uppercase text-[#94A3B8]">
