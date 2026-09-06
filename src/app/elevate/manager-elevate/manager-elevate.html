@@ -4,7 +4,7 @@
 @if (isActiveTab === 'targets') {
 
   <!-- Large Screens -->
-  <section class="hidden md:block">
+  <section class="">
     <main class="overflow-x-auto py-6 text-[#171717]">
 
       <!-- BACK BUTTON -->
@@ -46,7 +46,7 @@
       </header>
 
       <!-- PROGRESS STEPS -->
-      <section class="mx-6 mt-5 lg:mx-8 lg:mt-6">
+      <section class="mx-3 mt-5 md::mx-8 lg:mt-6">
         <div class="overflow-hidden rounded-xl border border-[#D0D0D0] bg-white">
 
           <!-- STEPPER -->
@@ -61,12 +61,12 @@
           <div class="h-px w-full bg-[#D0D0D0]"></div>
 
           <!-- PREVIEW MESSAGE -->
-          <div class="flex items-center gap-3 px-5 py-4">
+          <div class="flex flex-col md:flex-row items-center gap-3 md:px-5 py-4">
             <span class="rounded-[8px] border border-[#DCEAFF] bg-[#EAF3FF] px-3 py-1 text-[13px] lg:text-[14px] font-medium text-[#4D9BF6]">
               Preview targets
             </span>
 
-          <span class="text-[12px] md:text-[15px] font-semibold text-[#000000]">
+          <span class="px-3 text-[12px] md:text-[15px] font-semibold text-[#000000]">
             Your targets for this cycle have been published. Review every KPI to guide your progress.
           </span>
         </div>
@@ -178,13 +178,13 @@
                   <!-- TEAM SCORE + TEAM CONTRIBUTION -->
                   <div class="mt-4 flex flex-col gap-3">
 
-                    <div class="rounded-lg border border-[#D9D9D9] bg-white px-4 py-3">
+                    <div class="rounded-lg border border-[#D9D9D9] bg-white px-4 py-1 md:py-3">
                       <p class="text-[11px] lg:text-[12px] font-medium text-[#807777]">
                         TEAM SCORE
                       </p>
 
                       <div class="mt-1 flex items-baseline gap-1">
-                        <span class="text-[20px] font-bold text-[#171717]">
+                        <span class="text-[16px] md:text-[20px] font-bold text-[#171717]">
                           4
                         </span>
 
@@ -194,13 +194,13 @@
                       </div>
                     </div>
 
-                    <div class="rounded-lg border border-[#D9D9D9] bg-white px-4 py-3">
+                    <div class="rounded-lg border border-[#D9D9D9] bg-white px-4 py-1 md:py-3">
                       <p class="text-[11px] lg:text-[12px] font-medium text-[#807777]">
                         TEAM CONTRIBUTION
                       </p>
 
                       <div class="mt-1 flex items-baseline gap-1">
-                        <span class="text-[20px] font-bold text-[#171717]">
+                        <span class="text-[16px] md:text-[20px] font-bold text-[#171717]">
                           48
                         </span>
 
@@ -346,7 +346,7 @@
 
     <!-- EVALUATION STAGES: -->
     <div class="mx-3 md:mx-8 mt-5 mb-6 flex flex-col md:flex-row md:items-center gap-3">
-      <div class="text-[12px] md:text-[14px] font-semibold whitespace-nowrap">
+      <div class="text-[12px] md:text-[14px] font-semibold">
         EVALUATION STAGES:
       </div>
 

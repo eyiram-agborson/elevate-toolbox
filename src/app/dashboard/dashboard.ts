@@ -17,9 +17,7 @@ export class Dashboard {
   constructor(private router: Router){}
 
  
-  // goToElevate() {
-  //   this.router.navigate(['/elevate']);
-  // }
+
  goToElevate() {
   const role = this.roleService.getRole();
 
@@ -35,7 +33,7 @@ goToMyActivities() {
   this.router.navigate(['/activities-layout/my-activities']);
 }
 
-  go() {
+  goToMngPerformance() {
     this.router.navigate(['/manager-performance']);
   }
 
