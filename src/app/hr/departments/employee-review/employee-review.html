@@ -70,7 +70,7 @@
             </div>
 
             @if (!isHistoricalCycle) {
-                <button="button"
+                <button type="button"
                     class="button-press rounded-[8px] bg-[#39D531] px-[35px] py-[9px] text-[15px] font-medium !text-white"  >
                     Approve
                 </button>
@@ -706,10 +706,13 @@
             </div>
 
             @if (!isHistoricalCycle) {
-                <button="button"
-                    class="button-press w-full rounded-[8px] bg-[#39D531] px-[25px] py-[10px] text-[15px] font-medium !text-white"  >
-                    Approve
-                </button>
+            <button
+                type="button"
+                class="button-press rounded-[8px] bg-[#39D531] px-[35px] py-[9px] text-[15px] font-medium !text-white"
+                (click)="approveReview()"
+            >
+                Approve
+            </button>
             }
 
         </div>
