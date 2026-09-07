@@ -1,133 +1,83 @@
 <main class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-  <div class="relative mx-auto flex justify-between h-[65px] items-center px-6 md:px-10">
+  <div class="relative mx-auto flex h-[65px] items-center justify-between px-6 md:px-10">
 
     <!-- Logo -->
     <div class="flex items-center">
-      <img
-        src="/etz-logo.png"
-        alt="ETZ logo"
-        class="h-6 w-auto object-contain"
-      />
+      <img src="/etz-logo.png" alt="ETZ logo" class="h-6 w-auto object-contain" />
     </div>
-    
-    <!-- Center Navigation -->
-    <nav class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 hidden md:block">
 
-      <a
-        routerLink="/dashboard"
-        routerLinkActive="nav-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="nav-link">
+    <!-- Center Navigation -->
+    <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
+
+      <a routerLink="/dashboard" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
         Dashboard
       </a>
-    
-  @if (roleService.hasRole(['executive'])) {
-  <a
-    routerLink="executives/department-performance"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Departments
-  </a>
 
-  <a
-    routerLink="executives/manager-performance"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Managers
-  </a>
+      @if (roleService.hasRole(['executive'])) {
 
-   <a
-    routerLink="executives/employee-performance"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Employees
-  </a>
-}
+        <a routerLink="executives/department-performance" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Departments
+        </a>
 
-@if (roleService.hasRole(['manager', 'employee'])) {
-  <a [routerLink]="
-      roleService.hasRole('employee')
-        ? '/elevate/user-elevate'
-        : '/elevate/manager-elevate'"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Elevate
-  </a>
+        <a routerLink="executives/manager-performance" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Managers
+        </a>
 
-  <a routerLink="/activities-layout"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    My Activities
-  </a>
-}
+        <a routerLink="executives/employee-performance" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Employees
+        </a>
 
-<!-- MANAGER -->
- @if (roleService.hasRole(['manager'])) {
-  <a
-    routerLink="set-target"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Set Targets
-  </a>
+      }
 
-  <a
-    routerLink="team-review"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    class="nav-link"
-  >
-    Team Review
-  </a>
+      @if (roleService.hasRole(['manager', 'employee'])) {
 
-}
+        <a [routerLink]="roleService.hasRole('employee') ? '/elevate/user-elevate' : '/elevate/manager-elevate'" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Elevate
+        </a>
 
-  @if (roleService.hasRole('hr')) {
-    <a
-      routerLink="hr/kpi-templates"
-      routerLinkActive="nav-link-active"
-      class="nav-link">
-      KPI Templates
-    </a>
-    
-    <a
-      routerLink="hr/performance-cycles"
-      routerLinkActive="nav-link-active"
-      class="nav-link">
-      Performance Cycles
-    </a>
+        <a routerLink="/activities-layout" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          My Activities
+        </a>
 
-      <a
-      routerLink="hr/departments"
-      routerLinkActive="nav-link-active"
-      class="nav-link">
-      Departments
-    </a>
+      }
 
-    <a
-      routerLink="hr/validation"
-      routerLinkActive="nav-link-active"
-      class="nav-link">
-      Validation
-    </a>
-  }
+      <!-- MANAGER -->
+      @if (roleService.hasRole(['manager'])) {
 
+        <a routerLink="set-target" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Set Targets
+        </a>
+
+        <a routerLink="team-review" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" class="nav-link">
+          Team Review
+        </a>
+
+      }
+
+      @if (roleService.hasRole('hr')) {
+
+        <a routerLink="hr/kpi-templates" routerLinkActive="nav-link-active" class="nav-link">
+          KPI Templates
+        </a>
+
+        <a routerLink="hr/performance-cycles" routerLinkActive="nav-link-active" class="nav-link">
+          Performance Cycles
+        </a>
+
+        <a routerLink="hr/departments" routerLinkActive="nav-link-active" class="nav-link">
+          Departments
+        </a>
+
+        <a routerLink="hr/validation" routerLinkActive="nav-link-active" class="nav-link">
+          Validation
+        </a>
+
+      }
 
     </nav>
 
-    <!-- User -->
-    <div class="ml-auto flex items-center gap-3 hidden md:flex">
+    <!-- Desktop User -->
+    <div class="ml-auto hidden items-center gap-3 md:flex">
 
       <div class="flex flex-col text-right">
         <span class="text-[13px] font-semibold text-gray-900">
@@ -139,25 +89,34 @@
         </span>
       </div>
 
-      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 text-sm font-medium text-gray-600"
-      >
+      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 text-sm font-medium text-gray-600">
         S
       </div>
 
+      <!-- Logout Icon -->
+      <i class="fa-solid fa-right-from-bracket cursor-pointer text-[16px] text-red-500 transition hover:text-red-600"
+        title="Logout"
+        aria-label="Logout"
+        >
+      </i>
+<!-- (click)="logout()" -->
     </div>
 
-    <div class="flex items-center gap-[4px] block md:hidden">
+    <!-- Mobile Controls -->
+    <div class="block md:hidden">
+      <div class="flex items-center gap-[4px]">
+
         <a nz-dropdown nzTrigger="click">
-          <i class="fa-solid fa-sort-down"
-            style="color: rgb(255, 255, 255);">
-          </i>
+          <i class="fa-solid fa-sort-down" style="color: rgb(255, 255, 255);"></i>
         </a>
-        <button (click)="openSideNav()">
-          <i class=" fa-solid fa-bars fa-xl items-center"
-            style="color: rgb(177, 177, 177);">
-          </i>
+
+        <button type="button" (click)="openSideNav()">
+          <i class="fa-solid fa-bars fa-xl items-center" style="color: rgb(177, 177, 177);"></i>
         </button>
+
       </div>
+    </div>
+
   </div>
 </main>
 
@@ -165,13 +124,20 @@
   <router-outlet></router-outlet>
 </div>
 
-<nz-drawer [nzClosable]="false" [nzVisible]="isSideNav" nzPlacement="right" [nzWidth]="280" (nzOnClose)="close()">
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="isSideNav"
+  nzPlacement="right"
+  [nzWidth]="280"
+  (nzOnClose)="close()">
+
   <ng-container *nzDrawerContent>
     <div class="flex h-full flex-col">
 
       <!-- USER PROFILE -->
       <div class="mb-5 border-b border-gray-200 pb-5">
         <div class="flex items-center gap-3">
+
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EAF3FC]">
             <i class="fa-solid fa-user text-[17px] text-[#2F87DA]"></i>
           </div>
@@ -180,10 +146,12 @@
             <div class="text-[15px] font-semibold text-[#171717]">
               Sally Smith
             </div>
+
             <div class="mt-0.5 text-[14px] text-gray-500">
               Customer Support
             </div>
           </div>
+
         </div>
       </div>
 
@@ -201,10 +169,12 @@
             <i class="fa-solid fa-building mr-2 w-4 text-center text-[14px]"></i>
             Departments
           </a>
+
           <a routerLink="/executives/manager-performance" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" (click)="close()" class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]">
             <i class="fa-solid fa-user-tie mr-2 w-4 text-center text-[14px]"></i>
             Managers
           </a>
+
           <a routerLink="/executives/employee-performance" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" (click)="close()" class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]">
             <i class="fa-solid fa-users mr-2 w-4 text-center text-[14px]"></i>
             Employees
@@ -214,8 +184,7 @@
 
         @if (roleService.hasRole(['manager', 'employee'])) {
 
-          <a [routerLink]="roleService.hasRole('employee') ? 
-          '/elevate/user-elevate' : '/elevate/manager-elevate'" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" (click)="close()" class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]">
+          <a [routerLink]="roleService.hasRole('employee') ? '/elevate/user-elevate' : '/elevate/manager-elevate'" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: false }" (click)="close()" class="nav-link flex items-center rounded-lg px-2 py-3 text-[15px] font-medium text-gray-600 transition hover:bg-[#F4F8FC] hover:text-[#2F87DA]">
             <i class="fa-solid fa-chart-line mr-2 w-4 text-center text-[14px]"></i>
             Elevate
           </a>
@@ -279,9 +248,3 @@
     </div>
   </ng-container>
 </nz-drawer>
-
-
-
-
-
-    
