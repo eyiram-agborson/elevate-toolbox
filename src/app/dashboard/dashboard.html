@@ -138,7 +138,7 @@
 
                             <!-- CYCLE DETAILS -->
                             <div class="flex flex-col gap-[3px]">
-                                <span class="md:text-[18px] text-[14px] font-semibold text-[#111827] whitespace-nowrap">
+                                <span class="md:text-[18px] text-[14px] font-semibold text-[#111827]">
                                     ELEVATE – Q3 (July – September 2026)
                                 </span>
 
@@ -1370,22 +1370,22 @@
 
 @if (roleService.hasRole('executive')) {
     <div class="min-h-screen bg-[#F7F8FA]">
-        <div class="w-full px-[30px] py-[35px]">
+        <div class="w-full px-3 md:px-[30px] py-[35px]">
             <div class="mb-[28px] flex items-center justify-between">
                 <div class="flex flex-col gap-[6px]">
-                    <span class="text-[28px] font-medium text-[#111827]">Overview</span>
-                    <span class="text-[15px] text-gray-400">Monitor the performance of your assigned departments.</span>
+                    <span class="text-[17px] md:text-[28px] font-medium text-[#111827]">Overview</span>
+                    <span class="text-[12px] md:text-[15px] text-gray-400">Monitor the performance of your assigned departments.</span>
                 </div>
             </div>
 
             <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
                 <div class="px-[22px] py-[20px]">
-                    <div class="flex items-start justify-between">
+                    <div class="flex md:items-start justify-between whitespace- nowrap">
                         <div class="flex flex-col gap-[10px]">
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[15px] font-medium text-[#16A34A]">• Active</span>
+                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">• Active</span>
                             <div class="flex flex-col gap-[5px]">
-                                <span class="text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
-                                <span class="text-[15px] text-gray-500">Performance review window 29 Sept – 7 Oct 2026</span>
+                                <span class="text-[14px] md:text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
+                                <span class="text-[12px] md:text-[15px] text-gray-500">Performance review window 29 Sept – 7 Oct 2026</span>
                             </div>
                         </div>
                     </div>
@@ -1393,82 +1393,82 @@
 
             </div>
 
-            <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
+            <div class="mt-[20px] grid md:grid-cols-4 gap-[18px]">
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Assigned Departments</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3</div>
+                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Assigned Departments</span>
+                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">3</div>
                     <span class="text-[15px] text-gray-400">Departments under your oversight</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Managers</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">5</div>
+                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Managers</span>
+                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">5</div>
                     <span class="text-[15px] text-gray-400">Managers across assigned departments</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Reviews Completed</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3/5</div>
+                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Reviews Completed</span>
+                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">3/5</div>
                     <span class="text-[15px] text-gray-400">Manager reviews completed</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Highest Scoring Department</span>
-                    <div class="mt-[7px] text-[22px] font-semibold text-[#111827]">Technology</div>
+                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Highest Scoring Department</span>
+                    <div class="mt-[7px] text-[16px] md:text-[22px] font-semibold text-[#111827]">Technology</div>
                     <span class="text-[15px] text-gray-400">Based on current review results</span>
                 </div>
             </div>
 
             <section class="mt-[28px]">
                 <div class="flex items-center justify-between">
-                    <span class="text-[15px] uppercase text-gray-500">Assigned Departments</span>
+                    <span class="text-[14px] md:text-[15px] uppercase text-gray-500">Assigned Departments</span>
                     <button (click)="goToDepartmentPerformance()" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</button>
                 </div>
 
-                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
+                <div class="mt-[10px] md:overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+                    <div class="md:flex items-center justify-between border-b border-[#E5E7EB] md:px-[18px] py-[16px]">
+                        <div class="flex md:w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Technology</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="w-[32%]">
+                        <div class="md:w-[32%] px-12 md:px-0">
                             <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">8/24 reviewed</span>
                         </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
 
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
+                    <div class="md:flex items-center justify-between border-b border-[#E5E7EB] md:px-[18px] py-[16px]">
+                        <div class="flex md:w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Finance</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="w-[32%]">
+                        <div class="md:w-[32%] px-12 md:px-0">
                             <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">16/24 reviewed</span>
                         </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
 
-                    <div class="flex items-center justify-between px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
+                    <div class="md:flex items-center justify-between md:px-[18px] py-[16px]">
+                        <div class="flex md:w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Human Resources</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="w-[32%]">
+                        <div class="md:w-[32%] px-12 md:px-0">
                             <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">24/24 reviewed</span>
                         </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
                 </div>
             </section>
@@ -1477,7 +1477,7 @@
             <section class="mt-[28px] pb-[40px]">
                 <span class="text-[15px] uppercase text-gray-500">Managers</span>
 
-                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+                <div class="mt-[10px] overflow-auto md:overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white whitespace-nowrap">
                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
                         <div class="flex items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
@@ -1487,7 +1487,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
+                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
@@ -1502,7 +1502,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
+                            <span class="rounded-full bg-[#DDFBE5] px-[12px] md:py-[6px] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
@@ -1517,7 +1517,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
+                            <span class="rounded-full bg-[#EAF3FF] px-[12px] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
                             <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>

@@ -46,9 +46,9 @@ export const routes: Routes = [
      },
 
 
-     {path: "set-target", component: SetTarget },
-     {path: "team-review", component: TeamReview },
-     {path: "elevate/teamreview-totalscore", component: TeamreviewTotalscore },
+     {path: "set-target", loadComponent: () => import("./elevate/set-target/set-target").then(m => m.SetTarget)},
+     {path: "team-review", loadComponent: () => import ("./elevate/team-review/team-review").then(m => m.TeamReview) },
+     {path: "elevate/teamreview-totalscore", loadComponent: () => import ("./elevate/teamreview-totalscore/teamreview-totalscore").then( m => m.TeamreviewTotalscore) },
 
 
 
