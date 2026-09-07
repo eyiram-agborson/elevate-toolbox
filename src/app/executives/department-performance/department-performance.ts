@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { Router } from '@angular/router';
+
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -11,28 +11,30 @@ import {
   ApexDataLabels,
   ApexGrid,
   ApexTooltip,
-  ApexLegend
+  ApexLegend,
+  ApexResponsive
 } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-department-performance',
+  standalone: true,
   imports: [ChartComponent],
   templateUrl: './department-performance.html',
-  styleUrl: './department-performance.css',
+  styleUrl: './department-performance.css'
 })
 export class DepartmentPerformance {
 
   constructor(private router: Router) {}
 
-  goToDashboard() {
+  goToDashboard(): void {
     this.router.navigate(['/dashboard']);
   }
 
-  goToManagers() {
+  goToManagers(): void {
     this.router.navigate(['executives/manager-performance']);
   }
 
-  goToDashboad() {
+  goToDashboad(): void {
     this.router.navigate(['/dashboard']);
   }
 
@@ -81,10 +83,11 @@ export class DepartmentPerformance {
       style: {
         fontSize: '13px'
       },
-      formatter: (value: number) => `${value}`
+      formatter: (value: number): string => `${value}`
     }
   };
 
+  // DEFAULT/DESKTOP SETTINGS
   plotOptions: ApexPlotOptions = {
     bar: {
       horizontal: false,
@@ -93,6 +96,52 @@ export class DepartmentPerformance {
       distributed: true
     }
   };
+
+  // SMALL-SCREEN OVERRIDES
+  responsive: ApexResponsive[] = [
+    {
+      breakpoint: 768,
+      options: {
+        chart: {
+          height: 300
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '45%',
+            borderRadius: 5
+          }
+        },
+        xaxis: {
+          labels: {
+            style: {
+              fontSize: '12px'
+            }
+          }
+        }
+      }
+    },
+    {
+      breakpoint: 480,
+      options: {
+        chart: {
+          height: 280
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '55%',
+            borderRadius: 5
+          }
+        },
+        xaxis: {
+          labels: {
+            style: {
+              fontSize: '11px'
+            }
+          }
+        }
+      }
+    }
+  ];
 
   dataLabels: ApexDataLabels = {
     enabled: false
@@ -109,7 +158,7 @@ export class DepartmentPerformance {
     }
   };
 
-  colors = [
+  colors: string[] = [
     '#5AA4FF',
     '#ED7800',
     '#2F9E00'
@@ -121,7 +170,7 @@ export class DepartmentPerformance {
 
   tooltip: ApexTooltip = {
     y: {
-      formatter: (value: number) => `${value}`
+      formatter: (value: number): string => `${value}`
     }
   };
 }

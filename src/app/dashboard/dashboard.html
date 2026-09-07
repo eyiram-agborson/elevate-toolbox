@@ -3,12 +3,11 @@
         <div class="w-full px-3 md:px-[30px] py-[24px]">
 
             <!-- PAGE HEADER -->
-            <div class="mb-[20px] md:flex items-center justify-between mx-1 md:mx-0">
+            <div class="mb-[20px] flex md:flex items-center justify-between mx-1 md:mx-0">
                 <div class="flex flex-col gap-[4px]">
                     <span class="text-[23px] font-medium text-[#111827]">
                         Overview
                     </span>
-
                     <span class="text-[13px] text-gray-400 whitespace-nowrap">
                         Goals, performance and employee development
                     </span>
@@ -20,15 +19,11 @@
                     <!-- MANAGER NOTIFICATIONS -->
                     @if (roleService.hasRole(['manager'])) {
                         <div class="relative">
-
                             <button type="button" (click)="toggleNotifications()"
-                                class="button-press relative flex h-[44px] w-[44px] items-center justify-center rounded-[8px] border border-[#E1E4E8] bg-white text-[#64748B] transition hover:bg-[#F8FAFC] hover:text-[#3F91DF]"
-                            >
+                                class="button-press relative flex h-[44px] w-[44px] items-center justify-center rounded-[8px] border border-[#E1E4E8] bg-white text-[#64748B] transition hover:bg-[#F8FAFC] hover:text-[#3F91DF]">
                                 <i class="fa-regular fa-bell text-[18px]"></i>
-
                                 @if (hasTargetChange) {
-                                    <span class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white"
-                                    >
+                                    <span class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white">
                                         1
                                     </span>
                                 }
@@ -37,15 +32,12 @@
                             <!-- NOTIFICATION DROPDOWN -->
                             @if (notificationsOpen) {
                                 <div
-                                    class="absolute right-0 top-[50px] z-50 w-[370px] overflow-hidden rounded-[10px] border border-[#E1E4E8] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
-                                >
-
+                                    class="absolute right-0 top-[50px] z-50 w-[370px] overflow-hidden rounded-[10px] border border-[#E1E4E8] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
                                     <!-- DROPDOWN HEADER -->
                                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[16px] py-[12px]">
                                         <span class="text-[15px] font-semibold text-[#111827]">
                                             Notifications
                                         </span>
-
                                         @if (hasTargetChange) {
                                             <span class="text-[13px] text-[#94A3B8]">
                                                 1 pending
@@ -60,7 +52,7 @@
 
                                                 <div
                                                     class="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[8px] bg-[#FFF4D8]"
-                                                >
+                    >
                                                     <i class="fa-regular fa-comment text-[15px] text-[#C47A00]"></i>
                                                 </div>
 
@@ -83,11 +75,8 @@
                                                         target.
                                                     </p>
 
-                                                    <button
-                                                        type="button"
-                                                        (click)="reviewTargetChanges()"
-                                                        class="button-press mt-[8px] text-[14px] font-medium !text-[#3F91DF] hover:!text-[#2563EB]"
-                                                    >
+                                                    <button type="button" (click)="reviewTargetChanges()"
+                                                        class="button-press mt-[8px] text-[14px] font-medium !text-[#3F91DF] hover:!text-[#2563EB]">
                                                         Review &amp; Update
                                                         <span class="ml-[3px]">→</span>
                                                     </button>
@@ -98,7 +87,6 @@
                                         <!-- EMPTY STATE -->
                                         <div class="px-[18px] py-[22px] text-center">
                                             <i class="fa-regular fa-bell-slash text-[19px] text-[#CBD5E1]"></i>
-
                                             <p class="mt-[6px] text-[14px] text-[#94A3B8]">
                                                 No new notifications
                                             </p>
@@ -121,28 +109,24 @@
             </div>
 
             <!-- ACTIVE CYCLE -->
-            <div
-                class="md:overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
+            <div class="md:overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
             >
 
                 <!-- CYCLE HEADER -->
                 <div class="px-[20px] py-[17px]">
                     <div class="flex items-start justify-between">
-
                         <div class="flex flex-col gap-[8px]">
                             <!-- STATUS -->
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[11px] font-medium text-[#16A34A]"
-                            >
+                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[12px] font-medium text-[#16A34A]">
                                 • Active
                             </span>
 
                             <!-- CYCLE DETAILS -->
                             <div class="flex flex-col gap-[3px]">
-                                <span class="md:text-[18px] text-[14px] font-semibold text-[#111827]">
+                                <span class="md:text-[18px] text-[17px] font-semibold text-[#111827] whitespace-nowrap">
                                     ELEVATE – Q3 (July – September 2026)
                                 </span>
-
-                                <span class="text-[12px] md:text-[15px] text-gray-500 whitespace- nowrap">
+                                <span class="text-[13px] md:text-[15px] text-gray-500 whitespace- nowrap">
                                     Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
                                 </span>
                             </div>
@@ -151,8 +135,7 @@
                         <!-- VIEW TARGETS -->
                          <div class="relative top-[-83px] right-[140px] md:right-0 md:top-0 hidden md:block whitespace-nowrap">
                         <button type="button" (click)="goToElevate()"
-                            class="button-press rounded-[8px] bg-[#5BA2F7] px-[22px] py-[11px] text-[15px] font-medium !text-white shadow-sm"
-                        >
+                            class="button-press rounded-[8px] bg-[#5BA2F7] px-[22px] py-[11px] text-[15px] font-medium !text-white shadow-sm">
                             View Targets
                         </button>
                         </div>
@@ -169,19 +152,14 @@
                 </nz-steps>
                 </div>
 
-
                 <!-- REVIEW WINDOWS -->
                 <div class="md:flex gap-[24px] px-[20px] py-[14px]">
-
                     <!-- TARGET SETTING WINDOW -->
-                    <div
-                        class="flex-1 rounded-[9px] border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
-                    >
+                    <div class="flex-1 rounded-[9px] border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]">
                         <div class="flex flex-col gap-[3px]">
                             <span class="text-[13px] uppercase text-[#94A3B8]">
                                 Target Setting Window
                             </span>
-
                             <span class="text-[12px] font-medium text-[#4D9BF6]">
                                 22 Jul – 30 Jul 2026
                             </span>
@@ -189,14 +167,11 @@
                     </div>
 
                     <!-- PERFORMANCE REVIEW WINDOW -->
-                    <div
-                        class="flex-1 rounded-[9px] mt-3 md:mt-0 border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
-                    >
+                    <div class="flex-1 rounded-[9px] mt-3 md:mt-0 border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]">
                         <div class="flex flex-col gap-[3px]">
                             <span class="text-[13px] uppercase text-[#94A3B8]">
                                 Performance Review Window
                             </span>
-
                             <span class="text-[12px] font-medium text-[#111827]">
                                 29 Sept – 7 Oct 2026
                             </span>
@@ -261,11 +236,9 @@
                         </div>
 
                         <!-- KEEP HIDDEN -->
-                        <button
-                            type="button"
+                        <button type="button"
                             (click)="goToPerformanceCycles()"
-                            class="hidden button-press w-auto shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-[24px] py-3 text-[15px] font-medium !text-white shadow-sm"
-                        >
+                            class="hidden button-press w-auto shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-[24px] py-3 text-[15px] font-medium !text-white shadow-sm">
                             Manage cycle
                         </button>
 
@@ -317,61 +290,30 @@
 
                 <!-- DEPARTMENTS -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">
-                        Departments
-                    </span>
-
-                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
-                        10
-                    </div>
-
-                    <span class="text-[15px] leading-5 text-gray-400">
-                        All departments in this cycle
-                    </span>
+                    <span class="text-[15px] font-medium uppercase text-[#64748B]">Departments</span>
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">10</div>
+                    <span class="text-[15px] leading-5 text-gray-400">All departments in this cycle</span>
                 </div>
 
                 <!-- EMPLOYEES -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">
-                        Employees
-                    </span>
-
-                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
-                        120
-                    </div>
-
-                    <span class="text-[15px] leading-5 text-gray-400">
-                        Total number of employees
-                    </span>
+                    <span class="text-[15px] font-medium uppercase text-[#64748B]">Employees</span>
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">120</div>
+                    <span class="text-[15px] leading-5 text-gray-400">Total number of employees</span>
                 </div>
 
                 <!-- REVIEW COMPLETION -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">
-                        Review Completion
-                    </span>
-
-                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
-                        10%
-                    </div>
-
-                    <span class="text-[15px] leading-5 text-gray-400">
-                        Manager reviews completed
-                    </span>
+                    <span class="text-[15px] font-medium uppercase text-[#64748B]">Review Completion</span>
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">10%</div>
+                    <span class="text-[15px] leading-5 text-gray-400">Manager reviews completed</span>
                 </div>
 
                 <!-- TARGETS AWAITING REVIEW -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[14px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">
-                        Targets Awaiting Review
-                    </span>
-
-                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">
-                        18
-                    </div>
-
-                    <span class="text-[15px] leading-5 text-gray-400">
-                        Employee submissions pending manager review
+                    <span class="text-[15px] font-medium uppercase text-[#64748B]">Targets Awaiting Review</span>
+                    <div class="mt-[6px] text-[26px] font-semibold text-[#111827]">18</div>
+                    <span class="text-[15px] leading-5 text-gray-400">Employee submissions pending manager review
                     </span>
                 </div>
 
@@ -379,16 +321,11 @@
 
             <!-- DEPARTMENT PROGRESS -->
             <section class="mt-7">
-
                 <div class="flex items-center justify-between">
-                    <span class="text-[15px] uppercase text-gray-500">
-                        Department Progress
-                    </span>
+                    <span class="text-[15px] uppercase text-gray-500">Department Progress</span>
 
-                    <a
-                        routerLink="/hr/departments"
-                        class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]"
-                    >
+                    <a routerLink="/hr/departments"
+                        class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">
                         View all
                     </a>
                 </div>
@@ -415,23 +352,14 @@
                         </div>
 
                         <div class="w-[36%]">
-                            <nz-progress
-                                [nzPercent]="26"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
-
+                            <nz-progress [nzPercent]="26" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">
                                 8/24 manager reviews completed
                             </span>
                         </div>
-
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">
                             View →
                         </button>
 
@@ -449,7 +377,6 @@
                                 <span class="text-[15px] font-medium">
                                     Finance
                                 </span>
-
                                 <span class="truncate text-[15px] text-gray-400">
                                     Sally Smith • 24 team members
                                 </span>
@@ -457,23 +384,16 @@
                         </div>
 
                         <div class="w-[36%]">
-                            <nz-progress
-                                [nzPercent]="66"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="66" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[15px] text-gray-400">
                                 16/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">
                             View →
                         </button>
 
@@ -499,23 +419,16 @@
                         </div>
 
                         <div class="w-[36%]">
-                            <nz-progress
-                                [nzPercent]="100"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="100" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[15px] text-gray-400">
                                 24/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">
                             View →
                         </button>
 
@@ -541,23 +454,16 @@
                         </div>
 
                         <div class="w-[36%]">
-                            <nz-progress
-                                [nzPercent]="83"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="83" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[15px] text-gray-400">
                                 20/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">
                             View →
                         </button>
 
@@ -583,23 +489,16 @@
                         </div>
 
                         <div class="w-[36%]">
-                            <nz-progress
-                                [nzPercent]="0"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="0" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[15px] text-gray-400">
                                 0/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">
                             View →
                         </button>
 
@@ -642,11 +541,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToEmployeeDetails()"
-                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
-                        >
+                        <button type="button" (click)="goToEmployeeDetails()"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select">
                             View →
                         </button>
 
@@ -677,10 +573,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select">
                             View →
                         </button>
 
@@ -711,10 +605,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select">
                             View →
                         </button>
 
@@ -745,10 +637,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select">
                             View →
                         </button>
 
@@ -779,10 +669,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[15px] font-medium text-[#4D9BF6] link-select">
                             View →
                         </button>
 
@@ -795,21 +683,18 @@
     </div>
 
 
-    <!-- ==================== moile screens ==================== -->
-    <div
-        id="moile-screens"
-        class="block min-h-screen bg-[#F7F8FA] md:hidden"
-    >
+    <!-- Mobile -->
+    <div class="block min-h-screen bg-[#F7F8FA] md:hidden">
         <div class="w-full px-4 py-5 sm:px-5 sm:py-6">
 
             <!-- PAGE HEADER -->
             <div class="mb-6 flex flex-col gap-3">
                 <div class="flex flex-col gap-[6px]">
-                    <span class="text-[24px] font-medium text-[#111827] sm:text-[25px]">
+                    <span class="md:text-[24px] font-medium text-[#111827] text-[23px]">
                         Overview
                     </span>
 
-                    <span class="text-[14px] text-gray-400 sm:text-[15px]">
+                    <span class="text-[14px] text-gray-400 md:text-[15px]">
                         Goals, performance and employee development
                     </span>
                 </div>
@@ -825,12 +710,12 @@
                         <div class="min-w-0 flex-1">
                             <div class="flex flex-col gap-[10px]">
 
-                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 text-[13px] font-medium text-[#16A34A] sm:text-[14px]">
+                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 md:text-[14px] font-medium text-[#16A34A] text-[13px]">
                                     • Active
                                 </span>
 
                                 <div class="flex flex-col gap-[5px]">
-                                    <span class="break-words text-[16px] font-semibold text-[#111827] sm:text-[17px]">
+                                    <span class="break-words md:text-[17px] font-semibold text-[#111827] text-[18px]">
                                         ELEVATE – Q3 (July – September 2026)
                                     </span>
 
@@ -843,11 +728,8 @@
                         </div>
 
                         <!-- KEEP HIDDEN -->
-                        <button
-                            type="button"
-                            (click)="goToPerformanceCycles()"
-                            class="hidden button-press w-full shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-5 py-3 text-[14px] font-medium !text-white shadow-sm"
-                        >
+                        <button type="button" (click)="goToPerformanceCycles()"
+                            class="hidden button-press w-full shrink-0 cursor-pointer rounded-[8px] bg-[#5BA2F7] px-5 py-3 text-[14px] font-medium !text-white shadow-sm">
                             Manage cycle
                         </button>
 
@@ -899,14 +781,12 @@
 
                 <!-- DEPARTMENTS -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
-                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
+                    <span class="text-[13px] font-medium uppercase text-[#64748B] sm:text-[14px]">
                         Departments
                     </span>
-
                     <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
                         10
                     </div>
-
                     <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
                         All departments in this cycle
                     </span>
@@ -914,47 +794,29 @@
 
                 <!-- EMPLOYEES -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
-                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
-                        Employees
-                    </span>
-
-                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
-                        120
-                    </div>
-
-                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
-                        Total number of employees
-                    </span>
+                    <span class="text-[13px] font-medium uppercase text-[#64748B] sm:text-[14px]">Employees</span>
+                    <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">120</div>
+                    <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">Total number of employees</span>
                 </div>
 
                 <!-- REVIEW COMPLETION -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
-                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
-                        Review Completion
-                    </span>
-
+                    <span class="text-[13px] font-medium uppercase text-[#64748B] sm:text-[14px]">
+                        Review Completion</span>
                     <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
-                        10%
-                    </div>
-
+                        10%</div>
                     <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
-                        Manager reviews completed
-                    </span>
+                        Manager reviews completed</span>
                 </div>
 
                 <!-- TARGETS AWAITING REVIEW -->
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 sm:px-3 sm:py-3">
-                    <span class="text-[13px] uppercase text-[#64748B] sm:text-[14px]">
-                        Targets Awaiting Review
-                    </span>
-
+                    <span class="text-[13px] font-medium uppercase text-[#64748B] sm:text-[14px]">
+                        Targets Awaiting Review</span>
                     <div class="mt-[6px] text-[24px] font-semibold text-[#111827] sm:text-[25px]">
-                        18
-                    </div>
-
+                        18</div>
                     <span class="text-[13px] leading-5 text-gray-400 sm:text-[14px]">
-                        Employee submissions pending manager review
-                    </span>
+                        Employee submissions pending manager review</span>
                 </div>
 
             </div>
@@ -967,8 +829,7 @@
                         Department Progress
                     </span>
 
-                    <a
-                        routerLink="/hr/departments"
+                    <a routerLink="/hr/departments"
                         class="link-select cursor-pointer pr-1 text-[13px] font-medium hover:text-[#4D9BF6] sm:pr-2"
                     >
                         View all
@@ -997,23 +858,16 @@
                         </div>
 
                         <div class="w-full">
-                            <nz-progress
-                                [nzPercent]="26"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="26" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[13px] text-gray-400 sm:text-[14px]">
                                 8/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]">
                             View →
                         </button>
 
@@ -1039,23 +893,16 @@
                         </div>
 
                         <div class="w-full">
-                            <nz-progress
-                                [nzPercent]="66"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="66" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[13px] text-gray-400 sm:text-[14px]">
                                 16/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]">
                             View →
                         </button>
 
@@ -1081,23 +928,16 @@
                         </div>
 
                         <div class="w-full">
-                            <nz-progress
-                                [nzPercent]="100"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="100" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[13px] text-gray-400 sm:text-[14px]">
                                 24/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]">
                             View →
                         </button>
 
@@ -1123,23 +963,17 @@
                         </div>
 
                         <div class="w-full">
-                            <nz-progress
-                                [nzPercent]="83"
-                                [nzShowInfo]="false"
+                            <nz-progress [nzPercent]="83" [nzShowInfo]="false"
                                 [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                                nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[13px] text-gray-400 sm:text-[14px]">
                                 20/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
-                        >
+                        <button type="button"                    (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]">
                             View →
                         </button>
 
@@ -1165,23 +999,16 @@
                         </div>
 
                         <div class="w-full">
-                            <nz-progress
-                                [nzPercent]="0"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                            <nz-progress [nzPercent]="0" [nzShowInfo]="false" [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"></nz-progress>
 
                             <span class="text-[13px] text-gray-400 sm:text-[14px]">
                                 0/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer text-[14px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[15px]">
                             View →
                         </button>
 
@@ -1222,11 +1049,9 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
+                        <button type="button"
                             (click)="goToEmployeeDetails()"
-                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
-                        >
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]">
                             View →
                         </button>
 
@@ -1257,10 +1082,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]">
                             View →
                         </button>
 
@@ -1291,10 +1114,8 @@
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
-                        >
+                        <button type="button"
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]">
                             View →
                         </button>
 
@@ -1323,8 +1144,7 @@
                         </div>
 
                         <button type="button"
-                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
-                        >
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]">
                             View →
                         </button>
 
@@ -1354,8 +1174,7 @@
                         </div>
 
                         <button type="button"
-                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]"
-                        >
+                            class="shrink-0 whitespace-nowrap text-[14px] font-medium text-[#4D9BF6] link-select sm:text-[15px]">
                             View →
                         </button>
 
@@ -1370,105 +1189,111 @@
 
 @if (roleService.hasRole('executive')) {
     <div class="min-h-screen bg-[#F7F8FA]">
-        <div class="w-full px-3 md:px-[30px] py-[35px]">
+        <div class="w-full px-[30px] py-[35px]">
             <div class="mb-[28px] flex items-center justify-between">
                 <div class="flex flex-col gap-[6px]">
-                    <span class="text-[17px] md:text-[28px] font-medium text-[#111827]">Overview</span>
-                    <span class="text-[12px] md:text-[15px] text-gray-400">Monitor the performance of your assigned departments.</span>
+                    <span class="text-[28px] font-medium text-[#111827]">Overview</span>
+                    <span class="text-[15px] text-gray-400">Monitor the performance of your assigned departments.</span>
                 </div>
             </div>
 
             <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
                 <div class="px-[22px] py-[20px]">
-                    <div class="flex md:items-start justify-between whitespace- nowrap">
+                    <div class="flex items-start justify-between">
                         <div class="flex flex-col gap-[10px]">
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">• Active</span>
+                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[15px] font-medium text-[#16A34A]">• Active</span>
                             <div class="flex flex-col gap-[5px]">
-                                <span class="text-[14px] md:text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
-                                <span class="text-[12px] md:text-[15px] text-gray-500">Performance review window 29 Sept – 7 Oct 2026</span>
+                                <span class="text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
+                                <span class="text-[15px] text-gray-500">Performance review window 29 Sept – 7 Oct 2026</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
+      <!-- SUMMARY CARDS -->
+      <div class="mt-4 grid grid-cols-1 gap-3 md:mt-[20px] md:grid-cols-2 md:gap-[18px] lg:grid-cols-4">
+        <div class="min-w-0 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
+          <span class="break-words text-[12px] uppercase text-[#64748B] md:text-[15px]">Assigned Departments</span>
+          <div class="mt-1 text-[24px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">3</div>
+          <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Departments under your oversight</span>
+        </div>
 
-            <div class="mt-[20px] grid md:grid-cols-4 gap-[18px]">
+            <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Assigned Departments</span>
-                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">3</div>
+                    <span class="text-[15px] uppercase text-[#64748B]">Assigned Departments</span>
+                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3</div>
                     <span class="text-[15px] text-gray-400">Departments under your oversight</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Managers</span>
-                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">5</div>
+                    <span class="text-[15px] uppercase text-[#64748B]">Managers</span>
+                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">5</div>
                     <span class="text-[15px] text-gray-400">Managers across assigned departments</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Reviews Completed</span>
-                    <div class="mt-[7px] text-[18px] md:text-[26px] font-semibold text-[#111827]">3/5</div>
+                    <span class="text-[15px] uppercase text-[#64748B]">Reviews Completed</span>
+                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3/5</div>
                     <span class="text-[15px] text-gray-400">Manager reviews completed</span>
                 </div>
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[14px] md:text-[15px] uppercase text-[#64748B]">Highest Scoring Department</span>
-                    <div class="mt-[7px] text-[16px] md:text-[22px] font-semibold text-[#111827]">Technology</div>
+                    <span class="text-[15px] uppercase text-[#64748B]">Highest Scoring Department</span>
+                    <div class="mt-[7px] text-[22px] font-semibold text-[#111827]">Technology</div>
                     <span class="text-[15px] text-gray-400">Based on current review results</span>
                 </div>
             </div>
 
             <section class="mt-[28px]">
                 <div class="flex items-center justify-between">
-                    <span class="text-[14px] md:text-[15px] uppercase text-gray-500">Assigned Departments</span>
+                    <span class="text-[15px] uppercase text-gray-500">Assigned Departments</span>
                     <button (click)="goToDepartmentPerformance()" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</button>
                 </div>
 
-                <div class="mt-[10px] md:overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="md:flex items-center justify-between border-b border-[#E5E7EB] md:px-[18px] py-[16px]">
-                        <div class="flex md:w-[40%] items-center gap-[12px]">
+                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                        <div class="flex w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Technology</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="md:w-[32%] px-12 md:px-0">
+                        <div class="w-[32%]">
                             <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">8/24 reviewed</span>
                         </div>
-                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
 
-                    <div class="md:flex items-center justify-between border-b border-[#E5E7EB] md:px-[18px] py-[16px]">
-                        <div class="flex md:w-[40%] items-center gap-[12px]">
+                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
+                        <div class="flex w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Finance</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="md:w-[32%] px-12 md:px-0">
+                        <div class="w-[32%]">
                             <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">16/24 reviewed</span>
                         </div>
-                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
 
-                    <div class="md:flex items-center justify-between md:px-[18px] py-[16px]">
-                        <div class="flex md:w-[40%] items-center gap-[12px]">
+                    <div class="flex items-center justify-between px-[18px] py-[16px]">
+                        <div class="flex w-[40%] items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
                             <div class="flex flex-col gap-[3px]">
                                 <span class="text-[15px] font-medium">Human Resources</span>
                                 <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
                             </div>
                         </div>
-                        <div class="md:w-[32%] px-12 md:px-0">
+                        <div class="w-[32%]">
                             <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
                             <span class="text-[15px] text-gray-400">24/24 reviewed</span>
                         </div>
-                        <button class="px-12 md:px-0 cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
+                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
                     </div>
                 </div>
             </section>
@@ -1477,7 +1302,7 @@
             <section class="mt-[28px] pb-[40px]">
                 <span class="text-[15px] uppercase text-gray-500">Managers</span>
 
-                <div class="mt-[10px] overflow-auto md:overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white whitespace-nowrap">
+                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
                         <div class="flex items-center gap-[12px]">
                             <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
@@ -1487,7 +1312,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">Reviewed</span>
+                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
@@ -1502,7 +1327,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] md:py-[6px] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#16A34A]">Reviewed</span>
+                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
                             <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>
@@ -1517,7 +1342,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#EAF3FF] px-[12px] px-[12px] py-[2px] md:py-[6px] text-[12px] md:text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
+                            <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
                             <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
                             <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
                         </div>

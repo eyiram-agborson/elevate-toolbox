@@ -40,6 +40,8 @@ constructor(
       this.selectedCycle === 'Q1' ||
       this.selectedCycle === 'Q2';
   }
- 
+
+approveReview(): void {
+}
 
 }

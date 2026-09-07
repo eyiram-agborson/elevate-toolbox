@@ -1,350 +1,568 @@
-<!-- SPECIFIC DEPARTMENT -->
-<!-- HR DEPARTMENT DETAILS -->
-
 <div class="min-h-screen bg-[#F7F8FA]">
-    <div class="w-full px-[30px] py-[35px]">
+    <div class="w-full px-[16px] py-[25px] sm:px-[30px] sm:py-[35px]">
 
         <!-- BACK -->
         <a
             href="hr/departments"
-            class="mb-[20px] flex w-[170px] items-center gap-[15px] text-[16px] font-medium !text-[#807777] link-select hover:!text-[#5BA2F7]"
+            class="mb-[20px] flex w-fit items-center gap-[15px] text-[16px] font-medium !text-[#807777] link-select hover:!text-[#5BA2F7]"
         >
             &larr; Back
         </a>
 
-        <!-- PAGE HEADER -->
-        <div class="mb-[28px] flex items-center justify-between">
 
-            <div class="flex flex-col gap-[6px]">
-
-                <span class="text-[28px] font-medium text-[#111827]">
-                    Technology
-                </span>
-
-                @if (isHistoricalCycle) {
-                    <span class="text-[15px] text-gray-400">
-                        Historical performance for {{ selectedCycle }}
+        <!--  LARGE SCREENS -->
+        <div class="hidden md:block">
+            <!-- PAGE HEADER -->
+            <div class="mb-[28px] flex items-center justify-between gap-[30px]">
+                <div class="flex flex-col gap-[6px]">
+                    <span class="text-[28px] font-medium text-[#111827]">
+                        Technology
                     </span>
-                } @else {
-                    <span class="text-[15px] text-gray-400">
-                        Goals, performance and employee development
-                    </span>
-                }
 
-            </div>
-
-            <!-- SEARCH / FILTER -->
-            <div class="flex items-center gap-[15px]">
-
-                <div class="relative w-[342px]">
-                    <i
-                        class="fa-solid fa-magnifying-glass absolute left-[16px] top-1/2 -translate-y-1/2 text-[18px] text-[#777]"
-                    ></i>
-
-                    <input
-                        type="text"
-                        placeholder="Search department..."
-                        class="h-[50px] w-full rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] pl-[48px] pr-[16px] text-[16px] text-[#555] outline-none focus:border-[#999]"
-                    />
+                    @if (isHistoricalCycle) {
+                        <span class="text-[15px] text-gray-400">
+                            Historical performance for {{ selectedCycle }}
+                        </span>
+                    } @else {
+                        <span class="text-[15px] text-gray-400">
+                            Goals, performance and employee development
+                        </span>
+                    }
                 </div>
 
-                <button
-                    type="button"
-                    class="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] text-[#555] hover:bg-[#F0F1F2]"
-                >
-                    <i class="fa-solid fa-sliders text-[18px]"></i>
-                </button>
+                <!-- SEARCH / FILTER -->
+                <div class="flex items-center gap-[15px]">
+                    <div class="relative w-[342px]">
+                        <i class="fa-solid fa-magnifying-glass absolute left-[16px] top-1/2 -translate-y-1/2 text-[18px] text-[#777]"
+                        ></i>
 
-            </div>
-
-        </div>
-
-
-        <!-- SUMMARY CARDS -->
-        <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
-
-            <!-- TEAM MEMBERS -->
-            <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-
-                <span class="text-[15px] uppercase text-[#64748B]">
-                    Team members
-                </span>
-
-                <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
-                    10
-                </div>
-
-            </div>
-
-
-            <!-- SELF REVIEWS -->
-            <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-
-                <span class="text-[15px] uppercase text-[#64748B]">
-                    Self-reviews submitted
-                </span>
-
-                @if (isHistoricalCycle) {
-
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
-                        10/10
+                        <input type="text" placeholder="Search department..."
+                            class="h-[50px] w-full rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] pl-[48px] pr-[16px] text-[16px] text-[#555] outline-none focus:border-[#999]"
+                        />
                     </div>
 
-                } @else {
+                    <button type="button"
+                        class="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] text-[#555] hover:bg-[#F0F1F2]">
+                        <i class="fa-solid fa-sliders text-[18px]"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+            <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
+
+                <!-- TEAM MEMBERS -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Team members
+                    </span>
 
                     <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
                         10
                     </div>
-
-                }
-
-            </div>
-
-
-            <!-- MANAGER REVIEWS -->
-            <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-
-                <span class="text-[15px] uppercase text-[#64748B]">
-                    Manager Reviews Submitted
-                </span>
-
-                @if (isHistoricalCycle) {
-
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
-                        10/10
-                    </div>
-
-                } @else {
-
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
-                        5/10
-                    </div>
-                }
-
-            </div>
-
-
-            <!-- TEAM SCORE -->
-            <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                <span class="text-[15px] uppercase text-[#64748B]">
-                    Team Score
-                </span>
-                <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
-                    80 / 100
                 </div>
+
+                <!-- SELF REVIEWS -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Self-reviews submitted
+                    </span>
+
+                    @if (isHistoricalCycle) {
+                        <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
+                            10/10
+                        </div>
+                    } @else {
+                        <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
+                            10
+                        </div>
+                    }
+                </div>
+
+                <!-- MANAGER REVIEWS -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Manager Reviews Submitted
+                    </span>
+
+                    @if (isHistoricalCycle) {
+                        <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
+                            10/10
+                        </div>
+                    } @else {
+                        <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
+                            5/10
+                        </div>
+                    }
+                </div>
+
+                <!-- TEAM SCORE -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
+                    <span class="text-[15px] uppercase text-[#64748B]">
+                        Team Score
+                    </span>
+
+                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">
+                        80 / 100
+                    </div>
+                </div>
+
             </div>
-        </div>
 
 
-        <!-- DEPARTMENT PROGRESS -->
-        <section class="mt-[28px]">
+            <!-- DEPARTMENT PROGRESS -->
+            <section class="mt-[28px]">
+                <span class="text-[15px] uppercase text-gray-500">
+                    Department Progress
+                </span>
 
-            <span class="text-[15px] uppercase text-gray-500">
-                Department Progress
-            </span>
-
-            <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                <div class="flex items-center justify-between px-[18px] py-[16px]">
-                    <div class="flex w-full items-center gap-[15px]">
+                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
+                    <div class="px-[18px] py-[16px]">
                         <div class="flex w-full flex-col gap-[15px]">
                             <span class="text-[14px] font-medium uppercase tracking-wider text-[#6E6E6E]">
                                 Team members
                             </span>
+
                             <div class="w-full">
-
                                 @if (isHistoricalCycle) {
-
                                     <nz-progress
                                         [nzPercent]="100"
                                         [nzShowInfo]="false"
                                         [nzStrokeWidth]="6"
                                         nzStrokeColor="#4D9BF6"
                                     ></nz-progress>
+
                                     <span class="text-[15px] text-gray-400">
                                         10/10 reviewed
                                     </span>
-
                                 } @else {
-
                                     <nz-progress
                                         [nzPercent]="50"
                                         [nzShowInfo]="false"
                                         [nzStrokeWidth]="6"
                                         nzStrokeColor="#4D9BF6"
                                     ></nz-progress>
+
                                     <span class="text-[15px] text-gray-400">
                                         5/10 reviewed
                                     </span>
-
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
 
-        <!-- MANAGERS -->
-        <div class="mb-[36px] mt-5">
-            <div class="mb-[10px]">
-                <span class="text-[14px] font-medium text-gray-500 uppercase">
-                    MANAGER(S)
-                </span>
-            </div>
-            <div class="overflow-hidden rounded-[10px] border border-[#E5E7EB] bg-white">
-                <div class="flex items-center justify-between px-[20px] py-[16px]">
-                    <div class="flex items-center gap-[12px]">
+            <!-- MANAGERS -->
+            <section class="mb-[36px] mt-[28px]">
+                <div class="mb-[10px]">
+                    <span class="text-[14px] font-medium uppercase text-gray-500">
+                        MANAGER(S)
+                    </span>
+                </div>
 
-                        <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium text-black">
-                                Sally Smith
-                            </span>
-                            <span class="text-[15px] text-gray-400">
-                                Manager
-                            </span>
+                <div class="overflow-hidden rounded-[10px] border border-[#E5E7EB] bg-white">
+                    <div class="flex items-center justify-between px-[20px] py-[16px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
+
+                            <div class="flex flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium text-black">
+                                    Sally Smith
+                                </span>
+
+                                <span class="text-[15px] text-gray-400">
+                                    Manager
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-[20px]">
+                            @if (isHistoricalCycle) {
+                                <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+                                    Completed
+                                </span>
+                            } @else {
+                                <span class="rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[14px] font-medium text-[#D97706]">
+                                    Pending Review
+                                </span>
+                            }
+
+                            <button
+                                (click)="goToEmployeeReview()"
+                                type="button"
+                                class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                            >
+                                View →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- EMPLOYEES -->
+            <section>
+                <div class="mb-[10px] flex items-center justify-between">
+                    <span class="text-[14px] font-medium uppercase text-gray-500">
+                        EMPLOYEES
+                    </span>
+
+                    @if (!isHistoricalCycle) {
+                        <button
+                            type="button"
+                            class="button-press rounded-[6px] bg-[#39D531] px-[35px] py-[8px] text-[14px] font-medium !text-white hover:bg-[#399B00]"
+                        >
+                            Approve All
+                        </button>
+                    }
+                </div>
+
+                <div class="overflow-hidden rounded-[10px] border border-[#E5E7EB] bg-white">
+
+                    <!-- EMPLOYEE 1 -->
+                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[20px] py-[16px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
+
+                            <div class="flex flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium text-black">
+                                    Janet Doe
+                                </span>
+
+                                <span class="text-[15px] text-gray-400">
+                                    Software Engineer
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-[20px]">
+                            @if (isHistoricalCycle) {
+                                <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+                                    Completed
+                                </span>
+                            } @else {
+                                <span class="rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[14px] font-medium text-[#D97706]">
+                                    Pending Review
+                                </span>
+                            }
+
+                            <button
+                                (click)="goToEmployeeReview()"
+                                type="button"
+                                class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                            >
+                                View →
+                            </button>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-[20px]">
 
-                        @if (isHistoricalCycle) {
+                    <!-- EMPLOYEE 2 -->
+                    <div class="flex items-center justify-between px-[20px] py-[16px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
 
-                            <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
-                                Completed
-                            </span>
+                            <div class="flex flex-col gap-[3px]">
+                                <span class="text-[15px] font-medium text-black">
+                                    Janet Doe
+                                </span>
 
-                        } @else {
+                                <span class="text-[15px] text-gray-400">
+                                    Software Engineer
+                                </span>
+                            </div>
+                        </div>
 
-                            <span class="rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[14px] font-medium text-[#D97706]">
-                                Pending Review
-                            </span>
+                        <div class="flex items-center gap-[20px]">
+                            @if (isHistoricalCycle) {
+                                <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+                                    Completed
+                                </span>
+                            } @else {
+                                <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+                                    Approved
+                                </span>
+                            }
 
-                        }
-
-                        <button
-                            (click)="goToEmployeeReview()"
-                            type="button"
-                            class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
-                        >
-                            View →
-                        </button>
+                            <button
+                                (click)="goToEmployeeReview()"
+                                type="button"
+                                class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                            >
+                                View →
+                            </button>
+                        </div>
                     </div>
+
                 </div>
-            </div>
+            </section>
+
         </div>
 
 
-        <!-- EMPLOYEES -->
-        <div>
+        <!-- MOBILE -->
+        <div class="flex flex-col gap-[24px] md:hidden">
 
-            <div class="mb-[10px] flex items-center justify-between">
-                <span class="text-[14px] font-medium uppercase text-gray-500">
-                    EMPLOYEES
-                </span>
+            <!--  PAGE HEADER -->
+            <div class="flex flex-col gap-[18px]">
+                <div class="flex flex-col gap-[6px]">
+                    <span class="text-[25px] font-medium text-[#111827]">
+                        Technology
+                    </span>
 
+                    @if (isHistoricalCycle) {
+                        <span class="text-[14px] text-gray-400">
+                            Historical performance for {{ selectedCycle }}
+                        </span>
+                    } @else {
+                        <span class="text-[14px] text-gray-400">
+                            Goals, performance and employee development
+                        </span>
+                    }
+                </div>
 
-                <!-- ONLY CURRENT CYCLE -->
-                @if (!isHistoricalCycle) {
+                <!-- SEARCH / FILTER -->
+                <div class="flex w-full items-center gap-[10px]">
+                    <div class="relative min-w-0 flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-[14px] top-1/2 -translate-y-1/2 text-[16px] text-[#777]"
+                        ></i>
 
-                    <button
-                        type="button"
-                        class="button-press rounded-[6px] bg-[#39D531] px-[35px] py-[8px] text-[14px] font-medium !text-white hover:bg-[#399B00]"
-                    >
-                        Approve All
-                    </button>
-
-                }
-            </div>
-
-            <div class="overflow-hidden rounded-[10px] border border-[#E5E7EB] bg-white">
-
-                <!-- EMPLOYEE 1 -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[20px] py-[16px]">
-                    <div class="flex items-center gap-[12px]">
-
-                        <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium text-black">
-                                Janet Doe
-                            </span>
-                            <span class="text-[15px] text-gray-400">
-                                Software Engineer
-                            </span>
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center gap-[20px]">
-
-                        @if (isHistoricalCycle) {
-
-                            <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
-                                Completed
-                            </span>
-
-                        } @else {
-
-                            <span class="rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[14px] font-medium text-[#D97706]">
-                                Pending Review
-                            </span>
-
-                        }
-
-                        <button
-                            (click)="goToEmployeeReview()"
-                            type="button"
-                            class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
-                        >
-                            View →
-                        </button>
-
+                        <input type="text" placeholder="Search department..."
+                            class="h-[48px] w-full rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] pl-[42px] pr-[12px] text-[14px] text-[#555] outline-none focus:border-[#999]"
+                        />
                     </div>
 
                 </div>
+            </div>
 
 
-                <!-- EMPLOYEE 2 -->
-                <div class="flex items-center justify-between px-[20px] py-[16px]">
-                    <div class="flex items-center gap-[12px]">
-                        <div class="h-[42px] w-[42px] rounded-full bg-[#B57AE8]"></div>
-                        <div class="flex flex-col gap-[3px]">
-                            <span class="text-[15px] font-medium text-black">
-                                Janet Doe
-                            </span>
-                            <span class="text-[15px] text-gray-400">
-                                Software Engineer
-                            </span>
-                        </div>
+            <!-- SUMMARY CARDS -->
+            <div class="flex flex-col gap-[12px]">
+
+                <!-- TEAM MEMBERS -->
+                <div class="rounded-[14px] border border-[#E1E4E8] bg-white p-[18px]">
+                    <span class="text-[13px] uppercase text-[#64748B]">
+                        Team members
+                    </span>
+
+                    <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                        10
                     </div>
+                </div>
 
-                    <div class="flex items-center gap-[20px]">
+                <!-- SELF REVIEWS -->
+                <div class="rounded-[14px] border border-[#E1E4E8] bg-white p-[18px]">
+                    <span class="text-[13px] uppercase text-[#64748B]">
+                        Self-reviews submitted
+                    </span>
+
+                    @if (isHistoricalCycle) {
+                        <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                            10/10
+                        </div>
+                    } @else {
+                        <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                            10
+                        </div>
+                    }
+                </div>
+
+                <!-- MANAGER REVIEWS -->
+                <div class="rounded-[14px] border border-[#E1E4E8] bg-white p-[18px]">
+                    <span class="text-[13px] uppercase text-[#64748B]">
+                        Manager Reviews Submitted
+                    </span>
+
+                    @if (isHistoricalCycle) {
+                        <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                            10/10
+                        </div>
+                    } @else {
+                        <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                            5/10
+                        </div>
+                    }
+                </div>
+
+                <!-- TEAM SCORE -->
+                <div class="rounded-[14px] border border-[#E1E4E8] bg-white p-[18px]">
+                    <span class="text-[13px] uppercase text-[#64748B]">
+                        Team Score
+                    </span>
+                    <div class="mt-[7px] text-[25px] font-semibold text-[#111827]">
+                        80 / 100
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DEPARTMENT PROGRESS -->
+            <section>
+                <span class="text-[14px] uppercase text-gray-500">
+                    Department Progress
+                </span>
+
+                <div class="mt-[10px] rounded-[14px] border border-[#E1E4E8] bg-white p-[18px]">
+                    <div class="flex flex-col gap-[15px]">
+                        <span class="text-[13px] font-medium uppercase tracking-wider text-[#6E6E6E]">
+                            Team members
+                        </span>
 
                         @if (isHistoricalCycle) {
+                            <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"></nz-progress>
+                            <span class="text-[14px] text-gray-400">
+                                10/10 reviewed
+                            </span>
+                        } @else {
+                            <nz-progress [nzPercent]="50" [nzShowInfo]="false"
+                                [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
+                            <span class="text-[14px] text-gray-400">
+                                5/10 reviewed
+                            </span>
+                        }
+                    </div>
+                </div>
+            </section>
 
-                            <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+
+            <!-- MANAGER -->
+            <section>
+                <div class="mb-[10px]">
+                    <span class="text-[14px] font-medium uppercase text-gray-500">
+                        MANAGER(S)
+                    </span>
+                </div>
+
+                <div class="rounded-[14px] border border-[#E5E7EB] bg-white p-[18px]">
+                    <div class="flex items-start justify-between gap-[12px]">
+                        <div class="flex min-w-0 items-center gap-[12px]">
+                            <div class="h-[42px] w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
+
+                            <div class="flex min-w-0 flex-col gap-[3px]">
+                                <span class="truncate text-[15px] font-medium text-black">
+                                    Sally Smith
+                                </span>
+                                <span class="text-[14px] text-gray-400">
+                                    Manager
+                                </span>
+                            </div>
+                        </div>
+
+                        <button (click)="goToEmployeeReview()"
+                            type="button"
+                            class="shrink-0 text-[14px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                        >
+                            View →
+                        </button>
+                    </div>
+
+                    @if (isHistoricalCycle) {
+                        <span class="mt-[16px] inline-flex rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[13px] font-medium text-[#16A34A]">
+                            Completed
+                        </span>
+                    } @else {
+                        <span class="mt-[16px] inline-flex rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[13px] font-medium text-[#D97706]">
+                            Pending Review
+                        </span>
+                    }
+                </div>
+            </section>
+
+
+            <!-- EMPLOYEES -->
+            <section>
+                <div class="mb-[10px] flex items-center justify-between gap-[12px]">
+                    <span class="text-[14px] font-medium uppercase text-gray-500">
+                        EMPLOYEES
+                    </span>
+
+                    @if (!isHistoricalCycle) {
+                        <button type="button"
+                            class="button-press rounded-[6px] bg-[#39D531] px-[18px] py-[8px] text-[13px] font-medium !text-white hover:bg-[#399B00]"
+                        >
+                            Approve All
+                        </button>
+                    }
+                </div>
+
+                <div class="flex flex-col gap-[12px]">
+
+                    <!-- EMPLOYEE 1 -->
+                    <div class="rounded-[14px] border border-[#E5E7EB] bg-white p-[18px]">
+                        <div class="flex items-start justify-between gap-[12px]">
+                            <div class="flex min-w-0 items-center gap-[12px]">
+                                <div class="h-[42px] w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
+                                <div class="flex min-w-0 flex-col gap-[3px]">
+                                    <span class="truncate text-[15px] font-medium text-black">
+                                        Janet Doe
+                                    </span>
+                                    <span class="text-[14px] text-gray-400">
+                                        Software Engineer
+                                    </span>
+                                </div>
+                            </div>
+
+                            <button (click)="goToEmployeeReview()" type="button"
+                                class="shrink-0 text-[14px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                            >
+                                View →
+                            </button>
+                        </div>
+
+                        @if (isHistoricalCycle) {
+                            <span class="mt-[16px] inline-flex rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[13px] font-medium text-[#16A34A]">
                                 Completed
                             </span>
-
                         } @else {
+                            <span class="mt-[16px] inline-flex rounded-[8px] bg-[#FFF4E5] px-[12px] py-[6px] text-[13px] font-medium text-[#D97706]">
+                                Pending Review
+                            </span>
+                        }
+                    </div>
 
-                            <span class="rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[14px] font-medium text-[#16A34A]">
+
+                    <!-- EMPLOYEE 2 -->
+                    <div class="rounded-[14px] border border-[#E5E7EB] bg-white p-[18px]">
+                        <div class="flex items-start justify-between gap-[12px]">
+                            <div class="flex min-w-0 items-center gap-[12px]">
+                                <div class="h-[42px] w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
+                                <div class="flex min-w-0 flex-col gap-[3px]">
+                                    <span class="truncate text-[15px] font-medium text-black">
+                                        Janet Doe
+                                    </span>
+                                    <span class="text-[14px] text-gray-400">
+                                        Software Engineer
+                                    </span>
+                                </div>
+                            </div>
+
+                            <button (click)="goToEmployeeReview()" type="button"
+                                class="shrink-0 text-[14px] font-medium text-[#111827] hover:text-[#4D9BF6]"
+                            >
+                                View →
+                            </button>
+                        </div>
+
+                        @if (isHistoricalCycle) {
+                            <span class="mt-[16px] inline-flex rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[13px] font-medium text-[#16A34A]">
+                                Completed
+                            </span>
+                        } @else {
+                            <span class="mt-[16px] inline-flex rounded-[8px] bg-[#DCFCE7] px-[12px] py-[6px] text-[13px] font-medium text-[#16A34A]">
                                 Approved
                             </span>
                         }
-
-
-                        <button
-                            (click)="goToEmployeeReview()"
-                            type="button"
-                            class="text-[15px] font-medium text-[#111827] hover:text-[#4D9BF6]"
-                        >
-                            View →
-                        </button>
                     </div>
+
                 </div>
-            </div>
+            </section>
+
         </div>
+
     </div>
 </div>

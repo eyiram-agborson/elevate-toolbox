@@ -22,8 +22,9 @@ export class PageLayout {
     this.isSideNav = true;
   }
 
-
   close():void {
     this.isSideNav = false;
   }
+
+  
 }

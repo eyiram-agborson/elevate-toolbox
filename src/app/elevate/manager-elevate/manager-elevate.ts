@@ -88,10 +88,9 @@ export class ManagerElevate {
   }
 
   goToElevate(): void {
-    this.router.navigate(['/elevate']);
+    this.router.navigate(['/elevate/manager-elevate']);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   goToActivities(): void {
     this.router.navigate(['/activities-layout', 'my-activities']);
     window.scrollTo({ top: 0, behavior: 'smooth' });
