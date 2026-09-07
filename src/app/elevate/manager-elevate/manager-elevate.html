@@ -2178,17 +2178,24 @@
       <span class="whitespace-nowrap text-[12px] md:text-[15px] font-semibold">
         EVALUATION STAGES:      </span>
 
-          <nz-segmented class="target-segmented"
-            [(ngModel)]="isActiveTab" (ngModelChange)="tabsActive($event)">
+          <nz-segmented
+            class="target-segmented w-full"
+            [(ngModel)]="isActiveTab"
+            (ngModelChange)="tabsActive($event)"
+          >
             <label nz-segmented-item nzValue="targets">Targets</label>
             <label nz-segmented-item nzValue="self-review">Self-Review</label>
-            <label nz-segmented-item nzValue="completed">Completed</label>
+            <label nz-segmented-item nzValue="completed" class="completed-segment">
+              Completed
+            </label>
           </nz-segmented>
         </div>
 
       </section>
 
     </main>
+
+    <!-- hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh -->
 
   <!-- MOBILE VIEW -->
   <section class="block md:hidden">
@@ -2716,11 +2723,16 @@
             EVALUATION STAGES:
           </span>
 
-          <nz-segmented class="target-segmented w-full" [(ngModel)]="isActiveTab"
-            (ngModelChange)="tabsActive($event)">
+          <nz-segmented
+            class="target-segmented w-full"
+            [(ngModel)]="isActiveTab"
+            (ngModelChange)="tabsActive($event)"
+          >
             <label nz-segmented-item nzValue="targets">Targets</label>
             <label nz-segmented-item nzValue="self-review">Self-Review</label>
-            <label nz-segmented-item nzValue="completed">Completed</label>
+            <label nz-segmented-item nzValue="completed" class="completed-segment">
+              Completed
+            </label>
           </nz-segmented>
 
         </div>
