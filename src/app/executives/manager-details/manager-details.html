@@ -1,37 +1,44 @@
-<div class="mx-5 mt-10 pb-8">
+<div class="mx-4 mt-6 pb-6 text-[14px] sm:mx-5 sm:mt-10 sm:pb-8">
 
     <!-- EMPLOYEE HEADER -->
     <section>
-        <div (click)="goToManagerPerformance()" class="flex items-center text-[16px] font-medium text-[#64748B] hover:!text-[#4D9BF6] cursor-pointer">
+        <div
+            (click)="goToManagerPerformance()"
+            class="flex cursor-pointer items-center text-[15px] font-medium text-[#64748B] hover:!text-[#4D9BF6]"
+        >
             <span>←</span>
             <span class="ml-2">Managers</span>
         </div>
 
-        <div class="mt-5 flex items-start justify-between">
-            <div>
-                <div class="flex items-center gap-3">
-                    <span class="text-[24px] font-semibold text-[#111827]">
+        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[23px] font-semibold text-[#111827]">
                         Sally Smith
                     </span>
-                    <span class="rounded-full bg-[#EEF6FF] px-3 py-1 text-[15px] font-medium text-[#3B82F6]">
+
+                    <span class="rounded-full bg-[#EEF6FF] px-3 py-1 text-[14px] font-medium text-[#3B82F6]">
                         Submitted
                     </span>
                 </div>
-                <p class="mt-1 text-[15px] text-[#64748B]">
+
+                <p class="mt-1 text-[14px] text-[#64748B]">
                     Software Engineer • Client-Side Engineering
                 </p>
             </div>
 
             <!-- TOTAL SCORE -->
-            <div class="flex min-w-[115px] flex-col items-center rounded-[12px] border-2 border-[#3B91F6] bg-white px-4 py-3">
-                <span class="text-[13px] font-medium text-[#111827]">
+            <div class="flex w-full flex-col items-center rounded-[12px] border-2 border-[#3B91F6] bg-white px-4 py-3 sm:w-auto sm:min-w-[115px]">
+                <span class="text-[12px] font-medium text-[#111827]">
                     TOTAL SCORE
                 </span>
+
                 <div class="mt-1 flex items-baseline gap-1">
-                    <span class="text-[38px] leading-none text-[#2F87DA]">
+                    <span class="text-[37px] leading-none text-[#2F87DA]">
                         0
                     </span>
-                    <span class="text-[15px] text-[#111827]">
+
+                    <span class="text-[14px] text-[#111827]">
                         / 100
                     </span>
                 </div>
@@ -42,50 +49,54 @@
     <!-- KEY PERFORMANCE INDICATORS -->
     <section class="mt-7">
         <div class="mb-3">
-            <span class="text-[15px] font-medium uppercase tracking-wide text-[#111827]">
+            <span class="text-[14px] font-medium uppercase tracking-wide text-[#111827]">
                 Key Performance Indicators
             </span>
         </div>
 
         <!-- KPI 1 -->
+        <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 sm:px-[22px] sm:py-[18px]">
 
-        <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
             <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
+            <div class="flex flex-col gap-3 border-b border-[#E4E7EC] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
+                    <span class="text-[15px] font-semibold text-[#111827]">
                         Application Development &amp; Delivery
                     </span>
-                    <p class="mt-1 text-[15px] text-[#807777]">
+
+                    <p class="mt-1 text-[14px] text-[#807777]">
                         Weight: 60%
                     </p>
                 </div>
 
                 <!-- RATINGS -->
-                <div class="flex items-start gap-[28px]">
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:items-start sm:gap-[28px]">
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             RATING
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
 
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             PERFORMANCE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
 
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             SCORE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
@@ -93,14 +104,16 @@
             </div>
 
             <!-- TARGET -->
-            <div class="pt-[18px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="pt-4 sm:pt-[18px]">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Target
                 </p>
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
+
+                <div class="mt-2 space-y-1 text-[14px] leading-6 text-[#64748B]">
                     <p>
                         • Deliver 100% of assigned tasks within agreed sprint timelines.
                     </p>
+
                     <p>
                         • Maintain agreed quality standards across all deliverables.
                     </p>
@@ -108,110 +121,115 @@
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="mt-5">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Performance
                 </p>
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#807777]">
                     Self-assessed performance of — out of 5 against the agreed targets for this KPI.
                 </p>
             </div>
 
             <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-3">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#626262]">
+                    <i class="fa-solid fa-user text-[15px] text-[#807777]"></i>
+
                     <span>
                         STAFF COMMENTS
                     </span>
                 </div>
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#626262]">
                     I delivered 100% of assigned tasks within agreed sprint timelines.
                 </p>
             </div>
 
             <!-- EXECUTIVE COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#0084BD]">
+                    <i class="fa-regular fa-comments text-[16px]"></i>
+
                     <span>
                         EXECUTIVE COMMENTS
                     </span>
                 </div>
 
-                <!--    Executive Rating -->
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                            Executive Rating
+                <!-- EXECUTIVE RATING -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
+                        Executive Rating
                     </p>
-                    <div class="mt-2 flex items-center gap-2">
+
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
                         @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
+                            <button type="button" (click)="currentPage = page"
+                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[14px] font-medium transition-colors"
                                 [ngClass]="currentPage === page
                                     ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
+                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'">
                                 {{ page }}
                             </button>
                         }
                     </div>
                 </div>
 
-                <!-- Executive Comments -->
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
+                <!-- EXECUTIVE COMMENTS -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
                         Executive Comments
                     </p>
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
+
+                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-3 py-3 text-[14px] text-[#111827]">
                         As how?
                     </div>
                 </div>
             </div>
         </div>
 
-
         <!-- KPI 2 -->
-
-        <div class="mt-[18px] rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
+        <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 sm:mt-[18px] sm:px-[22px] sm:py-[18px]">
 
             <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
+            <div class="flex flex-col gap-3 border-b border-[#E4E7EC] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
+                    <span class="text-[15px] font-semibold text-[#111827]">
                         Operational Efficiency &amp; Code Quality
                     </span>
-                    <p class="mt-1 text-[15px] text-[#807777]">
+
+                    <p class="mt-1 text-[14px] text-[#807777]">
                         Weight: 20%
                     </p>
                 </div>
 
-                <div class="flex items-start gap-[28px]">
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:items-start sm:gap-[28px]">
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             RATING
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
 
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             PERFORMANCE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
 
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             SCORE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
@@ -219,14 +237,16 @@
             </div>
 
             <!-- TARGET -->
-            <div class="pt-[18px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="pt-4 sm:pt-[18px]">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Target
                 </p>
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
+
+                <div class="mt-2 space-y-1 text-[14px] leading-6 text-[#64748B]">
                     <p>
                         • Maintain agreed code quality standards across all deliverables.
                     </p>
+
                     <p>
                         • Complete assigned development tasks within agreed timelines.
                     </p>
@@ -234,103 +254,115 @@
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="mt-5">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Performance
                 </p>
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#807777]">
                     Self-assessed performance of — out of 5 against the agreed targets for this KPI.
                 </p>
             </div>
 
             <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-3">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#626262]">
+                    <i class="fa-solid fa-user text-[15px] text-[#807777]"></i>
+
                     <span>
                         STAFF COMMENTS
                     </span>
                 </div>
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#626262]">
                     Employee comments will appear here.
                 </p>
             </div>
 
             <!-- EXECUTIVE COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#0084BD]">
+                    <i class="fa-regular fa-comments text-[16px]"></i>
+
                     <span>
                         EXECUTIVE COMMENTS
                     </span>
                 </div>
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                            Executive Rating
+
+                <!-- EXECUTIVE RATING -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
+                        Executive Rating
                     </p>
-                    <div class="mt-2 flex items-center gap-2">
+
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
                         @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
+                            <button type="button" (click)="currentPage = page"
+                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[14px] font-medium transition-colors"
                                 [ngClass]="currentPage === page
                                     ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
+                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'">
                                 {{ page }}
                             </button>
                         }
                     </div>
                 </div>
 
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
+                <!-- EXECUTIVE COMMENTS -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
                         Executive Comments
                     </p>
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
+
+                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-3 py-3 text-[14px] text-[#111827]">
                         Executive Comments will appear here.
                     </div>
                 </div>
             </div>
         </div>
 
-
         <!-- KPI 3 -->
+        <div class="mt-4 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 sm:mt-[18px] sm:px-[22px] sm:py-[18px]">
 
-        <div class="mt-[18px] rounded-[12px] border border-[#E1E4E8] bg-white px-[22px] py-[18px]">
             <!-- KPI HEADER -->
-            <div class="flex items-start justify-between border-b border-[#E4E7EC] pb-[16px]">
-                <div>
-                    <span class="text-[16px] font-semibold text-[#111827]">
+            <div class="flex flex-col gap-3 border-b border-[#E4E7EC] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
+                    <span class="text-[15px] font-semibold text-[#111827]">
                         Learning &amp; Development
                     </span>
-                    <p class="mt-1 text-[15px] text-[#807777]">
+
+                    <p class="mt-1 text-[14px] text-[#807777]">
                         Weight: 20%
                     </p>
                 </div>
-                <div class="flex items-start gap-[28px]">
+
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:items-start sm:gap-[28px]">
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             RATING
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
+
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             PERFORMANCE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
+
                     <div class="text-center">
-                        <span class="text-[13px] font-medium text-[#64748B]">
+                        <span class="text-[12px] font-medium text-[#64748B]">
                             SCORE
                         </span>
-                        <p class="mt-1 text-[17px] text-[#111827]">
+
+                        <p class="mt-1 text-[16px] text-[#111827]">
                             —
                         </p>
                     </div>
@@ -338,14 +370,16 @@
             </div>
 
             <!-- TARGET -->
-            <div class="pt-[18px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="pt-4 sm:pt-[18px]">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Target
                 </p>
-                <div class="mt-2 space-y-1 text-[15px] leading-6 text-[#64748B]">
+
+                <div class="mt-2 space-y-1 text-[14px] leading-6 text-[#64748B]">
                     <p>
                         • Complete relevant professional development activities during the review cycle.
                     </p>
+
                     <p>
                         • Apply newly acquired skills to assigned responsibilities.
                     </p>
@@ -353,60 +387,67 @@
             </div>
 
             <!-- PERFORMANCE -->
-            <div class="mt-[20px]">
-                <p class="text-[15px] font-medium uppercase text-[#111827]">
+            <div class="mt-5">
+                <p class="text-[14px] font-medium uppercase text-[#111827]">
                     Performance
                 </p>
-                <p class="mt-2 text-[15px] leading-6 text-[#807777]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#807777]">
                     Self-assessed performance of — out of 5 against the agreed targets for this KPI.
                 </p>
             </div>
 
             <!-- STAFF COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-[12px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#626262]">
-                    <i class="fa-solid fa-user text-[16px] text-[#807777]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#D9D9D9] bg-[#F8F5F0] px-[14px] py-3">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#626262]">
+                    <i class="fa-solid fa-user text-[15px] text-[#807777]"></i>
+
                     <span>
                         STAFF COMMENTS
                     </span>
                 </div>
-                <p class="mt-2 text-[15px] leading-6 text-[#626262]">
+
+                <p class="mt-2 text-[14px] leading-6 text-[#626262]">
                     Employee comments will appear here.
                 </p>
             </div>
 
             <!-- EXECUTIVE COMMENTS -->
-            <div class="mt-[20px] rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
-                <div class="flex items-center gap-2 text-[15px] font-medium text-[#0084BD]">
-                    <i class="fa-regular fa-comments text-[17px]"></i>
+            <div class="mt-5 rounded-[10px] border border-[#5AA4FF] bg-[#EEF9FF] px-[14px] py-[14px]">
+                <div class="flex items-center gap-2 text-[14px] font-medium text-[#0084BD]">
+                    <i class="fa-regular fa-comments text-[16px]"></i>
+
                     <span>
                         EXECUTIVE COMMENTS
                     </span>
                 </div>
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
-                            Executive Rating
+
+                <!-- EXECUTIVE RATING -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
+                        Executive Rating
                     </p>
-                    <div class="mt-2 flex items-center gap-2">
+
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
                         @for (page of pages; track page) {
-                            <button
-                                type="button"
-                                (click)="currentPage = page"
-                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[15px] font-medium transition-colors"
+                            <button type="button" (click)="currentPage = page"
+                                class="button-press flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-[6px] border text-[14px] font-medium transition-colors"
                                 [ngClass]="currentPage === page
                                     ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
-                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'"
-                            >
+                                    : 'border-[#D0D5DD] bg-white text-[#64748B] hover:border-[#2F87DA] hover:text-[#2F87DA]'">
                                 {{ page }}
                             </button>
                         }
                     </div>
                 </div>
-                <div class="mt-[16px]">
-                    <p class="text-[13px] font-medium uppercase text-[#6E6E6E]">
+
+                <!-- EXECUTIVE COMMENTS -->
+                <div class="mt-4">
+                    <p class="text-[12px] font-medium uppercase text-[#6E6E6E]">
                         Executive Comments
                     </p>
-                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] text-[15px] text-[#111827]">
+
+                    <div class="mt-2 min-h-[75px] w-full rounded-[8px] border border-[#C0C0C0] bg-white px-3 py-3 text-[14px] text-[#111827]">
                         Executive Comments will appear here.
                     </div>
                 </div>
@@ -415,67 +456,67 @@
     </section>
 
     <!-- OVERALL MANAGER PERFORMANCE -->
-<section class="mt-[24px]">
-    <div class="mb-[8px]">
-        <span class="text-[15px] font-medium uppercase text-[#64748B]">
-            Overall Manager Performance
-        </span>
-    </div>
-
-    <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[22px] py-[20px]">
-        <!-- SUMMARY CARDS -->
-        <div class="grid grid-cols-3 gap-[26px]">
-            <!-- PERSONAL PERFORMANCE -->
-            <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-[12px]">
-                <span class="text-[15px] font-semibold uppercase text-[#807777]">
-                    Personal Performance
-                </span>
-
-                <div class="mt-[12px] text-[28px] font-medium leading-none text-[#111827]">
-                    —
-                </div>
-            </div>
-
-            <!-- TEAM PERFORMANCE -->
-            <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-[12px]">
-                <span class="text-[15px] font-semibold uppercase text-[#807777]">
-                    Team Performance
-                </span>
-
-                <div class="mt-[12px] text-[25px] font-semibold text-[#111827]">
-                    82/100
-                </div>
-            </div>
-
-            <!-- OVERALL SCORE -->
-            <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-[12px]">
-                <span class="text-[15px] uppercase font-semibold text-[#807777]">
-                    Overall Score
-                </span>
-
-                <div class="mt-[12px] text-[28px] font-medium leading-none text-[#111827]">
-                    —
-                </div>
-            </div>
+    <section class="mt-6">
+        <div class="mb-2">
+            <span class="text-[14px] font-medium uppercase text-[#64748B]">
+                Overall Manager Performance
+            </span>
         </div>
 
-        <!-- INFORMATION -->
-        <p class="pt-[15px] text-[14px] text-[#626262]">
-            The team's performance contributes to the manager's Elevate score automatically.
-        </p>
-    </div>
-</section>
+        <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-4 py-4 sm:px-[22px] sm:py-5">
 
-<!-- SUBMIT REVIEW -->
-<div class="mt-[20px] flex justify-end pb-[20px]">
-    <button
-        type="button"
-        class="button-press rounded-[8px] bg-[#5BA4FF] px-[32px] py-[11px] text-[15px] font-medium !text-white shadow-sm"
-    >
-        <span class="!text-white">
-            Submit Review
-        </span>
-    </button>
-</div>
+            <!-- SUMMARY CARDS -->
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-[26px]">
+
+                <!-- PERSONAL PERFORMANCE -->
+                <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-3">
+                    <span class="text-[14px] font-semibold uppercase text-[#807777]">
+                        Personal Performance
+                    </span>
+
+                    <div class="mt-3 text-[27px] font-medium leading-none text-[#111827]">
+                        —
+                    </div>
+                </div>
+
+                <!-- TEAM PERFORMANCE -->
+                <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-3">
+                    <span class="text-[14px] font-semibold uppercase text-[#807777]">
+                        Team Performance
+                    </span>
+
+                    <div class="mt-3 text-[24px] font-semibold text-[#111827]">
+                        82/100
+                    </div>
+                </div>
+
+                <!-- OVERALL SCORE -->
+                <div class="rounded-[12px] border border-[#D9D9D9] bg-white px-[14px] py-3">
+                    <span class="text-[14px] font-semibold uppercase text-[#807777]">
+                        Overall Score
+                    </span>
+
+                    <div class="mt-3 text-[27px] font-medium leading-none text-[#111827]">
+                        —
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMATION -->
+            <p class="pt-4 text-[13px] text-[#626262]">
+                The team's performance contributes to the manager's Elevate score automatically.
+            </p>
+        </div>
+    </section>
+
+    <!-- SUBMIT REVIEW -->
+    <div class="mt-5 flex justify-end pb-5">
+        <button type="button"
+            class="button-press w-full rounded-[8px] bg-[#5BA4FF] px-8 py-[10px] text-[14px] font-medium !text-white shadow-sm sm:w-auto">
+            <span class="!text-white">
+                Submit Review
+            </span>
+        </button>
+    </div>
 
 </div>
