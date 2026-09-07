@@ -8,14 +8,14 @@
           <path d="M6 8L2 12L6 16"/>
           <path d="M2 12H22"/>
         </svg>
-        <button type="button" (click)="goToDashboard()" class="!text-[14px] font-medium text-[#807777] hover:!text-[#4D9BF6] md:!text-[16px]">Dashboard</button>
+        <button type="button" (click)="goToDashboard()" class="!text-[13px] font-medium text-[#807777] hover:!text-[#4D9BF6] md:!text-[16px]">Dashboard</button>
       </div>
     </div>
 
     <!-- Department Performance -->
     <div>
-      <h1 class="text-[24px] font-bold text-[#000000] md:text-[32px]">Department Performance</h1>
-      <p class="mt-1 text-[14px] text-[#807777] md:text-[18px]">Compare the departments assigned to you in the cycle.</p>
+      <h1 class="text-[24px] font-bold text-[#000000] md:text-[28px]">Department Performance</h1>
+      <p class="text-[13px] text-[#807777] md:text-[16px]">Compare the departments assigned to you in the cycle.</p>
     </div>
 
     <!-- Graph -->
@@ -24,7 +24,17 @@
         <p class="text-[13px] font-medium uppercase text-[#6E6E6E] md:text-[15px]">Average Score Comparison</p>
       </div>
       <div class="px-2 pb-2 md:px-4 md:pb-3">
-        <apx-chart [series]="chartSeries" [chart]="chart" [xaxis]="xaxis" [yaxis]="yaxis" [plotOptions]="plotOptions" [dataLabels]="dataLabels" [grid]="grid" [colors]="colors" [tooltip]="tooltip" [legend]="legend"></apx-chart>
+        <apx-chart [series]="chartSeries" 
+        [chart]="chart" 
+        [xaxis]="xaxis" 
+        [yaxis]="yaxis" 
+        [plotOptions]="plotOptions" 
+        [responsive]="responsive"
+        [dataLabels]="dataLabels" 
+        [grid]="grid" 
+        [colors]="colors" 
+        [tooltip]="tooltip" 
+        [legend]="legend"></apx-chart>
       </div>
     </div>
 
