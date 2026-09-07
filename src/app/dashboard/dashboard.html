@@ -3,12 +3,11 @@
         <div class="w-full px-3 md:px-[30px] py-[24px]">
 
             <!-- PAGE HEADER -->
-            <div class="mb-[20px] md:flex items-center justify-between mx-1 md:mx-0">
+            <div class="mb-[20px] flex md:flex items-center justify-between mx-1 md:mx-0">
                 <div class="flex flex-col gap-[4px]">
                     <span class="text-[23px] font-medium text-[#111827]">
                         Overview
                     </span>
-
                     <span class="text-[13px] text-gray-400 whitespace-nowrap">
                         Goals, performance and employee development
                     </span>
@@ -20,15 +19,11 @@
                     <!-- MANAGER NOTIFICATIONS -->
                     @if (roleService.hasRole(['manager'])) {
                         <div class="relative">
-
                             <button type="button" (click)="toggleNotifications()"
-                                class="button-press relative flex h-[44px] w-[44px] items-center justify-center rounded-[8px] border border-[#E1E4E8] bg-white text-[#64748B] transition hover:bg-[#F8FAFC] hover:text-[#3F91DF]"
->
+                                class="button-press relative flex h-[44px] w-[44px] items-center justify-center rounded-[8px] border border-[#E1E4E8] bg-white text-[#64748B] transition hover:bg-[#F8FAFC] hover:text-[#3F91DF]">
                                 <i class="fa-regular fa-bell text-[18px]"></i>
-
                                 @if (hasTargetChange) {
-                                    <span class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white"
-        >
+                                    <span class="absolute right-[5px] top-[4px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[10px] font-medium !text-white">
                                         1
                                     </span>
                                 }
@@ -37,15 +32,12 @@
                             <!-- NOTIFICATION DROPDOWN -->
                             @if (notificationsOpen) {
                                 <div
-                                    class="absolute right-0 top-[50px] z-50 w-[370px] overflow-hidden rounded-[10px] border border-[#E1E4E8] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
-    >
-
+                                    class="absolute right-0 top-[50px] z-50 w-[370px] overflow-hidden rounded-[10px] border border-[#E1E4E8] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
                                     <!-- DROPDOWN HEADER -->
                                     <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[16px] py-[12px]">
                                         <span class="text-[15px] font-semibold text-[#111827]">
                                             Notifications
                                         </span>
-
                                         @if (hasTargetChange) {
                                             <span class="text-[13px] text-[#94A3B8]">
                                                 1 pending
@@ -83,11 +75,8 @@
                                                         target.
                                                     </p>
 
-                                                    <button
-                         type="button"
-                                                        (click)="reviewTargetChanges()"
-                                                        class="button-press mt-[8px] text-[14px] font-medium !text-[#3F91DF] hover:!text-[#2563EB]"
-                        >
+                                                    <button type="button" (click)="reviewTargetChanges()"
+                                                        class="button-press mt-[8px] text-[14px] font-medium !text-[#3F91DF] hover:!text-[#2563EB]">
                                                         Review &amp; Update
                                                         <span class="ml-[3px]">→</span>
                                                     </button>
@@ -98,7 +87,6 @@
                                         <!-- EMPTY STATE -->
                                         <div class="px-[18px] py-[22px] text-center">
                                             <i class="fa-regular fa-bell-slash text-[19px] text-[#CBD5E1]"></i>
-
                                             <p class="mt-[6px] text-[14px] text-[#94A3B8]">
                                                 No new notifications
                                             </p>
@@ -121,28 +109,24 @@
             </div>
 
             <!-- ACTIVE CYCLE -->
-            <div
-                class="md:overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
+            <div class="md:overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)]"
             >
 
                 <!-- CYCLE HEADER -->
                 <div class="px-[20px] py-[17px]">
                     <div class="flex items-start justify-between">
-
                         <div class="flex flex-col gap-[8px]">
                             <!-- STATUS -->
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[11px] font-medium text-[#16A34A]"
->
+                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[8px] py-[2px] text-[12px] font-medium text-[#16A34A]">
                                 • Active
                             </span>
 
                             <!-- CYCLE DETAILS -->
                             <div class="flex flex-col gap-[3px]">
-                                <span class="md:text-[18px] text-[14px] font-semibold text-[#111827] whitespace-nowrap">
+                                <span class="md:text-[18px] text-[17px] font-semibold text-[#111827] whitespace-nowrap">
                                     ELEVATE – Q3 (July – September 2026)
                                 </span>
-
-                                <span class="text-[12px] md:text-[15px] text-gray-500 whitespace- nowrap">
+                                <span class="text-[13px] md:text-[15px] text-gray-500 whitespace- nowrap">
                                     Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
                                 </span>
                             </div>
@@ -168,19 +152,14 @@
                 </nz-steps>
                 </div>
 
-
                 <!-- REVIEW WINDOWS -->
                 <div class="md:flex gap-[24px] px-[20px] py-[14px]">
-
                     <!-- TARGET SETTING WINDOW -->
-                    <div
-                        class="flex-1 rounded-[9px] border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
-                    >
+                    <div class="flex-1 rounded-[9px] border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]">
                         <div class="flex flex-col gap-[3px]">
                             <span class="text-[13px] uppercase text-[#94A3B8]">
                                 Target Setting Window
                             </span>
-
                             <span class="text-[12px] font-medium text-[#4D9BF6]">
                                 22 Jul – 30 Jul 2026
                             </span>
@@ -188,14 +167,11 @@
                     </div>
 
                     <!-- PERFORMANCE REVIEW WINDOW -->
-                    <div
-                        class="flex-1 rounded-[9px] mt-3 md:mt-0 border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]"
-                    >
+                    <div class="flex-1 rounded-[9px] mt-3 md:mt-0 border border-[#E4DFD8] bg-[#F8F6F2] px-[22px] py-[14px]">
                         <div class="flex flex-col gap-[3px]">
                             <span class="text-[13px] uppercase text-[#94A3B8]">
                                 Performance Review Window
                             </span>
-
                             <span class="text-[12px] font-medium text-[#111827]">
                                 29 Sept – 7 Oct 2026
                             </span>
