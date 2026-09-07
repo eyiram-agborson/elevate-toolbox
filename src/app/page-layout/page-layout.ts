@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterLinkActive, Router } from '@angular/router';
 import { Role } from '../services/role';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
@@ -14,6 +14,8 @@ import {NzDropdownModule} from 'ng-zorro-antd/dropdown';
 export class PageLayout {
   roleService = inject(Role);
   
+  constructor(private router: Router){}
+
   readonly visible = signal(false);
 
   isSideNav = false;
@@ -26,5 +28,13 @@ export class PageLayout {
     this.isSideNav = false;
   }
 
-  
+  backToToolbox(): void {
+  this.close();
+  this.router.navigate(['/toolbox']);
+}
+
+// logout(): void {
+//   this.close();
+//   this.authService.logout();
+// }
 }
