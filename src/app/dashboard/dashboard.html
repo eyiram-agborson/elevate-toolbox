@@ -1188,27 +1188,26 @@
 }
 
 @if (roleService.hasRole('executive')) {
-    <div class="min-h-screen bg-[#F7F8FA]">
-        <div class="w-full px-[30px] py-[35px]">
-            <div class="mb-[28px] flex items-center justify-between">
-                <div class="flex flex-col gap-[6px]">
-                    <span class="text-[28px] font-medium text-[#111827]">Overview</span>
-                    <span class="text-[15px] text-gray-400">Monitor the performance of your assigned departments.</span>
-                </div>
-            </div>
+  <div class="min-h-screen bg-[#F7F8FA]">
+    <div class="w-full px-4 py-5 md:px-[30px] md:py-[35px]">
 
-            <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
-                <div class="px-[22px] py-[20px]">
-                    <div class="flex items-start justify-between">
-                        <div class="flex flex-col gap-[10px]">
-                            <span class="w-fit rounded-full bg-[#DDFBE5] px-[12px] py-[5px] text-[15px] font-medium text-[#16A34A]">• Active</span>
-                            <div class="flex flex-col gap-[5px]">
-                                <span class="text-[18px] font-semibold text-[#111827]">ELEVATE – Q3 (July – September 2026)</span>
-                                <span class="text-[15px] text-gray-500">Performance review window 29 Sept – 7 Oct 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="mb-5 flex flex-col gap-1 md:mb-[28px]">
+        <span class="text-[22px] font-medium text-[#111827] md:text-[28px]">Overview</span>
+        <span class="text-[13px] text-gray-400 md:text-[15px]">Monitor the performance of your assigned departments.</span>
+      </div>
+
+      <!-- REVIEW WINDOW -->
+      <div class="overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)] md:rounded-[14px]">
+        <div class="px-4 py-4 md:px-[22px] md:py-[20px]">
+          <div class="flex flex-col gap-3">
+            <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 text-[13px] font-medium text-[#16A34A] md:px-[12px] md:py-[5px] md:text-[15px]">• Active</span>
+            <div class="flex min-w-0 flex-col gap-1">
+              <span class="break-words text-[17px] font-semibold text-[#111827] md:text-[18px]">ELEVATE – Q3 (July – September 2026)</span>
+              <span class="break-words text-[13px] text-gray-500 md:text-[15px]">Performance review window 29 Sept – 7 Oct 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- SUMMARY CARDS -->
       <div class="mt-4 grid grid-cols-1 gap-3 md:mt-[20px] md:grid-cols-2 md:gap-[18px] lg:grid-cols-4">
@@ -1218,138 +1217,142 @@
           <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Departments under your oversight</span>
         </div>
 
-            <div class="mt-[20px] grid grid-cols-4 gap-[18px]">
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Assigned Departments</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3</div>
-                    <span class="text-[15px] text-gray-400">Departments under your oversight</span>
-                </div>
-
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Managers</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">5</div>
-                    <span class="text-[15px] text-gray-400">Managers across assigned departments</span>
-                </div>
-
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Reviews Completed</span>
-                    <div class="mt-[7px] text-[26px] font-semibold text-[#111827]">3/5</div>
-                    <span class="text-[15px] text-gray-400">Manager reviews completed</span>
-                </div>
-
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[18px]">
-                    <span class="text-[15px] uppercase text-[#64748B]">Highest Scoring Department</span>
-                    <div class="mt-[7px] text-[22px] font-semibold text-[#111827]">Technology</div>
-                    <span class="text-[15px] text-gray-400">Based on current review results</span>
-                </div>
-            </div>
-
-            <section class="mt-[28px]">
-                <div class="flex items-center justify-between">
-                    <span class="text-[15px] uppercase text-gray-500">Assigned Departments</span>
-                    <button (click)="goToDepartmentPerformance()" class="link-select cursor-pointer pr-5 text-[15px] font-medium hover:text-[#4D9BF6]">View all</button>
-                </div>
-
-                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Technology</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
-                            </div>
-                        </div>
-                        <div class="w-[32%]">
-                            <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">8/24 reviewed</span>
-                        </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
-                    </div>
-
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Finance</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
-                            </div>
-                        </div>
-                        <div class="w-[32%]">
-                            <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">16/24 reviewed</span>
-                        </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
-                    </div>
-
-                    <div class="flex items-center justify-between px-[18px] py-[16px]">
-                        <div class="flex w-[40%] items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Human Resources</span>
-                                <span class="text-[15px] text-gray-400">Sally Smith • 24 team members</span>
-                            </div>
-                        </div>
-                        <div class="w-[32%]">
-                            <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[15px] text-gray-400">24/24 reviewed</span>
-                        </div>
-                        <button class="cursor-pointer text-[15px] font-medium text-[#555] link-select hover:text-[#4D9BF6]">View →</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- MANAGERS -->
-            <section class="mt-[28px] pb-[40px]">
-                <span class="text-[15px] uppercase text-gray-500">Managers</span>
-
-                <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Technology Manager</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                            <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">Finance Manager</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                            <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between px-[18px] py-[16px]">
-                        <div class="flex items-center gap-[12px]">
-                            <div class="h-[38px] w-[38px] rounded-full bg-[#B57AE8]"></div>
-                            <div class="flex flex-col gap-[3px]">
-                                <span class="text-[15px] font-medium">Sally Smith</span>
-                                <span class="text-[15px] text-gray-400">HR Manager</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-[30px]">
-                            <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
-                            <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                            <button (click)="goToManagerPerformance()" class="text-[15px] font-medium text-[#4D9BF6] link-select">View →</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="min-w-0 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
+          <span class="break-words text-[12px] uppercase text-[#64748B] md:text-[15px]">Managers</span>
+          <div class="mt-1 text-[24px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">5</div>
+          <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Managers across assigned departments</span>
         </div>
-    </div></div></div>
+
+        <div class="min-w-0 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
+          <span class="break-words text-[12px] uppercase text-[#64748B] md:text-[15px]">Reviews Completed</span>
+          <div class="mt-1 text-[24px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">3/5</div>
+          <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Manager reviews completed</span>
+        </div>
+
+        <div class="min-w-0 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
+          <span class="break-words text-[12px] uppercase text-[#64748B] md:text-[15px]">Highest Scoring Department</span>
+          <div class="mt-1 break-words text-[20px] font-semibold text-[#111827] md:mt-[7px] md:text-[22px]">Technology</div>
+          <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Based on current review results</span>
+        </div>
+      </div>
+
+      <!-- ASSIGNED DEPARTMENTS -->
+      <section class="mt-6 md:mt-[28px]">
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-[12px] uppercase text-gray-500 md:text-[15px]">Assigned Departments</span>
+          <button type="button" (click)="goToDepartmentPerformance()" class="link-select shrink-0 cursor-pointer text-[13px] font-medium hover:text-[#4D9BF6] md:pr-5 md:text-[15px]">View all</button>
+        </div>
+
+        <div class="mt-2 overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white md:mt-[10px]">
+
+          <!-- TECHNOLOGY -->
+          <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
+            <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
+              <div class="h-9 w-9 shrink-0 rounded-full bg-[#B57AE8]"></div>
+              <div class="flex min-w-0 flex-col gap-1">
+                <span class="break-words text-[13px] font-medium md:text-[15px]">Technology</span>
+                <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Sally Smith • 24 team members</span>
+              </div>
+            </div>
+            <div class="w-full min-w-0 md:w-[32%]">
+              <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
+              <span class="text-[13px] text-gray-400 md:text-[15px]">8/24 reviewed</span>
+            </div>
+            <button type="button" class="link-select w-full cursor-pointer text-left text-[13px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">View →</button>
+          </div>
+
+          <!-- FINANCE -->
+          <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
+            <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
+              <div class="h-9 w-9 shrink-0 rounded-full bg-[#B57AE8]"></div>
+              <div class="flex min-w-0 flex-col gap-1">
+                <span class="break-words text-[13px] font-medium md:text-[15px]">Finance</span>
+                <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Sally Smith • 24 team members</span>
+              </div>
+            </div>
+            <div class="w-full min-w-0 md:w-[32%]">
+              <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
+              <span class="text-[13px] text-gray-400 md:text-[15px]">16/24 reviewed</span>
+            </div>
+            <button type="button" class="link-select w-full cursor-pointer text-left text-[13px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">View →</button>
+          </div>
+
+          <!-- HUMAN RESOURCES -->
+          <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
+            <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
+              <div class="h-9 w-9 shrink-0 rounded-full bg-[#B57AE8]"></div>
+              <div class="flex min-w-0 flex-col gap-1">
+                <span class="break-words text-[13px] font-medium md:text-[15px]">Human Resources</span>
+                <span class="break-words text-[13px] text-gray-400 md:text-[15px]">Sally Smith • 24 team members</span>
+              </div>
+            </div>
+            <div class="w-full min-w-0 md:w-[32%]">
+              <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
+              <span class="text-[13px] text-gray-400 md:text-[15px]">24/24 reviewed</span>
+            </div>
+            <button type="button" class="link-select w-full cursor-pointer text-left text-[13px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">View →</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MANAGERS -->
+<section class="mt-5 pb-5 sm:mt-7 sm:pb-8">
+  <div class="flex items-center justify-between">
+    <span class="text-[12px] uppercase text-gray-500 sm:text-[15px]">Managers</span>
+  </div>
+
+  <div class="mt-2 overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white sm:mt-3">
+
+    <!-- TECHNOLOGY MANAGER -->
+    <div class="flex items-center gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-5 sm:py-4">
+      <div class="h-8 w-8 shrink-0 rounded-full bg-[#B57AE8] sm:h-9 sm:w-9"></div>
+
+      <div class="min-w-0 flex-1">
+        <span class="block truncate text-[13px] font-medium text-[#111827] sm:text-[15px]">Sally Smith</span>
+        <span class="block truncate text-[12px] text-gray-400 sm:text-[14px]">Technology Manager</span>
+      </div>
+
+      <div class="flex shrink-0 items-center gap-2 sm:gap-5">
+        <span class="rounded-full bg-[#DDFBE5] px-2 py-0.5 text-[10px] font-medium text-[#16A34A] sm:px-2.5 sm:py-1 sm:text-[12px]">Reviewed</span>
+        <button type="button" (click)="goToManagerPerformance()" class="link-select whitespace-nowrap text-[12px] font-medium text-[#4D9BF6] sm:text-[14px]">View →</button>
+      </div>
+    </div>
+
+    <!-- FINANCE MANAGER -->
+    <div class="flex items-center gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:px-5 sm:py-4">
+      <div class="h-8 w-8 shrink-0 rounded-full bg-[#B57AE8] sm:h-9 sm:w-9"></div>
+
+      <div class="min-w-0 flex-1">
+        <span class="block truncate text-[13px] font-medium text-[#111827] sm:text-[15px]">Sally Smith</span>
+        <span class="block truncate text-[12px] text-gray-400 sm:text-[14px]">Finance Manager</span>
+      </div>
+
+      <div class="flex shrink-0 items-center gap-2 sm:gap-5">
+        <span class="rounded-full bg-[#DDFBE5] px-2 py-0.5 text-[10px] font-medium text-[#16A34A] sm:px-2.5 sm:py-1 sm:text-[12px]">Reviewed</span>
+        <button type="button" (click)="goToManagerPerformance()" class="link-select whitespace-nowrap text-[12px] font-medium text-[#4D9BF6] sm:text-[14px]">View →</button>
+      </div>
+    </div>
+
+    <!-- HR MANAGER -->
+    <div class="flex items-center gap-3 px-3 py-3 sm:px-5 sm:py-4">
+      <div class="h-8 w-8 shrink-0 rounded-full bg-[#B57AE8] sm:h-9 sm:w-9"></div>
+
+      <div class="min-w-0 flex-1">
+        <span class="block truncate text-[13px] font-medium text-[#111827] sm:text-[15px]">Sally Smith</span>
+        <span class="block truncate text-[12px] text-gray-400 sm:text-[14px]">HR Manager</span>
+      </div>
+
+      <div class="flex shrink-0 items-center gap-2 sm:gap-5">
+        <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] sm:px-2.5 sm:py-1 sm:text-[12px]">Submitted</span>
+        <button type="button" (click)="goToManagerPerformance()" class="link-select whitespace-nowrap text-[12px] font-medium text-[#4D9BF6] sm:text-[14px]">View →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    </div>
+  </div>
 }
 
