@@ -24,8 +24,9 @@ export const routes: Routes = [
     path: '', component: PageLayout,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      { path: 'dashboard', component: Dashboard},
-
+      { 
+        path: 'dashboard', component: Dashboard
+      },
 
 
       { path: 'elevate/user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate), 

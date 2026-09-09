@@ -33,15 +33,11 @@ constructor(
   isHistoricalCycle = false;
 
   ngOnInit(): void {
-    this.selectedCycle =
-      this.route.snapshot.queryParamMap.get('cycle') ?? 'Q3';
+    this.selectedCycle = this.route.snapshot.queryParamMap.get('cycle') ?? 'Q3';
 
-    this.isHistoricalCycle =
-      this.selectedCycle === 'Q1' ||
-      this.selectedCycle === 'Q2';
+    this.isHistoricalCycle = this.selectedCycle === 'Q1' || this.selectedCycle === 'Q2';
   }
 
-approveReview(): void {
-}
+approveReview(): void {}
 
 }

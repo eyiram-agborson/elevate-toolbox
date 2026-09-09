@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-export type UserRole = 'employee' | 'manager' | 'hr' | 'executive' | 'admin' | 'cto';
+export type UserRole = 'employee' | 'manager' | 'hr' | 'executive' | 'admin' ;
 
 @Injectable({
   providedIn: 'root',
 })
 export class Role {
 
-  private currentRole: UserRole = 'admin';
+  private currentRole: UserRole = 'hr';
 
   getRole(): UserRole{
     return this.currentRole;
@@ -33,4 +33,5 @@ hasRole(roles: UserRole | UserRole[]): boolean {
 //   return this.currentRole === 'admin' || this.currentRole === role;
 // }
 
+ 
 }

@@ -23,13 +23,12 @@ export class Dashboard {
  goToElevate() {
   const role = this.roleService.getRole();
 
-  if (role === 'employee') {
+  if (role === 'employee'){
     this.router.navigate(['/elevate/user-elevate']);
   } else if (role === 'manager') {
     this.router.navigate(['/elevate/manager-elevate']);
   }
 }
-
 
 goToMyActivities() {
   this.router.navigate(['/activities-layout/my-activities']);
@@ -40,7 +39,7 @@ goToMyActivities() {
   }
 
   goToEmployeeReview() {
-    this.router.navigate(['/employee-review']);
+    this.router.navigate(['executives/employee-review']);
   }
 
   goToDepartmentDetails() {
