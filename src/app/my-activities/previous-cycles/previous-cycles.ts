@@ -46,13 +46,13 @@ export class PreviousCycles implements OnInit{
     console.log('Activities tab clicked')
   }
 
-  ngOnInit(): void {
-    window.scrollTo(0, 0);
-  }
+    ngOnInit(): void {
+      window.scrollTo(0, 0);
+    }
 
-  myactivities(): void {
-    this.router.navigate(['/activities-layout', 'my-activities']);
-  }
+    myactivities(): void {
+      this.router.navigate(['/activities-layout', 'my-activities']);
+    }
 
   // ELEVATE
 

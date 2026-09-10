@@ -195,15 +195,15 @@
 
 @if (roleService.hasRole('hr')) {
     <div class="min-h-screen w-full overflow-x-hidden bg-[#F7F8FA]">
-        <div class="w-full px-4 py-5 sm:px-5 sm:py-6 lg:px-[30px] lg:py-[35px]">
+        <div class="w-full px-4 py-5 md:px-5 md:py-6 lg:px-[30px] lg:py-[35px]">
 
             <!-- PAGE HEADER -->
             <div class="mb-6 flex flex-col gap-2 lg:mb-7">
-                <span class="text-[22px] font-medium text-[#111827] sm:text-[24px] lg:text-[28px]">
+                <span class="text-[22px] font-medium text-[#111827] md:text-[24px] lg:text-[28px]">
                     Overview
                 </span>
 
-                <span class="text-[12px] text-gray-400 sm:text-[14px] lg:text-[15px]">
+                <span class="text-[12px] text-gray-400 md:text-[14px] lg:text-[15px]">
                     Goals, performance and employee development
                 </span>
             </div>
@@ -212,21 +212,21 @@
             <div class="overflow-hidden rounded-[14px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)]">
 
                 <!-- CYCLE INFORMATION -->
-                <div class="px-4 py-5 sm:px-5 lg:px-[22px] lg:py-5">
-                    <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div class="px-4 py-5 md:px-5 lg:px-[22px] lg:py-5">
+                    <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
 
                         <div class="min-w-0 flex-1">
                             <div class="flex flex-col gap-3">
-                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 !text-[12px] font-medium text-[#16A34A] sm:text-[13px] lg:text-[15px]">
+                                <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 !text-[12px] font-medium text-[#16A34A] md:!text-[13px] lg:!text-[15px]">
                                     • Active
                                 </span>
 
                                 <div class="flex min-w-0 flex-col gap-1">
-                                    <span class="break-words text-[16px] font-semibold text-[#111827] sm:text-[17px] lg:text-[18px]">
+                                    <span class="break-words text-[16px] font-semibold text-[#111827] md:text-[17px] lg:text-[18px]">
                                         ELEVATE – Q3 (July – September 2026)
                                     </span>
 
-                                    <span class="break-words text-[12px] leading-5 text-gray-500 sm:text-[14px] lg:text-[15px]">
+                                    <span class="break-words text-[12px] leading-5 text-gray-500 md:text-[14px] lg:text-[15px]">
                                         Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
                                     </span>
                                 </div>
@@ -234,128 +234,124 @@
                         </div>
 
                         <!-- KEEP HIDDEN -->
-                        <button type="button" (click)="goToPerformanceCycles()"
-                            class="hidden w-full shrink-0 rounded-[8px] bg-[#5BA2F7] px-5 py-3 text-[13px] font-medium !text-white shadow-sm lg:w-auto lg:px-6 lg:text-[15px]">
+                        <button type="button"
+                            (click)="goToPerformanceCycles()"
+                            class="hidden w-full shrink-0 rounded-[8px] bg-[#5BA2F7] px-5 py-3 text-[13px] font-medium !text-white shadow-sm md:w-auto md:px-6 md:text-[14px] lg:text-[15px]">
                             Manage cycle
                         </button>
                     </div>
                 </div>
 
                 <!-- STEPS -->
-                <div class="hidden md:block overflow-x-auto border-b border-t border-[#E5E7EB] px-4 py-3 sm:px-5 lg:px-5 lg:py-[14px]">
-                    <nz-steps [nzCurrent]="0">
-                        <nz-step nzTitle="Targets"></nz-step>
-                        <nz-step nzTitle="Performance Review"></nz-step>
-                        <nz-step nzTitle="Completed"></nz-step>
-                    </nz-steps>
-                </div>
-
-                <div class=" md:hidden block overflow-x-auto border-b border-t border-[#E5E7EB] px-4 py-3">
-                    <nz-steps [nzCurrent]="0" nzSize="small">
-                        <nz-step nzTitle="Targets"></nz-step>
-                        <nz-step nzTitle="Performance Review"></nz-step>
-                        <nz-step nzTitle="Completed"></nz-step>
-                    </nz-steps>
+                <div class="border-b border-t border-[#E5E7EB] px-4 pt-5 md:px-5 md:py-2 lg:px-5">
+                    <div class="min-w-[420px]">
+                        <nz-steps [nzCurrent]="0" nzSize="small">
+                            <nz-step nzTitle="Targets"></nz-step>
+                            <nz-step nzTitle="Performance Review"></nz-step>
+                            <nz-step nzTitle="Completed"></nz-step>
+                        </nz-steps>
+                    </div>
                 </div>
 
                 <!-- REVIEW WINDOWS -->
-                <div class="grid grid-cols-1 gap-3 px-4 py-4 sm:grid-cols-2 sm:gap-4 sm:px-5 lg:gap-10 lg:px-[22px] lg:py-[18px]">
-                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-4 sm:px-5 lg:py-[18px]">
+                <div class="grid grid-cols-1 gap-3 px-4 pt-2 pb-3 md:grid-cols-2 md:gap-4 md:px-5 md:pt-3 md:pb-4 lg:gap-10 lg:px-[22px] lg:pt-3 lg:pb-[18px]">
+
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-4 md:px-5 lg:py-[18px]">
                         <div class="flex flex-col gap-1">
-                            <span class="text-[11px] uppercase text-[#94A3B8] sm:text-[13px] lg:text-[15px]">
+                            <span class="text-[11px] uppercase text-[#94A3B8] md:text-[13px] lg:text-[15px]">
                                 Target Setting Window
                             </span>
-
-                            <span class="text-[12px] font-medium text-[#4D9BF6] sm:text-[14px] lg:text-[15px]">
+                            <span class="text-[12px] font-medium text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
                                 22 Jul – 30 Jul 2026
                             </span>
                         </div>
                     </div>
 
-                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-4 sm:px-5 lg:py-[18px]">
+                    <div class="rounded-[10px] border border-[#E4DFD8] bg-[#F8F6F2] px-4 py-4 md:px-5 lg:py-[18px]">
                         <div class="flex flex-col gap-1">
-                            <span class="text-[11px] uppercase text-[#94A3B8] sm:text-[13px] lg:text-[15px]">
+                            <span class="text-[11px] uppercase text-[#94A3B8] md:text-[13px] lg:text-[15px]">
                                 Performance Review Window
                             </span>
-
-                            <span class="text-[12px] font-medium text-[#111827] sm:text-[14px] lg:text-[15px]">
+                            <span class="text-[12px] font-medium text-[#111827] md:text-[14px] lg:text-[15px]">
                                 29 Sept – 7 Oct 2026
                             </span>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <!-- SUMMARY CARDS -->
-            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-5 lg:grid-cols-4 lg:gap-[18px]">
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 lg:px-4 lg:py-[14px]">
-                    <span class="text-[11px] font-medium uppercase text-[#64748B] sm:text-[13px] lg:text-[15px]">
+            <div class="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:mt-5 lg:grid-cols-4 lg:gap-[18px]">
+
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 md:px-4 md:py-4 lg:px-4 lg:py-[14px]">
+                    <span class="text-[11px] font-medium uppercase text-[#64748B] md:text-[13px] lg:text-[15px]">
                         Departments
                     </span>
 
-                    <div class="mt-1 text-[22px] font-semibold text-[#111827] sm:text-[24px] lg:mt-[6px] lg:text-[26px]">
+                    <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
                         10
                     </div>
 
-                    <span class="break-words text-[12px] leading-5 text-gray-400 sm:text-[13px] lg:text-[15px]">
+                    <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
                         All departments in this cycle
                     </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 lg:px-4 lg:py-[14px]">
-                    <span class="text-[11px] font-medium uppercase text-[#64748B] sm:text-[13px] lg:text-[15px]">
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 md:px-4 md:py-4 lg:px-4 lg:py-[14px]">
+                    <span class="text-[11px] font-medium uppercase text-[#64748B] md:text-[13px] lg:text-[15px]">
                         Employees
                     </span>
 
-                    <div class="mt-1 text-[22px] font-semibold text-[#111827] sm:text-[24px] lg:mt-[6px] lg:text-[26px]">
+                    <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
                         120
                     </div>
 
-                    <span class="break-words text-[12px] leading-5 text-gray-400 sm:text-[13px] lg:text-[15px]">
+                    <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
                         Total number of employees
                     </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 lg:px-4 lg:py-[14px]">
-                    <span class="text-[11px] font-medium uppercase text-[#64748B] sm:text-[13px] lg:text-[15px]">
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 md:px-4 md:py-4 lg:px-4 lg:py-[14px]">
+                    <span class="text-[11px] font-medium uppercase text-[#64748B] md:text-[13px] lg:text-[15px]">
                         Review Completion
                     </span>
 
-                    <div class="mt-1 text-[22px] font-semibold text-[#111827] sm:text-[24px] lg:mt-[6px] lg:text-[26px]">
+                    <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
                         10%
                     </div>
 
-                    <span class="break-words text-[12px] leading-5 text-gray-400 sm:text-[13px] lg:text-[15px]">
+                    <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
                         Manager reviews completed
                     </span>
                 </div>
 
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 lg:px-4 lg:py-[14px]">
-                    <span class="text-[11px] font-medium uppercase text-[#64748B] sm:text-[13px] lg:text-[15px]">
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 md:px-4 md:py-4 lg:px-4 lg:py-[14px]">
+                    <span class="text-[11px] font-medium uppercase text-[#64748B] md:text-[13px] lg:text-[15px]">
                         Targets Awaiting Review
                     </span>
 
-                    <div class="mt-1 text-[22px] font-semibold text-[#111827] sm:text-[24px] lg:mt-[6px] lg:text-[26px]">
+                    <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
                         18
                     </div>
 
-                    <span class="break-words text-[12px] leading-5 text-gray-400 sm:text-[13px] lg:text-[15px]">
+                    <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
                         Employee submissions pending manager review
                     </span>
                 </div>
+
             </div>
 
             <!-- DEPARTMENT PROGRESS -->
             <section class="mt-6 lg:mt-7">
                 <div class="flex items-center justify-between gap-3">
-                    <span class="text-[11px] uppercase text-gray-500 sm:text-[13px] lg:text-[15px]">
+                    <span class="text-[11px] uppercase text-gray-500 md:text-[13px] lg:text-[15px]">
                         Department Progress
                     </span>
 
                     <a
                         routerLink="/hr/departments"
-                        class="link-select shrink-0 cursor-pointer text-[12px] font-medium hover:text-[#4D9BF6] sm:text-[13px] lg:pr-5 lg:text-[15px]"
-                    >
+                        class="link-select shrink-0 cursor-pointer text-[12px] font-medium hover:text-[#4D9BF6] md:text-[13px] lg:pr-5 lg:text-[15px]">
                         View all
                     </a>
                 </div>
@@ -363,91 +359,318 @@
                 <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
 
                     <!-- TECHNOLOGY -->
-                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 sm:px-5 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-[18px] lg:py-[16px]">
-                        <div class="flex min-w-0 items-center gap-3 lg:w-[40%]">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-white sm:h-[38px] sm:w-[38px]">
-                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] sm:text-[17px]"></i>
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
                             </div>
 
                             <div class="flex min-w-0 flex-col gap-1">
-                                <span class="text-[13px] font-medium sm:text-[14px] lg:text-[15px]">
+                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
                                     Technology
                                 </span>
-
-                                <span class="break-words text-[12px] text-gray-400 sm:text-[13px] lg:truncate lg:text-[15px]">
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
                                     Sally Smith • 24 team members
                                 </span>
                             </div>
                         </div>
 
-                        <div class="w-full lg:w-[36%]">
-                            <nz-progress
-                                [nzPercent]="26"
-                                [nzShowInfo]="false"
-                                [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"
-                            ></nz-progress>
+                        <div class="w-full md:w-[36%]">
+                            <nz-progress [nzPercent]="26" [nzShowInfo]="false"[nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6">
+                            </nz-progress>
 
-                            <span class="text-[12px] text-gray-400 sm:text-[13px] lg:text-[15px]">
+                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
                                 8/24 manager reviews completed
                             </span>
                         </div>
 
-                        <button type="button"
-                            (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] sm:text-[14px] lg:text-[15px]"
-                        >
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
                             View →
                         </button>
                     </div>
 
-                    <!-- Repeat the same corrected department-row structure for Finance, Human Resources, Operations and Marketing. -->
+                    <!-- FINANCE -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
+                                    Finance
+                                </span>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
+                                    Michael Mensah • 18 team members
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-[36%]">
+                            <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6">
+                            </nz-progress>
+
+                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
+                                12/18 manager reviews completed
+                            </span>
+                        </div>
+
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- HUMAN RESOURCES -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
+                                    Human Resources
+                                </span>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
+                                    Ama Owusu • 12 team members
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-[36%]">
+                            <nz-progress [nzPercent]="100"[nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6">
+                            </nz-progress>
+
+                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
+                                12/12 manager reviews completed
+                            </span>
+                        </div>
+
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- OPERATIONS -->
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
+                                    Operations
+                                </span>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
+                                    Kojo Asante • 30 team members
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-[36%]">
+                            <nz-progress [nzPercent]="83" [nzShowInfo]="false" [nzStrokeWidth]="6"
+                                nzStrokeColor="#4D9BF6"></nz-progress>
+                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
+                                25/30 manager reviews completed
+                            </span>
+                        </div>
+
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- MARKETING -->
+                    <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
+                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
+                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
+                                    Marketing
+                                </span>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
+                                    Esi Boateng • 20 team members
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-[36%]">
+                            <nz-progress [nzPercent]="0" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
+                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
+                                0/20 manager reviews completed
+                            </span>
+                        </div>
+
+                        <button type="button" (click)="goToDepartmentDetails()"
+                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
 
                 </div>
             </section>
 
             <!-- RECENT SUBMISSIONS -->
-            <section class="mt-6 w-full pb-8 lg:mt-7 lg:pb-[40px]">
-                <span class="text-[11px] uppercase text-gray-500 sm:text-[13px] lg:text-[14px]">
+            <section class="mt-6 w-full pb-8 md:mt-7 lg:pb-[40px]">
+                <span class="text-[11px] uppercase text-gray-500 md:text-[13px] lg:text-[14px]">
                     Recent Submissions
                 </span>
 
                 <div class="mt-[10px] w-full overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
 
-                    <!-- Each submission row should use this same responsive structure -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4 lg:px-[18px] lg:py-[13px]">
+                    <!-- SALLY SMITH -->
+                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
                         <div class="flex min-w-0 items-center gap-3">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white sm:h-[38px] sm:w-[38px]">
-                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] sm:text-[16px]"></i>
+                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
+                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
                             </div>
 
                             <div class="flex min-w-0 flex-col gap-1">
                                 <div class="flex min-w-0 flex-wrap items-center gap-2">
-                                    <span class="text-[13px] font-medium text-gray-900 sm:text-[14px] lg:text-[15px]">
+                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
                                         Sally Smith
                                     </span>
-
-                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] sm:text-[11px] lg:text-[12px]">
+                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
                                         Submitted
                                     </span>
                                 </div>
-
-                                <span class="break-words text-[12px] text-gray-400 sm:text-[13px] lg:truncate lg:text-[14px]">
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
                                     Software Engineer • Client-side Engineering
                                 </span>
                             </div>
                         </div>
 
+                        <button type="button" (click)="goToEmployeeDetails()"
+                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- MICHAEL MENSAH -->
+                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
+                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
+                                        Michael Mensah
+                                    </span>
+
+                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
+                                        Submitted
+                                    </span>
+                                </div>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
+                                    Financial Analyst • Finance
+                                </span>
+                            </div>
+                        </div>
                         <button type="button"
-                            (click)="goToEmployeeDetails()"
-                            class="w-fit shrink-0 whitespace-nowrap text-[13px] font-medium text-[#4D9BF6] link-select sm:text-[14px] lg:text-[15px]"
-                        >
+                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- AMA OWUSU -->
+                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
+                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
+                                        Ama Owusu
+                                    </span>
+                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
+                                    HR Specialist • Human Resources
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- KOJO ASANTE -->
+                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
+                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
+                                        Kojo Asante
+                                    </span>
+                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
+                                    Operations Manager • Operations
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
+                            View →
+                        </button>
+                    </div>
+
+                    <!-- ESI BOATENG -->
+                    <div class="flex flex-col gap-3 px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
+                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
+                            </div>
+
+                            <div class="flex min-w-0 flex-col gap-1">
+                                <div class="flex min-w-0 flex-wrap items-center gap-2">
+                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
+                                        Esi Boateng
+                                    </span>
+                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
+                                        Reviewed
+                                    </span>
+                                </div>
+                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
+                                    Marketing Officer • Marketing
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
                             View →
                         </button>
                     </div>
 
                 </div>
             </section>
+
         </div>
     </div>
 }

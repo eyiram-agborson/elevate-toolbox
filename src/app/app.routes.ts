@@ -30,7 +30,7 @@ export const routes: Routes = [
 
 
       { path: 'elevate/user-elevate', loadComponent: () => import('./elevate/user-elevate/user-elevate').then(m => m.UserElevate), 
-        canActivate: [roleGuard], data: { role: 'employee' }
+        canActivate: [roleGuard], data: {role:['employee', 'hr']  }
       },
       { path: 'elevate/manager-elevate', loadComponent: () => import('./elevate/manager-elevate/manager-elevate').then(m => m.ManagerElevate),
         canActivate: [roleGuard], data: { role: 'manager' }

@@ -50,6 +50,10 @@ export class MyActivities {
         this.router.navigate(['/elevate/user-elevate']);
         break;
 
+      case 'hr':
+        this.router.navigate(['/elevate/user-elevate']);
+        break;
+
       case 'manager':
         this.router.navigate(['/elevate/manager-elevate']);
         break;
