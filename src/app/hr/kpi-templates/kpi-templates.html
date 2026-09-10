@@ -1,34 +1,18 @@
 <div class="min-h-screen bg-[#F5F7FA]">
 
   <!-- BACK TO DASHBOARD -->
-  <div class="mt-6 px-4 sm:mt-8 sm:px-6 md:mt-10 md:px-8">
-    <a routerLink="/dashboard" class="mb-[18px] flex w-fit items-center gap-[9px] text-[15px] font-medium !text-[#807777] hover:text-[#5BA2F7]">
-      <i class="fa-solid fa-arrow-left text-[16px] !text-[#807777] link-select"></i>
+  <div class="mt-5 px-4 md:mt-8 md:px-6 lg:mt-10 lg:px-8">
+    <a routerLink="/dashboard" class="mb-4 flex w-fit items-center gap-2 !text-[13px] font-medium !text-[#807777] hover:!text-[#5BA2F7] md:mb-[18px] md:gap-[9px] md:!text-[15px]">
+      <i class="fa-solid fa-arrow-left !text-[12px] !text-[#807777] link-select md:!text-[16px]"></i>
       Dashboard
     </a>
   </div>
 
-  <!-- MOBILE PAGE HEADER -->
-  <div class="flex flex-col gap-4 px-4 pb-5 pt-2 sm:hidden">
-    <div>
-      <h1 class="text-[23px] font-semibold text-[#102A43]">KPI Templates</h1>
-      <p class="mt-2 text-[14px] leading-5 text-[#60758F]">Define the standard KPIs that apply to employees by department and job title.</p>
-    </div>
-
-    <!-- ADD TEMPLATE BUTTON -->
-    <!--
-    <button type="button" (click)="openAddTemplate()" class="button-press inline-flex w-fit items-center gap-2 rounded-lg bg-[#347DEB] px-5 py-3 text-[15px] font-semibold !text-white transition-colors hover:bg-[#286FD8]">
-      <i class="fa-solid fa-plus text-[13px]"></i>
-      Add KPI Template
-    </button>
-    -->
-  </div>
-
-  <!-- DESKTOP PAGE HEADER -->
-  <div class="hidden items-start justify-between gap-6 px-6 pb-6 pt-3 sm:flex md:px-8">
-    <div>
-      <h1 class="text-[28px] font-semibold text-[#102A43]">KPI Templates</h1>
-      <p class="mt-2 text-[15px] text-[#60758F]">Define the standard KPIs that apply to employees by department and job title.</p>
+  <!-- PAGE HEADER -->
+  <div class="flex flex-col gap-3 px-4 pb-1 pt-2 md:flex-row md:items-start md:justify-between md:gap-6 md:px-6 md:pb-6 md:pt-3 lg:px-8">
+    <div class="min-w-0">
+      <h1 class="!text-[19px] font-semibold leading-6 !text-[#102A43] md:!text-[28px] md:leading-8">KPI Templates</h1>
+      <p class="mt-2 max-w-2xl !text-[13px] leading-5 !text-[#60758F] md:!text-[15px]">Define the standard KPIs that apply to employees by department and job title.</p>
     </div>
 
     <!-- ADD TEMPLATE BUTTON -->
@@ -40,52 +24,16 @@
     -->
   </div>
 
-  <!-- MOBILE SEARCH + FILTERS -->
-  <div class="px-4 pb-5 sm:hidden">
-    <div class="flex flex-col gap-3">
-      <div class="relative min-w-0">
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-[#7C91A8]"></i>
-        <input type="text" placeholder="Search KPI templates" class="h-[48px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8CA0B5] focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB]">
-      </div>
-
-      <div class="relative w-full">
-        <select class="h-[48px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
-          <option>All departments</option>
-          <option>Client-side Engineering</option>
-          <option>Technology</option>
-          <option>Human Resources</option>
-          <option>Finance</option>
-          <option>Operations</option>
-          <option>Marketing</option>
-        </select>
-        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
-      </div>
-
-      <div class="relative w-full">
-        <select class="h-[48px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
-          <option>All job titles</option>
-          <option>Software Engineer</option>
-          <option>Backend Engineer</option>
-          <option>HR Business Partner</option>
-          <option>Financial Analyst</option>
-          <option>Operations Lead</option>
-          <option>Marketing Manager</option>
-        </select>
-        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
-      </div>
-    </div>
-  </div>
-
-  <!-- DESKTOP SEARCH + FILTERS -->
-  <div class="hidden px-6 pb-6 sm:block md:px-8">
-    <div class="flex items-center gap-3 rounded-xl border border-[#DCE1E6] bg-white px-3 py-3">
+  <!-- SEARCH + FILTERS -->
+  <div class="px-4 pb-5 md:px-6 md:pb-6 lg:px-8">
+    <div class="flex flex-col gap-3 rounded-xl border border-[#DCE1E6] bg-white p-3 md:flex-row md:items-center md:gap-3">
       <div class="relative min-w-0 flex-1">
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-[#7C91A8]"></i>
-        <input type="text" placeholder="Search KPI templates" class="h-[52px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8CA0B5] focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB]">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 !text-[13px] !text-[#7C91A8] md:left-4 md:!text-[14px]"></i>
+        <input type="text" placeholder="Search KPI templates" class="h-[46px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-10 pr-3 !text-[12px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:!border-[#347DEB] focus:ring-1 focus:ring-[#347DEB] md:h-[52px] md:pl-11 md:pr-4 md:!text-[15px]">
       </div>
 
-      <div class="relative w-[220px] shrink-0">
-        <select class="h-[52px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
+      <div class="relative w-full md:w-[210px] md:shrink-0 lg:w-[220px]">
+        <select class="h-[46px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-3 pr-9 !text-[12px] !text-[#102A43] outline-none focus:!border-[#347DEB] md:h-[52px] md:px-4 md:pr-10 md:!text-[15px]">
           <option>All departments</option>
           <option>Client-side Engineering</option>
           <option>Technology</option>
@@ -94,11 +42,11 @@
           <option>Operations</option>
           <option>Marketing</option>
         </select>
-        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
+        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 !text-[10px] !text-[#7C91A8] md:right-4 md:!text-[11px]"></i>
       </div>
 
-      <div class="relative w-[220px] shrink-0">
-        <select class="h-[52px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
+      <div class="relative w-full md:w-[210px] md:shrink-0 lg:w-[220px]">
+        <select class="h-[46px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-3 pr-9 !text-[13px] !text-[#102A43] outline-none focus:!border-[#347DEB] md:h-[52px] md:px-4 md:pr-10 md:!text-[15px]">
           <option>All job titles</option>
           <option>Software Engineer</option>
           <option>Backend Engineer</option>
@@ -107,147 +55,146 @@
           <option>Operations Lead</option>
           <option>Marketing Manager</option>
         </select>
-        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
+        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 !text-[10px] !text-[#7C91A8] md:right-4 md:!text-[11px]"></i>
       </div>
     </div>
   </div>
 
-  <!-- MOBILE KPI TABLE -->
-  <div class="px-4 pb-8 sm:hidden">
-    <div class="mb-3 text-[14px] font-medium uppercase !text-[#60758F]">KPI Templates</div>
+<!-- KPI TABLE -->
+<div class="px-4 pb-6 md:px-6 lg:px-8">
+  <div class="mb-3 !text-[12px] font-medium uppercase !text-[#60758F] md:!text-[14px]">KPI Templates</div>
 
-    <div class="overflow-x-auto rounded-xl border border-[#DCE1E6] bg-white">
-      <table class="w-full min-w-[620px] border-collapse">
-        <thead>
-          <tr class="border-b border-[#DCE1E6] text-left">
-            <th class="w-[36%] px-4 py-3 text-[12px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-solid fa-building text-[13px] !text-[#7C91A8]"></i>Department</span></th>
-            <th class="w-[32%] px-4 py-3 text-[12px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-solid fa-briefcase text-[13px] !text-[#7C91A8]"></i>Job Title</span></th>
-            <th class="w-[20%] px-4 py-3 text-[12px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-regular fa-clock text-[13px] !text-[#7C91A8]"></i>Updated</span></th>
-            <th class="w-[12%] px-4 py-3 text-right text-[12px] font-medium uppercase tracking-wide !text-[#60758F]">Action</th>
-          </tr>
-        </thead>
+  <div class="overflow-x-auto rounded-xl border border-[#DCE1E6] bg-white">
+    <table class="min-w-[700px] w-full table-fixed border-collapse md:min-w-0">
+      <colgroup>
+        <col class="w-[34%] md:w-[32%]">
+        <col class="w-[34%] md:w-[30%]">
+        <col class="w-[22%] md:w-[23%]">
+        <col class="w-[10%] md:w-[15%]">
+      </colgroup>
 
-        <tbody>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Client-side Engineering</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">Software Engineer</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">12 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Technology</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">Backend Engineer</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">12 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Human Resources</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">HR Business Partner</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">10 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Finance</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">Financial Analyst</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">08 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Operations</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">Operations Lead</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">05 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-4 text-[14px] font-medium !text-[#102A43]">Marketing</td>
-            <td class="px-4 py-4 text-[14px] !text-[#102A43]">Marketing Manager</td>
-            <td class="px-4 py-4 text-[14px] !text-[#60758F]">03 Jul 2026</td>
-            <td class="px-4 py-4 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[14px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <thead>
+        <tr class="border-b border-[#DCE1E6] text-left">
+          <th class="px-4 py-3 !text-[11px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:py-4 md:!text-[15px]">
+            <span class="inline-flex items-center gap-1.5 md:gap-2">
+              <i class="fa-solid fa-building !text-[10px] !text-[#7C91A8] md:!text-[13px]"></i>
+              Department
+            </span>
+          </th>
+          <th class="px-4 py-3 !text-[11px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:py-4 md:!text-[15px]">
+            <span class="inline-flex items-center gap-1.5 md:gap-2">
+              <i class="fa-solid fa-briefcase !text-[10px] !text-[#7C91A8] md:!text-[13px]"></i>
+              Job Title
+            </span>
+          </th>
+          <th class="px-4 py-3 !text-[11px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:py-4 md:!text-[15px]">
+            <span class="inline-flex items-center gap-1.5 md:gap-2">
+              <i class="fa-regular fa-clock !text-[10px] !text-[#7C91A8] md:!text-[13px]"></i>
+              Last updated
+            </span>
+          </th>
+          <th class="px-4 py-3 text-right !text-[11px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:py-4 md:!text-[15px]">
+            Action
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="border-b border-[#E8ECF0]">
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Client-side Engineering</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Software Engineer</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">12 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-[#E8ECF0]">
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Technology</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Backend Engineer</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">12 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-[#E8ECF0]">
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Human Resources</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">HR Business Partner</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">10 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-[#E8ECF0]">
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Finance</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Financial Analyst</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">08 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-[#E8ECF0]">
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Operations</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Operations Lead</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">05 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-4 !text-[12px] font-medium !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Marketing</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#102A43] md:px-5 md:py-5 md:!text-[15px]">Marketing Manager</td>
+          <td class="px-4 py-4 !text-[12px] !text-[#60758F] md:px-5 md:py-5 md:!text-[15px]">03 Jul 2026</td>
+          <td class="px-4 py-4 text-right md:px-5 md:py-5">
+            <button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-1 whitespace-nowrap !text-[12px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB] md:gap-2 md:!text-[15px]">
+              <i class="fa-solid fa-pen !text-[10px] link-select md:!text-[13px]"></i>Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <!-- DESKTOP KPI TABLE -->
-  <div class="hidden px-6 pb-8 sm:block md:px-8">
-    <div class="mb-3 text-[14px] font-medium uppercase !text-[#60758F]">KPI Templates</div>
-
-    <div class="overflow-hidden rounded-xl border border-[#DCE1E6] bg-white">
-      <table class="w-full table-fixed border-collapse">
-        <thead>
-          <tr class="border-b border-[#DCE1E6] text-left">
-            <th class="w-[30%] px-5 py-4 text-[15px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-solid fa-building text-[13px] !text-[#7C91A8]"></i>Department</span></th>
-            <th class="w-[28%] px-5 py-4 text-[15px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-solid fa-briefcase text-[13px] !text-[#7C91A8]"></i>Job Title</span></th>
-            <th class="w-[25%] px-5 py-4 text-[15px] font-medium uppercase tracking-wide !text-[#60758F]"><span class="inline-flex items-center gap-2"><i class="fa-regular fa-clock text-[13px] !text-[#7C91A8]"></i>Last updated</span></th>
-            <th class="w-[17%] px-5 py-4 text-right text-[15px] font-medium uppercase tracking-wide !text-[#60758F]">Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Client-side Engineering</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Software Engineer</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">12 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Technology</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Backend Engineer</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">12 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Human Resources</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">HR Business Partner</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">10 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Finance</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Financial Analyst</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">08 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr class="border-b border-[#E8ECF0]">
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Operations</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Operations Lead</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">05 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-          <tr>
-            <td class="px-5 py-5 text-[15px] font-medium !text-[#102A43]">Marketing</td>
-            <td class="px-5 py-5 text-[15px] !text-[#102A43]">Marketing Manager</td>
-            <td class="px-5 py-5 text-[15px] !text-[#60758F]">03 Jul 2026</td>
-            <td class="px-5 py-5 text-right"><button type="button" (click)="openEditKpi()" class="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-medium !text-[#102A43] transition-colors hover:!text-[#347DEB]"><i class="fa-solid fa-pen text-[13px] link-select"></i>Edit</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- EDIT KPI MODAL -->
-  @if (isEditKpi) {
-    <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 px-4 py-6 sm:py-8">
+<!-- EDIT KPI MODAL -->
+@if (isEditKpi) {
+  <div class="fixed inset-0 z-50 overflow-y-auto bg-black/50">
+    <div class="flex min-h-[400px] md:min-h-full items-start justify-center px-3 py-3 md:items-center md:px-4 md:py-8">
       <div class="w-full max-w-[890px] overflow-hidden rounded-xl bg-[#F7F9FC] shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
 
         <!-- MODAL HEADER -->
-        <div class="flex items-center justify-between border-b border-[#E4E8ED] bg-white px-4 py-4 sm:px-7 sm:py-5">
-          <h2 class="text-[19px] font-semibold text-[#172B4D] sm:text-[22px]">Edit KPI Template</h2>
-          <button type="button" (click)="closeEditKpi()" class="button-press flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#344054] transition-colors hover:bg-[#F2F4F7]"><i class="fa-solid fa-xmark text-[18px]"></i></button>
+        <div class="flex items-center justify-between border-b border-[#E4E8ED] bg-white px-3 py-3 md:px-7 md:py-5">
+          <h2 class="!text-[15px] font-semibold !text-[#172B4D] md:!text-[22px]">Edit KPI Template</h2>
+          <button type="button" (click)="closeEditKpi()" class="button-press flex h-8 w-8 shrink-0 items-center justify-center rounded-full !text-[#344054] transition-colors hover:bg-[#F2F4F7]">
+            <i class="fa-solid fa-xmark !text-[15px]"></i>
+          </button>
         </div>
 
         <!-- MODAL CONTENT -->
-        <div class="max-h-[68vh] overflow-y-auto bg-[#F7F9FC] px-4 py-5 sm:px-7 sm:py-6">
+        <div class="max-h-[calc(100vh-125px)] overflow-y-auto bg-[#F7F9FC] px-3 py-4 md:max-h-[68vh] md:px-7 md:py-6">
 
           <!-- TEMPLATE SCOPE -->
-          <div class="mb-6">
-            <p class="mb-3 text-[15px] font-semibold text-[#344054]">Template scope</p>
+          <div class="mb-5 md:mb-6">
+            <p class="mb-3 !text-[13px] font-semibold !text-[#344054] md:!text-[15px]">Template scope</p>
 
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Department</label>
-                <select class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Department</label>
+                <select class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
                   <option>Client-side Engineering</option>
                   <option>Technology</option>
                   <option>Human Resources</option>
@@ -258,8 +205,8 @@
               </div>
 
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Job role</label>
-                <select class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Job role</label>
+                <select class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
                   <option>Software Engineer</option>
                   <option>Backend Engineer</option>
                   <option>HR Business Partner</option>
@@ -272,256 +219,116 @@
           </div>
 
           <!-- KPI HEADER -->
-          <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <p class="text-[15px] font-semibold text-[#344054]">Key Performance Indicators</p>
-            <span class="text-[15px] font-semibold text-[#16A36A]">Total weight: 100%</span>
+          <div class="mb-3 flex flex-col gap-1.5 md:mb-4 md:flex-row md:items-end md:justify-between">
+            <p class="!text-[13px] font-semibold !text-[#344054] md:!text-[15px]">Key Performance Indicators</p>
+            <span class="!text-[12px] font-semibold !text-[#16A36A] md:!text-[15px]">Total weight: 100%</span>
           </div>
 
           <!-- KPI 1 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-3 flex items-center justify-between"><span class="text-[15px] font-semibold text-[#344054]">KPI 1</span></div>
+          <div class="mb-2.5 rounded-lg border border-[#DCE2E8] bg-white p-3 md:mb-3 md:p-5">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="!text-[13px] font-semibold !text-[#344054] md:!text-[15px]">KPI 1</span>
+            </div>
 
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_125px]">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_125px]">
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" value="Application Development & Delivery" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">KPI name</label>
+                <input type="text" value="Application Development & Delivery" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
+
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" value="60" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Weight (%)</label>
+                <input type="number" value="60" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
             </div>
 
             <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">Deliver assigned work within agreed sprint timelines.</textarea>
+              <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Description</label>
+              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:py-2.5 md:!text-[15px]">Deliver assigned work within agreed sprint timelines.</textarea>
             </div>
           </div>
 
           <!-- KPI 2 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-3 flex items-center justify-between"><span class="text-[15px] font-semibold text-[#344054]">KPI 2</span></div>
+          <div class="mb-2.5 rounded-lg border border-[#DCE2E8] bg-white p-3 md:mb-3 md:p-5">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="!text-[13px] font-semibold !text-[#344054] md:!text-[15px]">KPI 2</span>
+            </div>
 
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_125px]">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_125px]">
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" value="Operational Efficiency & Code Quality" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">KPI name</label>
+                <input type="text" value="Operational Efficiency & Code Quality" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
+
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" value="15" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Weight (%)</label>
+                <input type="number" value="15" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
             </div>
 
             <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">Maintain code quality and review standards.</textarea>
+              <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Description</label>
+              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:py-2.5 md:!text-[15px]">Maintain code quality and review standards.</textarea>
             </div>
           </div>
 
           <!-- KPI 3 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-3 flex items-center justify-between"><span class="text-[15px] font-semibold text-[#344054]">KPI 3</span></div>
+          <div class="mb-2.5 rounded-lg border border-[#DCE2E8] bg-white p-3 md:mb-3 md:p-5">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="!text-[13px] font-semibold !text-[#344054] md:!text-[15px]">KPI 3</span>
+            </div>
 
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_125px]">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_125px]">
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" value="Learning & Development" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">KPI name</label>
+                <input type="text" value="Learning & Development" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
+
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" value="15" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Weight (%)</label>
+                <input type="number" value="15" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
             </div>
 
             <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">Complete agreed development goals.</textarea>
+              <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Description</label>
+              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:py-2.5 md:!text-[15px]">Complete agreed development goals.</textarea>
             </div>
           </div>
 
           <!-- KPI 4 -->
-          <div class="rounded-lg border border-[#DCE2E8] bg-[#FCFDFE] p-4 sm:p-5">
-            <div class="mb-3 flex items-center justify-between"><span class="text-[15px] font-semibold text-[#344054]">KPI 4</span></div>
+          <div class="rounded-lg border border-[#DCE2E8] bg-[#FCFDFE] p-3 md:p-5">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="!text-[13px] font-semibold !text-[#344054] md:!text-[15px]">KPI 4</span>
+            </div>
 
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_125px]">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_125px]">
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" value="Collaboration & Communication" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">KPI name</label>
+                <input type="text" value="Collaboration & Communication" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
+
               <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" value="10" class="h-11 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">
+                <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Weight (%)</label>
+                <input type="number" value="10" class="h-10 w-full rounded-lg border border-[#D8DEE6] bg-white px-3 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:h-11 md:!text-[15px]">
               </div>
             </div>
 
             <div class="mt-3">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2.5 text-[15px] text-[#344054] outline-none focus:border-[#347DEB]">Demonstrate effective collaboration with team members.</textarea>
+              <label class="mb-1.5 block !text-[13px] font-medium !text-[#344054] md:mb-2 md:!text-[15px]">Description</label>
+              <textarea rows="3" class="w-full resize-none rounded-lg border border-[#D8DEE6] bg-white px-3 py-2 !text-[13px] !text-[#344054] outline-none focus:border-[#347DEB] md:py-2.5 md:!text-[15px]">Demonstrate effective collaboration with team members.</textarea>
             </div>
           </div>
         </div>
 
         <!-- MODAL ACTIONS -->
-        <div class="flex flex-col-reverse gap-3 border-t border-[#E4E8ED] bg-white px-4 py-4 sm:flex-row sm:justify-end sm:px-7">
-          <button type="button" (click)="closeEditKpi()" class="button-press w-full rounded-lg border border-[#D0D5DD] bg-white px-5 py-2.5 text-[15px] font-medium text-[#344054] transition-colors hover:bg-[#F8FAFC] sm:w-auto">Cancel</button>
-          <button type="button" (click)="saveTemplate()" class="button-press w-full rounded-lg bg-[#347DEB] px-5 py-2.5 text-[15px] font-medium !text-white transition-colors hover:bg-[#286FD8] sm:w-auto">Save Changes</button>
+        <div class="flex flex-row justify-end gap-2 border-t border-[#E4E8ED] bg-white px-3 py-3 md:gap-3 md:px-7 md:py-4">
+          <button type="button" (click)="closeEditKpi()" class="button-press !w-auto rounded-lg border border-[#D0D5DD] bg-white px-3 py-2 !text-[12px] font-medium !text-[#344054] transition-colors hover:bg-[#F8FAFC] md:px-5 md:py-2.5 md:!text-[15px]">Cancel</button>
+          <button type="button" (click)="saveTemplate()" class="button-press !w-auto rounded-lg bg-[#347DEB] px-3 py-2 !text-[12px] font-medium !text-white transition-colors hover:bg-[#286FD8] md:px-5 md:py-2.5 md:!text-[15px]">Save Changes</button>
         </div>
       </div>
     </div>
-  }
+  </div>
+}
 
-  <!-- ADD KPI TEMPLATE MODAL -->
-  @if (showAddTemplateModal) {
-    <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 px-4 py-6 sm:py-8" (click)="closeAddTemplate()">
-      <div class="w-full max-w-[890px] overflow-hidden rounded-xl bg-[#F7F9FC] shadow-[0_20px_50px_rgba(0,0,0,0.18)]" (click)="$event.stopPropagation()">
-
-        <!-- MODAL HEADER -->
-        <div class="flex items-center justify-between border-b border-[#E4E8ED] bg-white px-4 py-4 sm:px-7 sm:py-5">
-          <h2 class="text-[19px] font-semibold text-[#172B4D] sm:text-[22px]">Add KPI Template</h2>
-          <button type="button" (click)="closeAddTemplate()" class="button-press flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#344054] hover:bg-[#F2F4F7]"><i class="fa-solid fa-xmark text-[18px]"></i></button>
-        </div>
-
-        <!-- MODAL CONTENT -->
-        <div class="max-h-[68vh] overflow-y-auto px-4 py-5 sm:px-7 sm:py-6">
-
-          <!-- TEMPLATE SCOPE -->
-          <div class="mb-7">
-            <h3 class="mb-5 text-[16px] font-semibold text-[#344054]">Template scope</h3>
-
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Department</label>
-                <div class="relative">
-                  <select class="h-[50px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
-                    <option>Select department</option>
-                    <option>Client-side Engineering</option>
-                    <option>Technology</option>
-                    <option>Human Resources</option>
-                    <option>Finance</option>
-                    <option>Operations</option>
-                    <option>Marketing</option>
-                  </select>
-                  <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
-                </div>
-              </div>
-
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Job role</label>
-                <div class="relative">
-                  <select class="h-[50px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 text-[15px] text-[#102A43] outline-none focus:border-[#347DEB]">
-                    <option>Select job role</option>
-                    <option>Software Engineer</option>
-                    <option>Backend Engineer</option>
-                    <option>Engineering Manager</option>
-                    <option>HR Business Partner</option>
-                    <option>Financial Analyst</option>
-                    <option>Operations Lead</option>
-                    <option>Marketing Manager</option>
-                  </select>
-                  <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-[#7C91A8]"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- KPI HEADER -->
-          <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <h3 class="text-[16px] font-semibold text-[#344054]">Key Performance Indicators</h3>
-            <span class="text-[15px] font-semibold text-[#16A66A]">Total weight: 100%</span>
-          </div>
-
-          <!-- KPI 1 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-5 flex items-center justify-between"><h4 class="text-[15px] font-semibold text-[#344054]">KPI 1</h4></div>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_140px]">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" placeholder="e.g. Application Development & Delivery" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" min="0" max="100" placeholder="0" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" placeholder="Describe the expected outcome for this KPI" class="w-full resize-none rounded-lg border border-[#D8DEE6] px-4 py-3 text-[15px] leading-6 text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]"></textarea>
-            </div>
-          </div>
-
-          <!-- KPI 2 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-5 flex items-center justify-between"><h4 class="text-[15px] font-semibold text-[#344054]">KPI 2</h4></div>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_140px]">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" placeholder="e.g. Operational Efficiency & Code Quality" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" min="0" max="100" placeholder="0" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" placeholder="Describe the expected outcome for this KPI" class="w-full resize-none rounded-lg border border-[#D8DEE6] px-4 py-3 text-[15px] leading-6 text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]"></textarea>
-            </div>
-          </div>
-
-          <!-- KPI 3 -->
-          <div class="mb-3 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-5 flex items-center justify-between"><h4 class="text-[15px] font-semibold text-[#344054]">KPI 3</h4></div>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_140px]">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" placeholder="e.g. Learning & Development" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" min="0" max="100" placeholder="0" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" placeholder="Describe the expected outcome for this KPI" class="w-full resize-none rounded-lg border border-[#D8DEE6] px-4 py-3 text-[15px] leading-6 text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]"></textarea>
-            </div>
-          </div>
-
-          <!-- KPI 4 -->
-          <div class="mb-4 rounded-lg border border-[#DCE2E8] bg-white p-4 sm:p-5">
-            <div class="mb-5 flex items-center justify-between"><h4 class="text-[15px] font-semibold text-[#344054]">KPI 4</h4></div>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_140px]">
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">KPI name</label>
-                <input type="text" placeholder="e.g. Collaboration & Communication" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-              <div>
-                <label class="mb-2 block text-[15px] font-medium text-[#344054]">Weight (%)</label>
-                <input type="number" min="0" max="100" placeholder="0" class="h-[50px] w-full rounded-lg border border-[#D8DEE6] px-4 text-[15px] text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]">
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <label class="mb-2 block text-[15px] font-medium text-[#344054]">Description</label>
-              <textarea rows="3" placeholder="Describe the expected outcome for this KPI" class="w-full resize-none rounded-lg border border-[#D8DEE6] px-4 py-3 text-[15px] leading-6 text-[#102A43] outline-none placeholder:text-[#8A9AAF] focus:border-[#347DEB]"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- MODAL ACTIONS -->
-        <div class="flex flex-col-reverse gap-3 border-t border-[#E4E8ED] bg-white px-4 py-4 sm:flex-row sm:justify-end sm:px-7">
-          <button type="button" (click)="closeAddTemplate()" class="button-press w-full rounded-lg border border-[#D5DCE5] bg-white px-5 py-2.5 text-[15px] font-medium text-[#344054] hover:bg-[#F7F9FC] sm:w-auto">Cancel</button>
-          <button type="button" class="button-press w-full rounded-lg bg-[#347DEB] px-5 py-2.5 text-[15px] font-medium !text-white hover:bg-[#286FD7] sm:w-auto">Add Template</button>
-        </div>
-      </div>
-    </div>
-  }
 </div>
