@@ -66,7 +66,7 @@ export const routes: Routes = [
         canActivate: [roleGuard], data: {role: 'hr'}
       },
       {
-        path: 'hr/performance-cycles', loadComponent: () => import('./hr/performance-cycles/performance-cycles').then(m => m.PerformanceCycles),
+        path: 'hr/performance-cycles', loadComponent: () => import('./hr/departments/performance-cycles/performance-cycles').then(m => m.PerformanceCycles),
         canActivate: [roleGuard], data: {role: 'hr'}
       },
       {
