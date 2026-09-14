@@ -62,39 +62,45 @@
 
         </div>
 
-        <!-- COLLAPSE HEADERS -->
-        <ng-template #staffCommentsHeader>
-            <div class="flex items-center gap-[9px]">
-                <i class="fa-solid fa-user text-[14px] text-[#777]"></i>
-                <span class="text-[13px] font-medium text-[#555] md:text-[13px] md:text-[15px]">
-                    Staff Comments
-                </span>
-            </div>
-        </ng-template>
+<!-- STAFF COMMENTS HEADER -->
+<ng-template #staffCommentsHeader>
+    <div class="flex min-w-0 items-center gap-2">
+        <i class="fa-solid fa-user !text-[13px] !text-[#777] md:!text-[14px]"></i>
 
-        <ng-template #managerCommentsHeader>
-            <div class="flex w-full items-center justify-between pr-[8px]">
-                <div class="flex items-center gap-[9px]">
-                    <i class="fa-regular fa-comments text-[14px] text-[#4D9BF6]"></i>
-                    <span class="text-[13px] font-medium text-[#4D9BF6] md:text-[13px] md:text-[15px]">
-                        Manager Comments
-                    </span>
-                </div>
+        <span class="min-w-0 !text-[12px] font-medium !text-[#555] md:!text-[15px]">
+            Staff Comments
+        </span>
+    </div>
+</ng-template>
 
-                <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
-                    Manager rating:
-                    @if (isHistoricalCycle) {
-                        4
-                    } @else {
-                        —
-                    }
-                </span>
-            </div>
-        </ng-template>
+<!-- MANAGER COMMENTS HEADER -->
+<ng-template #managerCommentsHeader>
+    <div class="flex min-w-0 flex-1 items-center justify-between gap-3 pr-1 md:pr-2">
+
+        <div class="flex min-w-0 items-center gap-2">
+            <i class="fa-regular fa-comments shrink-0 !text-[14px] !text-[#4D9BF6] md:!text-[15px]"></i>
+
+            <span class="min-w-0 !text-[12px] font-medium !text-[#4D9BF6] md:!text-[15px]">
+                Manager Comments
+            </span>
+        </div>
+
+        <span class="shrink-0 whitespace-nowrap !text-[11px] !text-gray-500 md:!text-[15px]">
+            Manager rating:
+            @if (isHistoricalCycle) {
+                4
+            } @else {
+                —
+            }
+        </span>
+
+    </div>
+</ng-template>
 
         <!-- KEY PERFORMANCE INDICATORS -->
         <section>
-            <div class="mb-[12px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+            <div class="mb-[12px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                 Key Performance Indicators
             </div>
 
@@ -102,23 +108,29 @@
             <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:p-[20px]">
 
                 <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
-                    <div class="flex min-w-0 flex-col gap-[4px]">
-                        <span class="text-[13px] md:text-[15px] font-semibold md:text-[16px] text-[#111827]">
+                <div class="flex flex-col gap-4 border-b border-[#E5E7EB] pb-[16px] md:flex-row md:items-start md:justify-between">
+
+                    <!-- KPI NAME + WEIGHT -->
+                    <div class="flex w-full min-w-0 items-start justify-between gap-3 md:w-auto md:flex-col md:gap-[4px]">
+                        <span class="min-w-0 flex-1 break-words !text-[14px] font-semibold !text-[#111827] md:!text-[16px]">
                             Application Development &amp; Delivery
                         </span>
-                        <span class="text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
+
+                        <span class="shrink-0 !text-[12px] !text-gray-400 md:!text-[15px]">
                             Weight: 60%
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-[8px] md:gap-[30px] text-center">
+                    <!-- RATINGS -->
+                    <div class="grid w-full grid-cols-3 gap-[8px] text-center md:w-auto md:gap-[30px]">
 
+                        <!-- MY RATING -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 My Rating
                             </div>
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -127,12 +139,13 @@
                             </div>
                         </div>
 
+                        <!-- MANAGER RATING -->
                         <div class="min-w-0 md:min-w-[90px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Manager Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -141,12 +154,13 @@
                             </div>
                         </div>
 
+                        <!-- TOTAL SCORE -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Total Score
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#4D9BF6] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#4D9BF6] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     48
                                 } @else {
@@ -160,49 +174,55 @@
 
                 <!-- TARGET -->
                 <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[8px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Target
                     </div>
 
                     <div class="flex flex-col gap-[6px]">
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Deliver 100% of assigned tasks within agreed sprint timelines.
                         </span>
 
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Maintain agreed quality standards across all deliverables.
                         </span>
                     </div>
+
                 </div>
 
                 <!-- PERFORMANCE -->
                 <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[7px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Performance
                     </div>
 
-                    <p class="m-0 text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                    <p class="m-0 !text-[13px] !text-gray-500 md:!text-[15px]">
                         Self-assessed performance against the agreed targets for this KPI.
                     </p>
+
                 </div>
 
                 <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
+                <nz-collapse nzExpandIconPosition="end" class="staff-comments-collapse mb-[10px]">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="staffCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             I delivered 100% of assigned tasks within agreed sprint timelines.
                         </p>
                     </nz-collapse-panel>
                 </nz-collapse>
 
                 <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
+                <nz-collapse nzExpandIconPosition="end" class="manager-comments-collapse">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="managerCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             Manager comments for this KPI.
                         </p>
                     </nz-collapse-panel>
@@ -211,29 +231,32 @@
             </div>
 
             <!-- KPI 2 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:p-[20px]">
+            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:mt-[18px] md:p-[20px]">
 
                 <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
+                <div class="flex flex-col gap-4 border-b border-[#E5E7EB] pb-[16px] md:flex-row md:items-start md:justify-between">
 
-                    <div class="flex min-w-0 flex-col gap-[4px]">
-                        <span class="text-[13px] md:text-[15px] font-semibold md:text-[16px] text-[#111827]">
+                    <!-- KPI NAME + WEIGHT -->
+                    <div class="flex w-full min-w-0 items-start justify-between gap-3 md:w-auto md:flex-col md:gap-[4px]">
+                        <span class="min-w-0 flex-1 break-words !text-[14px] font-semibold !text-[#111827] md:!text-[16px]">
                             Operational Efficiency &amp; Code Quality
                         </span>
 
-                        <span class="text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
+                        <span class="shrink-0 !text-[12px] !text-gray-400 md:!text-[15px]">
                             Weight: 15%
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-[8px] md:gap-[30px] text-center">
+                    <!-- RATINGS -->
+                    <div class="grid w-full grid-cols-3 gap-[8px] text-center md:w-auto md:gap-[30px]">
 
+                        <!-- MY RATING -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 My Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -242,12 +265,13 @@
                             </div>
                         </div>
 
+                        <!-- MANAGER RATING -->
                         <div class="min-w-0 md:min-w-[90px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Manager Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -256,12 +280,13 @@
                             </div>
                         </div>
 
+                        <!-- TOTAL SCORE -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Total Score
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     12
                                 } @else {
@@ -275,49 +300,55 @@
 
                 <!-- TARGET -->
                 <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[8px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Target
                     </div>
 
                     <div class="flex flex-col gap-[6px]">
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Maintain agreed code quality standards across all deliverables.
                         </span>
 
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Complete assigned development tasks within agreed timelines.
                         </span>
                     </div>
+
                 </div>
 
                 <!-- PERFORMANCE -->
                 <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[7px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Performance
                     </div>
 
-                    <p class="m-0 text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                    <p class="m-0 !text-[13px] !text-gray-500 md:!text-[15px]">
                         Performance information submitted for this KPI.
                     </p>
+
                 </div>
 
                 <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
+                <nz-collapse nzExpandIconPosition="end" class="staff-comments-collapse mb-[10px]">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="staffCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             I delivered 100% of assigned tasks within agreed sprint timelines.
                         </p>
                     </nz-collapse-panel>
                 </nz-collapse>
 
                 <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
+                <nz-collapse nzExpandIconPosition="end" class="manager-comments-collapse">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="managerCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             Manager comments for this KPI.
                         </p>
                     </nz-collapse-panel>
@@ -326,29 +357,32 @@
             </div>
 
             <!-- KPI 3 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:p-[20px]">
+            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:mt-[18px] md:p-[20px]">
 
                 <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
+                <div class="flex flex-col gap-4 border-b border-[#E5E7EB] pb-[16px] md:flex-row md:items-start md:justify-between">
 
-                    <div class="flex min-w-0 flex-col gap-[4px]">
-                        <span class="text-[13px] md:text-[15px] font-semibold md:text-[16px] text-[#111827]">
+                    <!-- KPI NAME + WEIGHT -->
+                    <div class="flex w-full min-w-0 items-start justify-between gap-3 md:w-auto md:flex-col md:gap-[4px]">
+                        <span class="min-w-0 flex-1 break-words !text-[14px] font-semibold !text-[#111827] md:!text-[16px]">
                             Learning &amp; Development
                         </span>
 
-                        <span class="text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
+                        <span class="shrink-0 !text-[12px] !text-gray-400 md:!text-[15px]">
                             Weight: 15%
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-[8px] md:gap-[30px] text-center">
+                    <!-- RATINGS -->
+                    <div class="grid w-full grid-cols-3 gap-[8px] text-center md:w-auto md:gap-[30px]">
 
+                        <!-- MY RATING -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 My Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -357,12 +391,13 @@
                             </div>
                         </div>
 
+                        <!-- MANAGER RATING -->
                         <div class="min-w-0 md:min-w-[90px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Manager Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -371,12 +406,13 @@
                             </div>
                         </div>
 
+                        <!-- TOTAL SCORE -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Total Score
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     12
                                 } @else {
@@ -390,49 +426,55 @@
 
                 <!-- TARGET -->
                 <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[8px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Target
                     </div>
 
                     <div class="flex flex-col gap-[6px]">
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Complete required learning and development activities.
                         </span>
 
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Demonstrate continuous improvement in assigned responsibilities.
                         </span>
                     </div>
+
                 </div>
 
                 <!-- PERFORMANCE -->
                 <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[7px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Performance
                     </div>
 
-                    <p class="m-0 text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                    <p class="m-0 !text-[13px] !text-gray-500 md:!text-[15px]">
                         Performance information submitted for this KPI.
                     </p>
+
                 </div>
 
                 <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
+                <nz-collapse nzExpandIconPosition="end" class="staff-comments-collapse mb-[10px]">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="staffCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="staffCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             I delivered 100% of assigned tasks within agreed sprint timelines.
                         </p>
                     </nz-collapse-panel>
                 </nz-collapse>
 
                 <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
+                <nz-collapse nzExpandIconPosition="end" class="manager-comments-collapse">
                     <nz-collapse-panel
                         [nzActive]="false"
-                        [nzHeader]="managerCommentsHeader">
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                        [nzHeader]="managerCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             Manager comments for this KPI.
                         </p>
                     </nz-collapse-panel>
@@ -441,29 +483,32 @@
             </div>
 
             <!-- KPI 4 -->
-            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:p-[20px]">
+            <div class="mt-[14px] rounded-[12px] border border-[#E1E4E8] bg-white p-[16px] md:mt-[18px] md:p-[20px]">
 
                 <!-- KPI HEADER -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] pb-[16px]">
+                <div class="flex flex-col gap-4 border-b border-[#E5E7EB] pb-[16px] md:flex-row md:items-start md:justify-between">
 
-                    <div class="flex min-w-0 flex-col gap-[4px]">
-                        <span class="text-[13px] md:text-[15px] font-semibold md:text-[16px] text-[#111827]">
+                    <!-- KPI NAME + WEIGHT -->
+                    <div class="flex w-full min-w-0 items-start justify-between gap-3 md:w-auto md:flex-col md:gap-[4px]">
+                        <span class="min-w-0 flex-1 break-words !text-[14px] font-semibold !text-[#111827] md:!text-[16px]">
                             Collaboration &amp; Team Contribution
                         </span>
 
-                        <span class="text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
+                        <span class="shrink-0 !text-[12px] !text-gray-400 md:!text-[15px]">
                             Weight: 10%
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-[8px] md:gap-[30px] text-center">
+                    <!-- RATINGS -->
+                    <div class="grid w-full grid-cols-3 gap-[8px] text-center md:w-auto md:gap-[30px]">
 
+                        <!-- MY RATING -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 My Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -472,12 +517,13 @@
                             </div>
                         </div>
 
+                        <!-- MANAGER RATING -->
                         <div class="min-w-0 md:min-w-[90px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Manager Rating
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     4
                                 } @else {
@@ -486,12 +532,13 @@
                             </div>
                         </div>
 
+                        <!-- TOTAL SCORE -->
                         <div class="min-w-0 md:min-w-[70px]">
-                            <div class="text-[11px] uppercase text-gray-500 md:text-[14px]">
+                            <div class="!text-[10px] uppercase !text-gray-500 md:!text-[14px]">
                                 Total Score
                             </div>
 
-                            <div class="mt-[4px] text-[13px] font-medium text-[#111827] md:text-[13px] md:text-[15px]">
+                            <div class="mt-[4px] !text-[13px] font-medium !text-[#111827] md:!text-[15px]">
                                 @if (isHistoricalCycle) {
                                     8
                                 } @else {
@@ -505,45 +552,55 @@
 
                 <!-- TARGET -->
                 <div class="mb-[20px] mt-[18px]">
-                    <div class="mb-[8px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[8px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Target
                     </div>
 
                     <div class="flex flex-col gap-[6px]">
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Contribute effectively to team projects and shared objectives.
                         </span>
 
-                        <span class="text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                        <span class="!text-[13px] !text-gray-500 md:!text-[15px]">
                             • Support colleagues and communicate effectively across the team.
                         </span>
                     </div>
+
                 </div>
 
                 <!-- PERFORMANCE -->
                 <div class="mb-[18px]">
-                    <div class="mb-[7px] text-[13px] font-medium uppercase md:text-[13px] md:text-[15px] text-[#222]">
+
+                    <div class="mb-[7px] !text-[12px] font-medium uppercase !text-[#222] md:!text-[15px]">
                         Performance
                     </div>
 
-                    <p class="m-0 text-[13px] text-gray-500 md:text-[13px] md:text-[15px]">
+                    <p class="m-0 !text-[13px] !text-gray-500 md:!text-[15px]">
                         Performance information submitted for this KPI.
                     </p>
+
                 </div>
 
                 <!-- MY COMMENTS -->
-                <nz-collapse class="staff-comments-collapse mb-[10px]">
-                    <nz-collapse-panel [nzActive]="false" [nzHeader]="staffCommentsHeader" >
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                <nz-collapse nzExpandIconPosition="end" class="staff-comments-collapse mb-[10px]">
+                    <nz-collapse-panel
+                        [nzActive]="false"
+                        [nzHeader]="staffCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             I delivered 100% of assigned tasks within agreed sprint timelines.
                         </p>
                     </nz-collapse-panel>
                 </nz-collapse>
 
                 <!-- MANAGER COMMENTS -->
-                <nz-collapse class="manager-comments-collapse">
-                    <nz-collapse-panel [nzActive]="false" [nzHeader]="managerCommentsHeader" >
-                        <p class="m-0 text-[13px] text-gray-600 md:text-[13px] md:text-[15px]">
+                <nz-collapse nzExpandIconPosition="end" class="manager-comments-collapse">
+                    <nz-collapse-panel
+                        [nzActive]="false"
+                        [nzHeader]="managerCommentsHeader"
+                    >
+                        <p class="m-0 !text-[13px] !text-gray-600 md:!text-[15px]">
                             Manager comments for this KPI.
                         </p>
                     </nz-collapse-panel>
@@ -571,13 +628,13 @@
                                 Request a correction
                             </div>
 
-                            <p class="mb-0 mt-[4px] text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
+                            <p class="mb-0 mt-[4px] !text-[13px] text-gray-400 md:text-[13px] md:text-[15px]">
                                 If something in this review needs to be corrected,
                                 send a request directly to the employee's manager.
                             </p>
                         </div>
 
-                        <span class="w-fit rounded-full bg-[#FFF0E5] px-[10px] py-[6px] text-[12px] font-medium text-[#D99118] md:shrink-0 md:text-[14px]">
+                        <span class="w-fit rounded-full bg-[#FFF0E5] px-[10px] py-[6px] !text-[12px] font-medium text-[#D99118] md:shrink-0 md:text-[14px]">
                             Manager action required
                         </span>
 
