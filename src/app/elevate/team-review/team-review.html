@@ -1,620 +1,310 @@
 <div class="min-h-screen bg-[#F5F7FA]">
-
-  <!-- LARGE SCREENS -->
-  <section class="hidden md:block">
-    <div class="mx-[30px] mt-[35px]">
-
-      <!-- DASHBOARD + TEAM REVIEW -->
-      <section>
-
-        <!-- BACK TO DASHBOARD -->
-        <div class="flex items-center gap-[8px]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="text-[#64748B]"
-          >
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
-
-          <button
-            type="button"
-            (click)="goToDashboard()"
-            class="cursor-pointer text-[15px] font-medium text-[#64748B] transition-colors hover:text-[#3B82F6]"
-          >
-            Dashboard
-          </button>
-        </div>
-
-        <!-- PAGE HEADER -->
-        <div class="mt-[28px]">
-          <span class="text-[28px] font-semibold text-[#111827]">
-            Team Review
-          </span>
-
-          <p class="mt-[7px] text-[15px] text-[#807777]">
-            Kindly review and rate your team members based on what has been achieved.
-          </p>
-        </div>
-
-      </section>
-
-      <!-- TEAM MEMBERS -->
-      <section class="mt-[28px]">
-
-        <h2 class="text-[15px] font-semibold uppercase tracking-wide text-[#6E6E6E]">
-          TEAM MEMBERS
-        </h2>
-
-        <div class="mt-[10px] w-full overflow-x-auto rounded-lg border border-[#E2E8F0] bg-white">
-
-        <table class="w-full min-w-[850px] whitespace-nowrap">
-            <tbody>
-
-              <!-- EMPLOYEE 1 -->
-              <tr class="border-b border-[#E2E8F0]">
-
-                <td class="px-[26px] py-[12px]">
-                  <div class="flex items-center gap-[13px]">
-
-                    <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[14px] font-semibold text-[#64748B]">
-                      SS
-                    </div>
-
-                    <div class="min-w-0">
-                      <span class="block text-[15px] font-semibold text-[#111827]">
-                        Sally Smith
-                      </span>
-
-                      <p class="mt-[2px] truncate text-[15px] text-[#64748B]">
-                        Backend Engineer · Engineering
-                      </p>
-                    </div>
-
-                  </div>
-                </td>
-
-                <td class="px-4 py-2">
-                  <span class="inline-flex rounded-full bg-[#EEF2F6] px-3 py-1 text-[13px] font-medium !text-[#3B82F6]">
-                    Submitted
-                  </span>
-                </td>
-
-                <td class="whitespace-nowrap px-[20px] py-[16px] text-[15px] text-[#64748B]">
-                  Submitted on 29 Sept 2026
-                </td>
-
-                <td class="w-[170px] px-[26px] py-[16px] text-right">
-                  <button
-                    type="button"
-                    (click)="route()"
-                    class="button-press cursor-pointer rounded-[9px] bg-[#5AA4FF] px-[24px] py-[9px] text-[1px] font-medium !text-white transition-colors hover:bg-[#3F91DF]"
-                  >
-                    Review →
-                  </button>
-                </td>
-
-              </tr>
-
-              <!-- EMPLOYEE 2 -->
-              <tr class="border-b border-[#E2E8F0]">
-
-                <td class="px-[26px] py-[12px]">
-                  <div class="flex items-center gap-[13px]">
-
-                    <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[14px] font-semibold text-[#64748B]">
-                      KM
-                    </div>
-
-                    <div class="min-w-0">
-                      <span class="block text-[15px] font-semibold text-[#111827]">
-                        Kojo Mensah
-                      </span>
-
-                      <p class="mt-[2px] truncate text-[15px] text-[#64748B]">
-                        Backend Engineer · Engineering
-                      </p>
-                    </div>
-
-                  </div>
-                </td>
-
-                <td class="px-4 py-2">
-                  <span class="inline-flex rounded-full bg-[#F1F5F9] px-3 py-1 text-[13px] font-medium text-[#475569]">
-                    In Progress
-                  </span>
-                </td>
-
-                <td class="whitespace-nowrap px-[20px] py-[16px] text-[15px] text-[#64748B]">
-                  Awaiting submission
-                </td>
-
-                <td class="px-[26px] py-[16px] text-right"></td>
-
-              </tr>
-
-              <!-- EMPLOYEE 3 -->
-              <tr class="border-b border-[#E2E8F0]">
-
-                <td class="px-[26px] py-[12px]">
-                  <div class="flex items-center gap-[13px]">
-
-                    <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[14px] font-semibold text-[#64748B]">
-                      AB
-                    </div>
-
-                    <div class="min-w-0">
-                      <span class="block text-[15px] font-semibold text-[#111827]">
-                        Ama Boateng
-                      </span>
-
-                      <p class="mt-[2px] truncate text-[15px] text-[#64748B]">
-                        Product Designer · Product &amp; Design
-                      </p>
-                    </div>
-
-                  </div>
-                </td>
-
-                <td class="px-4 py-2">
-                  <span class="inline-flex rounded-full bg-[#F1F5F9] px-3 py-1 text-[13px] font-medium text-[#475569]">
-                    In Progress
-                  </span>
-                </td>
-
-                <td class="whitespace-nowrap px-[20px] py-[16px] text-[15px] text-[#64748B]">
-                  Awaiting submission
-                </td>
-
-                <td class="px-[26px] py-[16px] text-right"></td>
-
-              </tr>
-
-              <!-- EMPLOYEE 4 -->
-              <tr class="border-b border-[#E2E8F0]">
-
-                <td class="px-[26px] py-[12px]">
-                  <div class="flex items-center gap-[13px]">
-
-                    <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[14px] font-semibold text-[#64748B]">
-                      AB
-                    </div>
-
-                    <div class="min-w-0">
-                      <span class="block text-[15px] font-semibold text-[#111827]">
-                        Ama Boateng
-                      </span>
-
-                      <p class="mt-[2px] truncate text-[15px] text-[#64748B]">
-                        QA Engineer · Engineering
-                      </p>
-                    </div>
-
-                  </div>
-                </td>
-
-                <td class="px-4 py-2">
-                  <span class="inline-flex rounded-full bg-[#ECFDF5] px-3 py-1 text-[13px] font-medium text-[#047857]">
-                    • Review
-                  </span>
-                </td>
-
-                <td class="whitespace-nowrap px-[20px] py-[16px] text-[15px] text-[#64748B]">
-                  Reviewed on 2 Oct 2026
-                </td>
-
-                <td class="px-[15px] py-[16px] text-right">
-
-                  <button
-                    type="button"
-                    (click)="route()"
-                    class="button-press inline-flex cursor-pointer items-center gap-[7px] rounded-[9px] border border-[#DCE3EA] bg-[#F8FAFC] px-[16px] py-[9px] text-[15px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9]"
-                  >
-                    View Review
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </button>
-
-                </td>
-
-              </tr>
-
-              <!-- EMPLOYEE 5 -->
-              <tr>
-
-                <td class="px-[26px] py-[12px]">
-                  <div class="flex items-center gap-[13px]">
-
-                    <div class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[14px] font-semibold text-[#64748B]">
-                      SS
-                    </div>
-
-                    <div class="min-w-0">
-                      <span class="block text-[15px] font-semibold text-[#111827]">
-                        Sally Smith
-                      </span>
-
-                      <p class="mt-[2px] truncate text-[15px] text-[#64748B]">
-                        Operations Analyst · Operations
-                      </p>
-                    </div>
-
-                  </div>
-                </td>
-
-                <td class="px-4 py-2">
-                  <span class="inline-flex rounded-full bg-[#ECFDF5] px-3 py-1 text-[13px] font-medium text-[#047857]">
-                    • Review
-                  </span>
-                </td>
-
-                <td class="whitespace-nowrap px-[20px] py-[16px] text-[15px] text-[#64748B]">
-                  Reviewed on 30 Sept 2026
-                </td>
-
-                <td class="px-[15px] py-[16px] text-right">
-
-                  <button
-                    type="button"
-                    (click)="route()"
-                    class="button-press inline-flex cursor-pointer items-center gap-[7px] rounded-[9px] border border-[#DCE3EA] bg-[#F8FAFC] px-[16px] py-[9px] text-[15px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9]"
-                  >
-                    View Review
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </button>
-
-                </td>
-
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </section>
-
-    </div>
-  </section>
-
-
-  <!-- MOBILE VIEW -->
-  <section class="block md:hidden">
-    <div class="px-4 pt-5 pb-6">
-
-      <!-- DASHBOARD + TEAM REVIEW -->
-      <section>
-
-        <!-- BACK TO DASHBOARD -->
-        <div class="flex items-center gap-2">
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="text-[#64748B]"
-          >
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
-
-          <button type="button" (click)="goToDashboard()"
-            class="cursor-pointer text-[14px] font-medium text-[#64748B] transition-colors hover:text-[#3B82F6]"
-          >
-            Dashboard
-          </button>
-
-        </div>
-
-        <!-- PAGE HEADER -->
-        <div class="mt-6">
-
-          <span class="text-[22px] font-semibold text-[#111827]">
-            Team Review
-          </span>
-
-          <p class="mt-2 text-[13px] leading-5 text-[#807777]">
-            Kindly review and rate your team members based on what has been achieved.
-          </p>
-
-        </div>
-
-      </section>
-
-      <!-- TEAM MEMBERS -->
-      <section class="mt-6">
-        <h2 class="text-[13px] font-semibold uppercase tracking-wide text-[#6E6E6E]">
-          TEAM MEMBERS
-        </h2>
-
-        <div class="mt-3 flex flex-col gap-3">
-
-          <!-- EMPLOYEE 1 -->
-          <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4">
-            <div class="flex items-start justify-between gap-3">
-              <div class="flex min-w-0 items-center gap-3">
-                <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold text-[#64748B]">
-                  SS
-                </div>
-
-                <div class="min-w-0">
-                  <span class="block text-[14px] font-semibold text-[#111827]">
-                    Sally Smith
-                  </span>
-                  <p class="mt-1 truncate text-[12px] text-[#64748B]">
-                    Backend Engineer · Engineering
-                  </p>
-                </div>
-
-              </div>
-
-              <span class="shrink-0 rounded-full bg-[#EEF2F6] px-2.5 py-1 text-[12px] font-medium !text-[#3B82F6]">
-                Submitted
-              </span>
-
+  <div class="mx-4 mt-5 pb-6 md:mx-[30px] md:mt-[35px] md:pb-0">
+
+    <!-- DASHBOARD + TEAM REVIEW -->
+    <section>
+
+      <!-- BACK TO DASHBOARD -->
+      <div class="flex items-center gap-2 md:gap-[8px]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-[#64748B] md:h-5 md:w-5"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+
+        <button type="button" (click)="goToDashboard()"
+          class="cursor-pointer text-[14px] font-medium !text-[#64748B] transition-colors hover:!text-[#3B82F6] md:text-[15px]">
+          Dashboard
+        </button>
+      </div>
+
+      <!-- PAGE HEADER -->
+      <div class="mt-6 md:mt-[28px]">
+        <span class="text-[22px] font-semibold !text-[#111827] md:text-[28px]">
+          Team Review
+        </span>
+
+        <p class="mt-2 text-[13px] leading-5 !text-[#807777] md:mt-[7px] md:text-[15px] md:leading-normal">
+          Kindly review and rate your team members based on what has been achieved.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- TEAM MEMBERS -->
+    <section class="mt-6 md:mt-[28px]">
+
+      <h2 class="text-[13px] font-semibold uppercase tracking-wide !text-[#6E6E6E] md:text-[15px]">
+        TEAM MEMBERS
+      </h2>
+
+      <!-- TEAM MEMBER LIST -->
+      <div class="mt-3 flex flex-col gap-3 md:mt-[10px] md:gap-0 md:overflow-x-auto md:rounded-lg md:border md:border-[#E2E8F0] md:bg-white">
+
+        <!-- EMPLOYEE 1 -->
+        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
+
+          <!-- EMPLOYEE -->
+          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
+            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
+              SS
             </div>
 
-            <div class="mt-3 flex items-center justify-between gap-3 border-t border-[#E2E8F0] pt-3">
-
-              <span class="text-[13px] text-[#64748B]">
-                Submitted on 29 Sept 2026
+            <div class="min-w-0">
+              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
+                Sally Smith
               </span>
 
-              <button
-                type="button"
-                (click)="route()"
-                class="button-press shrink-0 cursor-pointer px-7 py-2 text-[10px] font-medium text-white transition-colors hover:!text-[#3F91DF]"
+              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
+                Backend Engineer · Engineering
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
+            <span class="inline-flex rounded-full bg-[#EEF2F6] px-2.5 py-1 text-[12px] font-medium !text-[#3B82F6] md:px-3 md:py-1 md:text-[13px]">
+              Submitted
+            </span>
+          </div>
+
+          <!-- DATE -->
+          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
+            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
+              Submitted on 29 Sept 2026
+            </span>
+          </div>
+
+          <!-- ACTION -->
+          <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[26px] md:py-[16px]">
+            <button
+              type="button"
+              (click)="route()"
+              class="button-press shrink-0 cursor-pointer rounded-[9px] bg-[#5AA4FF] px-7 py-2 !text-[11px] font-medium !text-white transition-colors hover:bg-[#3F91DF] md:px-[24px] md:py-[9px] md:text-[15px]"
+            >
+              Review →
+            </button>
+          </div>
+
+        </div>
+
+        <!-- EMPLOYEE 2 -->
+        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
+
+          <!-- EMPLOYEE -->
+          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
+            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
+              KM
+            </div>
+
+            <div class="min-w-0">
+              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
+                Kojo Mensah
+              </span>
+
+              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
+                Backend Engineer · Engineering
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
+            <span class="inline-flex rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium !text-[#475569] md:px-3 md:py-1 md:text-[13px]">
+              In Progress
+            </span>
+          </div>
+
+          <!-- DATE -->
+          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
+            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
+              Awaiting submission
+            </span>
+          </div>
+
+          <!-- ACTION -->
+          <div class="hidden md:block md:px-[26px] md:py-[16px]"></div>
+
+        </div>
+
+        <!-- EMPLOYEE 3 -->
+        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
+
+          <!-- EMPLOYEE -->
+          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
+            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
+              AB
+            </div>
+
+            <div class="min-w-0">
+              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
+                Ama Boateng
+              </span>
+
+              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
+                Product Designer · Product &amp; Design
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
+            <span class="inline-flex rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium !text-[#475569] md:px-3 md:py-1 md:text-[13px]">
+              In Progress
+            </span>
+          </div>
+
+          <!-- DATE -->
+          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
+            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
+              Awaiting submission
+            </span>
+          </div>
+
+          <!-- ACTION -->
+          <div class="hidden md:block md:px-[26px] md:py-[16px]"></div>
+
+        </div>
+
+        <!-- EMPLOYEE 4 -->
+        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
+
+          <!-- EMPLOYEE -->
+          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
+            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
+              AB
+            </div>
+
+            <div class="min-w-0">
+              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
+                Ama Boateng
+              </span>
+
+              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
+                QA Engineer · Engineering
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
+            <span class="inline-flex rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium !text-[#047857] md:px-3 md:py-1 md:text-[13px]">
+              • Review
+            </span>
+          </div>
+
+          <!-- DATE -->
+          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
+            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
+              Reviewed on 2 Oct 2026
+            </span>
+          </div>
+
+          <!-- ACTION -->
+          <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[15px] md:py-[16px]">
+            <button
+              type="button"
+              (click)="route()"
+              class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-[9px] md:border border-[#DCE3EA] bg-[#F8FAFC] px-3 py-2 !text-[11px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9] md:px-[16px] md:py-[9px] md:text-[15px]"
+            >
+              View Review
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="md:h-4 md:w-4"
               >
-                Review →
-              </button>
-
-            </div>
-
-          </div>
-
-          <!-- EMPLOYEE 2 -->
-          <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4">
-
-            <div class="flex items-start justify-between gap-3">
-
-              <div class="flex min-w-0 items-center gap-3">
-
-                <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold text-[#64748B]">
-                  KM
-                </div>
-
-                <div class="min-w-0">
-                  <span class="block text-[14px] font-semibold text-[#111827]">
-                    Kojo Mensah
-                  </span>
-
-                  <p class="mt-1 truncate text-[12px] text-[#64748B]">
-                    Backend Engineer · Engineering
-                  </p>
-                </div>
-
-              </div>
-
-              <span class="shrink-0 rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium text-[#475569]">
-                In Progress
-              </span>
-
-            </div>
-
-            <div class="mt-3 border-t border-[#E2E8F0] pt-3">
-              <span class="text-[13px] text-[#64748B]">
-                Awaiting submission
-              </span>
-            </div>
-
-          </div>
-
-          <!-- EMPLOYEE 3 -->
-          <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4">
-
-            <div class="flex items-start justify-between gap-3">
-
-              <div class="flex min-w-0 items-center gap-3">
-
-                <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold text-[#64748B]">
-                  AB
-                </div>
-
-                <div class="min-w-0">
-                  <span class="block text-[14px] font-semibold text-[#111827]">
-                    Ama Boateng
-                  </span>
-
-                  <p class="mt-1 truncate text-[12px] text-[#64748B]">
-                    Product Designer · Product &amp; Design
-                  </p>
-                </div>
-
-              </div>
-
-              <span class="shrink-0 rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium text-[#475569]">
-                In Progress
-              </span>
-
-            </div>
-
-            <div class="mt-3 border-t border-[#E2E8F0] pt-3">
-              <span class="text-[13px] text-[#64748B]">
-                Awaiting submission
-              </span>
-            </div>
-
-          </div>
-
-          <!-- EMPLOYEE 4 -->
-          <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4">
-
-            <div class="flex items-start justify-between gap-3">
-
-              <div class="flex min-w-0 items-center gap-3">
-
-                <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold text-[#64748B]">
-                  AB
-                </div>
-
-                <div class="min-w-0">
-                  <span class="block text-[14px] font-semibold text-[#111827]">
-                    Ama Boateng
-                  </span>
-
-                  <p class="mt-1 truncate text-[12px] text-[#64748B]">
-                    QA Engineer · Engineering
-                  </p>
-                </div>
-
-              </div>
-
-              <span class="shrink-0 rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium text-[#047857]">
-                • Review
-              </span>
-
-            </div>
-
-            <div class="mt-3 flex items-center justify-between gap-3 border-t border-[#E2E8F0] pt-3">
-
-              <span class="text-[13px] text-[#64748B]">
-                Reviewed on 2 Oct 2026
-              </span>
-
-              <button type="button"(click)="route()"
-                class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 px-3 py-2 text-[11px] font-medium !text-[#475569] transition-colors hover:text-[#F1F5F9]"
-              >
-                View Review
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-
-              </button>
-
-            </div>
-
-          </div>
-
-          <!-- EMPLOYEE 5 -->
-          <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4">
-
-            <div class="flex items-start justify-between gap-3">
-
-              <div class="flex min-w-0 items-center gap-3">
-
-                <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold text-[#64748B]">
-                  SS
-                </div>
-
-                <div class="min-w-0">
-                  <span class="block text-[14px] font-semibold text-[#111827]">
-                    Sally Smith
-                  </span>
-
-                  <p class="mt-1 truncate text-[12px] text-[#64748B]">
-                    Operations Analyst · Operations
-                  </p>
-                </div>
-
-              </div>
-
-              <span class="shrink-0 rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium text-[#047857]">
-                • Review
-              </span>
-
-            </div>
-
-            <div class="mt-3 flex items-center justify-between gap-3 border-t border-[#E2E8F0] pt-3">
-
-              <span class="text-[13px] text-[#64748B]">
-                Reviewed on 30 Sept 2026
-              </span>
-
-              <button type="button" (click)="route()"
-                class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 px-3 py-2 text-[11px] font-medium !text-[#475569] transition-colors hover:text-[#F1F5F9]"
-              >
-                View Review
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-
-              </button>
-
-            </div>
-
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
         </div>
 
-      </section>
+        <!-- EMPLOYEE 5 -->
+        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:px-0 md:py-0">
 
-    </div>
-  </section>
+          <!-- EMPLOYEE -->
+          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
+            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
+              SS
+            </div>
 
+            <div class="min-w-0">
+              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
+                Sally Smith
+              </span>
+
+              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
+                Operations Analyst · Operations
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
+            <span class="inline-flex rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium !text-[#047857] md:px-3 md:py-1 md:text-[13px]">
+              • Review
+            </span>
+          </div>
+
+          <!-- DATE -->
+          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
+            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
+              Reviewed on 30 Sept 2026
+            </span>
+          </div>
+
+          <!-- ACTION -->
+          <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[15px] md:py-[16px]">
+            <button
+              type="button"
+              (click)="route()"
+              class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-[9px] md:border border-[#DCE3EA] bg-[#F8FAFC] px-3 py-2 !text-[11px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9] md:px-[16px] md:py-[9px] md:text-[15px]"
+            >
+              View Review
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="md:h-4 md:w-4"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
 </div>
