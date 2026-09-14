@@ -1,201 +1,8 @@
-<!-- CTO MANAGERS -->
 <main>
-    <div class="min-h-screen bg-[#F7F8FA]">
-
-        <!-- Large Screens -->
-        <div class="hidden md:block">
-            <div class="w-full px-[30px] py-[40px]">
-
-                <!-- BACK TO DASHBOARD -->
-                <button (click)="goToDepartmentPerformance()" type="button" class="flex cursor-pointer items-center gap-[8px] pb-[18px] !text-[16px] font-medium !text-[#807777] hover:!text-[#4D9BF6]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 8L2 12L6 16"/>
-                        <path d="M2 12H22"/>
-                    </svg>
-                    <span>Departments</span>
-                </button>
-
-                <!-- PAGE HEADER -->
-                <div class="mb-[22px]">
-                    <div class="flex flex-col gap-[4px]">
-                        <span class="text-[28px] font-medium text-[#111827]">Manager Performance</span>
-                        <span class="text-[15px] text-gray-400">Review completion and team scores for managers in your assigned departments</span>
-                    </div>
-                </div>
-
-                <!-- MANAGER HEADER -->
-                <div class="mb-[18px] flex items-center justify-between gap-[20px]">
-                    <div class="min-w-0">
-                        <div class="flex items-center gap-[10px]">
-                            <span class="text-[22px] font-semibold text-[#111827]">Sally Smith</span>
-                            <span class="shrink-0 rounded-full bg-[#EAF3FF] px-[11px] py-[5px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
-                        </div>
-                        <span class="mt-[4px] block text-[14px] text-gray-500">Software Engineer • Technology</span>
-                    </div>
-
-                    <div class="flex shrink-0 items-center gap-[14px]">
-
-                        <!-- TOTAL SCORE -->
-                        <div class="flex h-[78px] w-[106px] flex-col items-center justify-center rounded-[12px] border-2 border-[#4D9BF6] bg-white">
-                            <span class="text-[12px] font-medium text-[#111827]">TOTAL SCORE</span>
-                            <div class="mt-[3px] flex items-baseline">
-                                <span class="text-[26px] font-medium leading-none text-[#4D9BF6]">0</span>
-                                <span class="ml-[4px] text-[15px] font-medium text-[#111827]">/100</span>
-                            </div>
-                        </div>
-
-                        <!-- REVIEW MANAGER -->
-                        <button (click)="goToManagerDetails()" type="button" class="button-press flex items-center gap-[10px] rounded-[8px] bg-[#5BA2F7] px-[16px] py-[10px] text-[15px] font-medium !text-white shadow-sm">
-                            <span class="!text-white">Review Manager</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="!text-white">
-                                <path d="M18 8L22 12L18 16"/>
-                                <path d="M2 12H22"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- MANAGER PERFORMANCE -->
-                <section class="mb-[18px]">
-                    <span class="text-[15px] font-semibold uppercase text-gray-500">Manager Performance</span>
-
-                    <div class="mt-[8px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-
-                <!-- PERFORMANCE ROW 1 -->
-                <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                    <span class="text-[15px] font-semibold text-[#111827]">Application Development &amp; Delivery</span>
-
-                    <div class="flex w-[120px] flex-col items-center">
-                        <span class="text-[12px] uppercase text-[#64748B]">Team Score</span>
-                        <p class="mt-[1px] text-[15px] text-[#111827]">54</p>
-                    </div>
-                </div>
-
-                        <!-- PERFORMANCE ROW 2 -->
-                        <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                            <span class="text-[15px] font-semibold text-[#111827]">Operational Efficiency &amp; Code Quality</span>
-                            <div class="flex items-center gap-[30px]">
-                                <div class="w-[80px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Self-Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">4</p>
-                                </div>
-                                <div class="w-[120px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Executive Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">—</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PERFORMANCE ROW 3 -->
-                        <div class="flex items-center justify-between border-b border-[#E5E7EB] px-[18px] py-[9px]">
-                            <span class="text-[15px] font-semibold text-[#111827]">Learning &amp; Development</span>
-                            <div class="flex items-center gap-[30px]">
-                                <div class="w-[80px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Self-Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">4</p>
-                                </div>
-                                <div class="w-[120px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Executive Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">—</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PERFORMANCE ROW 4 -->
-                        <div class="flex items-center justify-between px-[18px] py-[9px]">
-                            <span class="text-[15px] font-semibold text-[#111827]">Application Development &amp; Delivery</span>
-                            <div class="flex items-center gap-[30px]">
-                                <div class="w-[80px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Self-Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">4</p>
-                                </div>
-                                <div class="w-[120px] text-center">
-                                    <span class="text-[12px] uppercase text-[#64748B]">Executive Rating</span>
-                                    <p class="mt-[1px] text-[15px] text-[#111827]">—</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- KPI CARDS -->
-                <div class="mb-[26px] grid grid-cols-4 gap-[18px]">
-
-                    <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[14px]">
-                        <span class="text-[15px] font-semibold uppercase tracking-wider text-[#64748B]">TEAM PERFORMANCE</span>
-                        <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">80<span class="text-[25px]">/100</span></div>
-                    </div>
-
-                    <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[14px]">
-                        <span class="text-[15px] font-semibold uppercase tracking-wider text-[#64748B]">TEAM MEMBERS</span>
-                        <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">24</div>
-                    </div>
-
-                    <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[14px]">
-                        <span class="text-[15px] font-semibold uppercase tracking-wider text-[#64748B]">SELF-REVIEWS COMPLETED</span>
-                        <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">22<span class="text-[25px]">/24</span></div>
-                    </div>
-
-                    <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[20px] py-[14px]">
-                        <span class="text-[15px] font-semibold uppercase tracking-wider text-[#64748B]">MANAGER REVIEWS COMPLETED</span>
-                        <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">16<span class="text-[25px]">/24</span></div>
-                    </div>
-
-                </div>
-
-                <!-- TEAM MEMBERS -->
-                <section class="pb-[40px]">
-                    <span class="text-[15px] font-semibold uppercase text-gray-500">Team Members</span>
-
-                    <div class="mt-[8px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
-
-                        <!-- MEMBER 1 -->
-                        <div (click)="goToEmployeePerformance()" class="flex items-center justify-between gap-[20px] border-b border-[#E5E7EB] px-[18px] py-[14px] hover:bg-[#EEF5FB]">
-                            <div class="flex min-w-0 items-center gap-[12px]">
-                                <div class="h-[38px] w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
-                                <div class="min-w-0">
-                                    <span class="block text-[15px] font-medium text-[#111827]">Sally Smith</span>
-                                    <span class="mt-[2px] block text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                                </div>
-                            </div>
-
-                            <div class="flex shrink-0 items-center gap-[30px]">
-                                <span class="rounded-full bg-[#EAF3FF] px-[12px] py-[6px] text-[15px] font-medium text-[#4D9BF6]">Submitted</span>
-                                <span class="text-[15px] text-gray-400">Submitted on 29 Sept, 2026</span>
-                                <span class="w-[25px] text-center text-[15px] text-[#111827]">—</span>
-                            </div>
-                        </div>
-
-                        <!-- MEMBER 2 -->
-                        <div (click)="goToEmployeePerformance()" class="flex items-center justify-between gap-[20px] px-[18px] py-[14px] hover:bg-[#EEF5FB]">
-                            <div class="flex min-w-0 items-center gap-[12px]">
-                                <div class="h-[38px] w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
-                                <div class="min-w-0">
-                                    <span class="block text-[15px] font-medium text-[#111827]">Janet Doe</span>
-                                    <span class="mt-[2px] block text-[15px] text-gray-400">Software Engineer • Client-side Engineering</span>
-                                </div>
-                            </div>
-
-                            <div class="flex shrink-0 items-center gap-[30px]">
-                                <span class="rounded-full bg-[#DDFBE5] px-[12px] py-[6px] text-[15px] font-medium text-[#16A34A]">Reviewed</span>
-                                <span class="text-[15px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-                                <span class="w-[25px] text-center text-[15px] font-medium text-[#111827]">84</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-            </div>
-        </div>
-
-        <!-- MOBILE-->
-<div class="block md:hidden">
-    <div class="w-full px-[16px] py-[24px]">
+    <div class="min-h-screen w-full bg-[#F7F8FA] px-[16px] py-[24px] md:px-[30px] md:py-[40px]">
 
         <!-- BACK TO DEPARTMENTS -->
-        <button (click)="goToDepartmentPerformance()" type="button" class="pb-[18px] flex cursor-pointer items-center gap-[8px] !text-[15px] font-medium !text-[#111827]">
+        <button (click)="goToDepartmentPerformance()" type="button" class="flex cursor-pointer items-center gap-[8px] pb-[18px] !text-[12px] font-medium !text-[#111827] hover:!text-[#4D9BF6] md:!text-[16px] md:!text-[#807777]">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 8L2 12L6 16"/>
                 <path d="M2 12H22"/>
@@ -204,91 +11,185 @@
         </button>
 
         <!-- PAGE HEADER -->
-        <div class="mb-[24px]">
-            <div class="flex flex-col gap-[5px]">
-                <span class="text-[23px] font-medium leading-[30px] text-[#111827]">Manager Performance</span>
-                <span class="text-[14px] leading-[21px] text-gray-400">Review completion and team scores for managers in your assigned departments</span>
+        <div class="mb-[24px] md:mb-[22px]">
+            <div class="flex flex-col gap-[5px] md:gap-[4px]">
+                <span class="text-[19px] font-medium leading-[30px] text-[#111827] md:text-[28px] md:leading-normal">
+                    Manager Performance
+                </span>
+                <span class="text-[12px] leading-[21px] text-gray-400 md:text-[15px] md:leading-normal">
+                    Review completion and team scores for managers in your assigned departments
+                </span>
             </div>
         </div>
 
         <!-- MANAGER HEADER -->
-        <div class="mb-[26px]">
+        <div class="mb-[26px] md:mb-[18px]">
+            <div class="flex flex-col gap-[16px] md:flex-row md:items-center md:justify-between md:gap-[20px]">
 
-            <div class="flex items-center justify-between gap-[12px]">
                 <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-[8px]">
-                        <span class="text-[21px] font-semibold text-[#111827]">Sally Smith</span>
-                        <span class="shrink-0 rounded-full bg-[#EAF3FF] px-[10px] py-[5px] text-[12px] font-medium text-[#4D9BF6]">Submitted</span>
+                    <div class="flex flex-wrap items-center gap-[8px] md:gap-[10px]">
+                        <span class="text-[18px] font-semibold text-[#111827] md:text-[22px]">
+                            Sally Smith
+                        </span>
+                        <span class="shrink-0 rounded-full bg-[#EAF3FF] px-[10px] py-[5px] text-[10px] font-medium text-[#4D9BF6] md:px-[11px] md:py-[5px] md:text-[15px]">
+                            Submitted
+                        </span>
                     </div>
-                    <span class="mt-[5px] block text-[14px] text-gray-500">Software Engineer • Technology</span>
+                    <span class="mt-[5px] uppercase tracking-wider md:text-[14px] font-medium block text-[11px] text-gray-500 md:mt-[4px]">
+                        Software Engineer • Technology
+                    </span>
+                </div>
+
+                <div class="flex w-full flex-col gap-[14px] md:w-auto md:flex-row md:items-center md:gap-[14px]">
+
+                    <!-- TOTAL SCORE -->
+                    <div class="flex h-[70px] w-full flex-col items-center justify-center rounded-[12px] border-2 border-[#4D9BF6] bg-white md:h-[78px] md:w-[106px]">
+                        <span class="text-[10px] md:text-[12px] font-medium text-[#111827]">
+                            TOTAL SCORE
+                        </span>
+                        <div class="mt-[4px] flex items-baseline md:mt-[3px]">
+                            <span class="text-[25px] md:text-[28px] font-medium leading-none text-[#4D9BF6] md:text-[26px]">
+                                0
+                            </span>
+                            <span class="ml-[4px] text-[15px] font-medium text-[#111827]">
+                                /100
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- REVIEW MANAGER -->
+                    <button (click)="goToManagerDetails()" type="button" class="button-press flex w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#5BA2F7] px-[15px] py-[10px] !text-[13px] font-medium !text-white shadow-sm md:w-auto md:py-[10px] md:text-[15px]">
+                        <span class="!text-white">Review Manager</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="!text-white">
+                            <path d="M18 8L22 12L18 16"/>
+                            <path d="M2 12H22"/>
+                        </svg>
+                    </button>
+
                 </div>
             </div>
-
-            <!-- LARGE TOTAL SCORE CARD -->
-            <div class="mt-[16px] flex h-[92px] w-full flex-col items-center justify-center rounded-[12px] border-2 border-[#4D9BF6] bg-white mb-2">
-                <span class="text-[12px] font-medium text-[#111827]">TOTAL SCORE</span>
-                <div class="mt-[4px] flex items-baseline">
-                    <span class="text-[28px] font-medium leading-none text-[#4D9BF6]">0</span>
-                    <span class="ml-[4px] text-[15px] font-medium text-[#111827]">/100</span>
-                </div>
-            </div>
-
-            <!-- REVIEW MANAGER -->
-            <button (click)="goToManagerDetails()" type="button" class="button-press mt-[14px] flex w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#5BA2F7] px-[16px] py-[12px] text-[14px] font-medium !text-white shadow-sm">
-                <span class="!text-white">Review Manager</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="!text-white">
-                    <path d="M18 8L22 12L18 16"/>
-                    <path d="M2 12H22"/>
-                </svg>
-            </button>
-
         </div>
 
         <!-- MANAGER PERFORMANCE -->
-        <section class="mb-[26px]">
-            <span class="text-[13px] font-semibold uppercase tracking-wide text-gray-500">Manager Performance</span>
+        <section class="mb-[26px] md:mb-[18px]">
+            <span class="text-[12px] font-semibold uppercase tracking-wide text-gray-500 md:text-[15px] md:tracking-normal">
+                Manager Performance
+            </span>
 
-            <div class="mt-[10px] flex flex-col gap-[10px]">
+            <div class="mt-[10px] flex flex-col gap-[10px] md:mt-[8px] md:gap-0 md:overflow-hidden md:rounded-[12px] md:border md:border-[#E1E4E8] md:bg-white">
 
-                <!-- PERFORMANCE CARD 1 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[10px]">
-                    <div class="flex items-start justify-between gap-[16px]">
-                        <span class="min-w-0 text-[15px] font-semibold leading-[21px] text-[#111827]">Application Development &amp; Delivery</span>
+                <!-- PERFORMANCE ROW 1 -->
+                <div class="flex items-start justify-between gap-[16px] rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[10px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E5E7EB] md:px-[18px] md:py-[9px]">
+                    <span class="min-w-0 text-[13px] md:text-[15px] font-semibold leading-[21px] text-[#111827]">
+                        Application Development &amp; Delivery
+                    </span>
 
-                        <div class="shrink-0 text-center">
-                            <span class="block text-[12px] uppercase text-[#64748B]">Team Score</span>
-                            <p class="mt-[3px] font-medium text-[15px] text-[#111827]">54</p>
+                    <div class="shrink-0 text-center md:flex md:w-[120px] md:flex-col md:items-center">
+                        <span class="block text-[11px] md:text-[12px] uppercase text-[#64748B]">
+                            Team Score
+                        </span>
+                        <p class="mt-[3px] text-[12px] text-[#111827] md:mt-[1px] md:text-[15px]">
+                            54
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PERFORMANCE ROW 2 -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px] md:flex md:items-center md:justify-between md:gap-[20px] md:rounded-none md:border-0 md:border-b md:border-[#E5E7EB] md:px-[18px] md:py-[9px]">
+                    <span class="block text-[13px] md:text-[15px] font-semibold leading-[21px] text-[#111827]">
+                        Operational Efficiency &amp; Code Quality
+                    </span>
+
+                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500 md:mt-0 md:gap-[30px]">
+                        <div class="text-left text-[11px] md:text-[12px] md:w-[80px] md:text-center">
+                            <span class="md:hidden">
+                                Self-Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Self-Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                4
+                            </strong>
+                        </div>
+
+                        <div class="text-right text-[11px] md:text-[12px] md:w-[120px] md:text-center">
+                            <span class="md:hidden">
+                                Executive Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Executive Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                —
+                            </strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- PERFORMANCE CARD 2 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px]">
-                    <span class="block text-[15px] font-semibold leading-[21px] text-[#111827]">Operational Efficiency &amp; Code Quality</span>
+                <!-- PERFORMANCE ROW 3 -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px] md:flex md:items-center md:justify-between md:gap-[20px] md:rounded-none md:border-0 md:border-b md:border-[#E5E7EB] md:px-[18px] md:py-[9px]">
+                    <span class="block text-[13px] md:text-[15px] font-semibold leading-[21px] text-[#111827]">
+                        Learning &amp; Development
+                    </span>
 
-                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500">
-                        <span>Self-Rating: <strong class="font-semibold text-[#111827]">4</strong></span>
-                        <span>Executive Rating: <strong class="font-semibold text-[#111827]">—</strong></span>
+                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500 md:mt-0 md:gap-[30px]">
+                        <div class="text-left text-[11px] md:text-[12px] md:w-[80px] md:text-center">
+                            <span class="md:hidden">
+                                Self-Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Self-Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                4
+                            </strong>
+                        </div>
+
+                        <div class="text-right text-[11px] md:text-[12px] md:w-[120px] md:text-center">
+                            <span class="md:hidden">
+                                Executive Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Executive Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                —
+                            </strong>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PERFORMANCE CARD 3 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px]">
-                    <span class="block text-[15px] font-semibold leading-[21px] text-[#111827]">Learning &amp; Development</span>
+                <!-- PERFORMANCE ROW 4 -->
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px] md:flex md:items-center md:justify-between md:gap-[20px] md:rounded-none md:border-0 md:px-[18px] md:py-[9px]">
+                    <span class="block text-[13px] md:text-[15px] font-semibold leading-[21px] text-[#111827]">
+                        Collaboration &amp; Team Contribution
+                    </span>
 
-                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500">
-                        <span>Self-Rating: <strong class="font-semibold text-[#111827]">4</strong></span>
-                        <span>Executive Rating: <strong class="font-semibold text-[#111827]">—</strong></span>
-                    </div>
-                </div>
+                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500 md:mt-0 md:gap-[30px]">
+                        <div class="text-left text-[11px] md:text-[12px] md:w-[80px] md:text-center">
+                            <span class="md:hidden">
+                                Self-Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Self-Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                4
+                            </strong>
+                        </div>
 
-                <!-- PERFORMANCE CARD 4 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[17px]">
-                    <span class="block text-[15px] font-semibold leading-[21px] text-[#111827]">Collaboration &amp; Team Contribution</span>
-
-                    <div class="mt-[13px] flex items-center justify-between gap-[10px] text-[13px] text-gray-500">
-                        <span>Self-Rating: <strong class="font-semibold text-[#111827]">4</strong></span>
-                        <span>Executive Rating: <strong class="font-semibold text-[#111827]">—</strong></span>
+                        <div class="text-right text-[11px] md:text-[12px] md:w-[120px] md:text-center">
+                            <span class="md:hidden">
+                                Executive Rating:
+                            </span>
+                            <span class="hidden text-[12px] uppercase md:block">
+                                Executive Rating
+                            </span>
+                            <strong class="font-semibold text-[#111827] md:mt-[1px] md:block md:text-[15px]">
+                                —
+                            </strong>
+                        </div>
                     </div>
                 </div>
 
@@ -297,94 +198,143 @@
 
         <!-- KPI CARDS -->
         <section class="mb-[26px]">
-            <div class="flex flex-col gap-[10px]">
+            <div class="grid grid-cols-1 gap-[10px] md:grid-cols-2 md:gap-[18px] lg:grid-cols-4">
 
                 <!-- TEAM PERFORMANCE -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px]">
-                    <span class="text-[13px] font-semibold uppercase tracking-wider text-[#64748B]">TEAM PERFORMANCE</span>
-                    <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">80<span>/100</span></div>
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px] md:px-[20px] md:py-[14px]">
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#64748B] md:text-[15px]">
+                        TEAM PERFORMANCE
+                    </span>
+                    <div class="mt-[6px] text-[18px] md:text-[25px] font-semibold text-[#111827]">
+                        80<span>/100</span>
+                    </div>
                 </div>
 
                 <!-- TEAM MEMBERS -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px]">
-                    <span class="text-[13px] font-semibold uppercase tracking-wider text-[#64748B]">TEAM MEMBERS</span>
-                    <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">24</div>
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px] md:px-[20px] md:py-[14px]">
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#64748B] md:text-[15px]">
+                        TEAM MEMBERS
+                    </span>
+                    <div class="mt-[6px] text-[18px] md:text-[25px] font-semibold text-[#111827]">
+                        24
+                    </div>
                 </div>
 
                 <!-- SELF-REVIEWS -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px]">
-                    <span class="text-[13px] font-semibold uppercase tracking-wider text-[#64748B]">SELF-REVIEWS COMPLETED</span>
-                    <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">22<span>/24</span></div>
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px] md:px-[20px] md:py-[14px]">
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#64748B] md:text-[15px]">
+                        SELF-REVIEWS COMPLETED
+                    </span>
+                    <div class="mt-[6px] text-[18px] md:text-[25px] font-semibold text-[#111827]">
+                        22<span>/24</span>
+                    </div>
                 </div>
 
                 <!-- MANAGER REVIEWS -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px]">
-                    <span class="text-[13px] font-semibold uppercase tracking-wider text-[#64748B]">MANAGER REVIEWS COMPLETED</span>
-                    <div class="mt-[6px] text-[25px] font-semibold text-[#111827]">16<span>/24</span></div>
+                <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-[16px] py-[15px] md:px-[20px] md:py-[14px]">
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#64748B] md:text-[15px]">
+                        MANAGER REVIEWS COMPLETED
+                    </span>
+                    <div class="mt-[6px] text-[18px] md:text-[25px] font-semibold text-[#111827]">
+                        16<span>/24</span>
+                    </div>
                 </div>
 
             </div>
         </section>
 
         <!-- TEAM MEMBERS -->
-        <section class="pb-[30px]">
-            <span class="text-[13px] font-semibold uppercase tracking-wide text-gray-500">Team Members</span>
+        <section class="pb-[30px] md:pb-[40px]">
+            <span class="text-[12px] font-semibold uppercase tracking-wide text-gray-500 md:text-[15px] md:tracking-normal">
+                Team Members
+            </span>
 
-            <div class="mt-[10px] flex flex-col gap-[10px]">
+            <div class="mt-[10px] flex flex-col gap-[10px] md:mt-[8px] md:gap-0 md:overflow-hidden md:rounded-[12px] md:border md:border-[#E1E4E8] md:bg-white">
 
                 <!-- MEMBER 1 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-[14px]">
-                    <div class="flex items-center gap-[10px]">
-                        <div class="h-[38px] w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
+                <div (click)="goToEmployeePerformance()" class="rounded-[12px] border border-[#E1E4E8] bg-white p-[14px] hover:bg-[#EEF5FB] md:flex md:items-center md:justify-between md:gap-[20px] md:rounded-none md:border-0 md:border-b md:border-[#E5E7EB] md:px-[18px] md:py-[14px]">
+
+                    <div class="flex min-w-0 items-center gap-[10px] md:gap-[12px]">
+                        <div class="h-[28px] w-[28px] md:h-[38px] md:w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
 
                         <div class="min-w-0 flex-1">
-                            <div class="flex flex-wrap items-center gap-[7px]">
-                                <span class="text-[15px] font-medium text-[#111827]">Sally Smith</span>
-                                <span class="rounded-full bg-[#EAF3FF] px-[8px] py-[4px] text-[11px] font-medium text-[#4D9BF6]">Submitted</span>
+                            <div class="flex flex-wrap items-center gap-[7px] md:block">
+                                <span class="c font-medium text-[#111827]">
+                                    Sally Smith
+                                </span>
+                                <span class="rounded-full bg-[#EAF3FF] px-[8px] py-[3px] text-[11px] font-medium text-[#4D9BF6] md:ml-[10px] md:px-[12px] md:py-[6px] md:text-[15px]">
+                                    Submitted
+                                </span>
                             </div>
+
+                            <span class="mt-[2px] hidden text-[15px] text-gray-400 md:block">
+                                Software Engineer • Client-side Engineering
+                            </span>
                         </div>
 
-                        <span class="shrink-0 text-[15px] text-[#111827]">—</span>
+                        <span class="shrink-0 text-[13px] md:text-[15px] text-[#111827] md:hidden">
+                            —
+                        </span>
                     </div>
 
-                    <div class="mt-[13px] flex items-center justify-between border-t border-[#E5E7EB] pt-[11px]">
-                        <span class="text-[13px] text-gray-400">Submitted on 29 Sept, 2026</span>
+                    <div class="mt-[13px] flex items-center justify-between border-t border-[#E5E7EB] pt-[11px] md:mt-0 md:flex md:shrink-0 md:justify-end md:gap-[30px] md:border-0 md:pt-0">
+                        <span class="text-[11px] text-gray-400 md:text-[15px]">
+                            Submitted on 29 Sept, 2026
+                        </span>
+
+                        <span class="hidden w-[25px] text-center text-[15px] text-[#111827] md:block">
+                            —
+                        </span>
 
                         <button (click)="goToEmployeePerformance()" type="button" aria-label="View Sally Smith's performance" class="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#D8E2EE] bg-[#F8FAFC] text-[#4D9BF6] hover:border-[#4D9BF6] hover:bg-[#EAF3FF]">
                             <i class="fa-solid fa-arrow-right text-[12px]"></i>
                         </button>
                     </div>
+
                 </div>
 
                 <!-- MEMBER 2 -->
-                <div class="rounded-[12px] border border-[#E1E4E8] bg-white p-[14px]">
-                    <div class="flex items-center gap-[10px]">
-                        <div class="h-[38px] w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
+                <div (click)="goToEmployeePerformance()" class="rounded-[12px] border border-[#E1E4E8] bg-white p-[14px] hover:bg-[#EEF5FB] md:flex md:items-center md:justify-between md:gap-[20px] md:rounded-none md:border-0 md:px-[18px] md:py-[14px]">
+
+                    <div class="flex min-w-0 items-center gap-[10px] md:gap-[12px]">
+                        <div class="h-[28px] w-[28px] md:h-[38px] md:w-[38px] shrink-0 rounded-full bg-[#B57AE8]"></div>
 
                         <div class="min-w-0 flex-1">
-                            <div class="flex flex-wrap items-center gap-[7px]">
-                                <span class="text-[15px] font-medium text-[#111827]">Janet Doe</span>
-                                <span class="rounded-full bg-[#DDFBE5] px-[8px] py-[4px] text-[11px] font-medium text-[#16A34A]">Reviewed</span>
+                            <div class="flex flex-wrap items-center md:gap-[7px] md:block">
+                                <span class="h-[28px] w-[70px] md:h-[38px] md:w-[38px] font-medium text-[#111827]">
+                                    Janet Doe
+                                </span>
+                                <span class="rounded-full bg-[#DDFBE5] px-[8px] py-[3px] text-[11px] font-medium text-[#16A34A] md:ml-[10px] md:px-[12px] md:py-[6px] md:text-[15px]">
+                                    Reviewed
+                                </span>
                             </div>
+
+                            <span class="mt-[2px] hidden text-[15px] text-gray-400 md:block">
+                                Software Engineer • Client-side Engineering
+                            </span>
                         </div>
 
-                        <span class="shrink-0 text-[15px] font-medium text-[#111827]">84</span>
+                        <span class="shrink-0 text-[15px] font-medium text-[#111827] md:hidden">
+                            84
+                        </span>
                     </div>
 
-                    <div class="mt-[13px] flex items-center justify-between border-t border-[#E5E7EB] pt-[11px]">
-                        <span class="text-[13px] text-gray-400">Reviewed on 29 Sept, 2026</span>
-
+                    <div class="mt-[13px] flex items-center justify-between border-t border-[#E5E7EB] pt-[11px] md:mt-0 md:flex md:shrink-0 md:justify-end md:gap-[30px] md:border-0 md:pt-0">
+                        <span class="text-[11px] text-gray-400 md:text-[15px]">
+                            Reviewed on 29 Sept, 2026
+                        </span>
+                        <span class="hidden w-[25px] text-center text-[15px] font-medium text-[#111827] md:block">
+                            84
+                        </span>
                         <button (click)="goToEmployeePerformance()" type="button" aria-label="View Janet Doe's performance" class="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#D8E2EE] bg-[#F8FAFC] text-[#4D9BF6] hover:border-[#4D9BF6] hover:bg-[#EAF3FF]">
                             <i class="fa-solid fa-arrow-right text-[12px]"></i>
                         </button>
                     </div>
+
                 </div>
 
             </div>
         </section>
-
-    </div>
-</div>
 
     </div>
 </main>

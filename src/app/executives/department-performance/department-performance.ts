@@ -50,6 +50,7 @@ export class DepartmentPerformance {
   chart: ApexChart = {
     type: 'bar',
     height: 350,
+    width: '100%',
     toolbar: {
       show: false
     }
@@ -91,7 +92,7 @@ export class DepartmentPerformance {
   plotOptions: ApexPlotOptions = {
     bar: {
       horizontal: false,
-      columnWidth: '26%',
+      columnWidth: '30%',
       borderRadius: 5,
       distributed: true
     }
@@ -107,8 +108,8 @@ export class DepartmentPerformance {
         },
         plotOptions: {
           bar: {
-            columnWidth: '45%',
-            borderRadius: 5
+            columnWidth: '26%',
+            borderRadius: 3
           }
         },
         xaxis: {
@@ -128,8 +129,8 @@ export class DepartmentPerformance {
         },
         plotOptions: {
           bar: {
-            columnWidth: '55%',
-            borderRadius: 5
+            columnWidth: '40%',
+            borderRadius: 3
           }
         },
         xaxis: {
@@ -152,7 +153,7 @@ export class DepartmentPerformance {
     strokeDashArray: 0,
     padding: {
       left: 5,
-      right: 5,
+      right: 0,
       top: 0,
       bottom: 0
     }

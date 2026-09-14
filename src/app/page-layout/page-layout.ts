@@ -1,9 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive, Router } from '@angular/router';
 import { Role } from '../services/role';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import {NzDropdownModule} from 'ng-zorro-antd/dropdown';
+import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 
 @Component({
   selector: 'app-page-layout',
@@ -15,8 +15,6 @@ export class PageLayout {
   roleService = inject(Role);
   
   constructor(private router: Router){}
-
-  readonly visible = signal(false);
 
   isSideNav = false;
 

@@ -18,7 +18,7 @@ export class Validation {
   openValidateModal(): void {
     this.selectedScore = null;
     this.showValidateModal = true;
-    console.log('Validate modal clicked')
+    // console.log('Validate modal clicked')
   }
 
   closeValidateModal(): void {
@@ -31,7 +31,7 @@ export class Validation {
       return;
     }
 
-    console.log('Selected validation score:', this.selectedScore);
+    // console.log('Selected validation score:', this.selectedScore);
 
     this.closeValidateModal();
   }

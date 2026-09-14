@@ -14,6 +14,14 @@ export class KpiTemplates {
 
   kpiForm: FormGroup;
 
+createKpi(name='', weight = 0, description=''): FormGroup {
+  return this.fb.group({
+    name: [name],
+    weight: [weight],
+    description: [description]
+  })
+}
+
   constructor(private fb: FormBuilder) {
     this.kpiForm = this.fb.group({
       department: ['Client-side Engineering'],
@@ -33,13 +41,6 @@ export class KpiTemplates {
     });
   }
 
-  createKpi(name = '', weight = 0, description = ''): FormGroup {
-    return this.fb.group({
-      name: [name],
-      weight: [weight],
-      description: [description]
-    });
-  }
 
   get kpis(): FormArray {
     return this.kpiForm.get('kpis') as FormArray;
@@ -53,11 +54,11 @@ export class KpiTemplates {
     this.kpis.removeAt(index);
   }
 
-  get totalWeight(): number {
-    return this.kpis.controls.reduce((total, kpi) => {
-      return total + Number(kpi.get('weight')?.value || 0);
-    }, 0);
-  }
+get totalWeight(): number{
+  return this.kpis.controls.reduce((total, kpi)=>{
+    return total + Number(kpi.get('weight')?.value || 0)
+  }, 0 )
+}
 
   openEditKpi(): void {
     this.isEditKpi = true;

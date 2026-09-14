@@ -54,12 +54,12 @@ export class UserElevate {
   // Previous cycles
   previousCycle = [
     {
-      name: 'ELEVATE - Q3 (July-September 2026)',
+      name: 'ELEVATE - Q1 (January - March 2026)',
       targets: '22 Jul - 30 Jul 2026',
       performance: '29 Sept - 7 Oct 2026'
     },
     {
-      name: 'ELEVATE - Q3 (July-September 2026)',
+      name: 'ELEVATE - Q2 (April - June 2026)',
       targets: '22 Jul - 30 Jul 2026',
       performance: '29 Sept - 7 Oct 2026'
     },
