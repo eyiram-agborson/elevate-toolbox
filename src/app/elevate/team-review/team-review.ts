@@ -11,8 +11,12 @@ export class TeamReview {
 
   constructor(private router: Router){}
 
-  route(){
-    this.router.navigate(["/elevate/teamreview-totalscore"])
+  // route(id: number){
+  //   this.router.navigate(["/elevate/teamreview-totalscore", id])
+  // }
+   route(id: number){
+    this.router.navigate(["elevate/team-review", id])
+    console.log("Team-review router Id", id)
   }
 
    goToDashboard(){
