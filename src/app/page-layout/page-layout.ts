@@ -5,6 +5,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 
+
 @Component({
   selector: 'app-page-layout',
   imports: [RouterOutlet, RouterLink, RouterLinkActive, NzButtonModule, NzDrawerModule, NzDropdownModule],
@@ -13,6 +14,7 @@ import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 })
 export class PageLayout {
   roleService = inject(Role);
+  isLogoutModal = false
   
   constructor(private router: Router){}
 
@@ -30,6 +32,16 @@ export class PageLayout {
   this.close();
   this.router.navigate(['/toolbox']);
 }
+
+openLogoutModal(){
+  this.isLogoutModal = true
+}
+
+closeLogoutModal(){
+  this.isLogoutModal = false
+}
+
+logout(){}
 
 // logout(): void {
 //   this.close();

@@ -1,6 +1,31 @@
 <main class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
   <div class="mx-auto grid h-[65px] w-full grid-cols-[auto_1fr_auto] items-center gap-4 px-5 md:px-8">
 
+      @if(isLogoutModal === true){
+      <div class="fixed inset-0 bg-black/50" (click)="closeLogoutModal()">
+        <div class="flex items-center justify-center mt-70">
+          <div class="bg-white w-[30%] h-full rounded-[10px]">
+            <div class="flex items-center justify-center mt-6">
+              <div class="flex items-center justify-center bg-red-100 w-10 h-10 border border-red-300 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out preview-icon text-red-600"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+              </div>
+            </div>
+            <div class="px-10 mt-3">
+              <div class="md:text-[18px]">
+                Are you sure you want to log out?
+                You will need to sign in again to access your account.
+              </div>
+                <div class="flex gap-4 mt-5 mb-3">
+                  <button (click)="logout()"  class="bg-green-500 !text-white !text-[16px] px-8 py-1.5 rounded-[8px]">Logout</button>
+                  <button (click)="closeLogoutModal()" class="bg-red-500 !text-white !text-[16px] px-8 py-1.5 rounded-[8px]">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      }
+
     <!-- Logo -->
     <div class="flex min-w-0 items-center">
       <img
@@ -144,11 +169,14 @@
       </div>
 
       <!-- Logout Icon -->
+       <button (click)="openLogoutModal()">
       <i
         class="fa-solid fa-right-from-bracket ml-1 cursor-pointer text-[15px] text-red-500 transition hover:text-red-600"
         title="Logout"
         aria-label="Logout">
       </i>
+      </button>
+
 
       <!-- (click)="logout()" -->
 
