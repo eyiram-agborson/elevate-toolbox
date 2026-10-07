@@ -1,16 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { FormsModule } from '@angular/forms';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { Role } from '../../services/role';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { forkJoin, map, of, switchMap } from 'rxjs';
+import { Role } from '../../services/role';
+import { ElevateApi, errorText } from '../../core/elevate-api.service';
+import { Cycle, Kpi, Review, Target } from '../../core/models';
+import { fmtRange, fmtScore } from '../../core/format';
 
+type Tab = 'targets' | 'self-review' | 'completed';
 
+interface Row {
+  title: string;
+  weight: number;
+  targets: string[];
+  staffScore: number | null;
+  staffComments: string;
+  managerComments?: string;
+  rating?: number;
+  score?: number;
+}
+
+// "My cycle": my approved targets, my self-review, and the finished review.
+// The manager's own page (ManagerElevate) uses this same screen.
 @Component({
   selector: 'app-user-elevate',
   imports: [
@@ -21,76 +39,125 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
     NzButtonModule,
     CommonModule,
     FormsModule,
-    NzCollapseModule
+    NzCollapseModule,
   ],
   templateUrl: './user-elevate.html',
   styleUrl: './user-elevate.css',
 })
-export class UserElevate {
-
+export class UserElevate implements OnInit {
   roleService = inject(Role);
+  protected readonly api = inject(ElevateApi);
+  protected readonly router = inject(Router);
+  protected readonly route = inject(ActivatedRoute);
 
-  constructor(private router: Router) {}
+  readonly cycle = signal<Cycle | null>(null);
+  readonly target = signal<Target | null>(null);
+  readonly review = signal<Review | null>(null);
+  readonly rows = signal<Row[]>([]);
+  readonly activeTab = signal<Tab>('targets');
+  readonly loading = signal(true);
+  readonly busy = signal(false);
+  readonly error = signal('');
+  readonly notice = signal('');
 
-  isActiveTab: 'targets' | 'self-review' | 'completed' = 'targets';
-  
-// I set it to true for the demo purposes, but it should be false, when the APIs come in.
-  selfReviewOpen = true;
-  selfReviewSubmitted = false;
-  managerReviewCompleted = true;
+  readonly pages = [1, 2, 3, 4, 5];
+  readonly fmtRange = fmtRange;
+  readonly fmtScore = fmtScore;
 
-  pages = [1, 2, 3, 4, 5];
-  currentPage = 1;
-  message = '';
-  comments = '';
+  readonly targetApproved = computed(() => this.target()?.status === 'SUBMITTED');
 
-  // Current cycle
-  currentCycles = {
-    name: 'ELEVATE - Q3 (July - September 2026)',
-    targets: '22 Jul - 30 Jul 2026',
-    performance: '29 Sept - 7 Oct 2026'
-  };
+  readonly selfReviewSubmitted = computed(() => {
+    const r = this.review();
+    return !!r && r.status !== 'DRAFT';
+  });
 
-  // Previous cycles
-  previousCycle = [
-    {
-      name: 'ELEVATE - Q1 (January - March 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q2 (April - June 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    }
-  ];
+  readonly managerReviewCompleted = computed(() => {
+    const s = this.review()?.status;
+    return s === 'MANAGER_REVIEWED' || s === 'HR_VALIDATED';
+  });
 
-  // KPI data
-  previousCycles = [
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGET',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-  ];
+  readonly reviewWindowOpen = computed(() => {
+    const c = this.cycle();
+    if (!c) return false;
+    if (!c.reviewStartDate || !c.reviewEndDate) return true; // legacy cycle: not limited
+    const end = new Date(c.reviewEndDate);
+    end.setUTCHours(23, 59, 59, 999);
+    const now = new Date();
+    return now >= new Date(c.reviewStartDate) && now <= end;
+  });
+
+  /** The form can be filled in: approved targets, window open, nothing submitted yet. */
+  readonly selfReviewOpen = computed(
+    () => this.targetApproved() && this.reviewWindowOpen() && !this.selfReviewSubmitted(),
+  );
+
+  readonly stepIndex = computed(() =>
+    this.managerReviewCompleted() ? 2 : this.selfReviewSubmitted() || this.selfReviewOpen() ? 1 : 0,
+  );
+
+  readonly totalScore = computed(() => this.review()?.overallScore ?? 0);
+
+  ngOnInit(): void {
+    const cycleId = this.route.snapshot.queryParamMap.get('cycle');
+    const cycle$ = cycleId
+      ? this.api.cycles().pipe(map((list) => list.find((c) => c._id === cycleId) ?? null))
+      : this.api.activeCycle();
+
+    cycle$
+      .pipe(
+        switchMap((cycle) =>
+          cycle
+            ? forkJoin({
+                targets: this.api.myTargets({ performanceCycleId: cycle._id }),
+                reviews: this.api.myReviews({ performanceCycleId: cycle._id }),
+              }).pipe(map((r) => ({ cycle, ...r })))
+            : of({ cycle, targets: [] as Target[], reviews: [] as Review[] }),
+        ),
+      )
+      .subscribe({
+        next: ({ cycle, targets, reviews }) => {
+          this.cycle.set(cycle);
+          this.target.set(targets[0] ?? null);
+          this.review.set(reviews[0] ?? null);
+          this.rows.set(this.buildRows());
+          this.activeTab.set(
+            this.managerReviewCompleted()
+              ? 'completed'
+              : this.selfReviewSubmitted() || this.selfReviewOpen()
+                ? 'self-review'
+                : 'targets',
+          );
+          this.loading.set(false);
+        },
+        error: (e) => {
+          this.error.set(errorText(e, 'Could not load your Elevate cycle.'));
+          this.loading.set(false);
+        },
+      });
+  }
+
+  /** Rows come from the review once it exists (it carries both sides), else from the targets. */
+  private buildRows(): Row[] {
+    const review = this.review();
+    const source: Kpi[] = review?.kpis?.length ? review.kpis : (this.target()?.kpis ?? []);
+    return source.map((k) => ({
+      title: k.title,
+      weight: k.weight,
+      targets: k.targets ?? [],
+      staffScore: k.staffScore ?? null,
+      staffComments: k.staffComments ?? '',
+      managerComments: k.managerComments,
+      rating: k.rating,
+      score: k.score,
+    }));
+  }
 
   myactivities(): void {
     this.router.navigate(['/activities-layout', 'my-activities']);
   }
 
   goToActivities(): void {
-    this.router.navigate(['/activities-layout', 'my-activities']);
-  }
-
-  goToElevate(): void {
-    this.router.navigate(['/elevate']);
+    this.myactivities();
   }
 
   goToDashboard(): void {
@@ -98,201 +165,59 @@ export class UserElevate {
   }
 
   tabsActive(tab: string): void {
-    if (tab === 'completed' && !this.managerReviewCompleted) {
-      return;
-    }
-
-    this.isActiveTab =
-      tab as 'targets' | 'self-review' | 'completed';
-
-      window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+    if (tab === 'completed' && !this.managerReviewCompleted()) return;
+    this.activeTab.set(tab as Tab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  goToSelfReviewPage(){
-    if (!this.selfReviewOpen){
-      return
-    }
-
-    this.isActiveTab = 'self-review'
+  goToSelfReviewPage(): void {
+    if (!this.selfReviewOpen() && !this.selfReviewSubmitted()) return;
+    this.activeTab.set('self-review');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  goToPage(page: number): void {
-    this.currentPage = page;
+  rate(row: Row, score: number): void {
+    if (!this.selfReviewOpen()) return;
+    row.staffScore = score;
   }
 
   submitSelfReview(): void {
-    this.selfReviewSubmitted = true;
-    this.isActiveTab = 'self-review';
+    const target = this.target();
+    if (!target || !this.selfReviewOpen()) return;
+
+    const unrated = this.rows().filter((r) => !r.staffScore);
+    if (unrated.length) {
+      this.error.set(`Rate every KPI before submitting. Missing: ${unrated.map((r) => r.title).join(', ')}.`);
+      return;
+    }
+
+    this.busy.set(true);
+    this.error.set('');
+    this.api
+      .selfReview({
+        targetId: target._id,
+        kpis: this.rows().map((r) => ({
+          title: r.title,
+          staffScore: r.staffScore as number,
+          staffComments: r.staffComments.trim() || undefined,
+        })),
+      })
+      .subscribe({
+        next: (review) => {
+          this.review.set(review);
+          this.rows.set(this.buildRows());
+          this.busy.set(false);
+          this.notice.set('Your self-review has been submitted.');
+          this.activeTab.set('self-review');
+        },
+        error: (e) => {
+          this.busy.set(false);
+          this.error.set(errorText(e));
+        },
+      });
   }
 
   completeManagerReview(): void {
-    this.managerReviewCompleted = true;
-    this.isActiveTab = 'completed';
+    if (this.managerReviewCompleted()) this.activeTab.set('completed');
   }
-
-
-
-
-
-
-
-
-
-
-
-
-  // YOUR ORIGINAL CODE
-
-  /*
-  // isActiveTab = 'target';
-  currentStep = 1;
-  totalStep = 4
-  message = ""
-  coments = ""
-
-  current =1
-
-  role = 'manager'
-
-
-  constructor(private router: Router){}
-
-
-  ngOnInit(){
-
-  }
-
-
-  myactivities(){
-    this.router.navigate(["/my-activities"])
-  }
-
-
-  goToElevate() {
-    this.router.navigate(["/elevate"])
-  }
-
-
-
-  // currentSteps = signal(0);
-
-  // Steps progress //
-  isActiveTab = 'target'
-
-  tabsActive(tab: string){
-    this.isActiveTab = tab
-  }
-
-
-  // pagination buttons //
-  pages = [1, 2, 3, 4, 5];
-  currentPage = 1;
-
-  goToPage(page: number): void {
-    this.currentPage = page;
-
-    // Load/update your data here
-  }
-
-
-
-  previousCycles = [
-    {
-      weight: 'Weight: 60%',
-      application: 'Application Development & Delivery',
-      name: 'TARGE',
-      targets: 'Deliver 100% of assigned tasks within agreed sprint timeline',
-      performance: 'Deliver 100% of assigned tasks within agreed sprint timeline'
-    },
-
-  ];
-
-
-
-   currentCycles = {
-    name: 'ELEVATE - Q3 (July - September 2026)',
-    targets: '22 Jul - 30 Jul 2026',
-    performance: '29 Sept - 7 Oct 2026'
-  };
-
-  previousCycle = [
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    }
-  ];
-
-
-  // top tab
-  tabActive(tab: string) {
-    this.isActiveTab = tab;
-
-    switch (tab) {
-      case 'target':
-        this.currentStep = 1;
-        break;
-
-      case 'self-review':
-        this.currentStep = 2;
-        break;
-
-      case 'manager-review':
-        this.currentStep = 3;
-        break;
-
-      case 'complete':
-        this.currentStep = 4;
-        break;
-    }
-
-  }
-
-
-  goToActivities(){
-    this.router.navigate(["/my-activities"])
-  }
-
-  goToDashboard() {
-    this.router.navigate(["/dashboard"])
-  }
-
-
-  // options = ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'];
-
-  // handleValueChange(e: string | number): void {
-  //   console.log(e);
-  // }
-
-  isActiveTabss: 'target' | 'complete' = 'target';
-
-  options = [
-    {
-      label: 'Target',
-      value: 'target'
-    },
-    {
-      label: 'Complete',
-      value: 'complete'
-    }
-  ];
-
-  tabsActives(tab: string): void {
-    this.isActiveTab = tab as 'target' | 'complete';
-  }
-  */
-
 }

@@ -1,95 +1,163 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../core/auth.service';
+import { ElevateApi, errorText } from '../../core/elevate-api.service';
+import { Review } from '../../core/models';
+import { fmtScore } from '../../core/format';
 
+interface Row {
+  title: string;
+  weight: number;
+  targets: string[];
+  staffScore?: number;
+  staffComments: string;
+  rating: number | null;
+  performance: number | null;
+  score: number | null;
+  managerComments: string;
+}
+
+// The manager rates one team member's submitted self-review.
 @Component({
   selector: 'app-teamreview-totalscore',
   imports: [CommonModule, FormsModule],
   templateUrl: './teamreview-totalscore.html',
   styleUrl: './teamreview-totalscore.css',
 })
-export class TeamreviewTotalscore {
+export class TeamreviewTotalscore implements OnInit {
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly api = inject(ElevateApi);
+  private readonly auth = inject(AuthService);
 
-  pages = [1, 2, 3, 4, 5];
+  readonly pages = [1, 2, 3, 4, 5];
+  readonly fmtScore = fmtScore;
 
-  // DEMO STATE
-  // false = Submitted / manager can review
-  // true  = Reviewed / read-only
-  isReadOnly = false;
+  readonly review = signal<Review | null>(null);
+  readonly rows = signal<Row[]>([]);
+  overallComments = '';
+  readonly loading = signal(true);
+  readonly busy = signal(false);
+  readonly error = signal('');
+  readonly notice = signal('');
 
-  kpis = [
-    {
-      title: 'Application Development & Delivery',
-      weight: 60,
-      targets: [
-        'Deliver 100% of assigned tasks within agreed sprint timelines.',
-        'Maintain agreed quality standards across all deliverables.'
-      ],
-      performance: null as number | null,
-      rating: null as number | null,
-      score: null as number | null,
-      staffComments: 'I delivered 100% of assigned tasks within agreed sprint timelines.',
-      managerComments: ''
-    },
-    {
-      title: 'Operational Efficiency & Code Quality',
-      weight: 20,
-      targets: [
-        'Maintain agreed code quality standards across all deliverables.',
-        'Complete assigned development tasks within agreed timelines.'
-      ],
-      performance: null as number | null,
-      rating: null as number | null,
-      score: null as number | null,
-      staffComments: 'Employee comments will appear here.',
-      managerComments: ''
-    },
-    {
-      title: 'Learning & Development',
-      weight: 20,
-      targets: [
-        'Complete relevant professional development activities during the review cycle.',
-        'Apply newly acquired skills to assigned responsibilities.'
-      ],
-      performance: null as number | null,
-      rating: null as number | null,
-      score: null as number | null,
-      staffComments: 'Employee comments will appear here.',
-      managerComments: ''
-    }
-  ];
+  /** Rated already (by anyone): nothing can be edited. */
+  readonly rated = computed(() => {
+    const s = this.review()?.status;
+    return s === 'MANAGER_REVIEWED' || s === 'HR_VALIDATED';
+  });
 
-  constructor(private router: Router) {}
+  /** Only the review's manager can rate it, and only while it awaits a rating. */
+  readonly canRate = computed(() => {
+    const r = this.review();
+    return !!r && r.status === 'SELF_REVIEW_SUBMITTED' && r.manager?._id === this.auth.me()?.uid;
+  });
 
-  goToTeamReviews() {
-    this.router.navigate(['/team-review']);
+  get isReadOnly(): boolean {
+    return !this.canRate();
   }
 
-  selectRating(kpi: any, rating: number) {
-    if (this.isReadOnly) {
+  readonly staffName = computed(() => {
+    const s = this.review()?.staff;
+    return s ? `${s.firstName ?? ''} ${s.lastName ?? ''}`.trim() : '';
+  });
+
+  readonly unitName = computed(() => {
+    const u = this.review()?.unit;
+    return u && typeof u !== 'string' ? u.name : '';
+  });
+
+  /** The result so far: final once rated, a live preview while rating. */
+  readonly totalScore = computed(() => {
+    const r = this.review();
+    if (this.rated()) return r?.overallScore ?? 0;
+    return (
+      Math.round(
+        this.rows().reduce((sum, k) => sum + ((k.rating ?? 0) / 5) * k.weight, 0) * 100,
+      ) / 100
+    );
+  });
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      this.error.set('No review selected.');
+      this.loading.set(false);
       return;
     }
-
-    kpi.rating = rating;
+    this.api.review(id).subscribe({
+      next: (review) => {
+        this.apply(review);
+        this.loading.set(false);
+      },
+      error: (e) => {
+        this.error.set(errorText(e, 'Could not load this review.'));
+        this.loading.set(false);
+      },
+    });
   }
 
-  getTotalScore(): number {
-    if (!this.isReadOnly) {
-      return 0;
-    }
-
-    return this.kpis.reduce(
-      (total, kpi) => total + (kpi.score ?? 0),
-      0
+  private apply(review: Review): void {
+    this.review.set(review);
+    this.overallComments = review.managerReviewComments ?? '';
+    this.rows.set(
+      review.kpis.map((k) => ({
+        title: k.title,
+        weight: k.weight,
+        targets: k.targets ?? [],
+        staffScore: k.staffScore,
+        staffComments: k.staffComments ?? '',
+        rating: k.rating ?? null,
+        performance: k.performance ?? null,
+        score: k.score ?? null,
+        managerComments: k.managerComments ?? '',
+      })),
     );
   }
 
-  saveDraft() {
-    console.log('Saving review draft:', this.kpis);
+  goToTeamReviews(): void {
+    this.router.navigate(['/elevate/team-review']);
   }
 
-  submitReview() {
-    console.log('Submitting review:', this.kpis);
+  selectRating(kpi: Row, rating: number): void {
+    if (this.isReadOnly) return;
+    kpi.rating = rating;
+    this.rows.set([...this.rows()]); // refresh the live total
+  }
+
+  submitReview(): void {
+    const review = this.review();
+    if (!review || !this.canRate()) return;
+
+    const unrated = this.rows().filter((r) => !r.rating);
+    if (unrated.length) {
+      this.error.set(`Rate every KPI before submitting. Missing: ${unrated.map((r) => r.title).join(', ')}.`);
+      return;
+    }
+
+    this.busy.set(true);
+    this.error.set('');
+    this.api
+      .managerReview(review._id, {
+        comments: this.overallComments.trim() || undefined,
+        kpis: this.rows().map((r) => ({
+          title: r.title,
+          rating: r.rating as number,
+          managerComments: r.managerComments.trim() || undefined,
+        })),
+      })
+      .subscribe({
+        next: (updated) => {
+          this.busy.set(false);
+          this.apply(updated);
+          this.notice.set('Review submitted. HR will validate the final score.');
+        },
+        error: (e) => {
+          this.busy.set(false);
+          this.error.set(errorText(e));
+        },
+      });
   }
 }

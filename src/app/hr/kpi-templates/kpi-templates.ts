@@ -1,66 +1,114 @@
-import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { ElevateApi, errorText } from '../../core/elevate-api.service';
+import { ManagedUnit, Template } from '../../core/models';
+import { fmtDate } from '../../core/format';
+
+interface KpiRow {
+  title: string;
+  weight: number;
+  description: string;
+}
 
 @Component({
   selector: 'app-kpi-templates',
-  imports: [ReactiveFormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './kpi-templates.html',
   styleUrl: './kpi-templates.css',
 })
-export class KpiTemplates {
+export class KpiTemplates implements OnInit {
+  private readonly api = inject(ElevateApi);
 
+  readonly templates = signal<Template[]>([]);
+  readonly units = signal<ManagedUnit[]>([]);
+  readonly loading = signal(true);
+  readonly pageError = signal('');
+  readonly notice = signal('');
+  readonly search = signal('');
+  readonly unitFilter = signal('');
+  readonly fmtDate = fmtDate;
+
+  readonly visible = computed(() => {
+    const q = this.search().trim().toLowerCase();
+    const unit = this.unitFilter();
+    return this.templates().filter((t) => {
+      const name = `${t.name} ${this.unitName(t)}`.toLowerCase();
+      return (!q || name.includes(q)) && (!unit || this.unitId(t) === unit);
+    });
+  });
+
+  // modal
   isEditKpi = false;
-  showAddTemplateModal = false;
+  editingId: string | null = null;
+  unit = '';
+  name = '';
+  description = '';
+  kpis: KpiRow[] = [];
+  readonly saving = signal(false);
+  readonly formError = signal('');
 
-  kpiForm: FormGroup;
+  ngOnInit(): void {
+    this.api.units().subscribe({ next: (u) => this.units.set(u), error: () => undefined });
+    this.load();
+  }
 
-createKpi(name='', weight = 0, description=''): FormGroup {
-  return this.fb.group({
-    name: [name],
-    weight: [weight],
-    description: [description]
-  })
-}
-
-  constructor(private fb: FormBuilder) {
-    this.kpiForm = this.fb.group({
-      department: ['Client-side Engineering'],
-      jobRole: ['Software Engineer'],
-      kpis: this.fb.array([
-        this.createKpi(
-          'Application Development & Delivery',
-          60,
-          'Deliver assigned work within agreed sprint timelines.'
-        ),
-        this.createKpi(
-          'Operational Efficiency & Code Quality',
-          40,
-          'Maintain code quality and review standards.'
-        )
-      ])
+  load(): void {
+    this.loading.set(true);
+    this.api.templates().subscribe({
+      next: (list) => {
+        this.templates.set(list);
+        this.loading.set(false);
+      },
+      error: (e) => {
+        this.pageError.set(errorText(e, 'Could not load the KPI templates.'));
+        this.loading.set(false);
+      },
     });
   }
 
-
-  get kpis(): FormArray {
-    return this.kpiForm.get('kpis') as FormArray;
+  unitId(t: Template): string {
+    return typeof t.unit === 'string' ? t.unit : t.unit?._id;
   }
 
-  addKpi(): void {
-    this.kpis.push(this.createKpi());
+  unitName(t: Template): string {
+    if (t.unit && typeof t.unit !== 'string') return t.unit.name;
+    return this.units().find((u) => u._id === t.unit)?.name ?? '—';
   }
 
-  removeKpi(index: number): void {
-    this.kpis.removeAt(index);
+  get totalWeight(): number {
+    return this.kpis.reduce((sum, k) => sum + (Number(k.weight) || 0), 0);
   }
 
-get totalWeight(): number{
-  return this.kpis.controls.reduce((total, kpi)=>{
-    return total + Number(kpi.get('weight')?.value || 0)
-  }, 0 )
-}
+  get weightOk(): boolean {
+    return Math.abs(this.totalWeight - 100) < 0.01;
+  }
 
-  openEditKpi(): void {
+  private blankKpi(): KpiRow {
+    return { title: '', weight: 0, description: '' };
+  }
+
+  openAddTemplate(): void {
+    this.editingId = null;
+    this.formError.set('');
+    this.unit = '';
+    this.name = '';
+    this.description = '';
+    this.kpis = [this.blankKpi(), this.blankKpi()];
+    this.isEditKpi = true;
+  }
+
+  openEditKpi(t: Template): void {
+    this.editingId = t._id;
+    this.formError.set('');
+    this.unit = this.unitId(t);
+    this.name = t.name;
+    this.description = t.description ?? '';
+    this.kpis = t.criteria.map((c) => ({
+      title: c.title,
+      weight: c.weight,
+      description: c.description ?? '',
+    }));
     this.isEditKpi = true;
   }
 
@@ -68,16 +116,52 @@ get totalWeight(): number{
     this.isEditKpi = false;
   }
 
+  addKpi(): void {
+    this.kpis.push(this.blankKpi());
+  }
+
+  removeKpi(index: number): void {
+    this.kpis.splice(index, 1);
+  }
+
   saveTemplate(): void {
-    console.log(this.kpiForm.value);
-    this.isEditKpi = false;
-  }
+    if (!this.unit) return this.formError.set('Choose the department this template is for.');
+    if (!this.name.trim()) return this.formError.set('Give the template a name.');
+    if (this.kpis.length === 0 || this.kpis.some((k) => !k.title.trim())) {
+      return this.formError.set('Every KPI needs a name.');
+    }
+    if (!this.weightOk) {
+      return this.formError.set(`The weights must add up to 100% (now ${this.totalWeight}%).`);
+    }
 
-  openAddTemplate(): void {
-    this.showAddTemplateModal = true;
-  }
+    const body = {
+      unit: this.unit,
+      name: this.name.trim(),
+      description: this.description.trim() || undefined,
+      criteria: this.kpis.map((k) => ({
+        title: k.title.trim(),
+        weight: Number(k.weight),
+        description: k.description.trim() || undefined,
+      })),
+    };
 
-  closeAddTemplate(): void {
-    this.showAddTemplateModal = false;
+    this.saving.set(true);
+    this.formError.set('');
+    const editing = !!this.editingId;
+    const request = this.editingId
+      ? this.api.updateTemplate(this.editingId, body)
+      : this.api.createTemplate(body);
+    request.subscribe({
+      next: () => {
+        this.saving.set(false);
+        this.isEditKpi = false;
+        this.notice.set(editing ? 'Template updated.' : 'Template created.');
+        this.load();
+      },
+      error: (e) => {
+        this.saving.set(false);
+        this.formError.set(errorText(e));
+      },
+    });
   }
 }

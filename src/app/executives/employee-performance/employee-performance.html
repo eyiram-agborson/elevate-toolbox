@@ -13,29 +13,45 @@
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div class="min-w-0">
         <h1 class="!text-[19px] font-semibold leading-tight !text-[#102A43] md:!text-[24px]">Employee Performance</h1>
-        <p class="mt-2 !text-[12px] !text-[#60758F] md:!text-[14px]">Employee reviews for your assigned department.</p>
+        <p class="mt-2 !text-[12px] !text-[#60758F] md:!text-[14px]">Employee reviews for the selected cycle.</p>
       </div>
 
       <div class="flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center">
-        <div class="relative w-full md:w-[280px]">
+        <div class="relative w-full md:w-[240px]">
           <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 !text-[12px] !text-[#7C91A8] md:!text-[14px]"></i>
-          <input type="text" placeholder="Search employees..." class="h-[46px] w-full rounded-[10px] border border-[#D8DEE6] bg-white pl-11 pr-4 !text-[12px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB] md:!text-[14px]" />
+          <input type="text" placeholder="Search employees..." [ngModel]="search()" (ngModelChange)="search.set($event)" class="h-[46px] w-full rounded-[10px] border border-[#D8DEE6] bg-white pl-11 pr-4 !text-[12px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB] md:!text-[14px]" />
         </div>
 
-        <div class="employee-filter relative w-full md:w-[180px]">
-          <select class="employee-performance-select h-[46px] w-full appearance-none rounded-[10px] border border-[#D8DEE6] bg-white px-4 pr-10 !text-[12px] !text-[#102A43] outline-none focus:border-[#347DEB] focus:ring-1 focus:ring-[#347DEB] md:!text-[14px]" aria-label="Filter employees by submission status">
-            <option value="all">All Employees</option>
-            <option value="submitted">Submitted</option>
-            <option value="not-submitted">Not Submitted</option>
-          </select>
-          <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 !text-[11px] !text-[#60758F] md:!text-[13px]"></i>
-        </div>
+        <select [ngModel]="unitId()" (ngModelChange)="onUnitChange($event)" class="h-[46px] w-full rounded-[10px] border border-[#D8DEE6] bg-white px-4 !text-[12px] !text-[#102A43] outline-none focus:border-[#347DEB] md:w-[190px] md:!text-[14px]" aria-label="Filter by department">
+          <option value="">All departments</option>
+          @for (u of units(); track u._id) {
+            <option [value]="u._id">{{ u.name }}</option>
+          }
+        </select>
+
+        <select [ngModel]="status()" (ngModelChange)="status.set($event)" class="h-[46px] w-full rounded-[10px] border border-[#D8DEE6] bg-white px-4 !text-[12px] !text-[#102A43] outline-none focus:border-[#347DEB] md:w-[170px] md:!text-[14px]" aria-label="Filter employees by submission status">
+          <option value="all">All Employees</option>
+          <option value="submitted">Submitted</option>
+          <option value="not-submitted">Not Submitted</option>
+        </select>
+
+        <select [ngModel]="cycleId()" (ngModelChange)="onCycleChange($event)" class="h-[46px] w-full rounded-[10px] border border-[#D8DEE6] bg-white px-4 !text-[12px] !text-[#102A43] outline-none focus:border-[#347DEB] md:w-[280px] md:!text-[14px]" aria-label="Cycle">
+          @for (c of cycles(); track c._id) {
+            <option [value]="c._id">{{ label(c) }}</option>
+          }
+        </select>
       </div>
     </div>
   </section>
 
   <section class="px-4 pb-6 md:px-8 md:pb-8">
-    <div class="mb-3 !text-[11px] font-medium uppercase !text-[#60758F] md:!text-[14px]">Employees (24)</div>
+    @if (loading()) {
+      <p class="text-[14px] text-[#64748B]">Loading employees…</p>
+    } @else if (error()) {
+      <p class="rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+    } @else {
+
+    <div class="mb-3 !text-[11px] font-medium uppercase !text-[#60758F] md:!text-[14px]">Employees ({{ visible().length }})</div>
 
     <div class="w-full overflow-x-auto">
       <table class="w-full min-w-[520px] table-fixed border-collapse">
@@ -50,62 +66,33 @@
         </thead>
 
         <tbody>
-          <tr (click)="openEmployeeDetails('Sally Smith')" class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]">
-            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">Sally Smith</div></div></td>
-            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">Backend Engineer</td>
-            <td class="px-2 py-4 md:px-5 md:py-5"><span class="inline-flex whitespace-nowrap rounded-full bg-[#EAF3FF] px-1.5 py-1 !text-[10px] font-medium !text-[#347DEB] md:px-3 md:!text-[14px]">Submitted</span></td>
-            <td class="hidden px-4 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">80 / 100</td>
-            <td class="px-2 py-4 text-center !text-[11px] font-semibold !text-[#102A43] md:px-5 md:py-5 md:!text-[14px]">82 / 100</td>
+          @for (r of visible(); track r.staff._id) {
+          <tr (click)="openEmployeeDetails(r)" [class]="r.reviewId ? 'cursor-pointer' : ''" class="border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]">
+            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">{{ personName(r.staff) }}</div></div></td>
+            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">{{ r.staff.jobTitle || '—' }}</td>
+            <td class="px-2 py-4 md:px-5 md:py-5">
+              @if (isSubmitted(r)) {
+                <span class="inline-flex whitespace-nowrap rounded-full bg-[#EAF3FF] px-1.5 py-1 !text-[10px] font-medium !text-[#347DEB] md:px-3 md:!text-[14px]">Submitted</span>
+              } @else {
+                <span class="inline-flex whitespace-nowrap rounded-full bg-[#F1F5F9] px-1.5 py-1 !text-[10px] font-medium !text-[#60758F] md:px-3 md:!text-[14px]">Not Submitted</span>
+              }
+            </td>
+            <td class="hidden px-4 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">{{ r.validationScore !== null ? fmtScore(r.validationScore) + ' / 100' : '—' }}</td>
+            <td class="px-2 py-4 text-center !text-[11px] font-semibold !text-[#102A43] md:px-5 md:py-5 md:!text-[14px]">{{ r.managerScore !== null ? fmtScore(r.managerScore) + ' / 100' : '—' }}</td>
           </tr>
-
-          <tr (click)="openEmployeeDetails('Janet Doe')" class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]">
-            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">Janet Doe</div></div></td>
-            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">Software Engineer</td>
-            <td class="px-2 py-4 md:px-5 md:py-5"><span class="inline-flex whitespace-nowrap rounded-full bg-[#F1F5F9] px-1.5 py-1 !text-[10px] font-medium !text-[#60758F] md:px-3 md:!text-[14px]">Not Submitted</span></td>
-            <td class="hidden px-4 py-4 text-center !text-[11px] !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">—</td>
-            <td class="px-2 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:px-5 md:py-5 md:!text-[14px]">—</td>
+          } @empty {
+          <tr>
+            <td colspan="5" class="px-4 py-10 text-center !text-[13px] !text-[#60758F]">No employees found.</td>
           </tr>
-
-          <tr (click)="openEmployeeDetails('Kofi Asante')" class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]">
-            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">Kofi Asante</div></div></td>
-            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">Account Executive</td>
-            <td class="px-2 py-4 md:px-5 md:py-5"><span class="inline-flex whitespace-nowrap rounded-full bg-[#EAF3FF] px-1.5 py-1 !text-[10px] font-medium !text-[#347DEB] md:px-3 md:!text-[14px]">Submitted</span></td>
-            <td class="hidden px-4 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">78 / 100</td>
-            <td class="px-2 py-4 text-center !text-[11px] font-semibold !text-[#102A43] md:px-5 md:py-5 md:!text-[14px]">82 / 100</td>
-          </tr>
-
-          <tr (click)="openEmployeeDetails('Michael Brown')" class="cursor-pointer border-b border-[#E8ECF0] transition-colors hover:bg-[#F8FAFC]">
-            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">Michael Brown</div></div></td>
-            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">Product Designer</td>
-            <td class="px-2 py-4 md:px-5 md:py-5"><span class="inline-flex whitespace-nowrap rounded-full bg-[#F1F5F9] px-1.5 py-1 !text-[10px] font-medium !text-[#60758F] md:px-3 md:!text-[14px]">Not Submitted</span></td>
-            <td class="hidden px-4 py-4 text-center !text-[11px] !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">—</td>
-            <td class="px-2 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:px-5 md:py-5 md:!text-[14px]">—</td>
-          </tr>
-
-          <tr (click)="openEmployeeDetails('Ama Mensah')" class="cursor-pointer transition-colors hover:bg-[#F8FAFC]">
-            <td class="px-2 py-4 md:px-5 md:py-5"><div class="flex min-w-0 items-center gap-1.5 md:gap-3"><i class="fa-solid fa-user shrink-0 !text-[13px] !text-[#7C91A8] md:!text-[17px]"></i><div class="truncate !text-[11px] font-medium !text-[#102A43] md:!text-[14px]">Ama Mensah</div></div></td>
-            <td class="hidden px-4 py-4 !text-[11px] !text-[#102A43] md:table-cell md:px-5 md:py-5 md:!text-[14px]">QA Engineer</td>
-            <td class="px-2 py-4 md:px-5 md:py-5"><span class="inline-flex whitespace-nowrap rounded-full bg-[#EAF3FF] px-1.5 py-1 !text-[10px] font-medium !text-[#347DEB] md:px-3 md:!text-[14px]">Submitted</span></td>
-            <td class="hidden px-4 py-4 text-center !text-[11px] font-medium !text-[#60758F] md:table-cell md:px-5 md:py-5 md:!text-[14px]">86 / 100</td>
-            <td class="px-2 py-4 text-center !text-[11px] font-semibold !text-[#102A43] md:px-5 md:py-5 md:!text-[14px]">88 / 100</td>
-          </tr>
+          }
         </tbody>
       </table>
     </div>
 
-
-    <div class="mt-4 flex items-center justify-between gap-3">
-      <span class="whitespace-nowrap !text-[10px] !text-[#60758F] md:!text-[14px]">1–5 of 15 employees</span>
-      <div class="flex shrink-0 items-center gap-1.5 md:gap-2">
-        <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#D8DEE6] bg-white !text-[10px] !text-[#60758F] transition-colors hover:bg-[#F8FAFC] md:h-9 md:w-9 md:!text-[14px]"><i class="fa-solid fa-chevron-left"></i></button>
-        <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#347DEB] !text-[10px] font-medium !text-white md:h-9 md:w-9 md:!text-[14px]">1</button>
-        <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#D8DEE6] bg-white !text-[10px] !text-[#102A43] transition-colors hover:bg-[#F8FAFC] md:h-9 md:w-9 md:!text-[14px]">2</button>
-        <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#D8DEE6] bg-white !text-[10px] !text-[#60758F] transition-colors hover:bg-[#F8FAFC] md:h-9 md:w-9 md:!text-[14px]"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-    </div>
+    }
   </section>
 
-  @if (showEmployeeModal) {
+  @if (popupOpen()) {
     <div (click)="closeEmployeeDetails()" class="employee-details-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
       <div (click)="$event.stopPropagation()" class="employee-details-modal flex max-h-[82vh] w-full max-w-[760px] flex-col overflow-hidden rounded-2xl bg-[#F7F9FC] shadow-xl">
         <header class="flex shrink-0 items-center justify-between gap-3 border-b border-[#E1E5EA] bg-white px-5 py-4">
@@ -114,136 +101,75 @@
         </header>
 
         <div class="min-h-0 flex-1 overflow-y-auto px-4 py-4 md:px-6 md:py-5">
+          @if (reviewLoading()) {
+            <p class="text-[14px] text-[#64748B]">Loading…</p>
+          } @else if (reviewError()) {
+            <p class="rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ reviewError() }}</p>
+          } @else if (review(); as r) {
           <section class="mb-4">
             <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div class="min-w-0">
-                <h3 class="!text-[15px] font-semibold leading-tight !text-[#102A43] md:!text-[20px]">Sally Smith</h3>
-                <p class="mt-1 !text-[10px] font-medium uppercase tracking-wide !text-[#617896] md:!text-[14px]">Backend Engineer · Technology</p>
+                <h3 class="!text-[15px] font-semibold leading-tight !text-[#102A43] md:!text-[20px]">{{ personName(r.staff) }}</h3>
+                <p class="mt-1 !text-[10px] font-medium uppercase tracking-wide !text-[#617896] md:!text-[14px]">{{ r.staff.jobTitle || 'Staff' }} · {{ reviewUnit() }}</p>
               </div>
 
               <div class="grid grid-cols-2 gap-2 md:flex md:items-center md:gap-7">
                 <div class="rounded-lg border border-[#E1E8F0] bg-white px-3 py-2.5 md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-right">
                   <p class="!text-[9px] font-medium uppercase tracking-wide !text-[#60758F] md:!text-[14px]">Validation Score</p>
-                  <p class="mt-1 !text-[15px] font-semibold leading-none !text-[#347DEB] md:!text-[18px] md:leading-normal">80 / 100</p>
+                  <p class="mt-1 !text-[15px] font-semibold leading-none !text-[#347DEB] md:!text-[18px] md:leading-normal">{{ r.status === 'HR_VALIDATED' ? fmtScore(r.hrValidation?.finalScore) + ' / 100' : '—' }}</p>
                 </div>
 
                 <div class="hidden h-10 w-px bg-[#DCE1E6] md:block"></div>
 
                 <div class="rounded-lg border border-[#E1E8F0] bg-white px-3 py-2.5 md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-right">
                   <p class="!text-[9px] font-medium uppercase tracking-wide !text-[#60758F] md:!text-[14px]">Total Score</p>
-                  <p class="mt-1 !text-[16px] font-semibold leading-none !text-[#102A43] md:!text-[18px] md:leading-normal">82 / 100</p>
+                  <p class="mt-1 !text-[16px] font-semibold leading-none !text-[#102A43] md:!text-[18px] md:leading-normal">{{ fmtScore(r.status === 'HR_VALIDATED' ? (r.hrValidation?.originalScore ?? r.overallScore) : r.overallScore) }}{{ r.overallScore !== undefined ? ' / 100' : '' }}</p>
                 </div>
               </div>
             </div>
           </section>
 
+          @for (k of r.kpis; track k.title) {
           <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-3 py-3 md:px-5 md:py-4">
             <div class="flex flex-col gap-2 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
-              <h3 class="!text-[13px] font-semibold leading-snug !text-[#102A43] md:!text-[17px]">Application Development &amp; Delivery</h3>
-              <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 !text-[10px] font-medium !text-[#6E6E6E] md:!text-[13px]">Weight: 60%</span>
+              <h3 class="!text-[13px] font-semibold leading-snug !text-[#102A43] md:!text-[17px]">{{ k.title }}</h3>
+              <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 !text-[10px] font-medium !text-[#6E6E6E] md:!text-[13px]">Weight: {{ k.weight }}%</span>
             </div>
 
             <div class="mt-3">
               <p class="!text-[10px] font-semibold uppercase tracking-wide !text-[#617896] md:!text-[13px]">Target</p>
               <ul class="mt-2 space-y-1 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">
-                <li>• Deliver 100% of assigned tasks within agreed sprint timelines.</li>
-                <li>• Maintain agreed quality standards across all deliverables.</li>
+                @for (t of k.targets; track $index) {
+                  <li>• {{ t }}</li>
+                }
               </ul>
             </div>
 
             <div class="mt-3 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-3 py-3 md:mt-4 md:px-4">
               <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
                 <span class="!text-[11px] font-medium !text-[#6F6255] md:!text-[14px]"><i class="fa-solid fa-user mr-2 !text-[10px] !text-[#8A7967]"></i>Employee Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Employee rating: 4 / 5</span>
+                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Employee rating: {{ fmtScore(k.staffScore) }} / 5</span>
               </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Delivered all sprint commitments except one item carried over in Sprint 4.</p>
+              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">{{ k.staffComments || 'No comment.' }}</p>
             </div>
 
+            @if (r.status === 'MANAGER_REVIEWED' || r.status === 'HR_VALIDATED') {
             <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-3 py-3 md:px-4">
               <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
                 <span class="!text-[11px] font-medium !text-[#347DEB] md:!text-[14px]"><i class="fa-solid fa-user-tie mr-2 !text-[10px] !text-[#4B91ED]"></i>Manager Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Manager rating: 4 / 5</span>
+                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Manager rating: {{ fmtScore(k.rating) }} / 5</span>
               </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Consistent delivery and good ownership of release pipeline work.</p>
+              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">{{ k.managerComments || 'No comment.' }}</p>
             </div>
 
             <div class="mt-3 flex items-center justify-between border-t border-[#E5E7EB] pt-3 md:mt-4">
               <span class="!text-[11px] font-medium !text-[#60758F] md:!text-[14px]">Weighted Score</span>
-              <span class="!text-[11px] font-semibold !text-[#347DEB] md:!text-[14px]">48 / 60</span>
+              <span class="!text-[11px] font-semibold !text-[#347DEB] md:!text-[14px]">{{ fmtScore(k.score) }} / {{ k.weight }}</span>
             </div>
+            }
           </section>
-
-          <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-3 py-3 md:px-5 md:py-4">
-            <div class="flex flex-col gap-2 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
-              <h3 class="!text-[13px] font-semibold leading-snug !text-[#102A43] md:!text-[17px]">Operational Efficiency &amp; Code Quality</h3>
-              <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 !text-[10px] font-medium !text-[#6E6E6E] md:!text-[13px]">Weight: 15%</span>
-            </div>
-
-            <div class="mt-3">
-              <p class="!text-[10px] font-semibold uppercase tracking-wide !text-[#617896] md:!text-[13px]">Target</p>
-              <ul class="mt-2 space-y-1 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">
-                <li>• Maintain agreed code quality standards across all deliverables.</li>
-                <li>• Complete assigned development tasks within agreed timelines.</li>
-              </ul>
-            </div>
-
-            <div class="mt-3 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-3 py-3 md:mt-4 md:px-4">
-              <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
-                <span class="!text-[11px] font-medium !text-[#6F6255] md:!text-[14px]"><i class="fa-solid fa-user mr-2 !text-[10px] !text-[#8A7967]"></i>Employee Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Employee rating: 3 / 5</span>
-              </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Maintained agreed development standards throughout the review period.</p>
-            </div>
-
-            <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-3 py-3 md:px-4">
-              <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
-                <span class="!text-[11px] font-medium !text-[#347DEB] md:!text-[14px]"><i class="fa-solid fa-user-tie mr-2 !text-[10px] !text-[#4B91ED]"></i>Manager Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Manager rating: 3 / 5</span>
-              </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Quality was generally good, although some deliverables required additional review.</p>
-            </div>
-
-            <div class="mt-3 flex items-center justify-between border-t border-[#E5E7EB] pt-3 md:mt-4">
-              <span class="!text-[11px] font-medium !text-[#60758F] md:!text-[14px]">Weighted Score</span>
-              <span class="!text-[11px] font-semibold !text-[#347DEB] md:!text-[14px]">9 / 15</span>
-            </div>
-          </section>
-
-          <section class="mb-3 rounded-xl border border-[#E1E4E8] bg-white px-3 py-3 md:px-5 md:py-4">
-            <div class="flex flex-col gap-2 border-b border-[#E5E7EB] pb-3 md:flex-row md:items-center md:justify-between">
-              <h3 class="!text-[13px] font-semibold leading-snug !text-[#102A43] md:!text-[17px]">Learning &amp; Development</h3>
-              <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 !text-[10px] font-medium !text-[#6E6E6E] md:!text-[13px]">Weight: 15%</span>
-            </div>
-
-            <div class="mt-3">
-              <p class="!text-[10px] font-semibold uppercase tracking-wide !text-[#617896] md:!text-[13px]">Target</p>
-              <ul class="mt-2 space-y-1 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">
-                <li>• Complete required learning and development activities.</li>
-                <li>• Demonstrate continuous improvement in assigned responsibilities.</li>
-              </ul>
-            </div>
-
-            <div class="mt-3 rounded-lg border border-[#E8DFD5] bg-[#F8F3ED] px-3 py-3 md:mt-4 md:px-4">
-              <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
-                <span class="!text-[11px] font-medium !text-[#6F6255] md:!text-[14px]"><i class="fa-solid fa-user mr-2 !text-[10px] !text-[#8A7967]"></i>Employee Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Employee rating: 4 / 5</span>
-              </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Completed the required learning activities and applied the new knowledge to assigned responsibilities.</p>
-            </div>
-
-            <div class="mt-2 rounded-lg border border-[#D9E9FB] bg-[#F1F7FE] px-3 py-3 md:px-4">
-              <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
-                <span class="!text-[11px] font-medium !text-[#347DEB] md:!text-[14px]"><i class="fa-solid fa-user-tie mr-2 !text-[10px] !text-[#4B91ED]"></i>Manager Comment</span>
-                <span class="!text-[11px] font-medium !text-[#374151] md:!text-[14px]">Manager rating: 4 / 5</span>
-              </div>
-              <p class="mt-2 !text-[11px] leading-5 !text-[#617896] md:!text-[14px] md:leading-6">Demonstrated consistent improvement and a positive approach to professional development.</p>
-            </div>
-
-            <div class="mt-3 flex items-center justify-between border-t border-[#E5E7EB] pt-3 md:mt-4">
-              <span class="!text-[11px] font-medium !text-[#60758F] md:!text-[14px]">Weighted Score</span>
-              <span class="!text-[11px] font-semibold !text-[#347DEB] md:!text-[14px]">12 / 15</span>
-            </div>
-          </section>
+          }
+          }
         </div>
 
         <footer class="flex shrink-0 justify-end border-t border-[#E1E5EA] bg-white px-4 py-3 md:px-6">

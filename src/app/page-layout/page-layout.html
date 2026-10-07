@@ -154,18 +154,32 @@
     <!-- Desktop User -->
     <div class="hidden items-center gap-2 md:flex">
 
+      @if (roleService.availableRoles().length > 1) {
+        <label class="mr-2 flex items-center gap-1 text-[11px] text-gray-500" title="Viewing as">
+          <select
+            aria-label="Viewing as"
+            class="rounded-md border border-gray-300 bg-white px-1.5 py-1 text-[12px] text-gray-700"
+            [value]="roleService.role()"
+            (change)="switchRole($any($event.target).value)">
+            @for (r of roleService.availableRoles(); track r) {
+              <option [value]="r" [selected]="r === roleService.role()">{{ roleLabels[r] }}</option>
+            }
+          </select>
+        </label>
+      }
+
       <div class="flex flex-col text-right">
         <span class="text-[13px] font-semibold leading-tight text-gray-900">
-          Sally Smith
+          {{ fullName() }}
         </span>
 
         <span class="mt-1 text-[11px] leading-tight text-gray-500">
-          Customer Support
+          {{ jobTitle() }}
         </span>
       </div>
 
       <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs font-medium text-gray-600">
-        S
+        {{ initial() }}
       </div>
 
       <!-- Logout Icon -->
@@ -208,6 +222,8 @@
   <router-outlet></router-outlet>
 </div>
 
+    <!-- Only created while open: a closed ng-zorro drawer raises NG0100 in dev builds. -->
+    @if (isSideNav) {
     <nz-drawer
       [nzClosable]="false"
       [nzVisible]="isSideNav"
@@ -228,12 +244,23 @@
 
               <div class="min-w-0">
                 <div class="truncate text-[14px] font-semibold text-[#171717]">
-                  Sally Smith
+                  {{ fullName() }}
                 </div>
 
                 <div class="mt-0.5 truncate text-[12px] text-gray-500">
-                  Customer Support
+                  {{ jobTitle() }}
                 </div>
+
+                @if (roleService.availableRoles().length > 1) {
+                  <select
+                    class="mt-2 rounded-md border border-gray-300 bg-white px-1.5 py-1 text-[12px] text-gray-700"
+                    [value]="roleService.role()"
+                    (change)="switchRole($any($event.target).value)">
+                    @for (r of roleService.availableRoles(); track r) {
+                      <option [value]="r" [selected]="r === roleService.role()">{{ roleLabels[r] }}</option>
+                    }
+                  </select>
+                }
               </div>
 
             </div>
@@ -326,7 +353,7 @@
               </a>
 
               <a
-                routerLink="/team-review"
+                routerLink="/elevate/team-review"
                 routerLinkActive="nav-link-active"
                 [routerLinkActiveOptions]="{ exact: false }"
                 (click)="close()"
@@ -381,13 +408,14 @@
 
           <!-- BACK TO TOOLBOX -->
           <div class="border-t border-gray-200 pt-4">
-            <button type="button" (click)="close()"
+            <button type="button" (click)="logout()"
               class="flex w-full items-center gap-2 rounded-lg px-2 py-3 !text-[13px] font-medium !text-red-500 transition hover:bg-red-50 hover:text-red-600">
               <i class="fa-solid fa-right-from-bracket w-4 text-center text-[12px]"></i>
-              Back to Toolbox
+              Log out
             </button>
           </div>
 
         </div>
       </ng-container>
     </nz-drawer>
+    }

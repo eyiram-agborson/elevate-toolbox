@@ -10,18 +10,21 @@ import { ManagerElevate } from './elevate/manager-elevate/manager-elevate';
 import { UserElevate } from './elevate/user-elevate/user-elevate';
 import { MyActivities } from './my-activities/my-activities/my-activities'; 
 import { ActivitiesLayout } from './my-activities/activities-layout/activities-layout';
-import { PreviousCycles } from './my-activities/previous-cycles/previous-cycles';
 import { elevateRedirectGuard } from './elevate-redirect.guard';
 import { ElevateRedirect } from './elevate-redirect';
 import { SetTarget } from './elevate/set-target/set-target';
 import { TeamReview } from './elevate/team-review/team-review';
 import { ManagerPerformance } from './executives/manager-performance/manager-performance';
 import { TeamreviewTotalscore } from './elevate/teamreview-totalscore/teamreview-totalscore';
+import { Login } from './login/login';
+import { authGuard, loginRedirectGuard } from './core/auth.guard';
 
 
 export const routes: Routes = [
+  { path: 'login', component: Login, canActivate: [loginRedirectGuard] },
   {
     path: '', component: PageLayout,
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       { 
@@ -42,14 +45,18 @@ export const routes: Routes = [
       children:[
         {path: "", redirectTo: "my-activities", pathMatch: "full"},
         {path: "my-activities", loadComponent: () => import ('./my-activities/my-activities/my-activities').then(m => m.MyActivities)},
-        {path: "previous-cycles", loadComponent: () => import ('./my-activities/previous-cycles/previous-cycles').then(m => m.PreviousCycles)},
+        // Past cycles open on the same "my cycle" screen as the current one (see MyActivities.view).
+        {path: "previous-cycles", redirectTo: "my-activities", pathMatch: "full"},
       ]
      },
 
 
-     {path: "set-target", loadComponent: () => import("./elevate/set-target/set-target").then(m => m.SetTarget)},
-     {path: "elevate/team-review", loadComponent: () => import ("./elevate/team-review/team-review").then(m => m.TeamReview) },
-    {path: "elevate/team-review/:id", loadComponent: () => import ("./elevate/teamreview-totalscore/teamreview-totalscore").then( m => m.TeamreviewTotalscore) },
+     {path: "set-target", loadComponent: () => import("./elevate/set-target/set-target").then(m => m.SetTarget),
+      canActivate: [roleGuard], data: { role: 'manager' } },
+     {path: "elevate/team-review", loadComponent: () => import ("./elevate/team-review/team-review").then(m => m.TeamReview),
+      canActivate: [roleGuard], data: { role: 'manager' } },
+    {path: "elevate/team-review/:id", loadComponent: () => import ("./elevate/teamreview-totalscore/teamreview-totalscore").then( m => m.TeamreviewTotalscore),
+      canActivate: [roleGuard], data: { role: 'manager' } },
 
 
 

@@ -35,6 +35,7 @@
         </span>
 
         <p class="mt-2 text-[13px] leading-5 !text-[#807777] md:mt-[7px] md:text-[15px] md:leading-normal">
+          @if (cycle()) { {{ cycle()!.name }} — }
           Kindly review and rate your team members based on what has been achieved.
         </p>
       </div>
@@ -48,259 +49,96 @@
         TEAM MEMBERS
       </h2>
 
+      @if (loading()) {
+        <p class="mt-3 text-[14px] text-[#64748B]">Loading your team…</p>
+      } @else if (error()) {
+        <p class="mt-3 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+      } @else if (!cycle()) {
+        <p class="mt-3 rounded-[10px] bg-amber-50 px-4 py-3 text-[14px] text-amber-700">There is no active performance cycle.</p>
+      } @else if (rows().length === 0) {
+        <p class="mt-3 rounded-[10px] border border-dashed border-[#CBD5E1] bg-white px-4 py-8 text-center text-[14px] text-[#64748B]">You have no team members to review.</p>
+      }
+
       <!-- TEAM MEMBER LIST -->
       <div class="mt-3 flex flex-col gap-3 md:mt-[10px] md:gap-0 md:overflow-x-auto md:rounded-lg md:border md:border-[#E2E8F0] md:bg-white">
 
-        <!-- EMPLOYEE 1 -->
+        @for (row of rows(); track row.member._id) {
         <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
 
           <!-- EMPLOYEE -->
           <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
             <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
-              SS
+              {{ initials(row.member) }}
             </div>
 
             <div class="min-w-0">
               <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
-                Sally Smith
+                {{ row.member.firstName }} {{ row.member.lastName }}
               </span>
 
               <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
-                Backend Engineer · Engineering
+                {{ row.member.jobTitle || 'Staff' }}{{ row.unitName ? ' · ' + row.unitName : '' }}
               </p>
             </div>
           </div>
 
           <!-- STATUS -->
           <div class="mt-3 md:mt-0 md:px-4 md:py-2">
-            <span class="inline-flex rounded-full bg-[#EEF2F6] px-2.5 py-1 text-[12px] font-medium !text-[#3B82F6] md:px-3 md:py-1 md:text-[13px]">
-              Submitted
-            </span>
+            @if (row.state === 'reviewed') {
+              <span class="inline-flex rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium !text-[#047857] md:px-3 md:py-1 md:text-[13px]">
+                • Reviewed
+              </span>
+            } @else if (row.state === 'submitted') {
+              <span class="inline-flex rounded-full bg-[#EEF2F6] px-2.5 py-1 text-[12px] font-medium !text-[#3B82F6] md:px-3 md:py-1 md:text-[13px]">
+                Submitted
+              </span>
+            } @else {
+              <span class="inline-flex rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium !text-[#475569] md:px-3 md:py-1 md:text-[13px]">
+                In Progress
+              </span>
+            }
           </div>
 
           <!-- DATE -->
           <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
             <span class="text-[13px] !text-[#64748B] md:text-[15px]">
-              Submitted on 29 Sept 2026
+              @if (row.state === 'reviewed') {
+                Reviewed on {{ fmtDate(row.review?.updatedAt) }}
+              } @else if (row.state === 'submitted') {
+                Submitted on {{ fmtDate(row.review?.updatedAt) }}
+              } @else {
+                Awaiting submission
+              }
             </span>
           </div>
 
           <!-- ACTION -->
           <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[26px] md:py-[16px]">
-            <button
-              type="button"
-              (click)="route(1)"
-              class="button-press shrink-0 cursor-pointer rounded-[9px] bg-[#5AA4FF] px-7 py-2 !text-[11px] font-medium !text-white transition-colors hover:bg-[#3F91DF] md:px-[24px] md:py-[9px] md:text-[15px]"
-            >
-              Review →
-            </button>
-          </div>
-
-        </div>
-
-        <!-- EMPLOYEE 2 -->
-        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
-
-          <!-- EMPLOYEE -->
-          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
-            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
-              KM
-            </div>
-
-            <div class="min-w-0">
-              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
-                Kojo Mensah
-              </span>
-
-              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
-                Backend Engineer · Engineering
-              </p>
-            </div>
-          </div>
-
-          <!-- STATUS -->
-          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
-            <span class="inline-flex rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium !text-[#475569] md:px-3 md:py-1 md:text-[13px]">
-              In Progress
-            </span>
-          </div>
-
-          <!-- DATE -->
-          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
-            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
-              Awaiting submission
-            </span>
-          </div>
-
-          <!-- ACTION -->
-          <div class="hidden md:block md:px-[26px] md:py-[16px]"></div>
-
-        </div>
-
-        <!-- EMPLOYEE 3 -->
-        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
-
-          <!-- EMPLOYEE -->
-          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
-            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
-              AB
-            </div>
-
-            <div class="min-w-0">
-              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
-                Ama Boateng
-              </span>
-
-              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
-                Product Designer · Product &amp; Design
-              </p>
-            </div>
-          </div>
-
-          <!-- STATUS -->
-          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
-            <span class="inline-flex rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[12px] font-medium !text-[#475569] md:px-3 md:py-1 md:text-[13px]">
-              In Progress
-            </span>
-          </div>
-
-          <!-- DATE -->
-          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
-            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
-              Awaiting submission
-            </span>
-          </div>
-
-          <!-- ACTION -->
-          <div class="hidden md:block md:px-[26px] md:py-[16px]"></div>
-
-        </div>
-
-        <!-- EMPLOYEE 4 -->
-        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:border-b md:border-[#E2E8F0] md:px-0 md:py-0">
-
-          <!-- EMPLOYEE -->
-          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
-            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
-              AB
-            </div>
-
-            <div class="min-w-0">
-              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
-                Ama Boateng
-              </span>
-
-              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
-                QA Engineer · Engineering
-              </p>
-            </div>
-          </div>
-
-          <!-- STATUS -->
-          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
-            <span class="inline-flex rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium !text-[#047857] md:px-3 md:py-1 md:text-[13px]">
-              • Review
-            </span>
-          </div>
-
-          <!-- DATE -->
-          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
-            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
-              Reviewed on 2 Oct 2026
-            </span>
-          </div>
-
-          <!-- ACTION -->
-          <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[15px] md:py-[16px]">
-            <button
-              type="button"
-              (click)="route(1)"
-              class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-[9px] md:border border-[#DCE3EA] bg-[#F8FAFC] px-3 py-2 !text-[11px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9] md:px-[16px] md:py-[9px] md:text-[15px]"
-            >
-              View Review
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="md:h-4 md:w-4"
+            @if (row.state === 'submitted' && row.review) {
+              <button
+                type="button"
+                (click)="route(row.review._id)"
+                class="button-press shrink-0 cursor-pointer rounded-[9px] bg-[#5AA4FF] px-7 py-2 !text-[11px] font-medium !text-white transition-colors hover:bg-[#3F91DF] md:px-[24px] md:py-[9px] md:text-[15px]"
               >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- EMPLOYEE 5 -->
-        <div class="rounded-[10px] border border-[#E2E8F0] bg-white p-4 md:grid md:grid-cols-[minmax(300px,1fr)_150px_250px_170px] md:items-center md:rounded-none md:border-0 md:px-0 md:py-0">
-
-          <!-- EMPLOYEE -->
-          <div class="flex min-w-0 items-center gap-3 md:px-[26px] md:py-[12px]">
-            <div class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#F1F5F9] text-[13px] font-semibold !text-[#64748B] md:h-[42px] md:w-[42px] md:text-[14px]">
-              SS
-            </div>
-
-            <div class="min-w-0">
-              <span class="block text-[14px] font-semibold !text-[#111827] md:text-[15px]">
-                Sally Smith
-              </span>
-
-              <p class="mt-1 truncate text-[12px] !text-[#64748B] md:mt-[2px] md:text-[15px]">
-                Operations Analyst · Operations
-              </p>
-            </div>
-          </div>
-
-          <!-- STATUS -->
-          <div class="mt-3 md:mt-0 md:px-4 md:py-2">
-            <span class="inline-flex rounded-full bg-[#ECFDF5] px-2.5 py-1 text-[12px] font-medium !text-[#047857] md:px-3 md:py-1 md:text-[13px]">
-              • Review
-            </span>
-          </div>
-
-          <!-- DATE -->
-          <div class="mt-3 border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[20px] md:py-[16px]">
-            <span class="text-[13px] !text-[#64748B] md:text-[15px]">
-              Reviewed on 30 Sept 2026
-            </span>
-          </div>
-
-          <!-- ACTION -->
-          <div class="mt-3 flex justify-end border-t border-[#E2E8F0] pt-3 md:mt-0 md:border-0 md:px-[15px] md:py-[16px]">
-            <button
-              type="button"
-              (click)="route(1)"
-              class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-[9px] md:border border-[#DCE3EA] bg-[#F8FAFC] px-3 py-2 !text-[11px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9] md:px-[16px] md:py-[9px] md:text-[15px]"
-            >
-              View Review
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="md:h-4 md:w-4"
+                Review →
+              </button>
+            } @else if (row.state === 'reviewed' && row.review) {
+              <button
+                type="button"
+                (click)="route(row.review._id)"
+                class="button-press inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-[9px] md:border border-[#DCE3EA] bg-[#F8FAFC] px-3 py-2 !text-[11px] font-medium !text-[#475569] transition-colors hover:bg-[#F1F5F9] md:px-[16px] md:py-[9px] md:text-[15px]"
               >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </button>
+                View Review
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-4 md:w-4">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </button>
+            }
           </div>
 
         </div>
+        }
 
       </div>
 

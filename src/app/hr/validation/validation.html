@@ -1,8 +1,6 @@
 
   <!-- PAGE HEADER -->
-  <div class="flex items-start justify-between px-6 pt-7 pb-5 md:px-6 md:pt-7 md:pb-5 md:px-8 md:pt-8 md:pb-5">
-    
-    
+  <div class="flex items-start justify-between px-6 pt-7 pb-5 md:px-8 md:pt-8 md:pb-5">
     <div>
       <h1 class="text-[19px] font-semibold !text-[#102A43] md:text-[28px]">
         Validation
@@ -16,40 +14,50 @@
 
 
   <!-- NOTICE -->
-  <div class="mx-6 border-y border-[#F0CF87] bg-[#FFFAF0] px-6 py-2.5 md:mx-6 md:px-6 md:py-2.5 md:mx-8 md:px-8 md:py-2.5">
-    <div class="flex items-center gap-3 md:gap-3 md:gap-3">
+  <div class="mx-6 border-y border-[#F0CF87] bg-[#FFFAF0] px-6 py-2.5 md:mx-8 md:px-8">
+    <div class="flex items-center gap-3">
       <i class="fa-solid fa-lock shrink-0 text-[14px] !text-[#D99A00]"></i>
 
-      <span class="text-[13px] leading-5 !text-[#60758F] md:text-[14px] md:text-[14px]">
+      <span class="text-[13px] leading-5 !text-[#60758F] md:text-[14px]">
         Validation scores are recorded by HR following the performance validation meeting.
       </span>
     </div>
   </div>
 
+  @if (notice()) {
+    <p class="mx-6 mt-4 rounded-[10px] bg-green-50 px-4 py-3 text-[14px] text-green-700 md:mx-8">{{ notice() }}</p>
+  }
 
   <!-- SEARCH + FILTER -->
-  <div class="px-6 pt-6 pb-5 md:px-6 md:pt-6 md:pb-5 md:px-8 md:pt-6 md:pb-5">
-    <div class="flex w-full flex-col items-stretch gap-3 rounded-sm border md:flex-row md:items-center border-[#DCE1E6] bg-white px-3 py-3 md:gap-3 md:px-3 md:py-3 md:gap-3 md:px-3 md:py-3">
+  <div class="px-6 pt-6 pb-5 md:px-8">
+    <div class="flex w-full flex-col items-stretch gap-3 rounded-sm border md:flex-row md:items-center border-[#DCE1E6] bg-white px-3 py-3">
 
       <!-- SEARCH INPUT -->
       <div class="relative min-w-0 flex-1">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[14px] !text-[#7C91A8]"></i>
 
-        <input type="text" placeholder="Search employee"
-          class="h-[46px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:border-[#AFC4D8] focus:ring-1 focus:ring-[#D8E4EF] md:h-[46px] md:text-[15px] md:h-[48px] md:text-[15px]"/>
+        <input type="text" placeholder="Search employee" [ngModel]="search()" (ngModelChange)="search.set($event)"
+          class="h-[46px] w-full rounded-lg border border-[#D8DEE6] bg-white pl-11 pr-4 text-[15px] !text-[#102A43] outline-none placeholder:!text-[#8CA0B5] focus:border-[#AFC4D8] focus:ring-1 focus:ring-[#D8E4EF] md:h-[48px]"/>
       </div>
 
-
       <!-- DEPARTMENT FILTER -->
-      <div class="relative w-full shrink-0 md:w-[240px] md:w-[270px]">
-        <select class="h-[46px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 !text-[13px] !text-[#102A43] outline-none focus:border-[#AFC4D8] focus:ring-1 focus:ring-[#D8E4EF] md:h-[46px] md:w-full md:text-[15px] md:h-[48px] md:w-full md:text-[15px]">
-          <option>All departments</option>
-          <option>Client-side Engineering</option>
-          <option>Technology</option>
-          <option>Human Resources</option>
-          <option>Finance</option>
-          <option>Operations</option>
-          <option>Marketing</option>
+      <div class="relative w-full shrink-0 md:w-[240px]">
+        <select [ngModel]="department()" (ngModelChange)="department.set($event)" class="h-[46px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 !text-[13px] !text-[#102A43] outline-none focus:border-[#AFC4D8] focus:ring-1 focus:ring-[#D8E4EF] md:h-[48px] md:text-[15px]">
+          <option value="">All departments</option>
+          @for (d of departments(); track d) {
+            <option [value]="d">{{ d }}</option>
+          }
+        </select>
+
+        <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] !text-[#7C91A8]"></i>
+      </div>
+
+      <!-- CYCLE FILTER -->
+      <div class="relative w-full shrink-0 md:w-[300px]">
+        <select [ngModel]="cycleId()" (ngModelChange)="onCycleChange($event)" class="h-[46px] w-full appearance-none rounded-lg border border-[#D8DEE6] bg-white px-4 pr-10 !text-[13px] !text-[#102A43] outline-none focus:border-[#AFC4D8] focus:ring-1 focus:ring-[#D8E4EF] md:h-[48px] md:text-[15px]">
+          @for (c of cycles(); track c._id) {
+            <option [value]="c._id">{{ label(c) }}</option>
+          }
         </select>
 
         <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] !text-[#7C91A8]"></i>
@@ -59,168 +67,129 @@
   </div>
 
 <!-- VALIDATION TABLE -->
-<div class="px-4 pb-6 md:px-6 md:pb-8 md:px-8">
+<div class="px-4 pb-6 md:px-8 md:pb-8">
+  @if (loading()) {
+    <p class="text-[14px] text-[#64748B]">Loading reviews…</p>
+  } @else if (error()) {
+    <p class="rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+  } @else {
   <div class="overflow-x-auto rounded-xl border border-[#DCE1E6] bg-white">
-    <table class="w-full min-w-[750px] border-collapse md:min-w-[1000px] md:min-w-[1100px]">
+    <table class="w-full min-w-[750px] border-collapse md:min-w-[1000px]">
 
       <thead>
         <tr class="border-b border-[#DCE1E6] text-left">
-          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:text-[14px]">
             <span class="inline-flex items-center gap-2">
               <i class="fa-solid fa-user text-[12px] !text-[#7C91A8]"></i>
               Employee
             </span>
           </th>
-          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:text-[14px]">
             <span class="inline-flex items-center gap-2">
               <i class="fa-solid fa-building !text-[12px] !text-[#7C91A8]"></i>
               Department
             </span>
           </th>
-          <th class="hidden whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:text-[14px]">
             <span class="inline-flex items-center gap-2">
-              <i class="fa-solid fa-briefcase !text-[12px] !text-[#7C91A8]"></i>
-              Job Role
+              <i class="fa-solid fa-user-tie !text-[12px] !text-[#7C91A8]"></i>
+              Manager Score
             </span>
           </th>
-          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:text-[14px]">
             <span class="inline-flex items-center gap-2">
               <i class="fa-regular fa-star text-[12px] !text-[#7C91A8]"></i>
               Validation Score
             </span>
           </th>
-          <th class="hidden whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="hidden whitespace-nowrap px-3 py-3 text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:table-cell md:px-5 md:text-[14px]">
             <span class="inline-flex items-center gap-2">
               <i class="fa-regular fa-clock text-[12px] !text-[#7C91A8]"></i>
               Last Updated
             </span>
           </th>
-          <th class="whitespace-nowrap px-3 py-3 text-right text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-4 md:text-[14px] md:px-5">
+          <th class="whitespace-nowrap px-3 py-3 text-right text-[13px] font-medium uppercase tracking-wide !text-[#60758F] md:px-5 md:text-[14px]">
             Action
          </th>
-
         </tr>
       </thead>
 
       <tbody>
-
-        <!-- ROW 1 -->
+        @for (r of visible(); track r._id) {
         <tr class="border-b border-[#E8ECF0] transition-colors hover:bg-[#F9FBFC]">
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Salomey Oppong</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Client-side Engineering</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Software Engineer</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="px-3 py-4 text-right md:px-4 md:py-5 md:px-5">
-<button nz-dropdown [nzDropdownMenu]="actionMenu" nzTrigger="click" type="button" class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"> <i class="fa-solid fa-ellipsis-vertical text-[18px] "></i>
-            </button>
+          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-5 md:py-5 md:text-[15px]">
+            {{ personName(r.staff) }}
+            <span class="block text-[12px] font-normal !text-[#60758F]">{{ r.staff.jobTitle }}</span>
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-5 md:py-5 md:text-[15px]">{{ unitName(r) }}</td>
+          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-5 md:py-5 md:text-[15px]">{{ fmtScore(managerScoreOf(r)) }} / 100</td>
+          @if (isValidated(r)) {
+            <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#16A36A] md:px-5 md:py-5 md:text-[15px]">{{ fmtScore(scoreOf(r)) }} / 100</td>
+          } @else {
+            <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-5 md:py-5 md:text-[15px]">—</td>
+          }
+          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:table-cell md:px-5 md:py-5 md:text-[15px]">{{ isValidated(r) ? fmtDateTime(r.hrValidation?.validatedAt) : '—' }}</td>
+          <td class="whitespace-nowrap px-3 py-4 text-right md:px-5 md:py-5">
+            @if (isValidated(r)) {
+              <button type="button" (click)="open(r, 'edit')" class="rounded-lg border border-[#D8DEE6] px-3 py-1.5 text-[13px] font-medium !text-[#60758F] hover:bg-[#F4F6F8] md:text-[14px]">
+                <i class="fa-solid fa-file-pen mr-2 text-[12px]"></i>Edit
+              </button>
+            } @else {
+              <button type="button" (click)="open(r, 'validate')" class="rounded-lg bg-[#347DEB] px-3 py-1.5 text-[13px] font-medium !text-white hover:bg-[#286FD6] md:text-[14px]">
+                <i class="fa-solid fa-pen-to-square mr-2 text-[12px]"></i>Validate
+              </button>
+            }
           </td>
         </tr>
-
-        <!-- ROW 2 -->
-        <tr class="border-b border-[#E8ECF0] transition-colors hover:bg-[#F9FBFC]">
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Sally Smith</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Technology</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Backend Engineer</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="px-2 py-4 text-right md:px-4 md:py-5 md:px-5">
-<button nz-dropdown [nzDropdownMenu]="actionMenu" nzTrigger="click" type="button" class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"> <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-            </button>
+        } @empty {
+        <tr>
+          <td colspan="6" class="px-4 py-10 text-center text-[14px] !text-[#60758F]">
+            No manager-reviewed employees yet for this cycle.
           </td>
         </tr>
-
-        <!-- ROW 3 -->
-        <tr class="border-b border-[#E8ECF0] transition-colors hover:bg-[#F9FBFC]">
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Kofi Asante</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Sales</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Account Executive</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#16A36A] md:px-4 md:py-5 md:text-[15px] md:px-5">40 / 100</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">28 Sep 2026, 14:30</td>
-          <td class="px-3 py-4 text-right md:px-4 md:py-5 md:px-5">
-<button nz-dropdown [nzDropdownMenu]="actionMenu" nzTrigger="click" type="button" class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"> <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-            </button>
-          </td>
-        </tr>
-
-        <!-- ROW 4 -->
-        <tr class="border-b border-[#E8ECF0] transition-colors hover:bg-[#F9FBFC]">
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Janet Doe</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Human Resources</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">HR Business Partner</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#16A36A] md:px-4 md:py-5 md:text-[15px] md:px-5">75 / 100</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">27 Sep 2026, 11:15</td>
-          <td class="px-3 py-4 text-right md:px-4 md:py-5 md:px-5">
-<button nz-dropdown [nzDropdownMenu]="actionMenu" nzTrigger="click" type="button" class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"> <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-            </button>
-          </td>
-        </tr>
-
-        <!-- ROW 5 -->
-        <tr class="transition-colors hover:bg-[#F9FBFC]">
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] font-medium !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Sally Smith</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Finance</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#102A43] md:px-4 md:py-5 md:text-[15px] md:px-5">Financial Analyst</td>
-          <td class="whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="hidden whitespace-nowrap px-3 py-4 text-[14px] !text-[#60758F] md:px-4 md:py-5 md:text-[15px] md:px-5">—</td>
-          <td class="px-3 py-4 text-right md:px-4 md:py-5 md:px-5">
-<button nz-dropdown [nzDropdownMenu]="actionMenu" nzTrigger="click" type="button" class="inline-flex items-center justify-center !text-[#A0ACB8] transition-colors hover:!text-[#60758F]"> <i class="fa-solid fa-ellipsis-vertical text-[18px]"></i>
-            </button>
-          </td>
-        </tr>
-
+        }
       </tbody>
 
     </table>
   </div>
+  }
 </div>
 
 
-  <!-- ACTION DROPDOWN -->
-  <nz-dropdown-menu #actionMenu="nzDropdownMenu">
-    <ul nz-menu class="!min-w-[150px]">
-      <li nz-menu-item (click)="openValidateModal()" class="!text-[#347DEB]">
-        <i class="fa-solid fa-pen-to-square mr-2 text-[13px]"></i>
-        Validate
-      </li>
-      <li nz-menu-item (click)="openEditModal()" class="!text-[#60758F]">
-        <i class="fa-solid fa-file-pen mr-2 text-[13px]"></i>
-        Edit
-      </li>
-    </ul>
-
-  </nz-dropdown-menu>
-
-
-<!-- VALIDATION MODAL -->
-@if (showValidateModal) {
+<!-- VALIDATION / EDIT MODAL -->
+@if (active(); as review) {
   <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 px-4 py-6">
     <div class="flex max-h-[85vh] w-full max-w-[520px] min-w-0 flex-col overflow-hidden rounded-xl bg-[#f7f9fc] shadow-xl md:max-w-[900px]">
 
       <header class="flex shrink-0 items-center justify-between border-b border-gray-200 bg-white px-4 py-3 md:px-7 md:py-4">
-        <h2 class="min-w-0 text-[16px] font-semibold !text-gray-900 md:text-[20px]">Validate Performance</h2>
-<button type="button" (click)="closeValidateModal()" class="ml-3 shrink-0 text-[20px] !text-gray-500 hover:!text-gray-900 md:text-[22px]" aria-label="Close modal"> <i class="fa-solid fa-xmark"></i>
+        <h2 class="min-w-0 text-[16px] font-semibold !text-gray-900 md:text-[20px]">{{ mode() === 'edit' ? 'Edit Validation' : 'Validate Performance' }}</h2>
+        <button type="button" (click)="close()" class="ml-3 shrink-0 text-[20px] !text-gray-500 hover:!text-gray-900 md:text-[22px]" aria-label="Close modal"> <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
 
       <div class="min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-3 md:px-7 md:py-4">
 
         <section class="mb-3 min-w-0">
-          <h3 class="text-[16px] font-semibold !text-gray-900 md:text-[20px]">Sally Smith</h3>
-          <p class="break-words text-[11px] font-medium uppercase tracking-wider !text-[#617896] md:text-[13px]">Backend Engineer · Technology</p>
+          <h3 class="text-[16px] font-semibold !text-gray-900 md:text-[20px]">{{ personName(review.staff) }}</h3>
+          <p class="break-words text-[11px] font-medium uppercase tracking-wider !text-[#617896] md:text-[13px]">{{ review.staff.jobTitle || 'Staff' }} · {{ unitName(review) }}</p>
+          @if (mode() === 'edit' && review.hrValidation?.finalScore !== undefined) {
+            <p class="mt-1 text-[13px] !text-[#617896]">Current validation score: {{ fmtScore(review.hrValidation?.finalScore) }} / 100</p>
+          }
         </section>
 
+        @for (k of rows(); track k.title) {
         <section class="mb-3 min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-3 md:px-5 md:py-4">
           <div class="flex min-w-0 flex-col gap-2 border-b border-gray-200 pb-3 md:flex-row md:items-center md:justify-between">
-            <h3 class="min-w-0 break-words text-[14px] font-semibold leading-5 !text-gray-900 md:text-[18px] md:leading-6">Application Development &amp; Delivery</h3>
-            <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] font-medium !text-[#6E6E6E] md:text-[15px]">Weight: 60%</span>
+            <h3 class="min-w-0 break-words text-[14px] font-semibold leading-5 !text-gray-900 md:text-[18px] md:leading-6">{{ k.title }}</h3>
+            <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] font-medium !text-[#6E6E6E] md:text-[15px]">Weight: {{ k.weight }}%</span>
           </div>
 
           <div class="mt-3 min-w-0">
             <p class="text-[12px] font-semibold uppercase tracking-wide !text-[#617896] md:text-[14px]">Target</p>
             <ul class="mt-1 space-y-1 text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">
-              <li class="break-words">• Deliver 100% of assigned tasks within agreed sprint timelines.</li>
-              <li class="break-words">• Maintain agreed quality standards across all deliverables.</li>
+              @for (t of k.targets; track $index) {
+                <li class="break-words">• {{ t }}</li>
+              }
             </ul>
           </div>
 
@@ -230,9 +199,9 @@
                 <i class="fa-solid fa-user mr-2 text-[12px] !text-[#8a7967] md:text-[14px]"></i>
                 Employee Comment
               </span>
-              <span class="shrink-0 text-[13px] font-medium !text-gray-700 md:text-[15px]">Employee rating: 4 / 5</span>
+              <span class="shrink-0 text-[13px] font-medium !text-gray-700 md:text-[15px]">Employee rating: {{ fmtScore(k.staffScore) }} / 5</span>
             </div>
-            <p class="mt-1.5 break-words text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">Delivered all sprint commitments except one item carried over in Sprint 4.</p>
+            <p class="mt-1.5 break-words text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">{{ k.staffComments || 'No comment.' }}</p>
           </div>
 
           <div class="mt-2 min-w-0 rounded-lg border border-[#d9e9fb] bg-[#f1f7fe] px-3 py-3 md:px-4">
@@ -241,204 +210,70 @@
                 <i class="fa-solid fa-user-tie mr-2 text-[12px] !text-[#4b91ed] md:text-[14px]"></i>
                 Manager Comment
               </span>
-              <span class="shrink-0 text-[13px] font-medium !text-gray-700 md:text-[15px]">Manager rating: 4 / 5</span>
+              <span class="shrink-0 text-[13px] font-medium !text-gray-700 md:text-[15px]">Manager rating: {{ fmtScore(k.rating) }} / 5</span>
             </div>
-            <p class="mt-1.5 break-words text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">Consistent delivery and good ownership of release pipeline work.</p>
+            <p class="mt-1.5 break-words text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">{{ k.managerComments || 'No comment.' }}</p>
           </div>
 
           <div class="mt-3 min-w-0 border-t border-gray-200 pt-3">
             <div class="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
               <div class="min-w-0">
                 <h4 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Validation score</h4>
-                <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Score agreed during the validation meeting.</p>
+                <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">{{ mode() === 'edit' ? 'Re-score this KPI to update the validation.' : 'Score agreed during the validation meeting.' }}</p>
               </div>
-              <span class="shrink-0 text-[13px] font-medium !text-[#347DEB] md:text-[15px]">Weighted: 48 / 60</span>
+              <span class="shrink-0 text-[13px] font-medium !text-[#347DEB] md:text-[15px]">Weighted: {{ fmtScore(((k.validation ?? 0) / 5) * k.weight) }} / {{ k.weight }}</span>
             </div>
 
             <div class="mt-3 flex flex-wrap gap-2">
-<button type="button" (click)="selectedScore = 1" [class]="selectedScore === 1 ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">1</button> <button type="button" (click)="selectedScore = 2" [class]="selectedScore === 2 ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">2</button>
-<button type="button" (click)="selectedScore = 3" [class]="selectedScore === 3 ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">3</button> <button type="button" (click)="selectedScore = 4" [class]="selectedScore === 4 ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">4</button>
-<button type="button" (click)="selectedScore = 5" [class]="selectedScore === 5 ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">5</button> </div>
+              @for (n of pages; track n) {
+                <button type="button" (click)="pick(k, n)" [class]="k.validation === n ? 'flex h-9 w-9 items-center justify-center rounded-lg bg-[#347DEB] text-[13px] font-medium !text-white md:h-10 md:w-10 md:text-[15px]' : 'flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]'">{{ n }}</button>
+              }
+            </div>
           </div>
         </section>
+        }
 
         <section class="mb-3 min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-3 md:px-5 md:py-4">
-          <div class="flex min-w-0 flex-col gap-2 border-b border-gray-200 pb-3 md:flex-row md:items-center md:justify-between">
-            <h3 class="min-w-0 break-words text-[14px] font-semibold leading-5 !text-gray-900 md:text-[18px] md:leading-6">Operational Efficiency &amp; Code Quality</h3>
-            <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] font-medium !text-[#6E6E6E] md:text-[15px]">Weight: 15%</span>
-          </div>
-
-          <div class="mt-3 min-w-0">
-            <p class="text-[12px] font-semibold uppercase tracking-wide !text-[#617896] md:text-[14px]">Target</p>
-            <ul class="mt-1 space-y-1 text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">
-              <li class="break-words">• Maintain agreed code quality standards across all deliverables.</li>
-              <li class="break-words">• Complete assigned development tasks within agreed timelines.</li>
-            </ul>
-          </div>
-
-          <div class="mt-3 min-w-0 border-t border-gray-200 pt-3">
-            <div class="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
-              <div class="min-w-0">
-                <h4 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Validation score</h4>
-                <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Score agreed during the validation meeting.</p>
-              </div>
-              <span class="shrink-0 text-[13px] font-medium !text-[#347DEB] md:text-[15px]">Weighted: 9 / 15</span>
-            </div>
-
-            <div class="mt-3 flex flex-wrap gap-2">
-<button type="button" (click)="selectedScore = 1" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">1</button> <button type="button" (click)="selectedScore = 2" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">2</button>
-<button type="button" (click)="selectedScore = 3" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">3</button> <button type="button" (click)="selectedScore = 4" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">4</button>
-<button type="button" (click)="selectedScore = 5" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">5</button> </div>
-          </div>
+          <label class="text-[13px] font-semibold !text-gray-900 md:text-[15px]" for="validation-comments">Comments (optional)</label>
+          <textarea id="validation-comments" rows="2" [ngModel]="comments()" (ngModelChange)="comments.set($event)" placeholder="Notes from the validation meeting"
+            class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 text-[13px] outline-none focus:border-[#347DEB] md:text-[15px]"></textarea>
         </section>
 
         <section class="min-w-0 rounded-lg border border-[#d9e9fb] bg-[#eef5ff] px-3 py-3 md:px-5 md:py-4">
           <div class="flex min-w-0 flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-5">
             <div class="min-w-0">
-              <h3 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Validation summary</h3>
+              <h3 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">{{ mode() === 'edit' ? 'Updated validation summary' : 'Validation summary' }}</h3>
               <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Final weighted score across the KPIs.</p>
             </div>
 
             <div class="flex shrink-0 flex-wrap items-center gap-2">
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">48</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">9</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">32</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">10</span>
+              @for (k of rows(); track k.title; let last = $last) {
+                <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">{{ fmtScore(((k.validation ?? 0) / 5) * k.weight) }}</span>
+                @if (!last) {
+                  <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
+                }
+              }
               <span class="text-[13px] !text-[#617896] md:text-[15px]">=</span>
-              <span class="flex h-8 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-semibold !text-[#347DEB] md:h-9 md:min-w-11 md:text-[15px]">99</span>
+              <span class="flex h-8 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-semibold !text-[#347DEB] md:h-9 md:min-w-11 md:text-[15px]">{{ fmtScore(finalScore()) }}</span>
             </div>
           </div>
         </section>
+
+        @if (modalError()) {
+          <p class="mt-3 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ modalError() }}</p>
+        }
       </div>
 
     <footer class="flex shrink-0 gap-3 border-t border-gray-200 bg-white px-4 py-3 md:items-center md:justify-end md:px-7 md:py-4">
-      <button type="button" (click)="closeValidateModal()" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg border border-gray-300 bg-white py-2.5 text-[13px] font-medium !text-gray-900 hover:bg-gray-50 md:flex-none md:px-5 md:text-[15px]">
+      <button type="button" (click)="close()" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg border border-gray-300 bg-white py-2.5 text-[13px] font-medium !text-gray-900 hover:bg-gray-50 md:flex-none md:px-5 md:text-[15px]">
         Cancel
       </button>
-      <button type="button" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg bg-[#347DEB] px-4 py-2.5 text-[13px] font-medium !text-white hover:bg-[#286FD6] md:flex-none md:px-5 md:text-[15px]">
+      <button type="button" (click)="save()" [disabled]="busy()" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg bg-[#347DEB] px-4 py-2.5 text-[13px] font-medium !text-white hover:bg-[#286FD6] disabled:opacity-60 md:flex-none md:px-5 md:text-[15px]">
         <i class="fa-solid fa-circle-check mr-2 shrink-0"></i>
-        <span>Save Validation</span>
+        <span>{{ busy() ? 'Saving…' : mode() === 'edit' ? 'Save changes' : 'Save Validation' }}</span>
       </button>
     </footer>
 
     </div>
-  </div>
-}
-
-<!-- EDIT VALIDATION MODAL -->
-@if (showEditModal) {
-  <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 px-4 py-6">
-    <div class="flex max-h-[85vh] w-full max-w-[520px] min-w-0 flex-col overflow-hidden rounded-xl bg-[#f7f9fc] shadow-xl md:max-w-[850px]">
-
-      <header class="flex shrink-0 items-center justify-between border-b border-gray-200 bg-white px-4 py-3 md:px-7 md:py-4">
-        <h2 class="min-w-0 text-[16px] font-semibold !text-gray-900 md:text-[20px]">Edit Validation</h2>
-<button type="button" (click)="closeEditModal()" class="ml-3 shrink-0 text-[20px] !text-gray-500 hover:!text-gray-900 md:text-[22px]" aria-label="Close modal"> <i class="fa-solid fa-xmark"></i>
-        </button>
-      </header>
-
-      <div class="min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-3 md:px-7 md:py-4">
-
-        <section class="mb-3 min-w-0">
-          <h3 class="text-[16px] font-semibold !text-gray-900 md:text-[20px]">Kofi Asante</h3>
-          <p class="break-words text-[11px] font-medium uppercase tracking-wider !text-[#617896] md:text-[13px]">Backend Engineer · Technology</p>
-        </section>
-
-        <section class="mb-3 min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-3 md:px-5 md:py-4">
-          <div class="flex min-w-0 flex-col gap-2 border-b border-gray-200 pb-3 md:flex-row md:items-center md:justify-between">
-            <h3 class="min-w-0 break-words text-[14px] font-semibold leading-5 !text-gray-900 md:text-[18px] md:leading-6">Application Development &amp; Delivery</h3>
-            <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] font-medium !text-[#6E6E6E] md:text-[15px]">Weight: 60%</span>
-          </div>
-
-          <div class="mt-3 min-w-0">
-            <p class="text-[12px] font-semibold uppercase tracking-wide !text-[#617896] md:text-[14px]">Target</p>
-            <ul class="mt-1 space-y-1 text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">
-              <li class="break-words">• Deliver 100% of assigned tasks within agreed sprint timelines.</li>
-              <li class="break-words">• Maintain agreed quality standards across all deliverables.</li>
-            </ul>
-          </div>
-
-          <div class="mt-3 min-w-0 border-t border-gray-200 pt-3">
-            <div class="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
-              <div class="min-w-0">
-                <h4 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Validation score</h4>
-                <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Update the score recorded during the validation meeting.</p>
-              </div>
-              <span class="shrink-0 text-[13px] font-medium !text-[#347DEB] md:text-[15px]">Weighted: 48 / 60</span>
-            </div>
-
-            <div class="mt-3 flex flex-wrap gap-2">
-              <button type="button" (click)="selectedScore = 1" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">1</button> <button type="button" (click)="selectedScore = 2" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">2</button>
-              <button type="button" (click)="selectedScore = 3" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">3</button> <button type="button" (click)="selectedScore = 4" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">4</button>
-              <button type="button" (click)="selectedScore = 5" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">5</button> </div>
-          </div>
-        </section>
-
-        <section class="mb-3 min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-3 md:px-5 md:py-4">
-          <div class="flex min-w-0 flex-col gap-2 border-b border-gray-200 pb-3 md:flex-row md:items-center md:justify-between">
-            <h3 class="min-w-0 break-words text-[14px] font-semibold leading-5 !text-gray-900 md:text-[18px] md:leading-6">Operational Efficiency &amp; Code Quality</h3>
-            <span class="w-fit shrink-0 rounded-full bg-[#EFECEC] px-3 py-1 text-[13px] font-medium !text-[#6E6E6E] md:text-[15px]">Weight: 15%</span>
-          </div>
-
-          <div class="mt-3 min-w-0">
-            <p class="text-[12px] font-semibold uppercase tracking-wide !text-[#617896] md:text-[14px]">Target</p>
-            <ul class="mt-1 space-y-1 text-[13px] leading-5 !text-[#617896] md:text-[15px] md:leading-6">
-              <li class="break-words">• Maintain agreed code quality standards across all deliverables.</li>
-              <li class="break-words">• Complete assigned development tasks within agreed timelines.</li>
-            </ul>
-          </div>
-
-          <div class="mt-3 min-w-0 border-t border-gray-200 pt-3">
-            <div class="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
-              <div class="min-w-0">
-                <h4 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Validation score</h4>
-                <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Update the score recorded during the validation meeting.</p>
-              </div>
-              <span class="shrink-0 text-[13px] font-medium !text-[#347DEB] md:text-[15px]">Weighted: 9 / 15</span>
-            </div>
-
-            <div class="mt-3 flex flex-wrap gap-2">
-                <button type="button" (click)="selectedScore = 1" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">1</button> <button type="button" (click)="selectedScore = 2" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">2</button>
-                <button type="button" (click)="selectedScore = 3" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">3</button> <button type="button" (click)="selectedScore = 4" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">4</button>
-                <button type="button" (click)="selectedScore = 5" class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-white text-[13px] font-medium !text-gray-900 hover:border-[#347DEB] hover:bg-[#eef5ff] md:h-10 md:w-10 md:text-[15px]">5</button> </div>
-                          </div>
-        </section>
-
-        <section class="min-w-0 rounded-lg border border-[#d9e9fb] bg-[#eef5ff] px-3 py-3 md:px-5 md:py-4">
-          <div class="flex min-w-0 flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-5">
-            <div class="min-w-0">
-              <h3 class="text-[13px] font-semibold !text-gray-900 md:text-[15px]">Updated validation summary</h3>
-              <p class="mt-1 break-words text-[13px] !text-[#617896] md:text-[15px]">Final weighted score after changes.</p>
-            </div>
-
-            <div class="flex shrink-0 flex-wrap items-center gap-2">
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">48</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">9</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">32</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">+</span>
-              <span class="flex h-8 min-w-9 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-medium !text-gray-900 md:h-9 md:min-w-10 md:text-[15px]">10</span>
-              <span class="text-[13px] !text-[#617896] md:text-[15px]">=</span>
-              <span class="flex h-8 min-w-10 items-center justify-center rounded-md border border-[#cfe1f8] bg-white px-2 text-[13px] font-semibold !text-[#347DEB] md:h-9 md:min-w-11 md:text-[15px]">99</span>
-            </div>
-          </div>
-        </section>
-      </div>
-
-    <footer class="flex shrink-0 gap-3 border-t border-gray-200 bg-white px-4 py-3 md:items-center md:justify-end md:px-7 md:py-4">
-      <button type="button" (click)="closeValidateModal()" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg border border-gray-300 bg-white py-2.5 text-[13px] font-medium !text-gray-900 hover:bg-gray-50 md:flex-none md:px-5 md:text-[15px]">
-        Cancel
-      </button>
-      <button type="button" class="inline-flex min-w-0 flex-1 items-center justify-center rounded-lg bg-[#347DEB] px-4 py-2.5 text-[13px] font-medium !text-white hover:bg-[#286FD6] md:flex-none md:px-5 md:text-[15px]">
-        <i class="fa-solid fa-circle-check mr-2 shrink-0"></i>
-        <span>Save changes</span>
-      </button>
-    </footer>
-
-    </div>
-
   </div>
 }

@@ -6,7 +6,7 @@
     <section>
 
       <!-- BACK TO DASHBOARD -->
-      <div class="flex cursor-pointer items-center gap-2 md:gap-[8px]">
+      <div class="flex cursor-pointer items-center gap-2 md:gap-[8px]" (click)="goToDashboard()">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#807777] md:h-5 md:w-5">
           <path d="m12 19-7-7 7-7" />
           <path d="M19 12H5" />
@@ -24,11 +24,23 @@
         </span>
 
         <p class="mt-2 text-[13px] text-[#807777] md:mt-[7px] md:text-[15px]">
-          Kindly set targets before the agreed deadline.
+          @if (cycle()) {
+            {{ cycle()!.name }} — kindly set targets before the agreed deadline.
+          } @else {
+            Kindly set targets before the agreed deadline.
+          }
         </p>
       </div>
 
     </section>
+
+    @if (loading()) {
+      <p class="mt-6 text-[14px] text-[#64748B]">Loading…</p>
+    } @else if (!cycle()) {
+      <p class="mt-6 rounded-[10px] bg-amber-50 px-4 py-3 text-[14px] text-amber-700">There is no active performance cycle. Ask HR to activate one.</p>
+    } @else if (units().length === 0) {
+      <p class="mt-6 rounded-[10px] bg-amber-50 px-4 py-3 text-[14px] text-amber-700">You do not head a unit, so there is nobody to set targets for.</p>
+    } @else {
 
     <!-- TEAM / ASSIGN TO -->
     <section class="mt-5 md:mt-[28px]">
@@ -52,11 +64,11 @@
 
               <div class="flex flex-col gap-[2px] md:gap-[3px]">
                 <span class="text-[14px] font-semibold text-[#111827] md:text-[16px]">
-                  Sally Smith
+                  {{ me()?.firstName }} {{ me()?.lastName }}
                 </span>
 
                 <span class="text-[12px] text-[#64748B] md:text-[14px]">
-                  Client-side Engineering
+                  {{ me()?.jobTitle }}
                 </span>
               </div>
 
@@ -76,13 +88,21 @@
                 <i class="fa-solid fa-users text-[15px] text-[#5AA4FF] md:text-[17px]"></i>
               </div>
 
-              <div class="flex flex-col gap-[2px] md:gap-[3px]">
-                <span class="text-[14px] font-semibold text-[#111827] md:text-[16px]">
-                  Technology Department
-                </span>
+              <div class="flex min-w-0 flex-col gap-[2px] md:gap-[3px]">
+                @if (units().length > 1) {
+                  <select [(ngModel)]="unitId" (ngModelChange)="onUnitChange()" class="h-[34px] max-w-full rounded-[8px] border border-[#D0D0D0] bg-white px-2 text-[13px] font-semibold text-[#111827] outline-none focus:border-[#5AA4FF] md:text-[15px]">
+                    @for (u of units(); track u._id) {
+                      <option [value]="u._id">{{ u.name }}{{ u.isSubUnit ? ' (sub-unit)' : '' }}</option>
+                    }
+                  </select>
+                } @else {
+                  <span class="text-[14px] font-semibold text-[#111827] md:text-[16px]">
+                    {{ unit()?.name }}
+                  </span>
+                }
 
                 <span class="text-[12px] text-[#64748B] md:text-[14px]">
-                  24 team members
+                  {{ team().length }} team member{{ team().length === 1 ? '' : 's' }}
                 </span>
               </div>
 
@@ -105,12 +125,11 @@
                 </span>
               </label>
 
-              <select class="mt-2 h-[42px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-3 text-[13px] font-medium text-[#111827] outline-none transition focus:border-[#5AA4FF] md:h-[44px] md:px-[14px] md:text-[15px]">
+              <select [(ngModel)]="staffId" (ngModelChange)="onStaffChange()" class="mt-2 h-[42px] w-full rounded-[8px] border border-[#D0D0D0] bg-white px-3 text-[13px] font-medium text-[#111827] outline-none transition focus:border-[#5AA4FF] md:h-[44px] md:px-[14px] md:text-[15px]">
                 <option value="">All Team Members</option>
-                <option value="">Ama Boateng</option>
-                <option value="">David Opong</option>
-                <option value="">Joan Salomey</option>
-                <option value="">Michael Mensah</option>
+                @for (m of team(); track m._id) {
+                  <option [value]="m._id">{{ m.firstName }} {{ m.lastName }}{{ m.jobTitle ? ' · ' + m.jobTitle : '' }}</option>
+                }
               </select>
 
             </div>
@@ -127,8 +146,8 @@
 
           <p class="mt-2 shrink-0 text-[12px] text-[#94A3B8] md:mt-0 md:text-[14px]">
             Target setting window:
-            <span class="font-medium text-[#64748B]">
-              1 July 2026 – 30 July 2026
+            <span class="font-medium" [class]="windowOpen() ? 'text-[#64748B]' : 'text-red-500'">
+              {{ fmtRange(cycle()!.targetStartDate, cycle()!.targetEndDate) }}{{ windowOpen() ? '' : ' (closed)' }}
             </span>
           </p>
 
@@ -141,14 +160,26 @@
     <!-- KEY PERFORMANCE INDICATORS -->
     <section class="mt-5 md:mt-[28px]">
 
-      <div class="mb-3 md:mb-[10px]">
+      <div class="mb-3 flex items-center justify-between md:mb-[10px]">
         <span class="text-[12px] font-semibold uppercase tracking-wide text-[#6E6E6E] md:text-[15px]">
           Key Performance Indicators
         </span>
+        @if (rows().length) {
+          <span class="text-[12px] font-semibold md:text-[14px]" [class]="totalWeight() === 100 ? 'text-[#16A36A]' : 'text-red-500'">
+            Total weight: {{ totalWeight() }}%
+          </span>
+        }
       </div>
 
-      <!-- KPI 1 -->
-      <div class="rounded-[10px] border border-[#D0D0D0] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
+      @if (templateMissing()) {
+        <p class="rounded-[10px] bg-amber-50 px-4 py-3 text-[14px] text-amber-700">
+          No KPI template exists for {{ unit()?.name }} or the unit above it. Ask HR to create one first.
+        </p>
+      }
+
+      @for (row of rows(); track row.title; let i = $index) {
+      <!-- KPI -->
+      <div class="rounded-[10px] border border-[#D0D0D0] bg-white px-4 py-4 md:px-[20px] md:py-[18px]" [class]="i > 0 ? 'mt-4 md:mt-[18px]' : ''">
 
         <!-- KPI HEADER -->
         <div class="flex items-start justify-between gap-3 md:items-center md:gap-[20px]">
@@ -157,10 +188,10 @@
           <div class="flex min-w-0 items-start gap-1.5 md:items-center md:gap-[7px]">
 
             <span class="text-[14px] font-semibold leading-5 text-[#111827] md:text-[16px]">
-              Application Development &amp; Delivery
+              {{ row.title }}
             </span>
 
-            <button type="button" (click)="openEditKpi('Application Development & Delivery', 60)" class="button-press shrink-0 cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
+            <button type="button" (click)="openEditKpi(i)" class="button-press shrink-0 cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-4 md:w-4">
                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
                 <path d="m15 5 4 4" />
@@ -173,10 +204,10 @@
           <div class="flex shrink-0 items-center gap-1.5 rounded-full bg-[#EFECEC] px-2.5 py-1.5 md:gap-[7px] md:px-[12px] md:py-[7px]">
 
             <span class="text-[12px] font-semibold text-[#6E6E6E] md:text-[15px]">
-              Weight 60%
+              Weight {{ row.weight }}%
             </span>
 
-            <button type="button" (click)="openEditKpi('Application Development & Delivery', 60)" class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
+            <button type="button" (click)="openEditKpi(i)" class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-4 md:w-4">
                 <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
                 <path d="m15 5 4 4" />
@@ -194,7 +225,7 @@
             Target
           </p>
 
-          <textarea placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines." class="mt-2 h-[100px] w-full resize-none rounded-[10px] border border-[#DDDDDD] bg-[#F8F5F0] px-3 py-2.5 !text-[12px] leading-5 text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10 md:mt-[8px] md:px-[14px] md:py-[12px] md:text-[15px]"></textarea>
+          <textarea [(ngModel)]="row.targetsText" placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines." class="mt-2 h-[100px] w-full resize-none rounded-[10px] border border-[#DDDDDD] bg-[#F8F5F0] px-3 py-2.5 !text-[12px] leading-5 text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10 md:mt-[8px] md:px-[14px] md:py-[12px] md:text-[15px]"></textarea>
 
           <p class="mt-1.5 text-[12px] text-[#98A2B3] md:mt-[6px] md:text-[15px]">
             One target per line.
@@ -203,70 +234,22 @@
         </div>
 
       </div>
-
-      <!-- KPI 2 -->
-      <div class="mt-4 rounded-[10px] border border-[#D0D0D0] bg-white px-4 py-4 md:mt-[18px] md:px-[20px] md:py-[18px]">
-
-        <!-- KPI HEADER -->
-        <div class="flex items-start justify-between gap-3 md:items-center md:gap-[20px]">
-
-          <div class="flex min-w-0 items-start gap-1.5 md:items-center md:gap-[7px]">
-
-            <span class="text-[14px] font-semibold leading-5 text-[#111827] md:text-[16px]">
-              Operational Efficiency &amp; Code Quality
-            </span>
-
-            <button type="button" (click)="openEditKpi('Operational Efficiency & Code Quality', 15)" class="button-press shrink-0 cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-4 md:w-4">
-                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                <path d="m15 5 4 4" />
-              </svg>
-            </button>
-
-          </div>
-
-          <!-- WEIGHT -->
-          <div class="flex shrink-0 items-center gap-1.5 rounded-full bg-[#EFECEC] px-2.5 py-1.5 md:gap-[7px] md:px-[12px] md:py-[7px]">
-
-            <span class="text-[12px] font-semibold text-[#6E6E6E] md:text-[15px]">
-              Weight 60%
-            </span>
-
-            <button type="button" (click)="openEditKpi('Operational Efficiency & Code Quality', 15)" class="button-press cursor-pointer text-[#64748B] transition-colors duration-150 hover:text-[#5AA4FF]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-4 md:w-4">
-                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                <path d="m15 5 4 4" />
-              </svg>
-            </button>
-
-          </div>
-
-        </div>
-
-        <!-- TARGET -->
-        <div class="mt-4 border-t border-[#E5E7EB] pt-4 md:mt-[20px] md:pt-[18px]">
-
-          <p class="text-[13px] font-medium uppercase text-[#807777] md:text-[15px]">
-            Target
-          </p>
-
-          <textarea placeholder="Enter one measurable target per line, e.g. Deliver 100% of assigned tasks within agreed sprint timelines." class="mt-2 h-[100px] w-full resize-none rounded-[10px] border border-[#DDDDDD] bg-[#F8F5F0] px-3 py-2.5 !text-[12px] leading-5 text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10 md:mt-[8px] md:px-[14px] md:py-[12px] md:text-[15px]"></textarea>
-
-          <p class="mt-1.5 text-[12px] text-[#98A2B3] md:mt-[6px] md:text-[15px]">
-            One target per line.
-          </p>
-
-        </div>
-
-      </div>
+      }
 
     </section>
+
+    @if (error()) {
+      <p class="mt-4 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+    }
+    @if (notice()) {
+      <p class="mt-4 rounded-[10px] bg-[#DCFCE7] px-4 py-3 text-[14px] text-[#166534]">{{ notice() }}</p>
+    }
 
     <!-- ACTION BUTTONS -->
     <div class="flex flex-col gap-3 py-5 md:flex-row md:justify-end md:gap-[12px] md:py-[24px]">
 
       <!-- SAVE DRAFT -->
-      <button type="button" class="button-press flex h-[44px] w-full items-center justify-center gap-2 rounded-[8px] border border-[#DDDDDD] bg-white px-5 text-[13px] font-medium text-[#344054] shadow-[0_4px_10px_rgba(0,0,0,0.08)] transition hover:bg-[#F9FAFB] md:h-[45px] md:w-auto md:gap-[7px] md:px-[24px] md:text-[15px]">
+      <button type="button" (click)="saveDraft()" [disabled]="busy() || rows().length === 0" class="button-press flex h-[44px] w-full items-center justify-center gap-2 rounded-[8px] border border-[#DDDDDD] bg-white px-5 text-[13px] font-medium text-[#344054] shadow-[0_4px_10px_rgba(0,0,0,0.08)] transition hover:bg-[#F9FAFB] disabled:opacity-60 md:h-[45px] md:w-auto md:gap-[7px] md:px-[24px] md:text-[15px]">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:h-[19px] md:w-[19px]">
           <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
@@ -278,17 +261,19 @@
       </button>
 
       <!-- PUBLISH TARGETS -->
-      <button type="button" class="button-press flex h-[44px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#5AA4FF] px-5 text-[13px] font-medium !text-white transition hover:bg-[#428FEF] md:h-[45px] md:w-auto md:px-[24px] md:text-[15px]">
+      <button type="button" (click)="publish()" [disabled]="busy() || rows().length === 0" class="button-press flex h-[44px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#5AA4FF] px-5 text-[13px] font-medium !text-white transition hover:bg-[#428FEF] disabled:opacity-60 md:h-[45px] md:w-auto md:px-[24px] md:text-[15px]">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="md:h-[19px] md:w-[19px]">
           <path d="m22 2-7 20-4-9-9-4Z" />
           <path d="M22 2 11 13" />
         </svg>
 
-        Publish Targets
+        {{ busy() ? 'Working…' : 'Publish Targets' }}
       </button>
 
     </div>
+
+    }
 
   </div>
 

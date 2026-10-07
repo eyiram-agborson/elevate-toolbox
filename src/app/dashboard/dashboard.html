@@ -27,9 +27,9 @@
 >
                 <i class="fa-regular fa-bell text-[17px] md:text-[18px]"></i>
 
-                @if (hasTargetChange) {
+                @if (pendingReviews() > 0) {
                   <span class="absolute right-[4px] top-[3px] flex h-[15px] min-w-[15px] items-center justify-center rounded-full bg-[#EF4444] px-[3px] text-[9px] font-medium !text-white md:right-[5px] md:top-[4px] md:h-[16px] md:min-w-[16px] md:text-[10px]">
-                    1
+                    {{ pendingReviews() }}
                   </span>
                 }
               </button>
@@ -44,14 +44,14 @@
                       Notifications
                     </span>
 
-                    @if (hasTargetChange) {
+                    @if (pendingReviews() > 0) {
                       <span class="text-[12px] text-[#94A3B8] md:text-[13px]">
-                        1 pending
+                        {{ pendingReviews() }} pending
                       </span>
                     }
                   </div>
 
-                  @if (hasTargetChange) {
+                  @if (pendingReviews() > 0) {
                     <!-- TARGET CHANGE -->
                     <div class="px-[14px] py-[13px] md:px-[15px] md:py-[14px]">
                       <div class="flex gap-[9px] md:gap-[10px]">
@@ -63,25 +63,20 @@
                         <div class="min-w-0 flex-1">
                           <div class="flex items-start justify-between gap-[8px]">
                             <span class="text-[13px] font-semibold text-[#111827] md:text-[14px]">
-                              Target changes requested
-                            </span>
-
-                            <span class="shrink-0 text-[11px] text-[#94A3B8] md:text-[12px]">
-                              2h ago
+                              Reviews awaiting your rating
                             </span>
                           </div>
 
                           <p class="mt-[4px] text-[13px] leading-[18px] text-[#64748B] md:text-[14px] md:leading-[19px]">
-                            HR has requested changes to your
                             <span class="font-medium text-[#475569]">
-                              Application Development &amp; Delivery
+                              {{ pendingReviews() }} team member{{ pendingReviews() === 1 ? ' has' : 's have' }}
                             </span>
-                            target.
+                            submitted a self-review for you to rate.
                           </p>
 
-                          <button type="button" (click)="reviewTargetChanges()"
+                          <button type="button" (click)="reviewPending()"
                             class="button-press mt-[7px] text-[13px] font-medium !text-[#3F91DF] hover:!text-[#2563EB] md:mt-[8px] md:text-[14px]">
-                            Review &amp; Update
+                            Review now
                             <span class="ml-[3px]">→</span>
                           </button>
                         </div>
@@ -112,7 +107,15 @@
         </div>
       </div>
 
+      @if (!cycle() && cycleLoaded()) {
+        <p class="rounded-[12px] border border-dashed border-[#CBD5E1] bg-white px-4 py-8 text-center text-[14px] text-[#64748B]">There is no active performance cycle right now.</p>
+      }
+      @if (error()) {
+        <p class="mb-3 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+      }
+
       <!-- ACTIVE CYCLE -->
+      @if (cycle(); as c) {
       <div class="rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.10)] md:overflow-hidden">
 
         <!-- CYCLE HEADER -->
@@ -129,11 +132,11 @@
               <!-- CYCLE DETAILS -->
               <div class="flex min-w-0 flex-col gap-[3px]">
                 <span class="text-[16px] font-semibold leading-[21px] text-[#111827] md:text-[18px] md:leading-normal">
-                  ELEVATE – Q3 (July – September 2026)
+                  {{ c.name || cycleName(c.period, c.startDate) }}
                 </span>
 
                 <span class="text-[12px] leading-[18px] text-gray-500 md:text-[15px] md:leading-normal">
-                  Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
+                  {{ cycleSummary() }}
                 </span>
               </div>
             </div>
@@ -150,7 +153,7 @@
 
         <!-- CYCLE STEPS -->
         <div class="border-b border-t border-[#E5E7EB] px-[12px] py-[12px] md:px-[20px] md:py-[14px]">
-          <nz-steps [nzCurrent]="0">
+          <nz-steps [nzCurrent]="stepIndex()">
             <nz-step nzTitle="Targets"></nz-step>
             <nz-step nzTitle="Performance Review"></nz-step>
             <nz-step nzTitle="Completed"></nz-step>
@@ -168,7 +171,7 @@
               </span>
 
               <span class="text-[11px] font-medium text-[#4D9BF6] md:text-[12px]">
-                22 Jul – 30 Jul 2026
+                {{ fmtRange(c.targetStartDate, c.targetEndDate) }}
               </span>
             </div>
           </div>
@@ -181,13 +184,14 @@
               </span>
 
               <span class="text-[11px] font-medium text-[#111827] md:text-[12px]">
-                29 Sept – 7 Oct 2026
+                {{ fmtRange(c.reviewStartDate, c.reviewEndDate) }}
               </span>
             </div>
           </div>
 
         </div>
       </div>
+      }
 
     </div>
   </div>
@@ -216,6 +220,7 @@
                     <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
 
                         <div class="min-w-0 flex-1">
+                            @if (cycle(); as c) {
                             <div class="flex flex-col gap-3">
                                 <span class="w-fit rounded-full bg-[#DDFBE5] px-3 py-1 !text-[12px] font-medium text-[#16A34A] md:!text-[13px] lg:!text-[15px]">
                                     • Active
@@ -223,14 +228,21 @@
 
                                 <div class="flex min-w-0 flex-col gap-1">
                                     <span class="break-words text-[16px] font-semibold text-[#111827] md:text-[17px] lg:text-[18px]">
-                                        ELEVATE – Q3 (July – September 2026)
+                                        {{ c.name || cycleName(c.period, c.startDate) }}
                                     </span>
 
                                     <span class="break-words text-[12px] leading-5 text-gray-500 md:text-[14px] lg:text-[15px]">
-                                        Goal setting is open. Add measurable targets for your KPIs before the agreed deadline
+                                        {{ cycleSummary() }}
                                     </span>
                                 </div>
                             </div>
+                            } @else if (cycleLoaded()) {
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[16px] font-semibold text-[#111827] lg:text-[18px]">No active performance cycle</span>
+                                    <span class="text-[12px] text-gray-500 md:text-[14px] lg:text-[15px]">Create and activate a cycle to start the review process.</span>
+                                    <button type="button" (click)="goToPerformanceCycles()" class="mt-1 w-fit rounded-[8px] bg-[#5BA2F7] px-5 py-2 text-[13px] font-medium !text-white">Performance cycles</button>
+                                </div>
+                            }
                         </div>
 
                         <!-- KEEP HIDDEN -->
@@ -242,10 +254,11 @@
                     </div>
                 </div>
 
+                @if (cycle(); as c) {
                 <!-- STEPS -->
                 <div class="border-b border-t border-[#E5E7EB] px-4 pt-5 md:px-5 md:py-2 lg:px-5">
                     <div class="min-w-[420px]">
-                        <nz-steps [nzCurrent]="0" nzSize="small">
+                        <nz-steps [nzCurrent]="stepIndex()" nzSize="small">
                             <nz-step nzTitle="Targets"></nz-step>
                             <nz-step nzTitle="Performance Review"></nz-step>
                             <nz-step nzTitle="Completed"></nz-step>
@@ -262,7 +275,7 @@
                                 Target Setting Window
                             </span>
                             <span class="text-[12px] font-medium text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
-                                22 Jul – 30 Jul 2026
+                                {{ fmtRange(c.targetStartDate, c.targetEndDate) }}
                             </span>
                         </div>
                     </div>
@@ -273,13 +286,16 @@
                                 Performance Review Window
                             </span>
                             <span class="text-[12px] font-medium text-[#111827] md:text-[14px] lg:text-[15px]">
-                                29 Sept – 7 Oct 2026
+                                {{ fmtRange(c.reviewStartDate, c.reviewEndDate) }}
                             </span>
                         </div>
                     </div>
 
                 </div>
+                }
             </div>
+
+            @if (cycle()) {
 
             <!-- SUMMARY CARDS -->
             <div class="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:mt-5 lg:grid-cols-4 lg:gap-[18px]">
@@ -290,7 +306,7 @@
                     </span>
 
                     <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
-                        10
+                        {{ topDepartments().length }}
                     </div>
 
                     <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
@@ -304,7 +320,7 @@
                     </span>
 
                     <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
-                        120
+                        {{ employees().length }}
                     </div>
 
                     <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
@@ -318,7 +334,7 @@
                     </span>
 
                     <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
-                        10%
+                        {{ hrReviewCompletion() }}%
                     </div>
 
                     <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
@@ -328,15 +344,15 @@
 
                 <div class="rounded-[12px] border border-[#E1E4E8] bg-white px-3 py-3 md:px-4 md:py-4 lg:px-4 lg:py-[14px]">
                     <span class="text-[11px] font-medium uppercase text-[#64748B] md:text-[13px] lg:text-[15px]">
-                        Targets Awaiting Review
+                        Reviews Awaiting Managers
                     </span>
 
                     <div class="mt-1 text-[22px] font-semibold text-[#111827] md:text-[24px] lg:mt-[6px] lg:text-[26px]">
-                        18
+                        {{ hrAwaitingManager() }}
                     </div>
 
                     <span class="break-words text-[12px] leading-5 text-gray-400 md:text-[13px] lg:text-[15px]">
-                        Employee submissions pending manager review
+                        Self-reviews pending a manager rating
                     </span>
                 </div>
 
@@ -351,6 +367,7 @@
 
                     <a
                         routerLink="/hr/departments"
+                        [queryParams]="{ cycle: cycle()?._id }"
                         class="link-select shrink-0 cursor-pointer text-[12px] font-medium hover:text-[#4D9BF6] md:text-[13px] lg:pr-5 lg:text-[15px]">
                         View all
                     </a>
@@ -358,8 +375,8 @@
 
                 <div class="mt-[10px] overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
 
-                    <!-- TECHNOLOGY -->
-                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
+                    @for (d of topDepartments().slice(0, 5); track d.unit._id) {
+                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 last:border-b-0 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
                         <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
                             <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
                                 <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
@@ -367,155 +384,32 @@
 
                             <div class="flex min-w-0 flex-col gap-1">
                                 <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
-                                    Technology
+                                    {{ d.unit.name }}
                                 </span>
                                 <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
-                                    Sally Smith • 24 team members
+                                    {{ d.unitHead ? personName(d.unitHead) + ' • ' : '' }}{{ d.staffCount }} team member{{ d.staffCount === 1 ? '' : 's' }}
                                 </span>
                             </div>
                         </div>
 
                         <div class="w-full md:w-[36%]">
-                            <nz-progress [nzPercent]="26" [nzShowInfo]="false"[nzStrokeWidth]="6"
+                            <nz-progress [nzPercent]="percent(d)" [nzShowInfo]="false" [nzStrokeWidth]="6"
                                 nzStrokeColor="#4D9BF6">
                             </nz-progress>
 
                             <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
-                                8/24 manager reviews completed
+                                {{ d.managerReviewCount }}/{{ d.staffCount }} manager reviews completed
                             </span>
                         </div>
 
-                        <button type="button" (click)="goToDepartmentDetails()"
+                        <button type="button" (click)="goToDepartmentDetails(d)"
                             class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
                             View →
                         </button>
                     </div>
-
-                    <!-- FINANCE -->
-                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
-                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
-                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
-                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
-                                    Finance
-                                </span>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
-                                    Michael Mensah • 18 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-[36%]">
-                            <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6">
-                            </nz-progress>
-
-                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
-                                12/18 manager reviews completed
-                            </span>
-                        </div>
-
-                        <button type="button" (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- HUMAN RESOURCES -->
-                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
-                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
-                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
-                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
-                                    Human Resources
-                                </span>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
-                                    Ama Owusu • 12 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-[36%]">
-                            <nz-progress [nzPercent]="100"[nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6">
-                            </nz-progress>
-
-                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
-                                12/12 manager reviews completed
-                            </span>
-                        </div>
-
-                        <button type="button" (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- OPERATIONS -->
-                    <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
-                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
-                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
-                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
-                                    Operations
-                                </span>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
-                                    Kojo Asante • 30 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-[36%]">
-                            <nz-progress [nzPercent]="83" [nzShowInfo]="false" [nzStrokeWidth]="6"
-                                nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
-                                25/30 manager reviews completed
-                            </span>
-                        </div>
-
-                        <button type="button" (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- MARKETING -->
-                    <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:gap-6 md:px-5 lg:px-[18px] lg:py-[16px]">
-                        <div class="flex min-w-0 items-center gap-3 md:w-[40%]">
-                            <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-white">
-                                <i class="fa-solid fa-users text-[15px] text-[#93C5FD] md:text-[17px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <span class="text-[13px] font-medium md:text-[14px] lg:text-[15px]">
-                                    Marketing
-                                </span>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[15px]">
-                                    Esi Boateng • 20 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-[36%]">
-                            <nz-progress [nzPercent]="0" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"></nz-progress>
-                            <span class="text-[12px] text-gray-400 md:text-[13px] lg:text-[15px]">
-                                0/20 manager reviews completed
-                            </span>
-                        </div>
-
-                        <button type="button" (click)="goToDepartmentDetails()"
-                            class="w-fit cursor-pointer !text-[13px] font-medium text-[#555] link-select hover:text-[#4D9BF6] md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
+                    } @empty {
+                        <p class="px-4 py-6 text-center text-[13px] text-gray-400">No departments to show.</p>
+                    }
 
                 </div>
             </section>
@@ -528,8 +422,8 @@
 
                 <div class="mt-[10px] w-full overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white">
 
-                    <!-- SALLY SMITH -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
+                    @for (r of recentSubmissions(); track r._id) {
+                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 last:border-b-0 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
                         <div class="flex min-w-0 items-center gap-3">
                             <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
                                 <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
@@ -538,138 +432,31 @@
                             <div class="flex min-w-0 flex-col gap-1">
                                 <div class="flex min-w-0 flex-wrap items-center gap-2">
                                     <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
-                                        Sally Smith
+                                        {{ personName(r.staff) }}
                                     </span>
                                     <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
-                                        Submitted
+                                        {{ reviewStateText(r) }}
                                     </span>
                                 </div>
                                 <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
-                                    Software Engineer • Client-side Engineering
+                                    {{ r.staff.jobTitle || 'Staff' }}{{ unitNameOf(r) ? ' • ' + unitNameOf(r) : '' }}
                                 </span>
                             </div>
                         </div>
 
-                        <button type="button" (click)="goToEmployeeDetails()"
+                        <button type="button" (click)="goToSubmission(r)"
                             class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
                             View →
                         </button>
                     </div>
-
-                    <!-- MICHAEL MENSAH -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
-                        <div class="flex min-w-0 items-center gap-3">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
-                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <div class="flex min-w-0 flex-wrap items-center gap-2">
-                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
-                                        Michael Mensah
-                                    </span>
-
-                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
-                                        Submitted
-                                    </span>
-                                </div>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
-                                    Financial Analyst • Finance
-                                </span>
-                            </div>
-                        </div>
-                        <button type="button"
-                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- AMA OWUSU -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
-                        <div class="flex min-w-0 items-center gap-3">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
-                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <div class="flex min-w-0 flex-wrap items-center gap-2">
-                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
-                                        Ama Owusu
-                                    </span>
-                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
-                                        Reviewed
-                                    </span>
-                                </div>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
-                                    HR Specialist • Human Resources
-                                </span>
-                            </div>
-                        </div>
-
-                        <button type="button"
-                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- KOJO ASANTE -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
-                        <div class="flex min-w-0 items-center gap-3">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
-                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <div class="flex min-w-0 flex-wrap items-center gap-2">
-                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
-                                        Kojo Asante
-                                    </span>
-                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
-                                        Reviewed
-                                    </span>
-                                </div>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
-                                    Operations Manager • Operations
-                                </span>
-                            </div>
-                        </div>
-
-                        <button type="button"
-                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
-
-                    <!-- ESI BOATENG -->
-                    <div class="flex flex-col gap-3 px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4 lg:px-[18px] lg:py-[13px]">
-                        <div class="flex min-w-0 items-center gap-3">
-                            <div class="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#E5E7EB] bg-white md:h-[38px] md:w-[38px]">
-                                <i class="fa-solid fa-user text-[14px] text-[#93C5FD] md:text-[16px]"></i>
-                            </div>
-
-                            <div class="flex min-w-0 flex-col gap-1">
-                                <div class="flex min-w-0 flex-wrap items-center gap-2">
-                                    <span class="text-[13px] font-medium text-gray-900 md:text-[14px] lg:text-[15px]">
-                                        Esi Boateng
-                                    </span>
-                                    <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:text-[11px] lg:text-[12px]">
-                                        Reviewed
-                                    </span>
-                                </div>
-                                <span class="break-words text-[12px] text-gray-400 md:text-[13px] lg:truncate lg:text-[14px]">
-                                    Marketing Officer • Marketing
-                                </span>
-                            </div>
-                        </div>
-
-                        <button type="button"
-                            class="w-fit shrink-0 whitespace-nowrap !text-[13px] font-medium text-[#4D9BF6] link-select md:text-[14px] lg:text-[15px]">
-                            View →
-                        </button>
-                    </div>
+                    } @empty {
+                        <p class="px-4 py-6 text-center text-[13px] text-gray-400">No submissions yet.</p>
+                    }
 
                 </div>
             </section>
+
+            }
 
         </div>
     </div>
@@ -686,7 +473,7 @@
         </span>
 
         <span class="text-[12px] text-gray-400 md:text-[15px]">
-          Monitor the performance of your assigned departments.
+          Monitor the performance of the departments.
         </span>
       </div>
 
@@ -695,6 +482,7 @@
       <div class="overflow-hidden rounded-[12px] border border-[#E0E3E7] bg-white shadow-[0_2px_5px_rgba(0,0,0,0.12)] md:rounded-[14px]">
         <div class="px-4 py-4 md:px-[22px] md:py-[20px]">
 
+          @if (cycle(); as c) {
           <div class="flex flex-col gap-3">
             <span class="w-fit rounded-full bg-[#DDFBE5] px-2 py-1 text-[11px] font-medium text-[#16A34A] md:px-[12px] md:py-[5px] md:text-[15px]">
               • Active
@@ -702,29 +490,33 @@
 
             <div class="flex min-w-0 flex-col gap-1">
               <span class="break-words text-[17px] font-semibold text-[#111827] md:text-[18px]">
-                ELEVATE – Q3 (July – September 2026)
+                {{ c.name || cycleName(c.period, c.startDate) }}
               </span>
 
               <span class="break-words text-[12px] text-gray-500 md:text-[15px]">
-                Performance review window 29 Sept – 7 Oct 2026
+                Performance review window {{ fmtRange(c.reviewStartDate, c.reviewEndDate) }}
               </span>
             </div>
           </div>
+          } @else if (cycleLoaded()) {
+            <span class="text-[14px] text-gray-500">There is no active performance cycle right now.</span>
+          }
 
         </div>
       </div>
 
+      @if (cycle()) {
 
       <!-- SUMMARY CARDS -->
       <div class="mt-4 grid grid-cols-1 gap-3 md:mt-[20px] md:grid-cols-2 md:gap-[18px] lg:grid-cols-4">
 
         <div class="min-w-0 rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[20px] md:py-[18px]">
           <span class="break-words font-medium text-[12px] uppercase text-[#64748B] md:text-[15px]">
-            Assigned Departments
+            Departments
           </span>
 
           <div class="mt-1 text-[19px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">
-            3
+            {{ topDepartments().length }}
           </div>
 
           <span class="break-words text-[11px] text-gray-400 md:text-[15px]">
@@ -739,11 +531,11 @@
           </span>
 
           <div class="mt-1 text-[19px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">
-            5
+            {{ managers().length }}
           </div>
 
           <span class="break-words text-[11px] text-gray-400 md:text-[15px]">
-            Managers across assigned departments
+            Managers across departments
           </span>
         </div>
 
@@ -754,7 +546,7 @@
           </span>
 
           <div class="mt-1 text-[19px] font-semibold text-[#111827] md:mt-[7px] md:text-[26px]">
-            3/5
+            {{ managersCompleted() }}/{{ managersTeamSize() }}
           </div>
 
           <span class="break-words text-[11px] text-gray-400 md:text-[15px]">
@@ -769,7 +561,7 @@
           </span>
 
           <div class="mt-1 break-words text-[17px] font-semibold text-[#111827] md:mt-[7px] md:text-[22px]">
-            Technology
+            {{ bestDepartment()?.unit?.name ?? '—' }}
           </div>
 
           <span class="break-words text-[11px] text-gray-400 md:text-[15px]">
@@ -780,12 +572,12 @@
       </div>
 
 
-      <!-- ASSIGNED DEPARTMENTS -->
+      <!-- DEPARTMENTS -->
       <section class="mt-6 md:mt-[28px]">
 
         <div class="flex items-center justify-between gap-3">
           <span class="text-[12px] tracking-wider font-medium uppercase text-gray-500 md:text-[15px]">
-            Assigned Departments
+            Departments
           </span>
 
           <button type="button" (click)="goToDepartmentPerformance()"
@@ -797,8 +589,8 @@
 
         <div class="mt-2 overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white md:mt-[10px]">
 
-          <!-- TECHNOLOGY -->
-          <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
+          @for (d of topDepartments().slice(0, 5); track d.unit._id) {
+          <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 last:border-b-0 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
 
             <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
 
@@ -809,104 +601,33 @@
 
               <div class="flex min-w-0 flex-col gap-1">
                 <span class="break-words text-[13px] font-medium md:text-[15px]">
-                  Technology
+                  {{ d.unit.name }}
                 </span>
 
                 <span class="break-words text-[12px] text-gray-400 md:text-[15px]">
-                  Sally Smith • 24 team members
+                  {{ d.unitHead ? personName(d.unitHead) + ' • ' : '' }}{{ d.staffCount }} team member{{ d.staffCount === 1 ? '' : 's' }}
                 </span>
               </div>
             </div>
 
             <div class="w-full min-w-0 md:w-[32%]">
-              <nz-progress [nzPercent]="26" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"
+              <nz-progress [nzPercent]="percent(d)" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#4D9BF6"
               ></nz-progress>
 
               <span class="text-[12px] text-gray-400 md:text-[15px]">
-                8/24 reviewed
+                {{ d.managerReviewCount }}/{{ d.staffCount }} reviewed
               </span>
             </div>
 
-            <button type="button" class="link-select w-full cursor-pointer text-left !text-[12px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">
-              View →
-            </button>
-
-          </div>
-
-
-          <!-- FINANCE -->
-          <div class="flex flex-col gap-4 border-b border-[#E5E7EB] px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
-
-            <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
-
-              <!-- USERS ICON -->
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E1E4E8] bg-white">
-                <i class="fa-solid fa-users text-[16px] text-[#93C5FD]"></i>
-              </div>
-
-              <div class="flex min-w-0 flex-col gap-1">
-                <span class="break-words text-[13px] font-medium md:text-[15px]">
-                  Finance
-                </span>
-
-                <span class="break-words text-[12px] text-gray-400 md:text-[15px]">
-                  Sally Smith • 24 team members
-                </span>
-              </div>
-            </div>
-
-            <div class="w-full min-w-0 md:w-[32%]">
-              <nz-progress [nzPercent]="66" [nzShowInfo]="false" [nzStrokeWidth]="6"
-                nzStrokeColor="#4D9BF6"></nz-progress>
-
-              <span class="text-[12px] text-gray-400 md:text-[15px]">
-                16/24 reviewed
-              </span>
-            </div>
-
-            <button type="button"
+            <button type="button" (click)="goToUnitManagers(d.unit._id)"
               class="link-select w-full cursor-pointer text-left !text-[12px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">
               View →
             </button>
 
           </div>
-
-
-          <!-- HUMAN RESOURCES -->
-          <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-[18px] md:py-[16px]">
-
-            <div class="flex min-w-0 items-center gap-3 md:w-[40%] md:gap-[12px]">
-
-              <!-- USERS ICON -->
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E1E4E8] bg-white">
-                <i class="fa-solid fa-users text-[16px] text-[#93C5FD]"></i>
-              </div>
-
-              <div class="flex min-w-0 flex-col gap-1">
-                <span class="break-words text-[13px] font-medium md:text-[15px]">
-                  Human Resources
-                </span>
-
-                <span class="break-words text-[12px] text-gray-400 md:text-[15px]">
-                  Sally Smith • 24 team members
-                </span>
-              </div>
-            </div>
-
-            <div class="w-full min-w-0 md:w-[32%]">
-              <nz-progress [nzPercent]="100" [nzShowInfo]="false" [nzStrokeWidth]="6"               nzStrokeColor="#4D9BF6"></nz-progress>
-
-              <span class="!text-[12px] text-gray-400 md:text-[15px]">
-                24/24 reviewed
-              </span>
-            </div>
-
-            <button type="button"
-              class="link-select w-full cursor-pointer text-left !text-[13px] font-medium text-[#555] hover:text-[#4D9BF6] md:w-auto md:text-[15px]">
-              View →
-            </button>
-
-          </div>
+          } @empty {
+            <p class="px-4 py-6 text-center text-[13px] text-gray-400">No departments to show.</p>
+          }
 
         </div>
       </section>
@@ -924,8 +645,8 @@
 
         <div class="mt-2 overflow-hidden rounded-[12px] border border-[#E1E4E8] bg-white md:mt-3">
 
-          <!-- TECHNOLOGY MANAGER -->
-          <div class="flex items-center gap-3 border-b border-[#E5E7EB] px-3 py-3 md:px-5 md:py-4">
+          @for (m of managers().slice(0, 8); track m.manager._id) {
+          <div class="flex items-center gap-3 border-b border-[#E5E7EB] px-3 py-3 last:border-b-0 md:px-5 md:py-4">
 
             <!-- USER ICON -->
             <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#E1E4E8] bg-white md:h-9 md:w-9">
@@ -934,92 +655,40 @@
 
             <div class="min-w-0 flex-1">
               <span class="block truncate text-[13px] font-medium text-[#111827] md:text-[15px]">
-                Sally Smith
+                {{ personName(m.manager) }}
               </span>
               <span class="block truncate text-[11px] text-gray-400 md:text-[14px]">
-                Technology Manager
+                {{ m.manager.jobTitle || 'Manager' }}{{ (m.unit?.name ?? m.manager.unit?.name) ? ' • ' + (m.unit?.name ?? m.manager.unit?.name) : '' }}
               </span>
             </div>
 
             <div class="flex shrink-0 items-center gap-2 md:gap-5">
-              <span class="rounded-full bg-[#DDFBE5] px-2 py-0.5 text-[10px] font-medium text-[#16A34A] md:px-2.5 md:py-1 md:text-[12px]">
-                Reviewed
-              </span>
+              @if (m.teamSize > 0 && m.completedReviews === m.teamSize) {
+                <span class="rounded-full bg-[#DDFBE5] px-2 py-0.5 text-[10px] font-medium text-[#16A34A] md:px-2.5 md:py-1 md:text-[12px]">
+                  Reviewed
+                </span>
+              } @else {
+                <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:px-2.5 md:py-1 md:text-[12px]">
+                  {{ m.completedReviews }}/{{ m.teamSize }} reviewed
+                </span>
+              }
 
-              <button type="button" (click)="goToManagerPerformance()"
+              <button type="button" (click)="goToManagerDetails(m)"
                 class="link-select whitespace-nowrap !text-[12px] font-medium text-[#4D9BF6] md:text-[14px]">
                 View →
               </button>
             </div>
 
           </div>
-
-
-          <!-- FINANCE MANAGER -->
-          <div class="flex items-center gap-3 border-b border-[#E5E7EB] px-3 py-3 md:px-5 md:py-4">
-
-            <!-- USER ICON -->
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#E1E4E8] bg-white md:h-9 md:w-9">
-              <i class="fa-solid fa-user text-[15px] text-[#93C5FD] md:text-[16px]"></i>
-            </div>
-
-            <div class="min-w-0 flex-1">
-              <span class="block truncate text-[13px] font-medium text-[#111827] md:text-[15px]">
-                Sally Smith
-              </span>
-              <span class="block truncate text-[11px] text-gray-400 md:text-[14px]">
-                Finance Manager
-              </span>
-            </div>
-
-            <div class="flex shrink-0 items-center gap-2 md:gap-5">
-              <span class="rounded-full bg-[#DDFBE5] px-2 py-0.5 text-[10px] font-medium text-[#16A34A] md:px-2.5 md:py-1 md:text-[12px]">
-                Reviewed
-              </span>
-
-              <button type="button" (click)="goToManagerPerformance()"
-                class="link-select whitespace-nowrap !text-[12px] font-medium text-[#4D9BF6] md:text-[14px]">
-                View →
-              </button>
-            </div>
-
-          </div>
-
-
-          <!-- HR MANAGER -->
-          <div class="flex items-center gap-3 px-3 py-3 md:px-5 md:py-4">
-
-            <!-- USER ICON -->
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#E1E4E8] bg-white md:h-9 md:w-9">
-              <i class="fa-solid fa-user text-[15px] text-[#93C5FD] md:text-[16px]"></i>
-            </div>
-
-            <div class="min-w-0 flex-1">
-              <span class="block truncate text-[13px] font-medium text-[#111827] md:text-[15px]">
-                Sally Smith
-              </span>
-              <span class="block truncate text-[11px] text-gray-400 md:text-[14px]">
-                HR Manager
-              </span>
-            </div>
-
-            <div class="flex shrink-0 items-center gap-2 md:gap-5">
-              <span class="rounded-full bg-[#EAF3FF] px-2 py-0.5 text-[10px] font-medium text-[#4D9BF6] md:px-2.5 md:py-1 md:text-[12px]">
-                Submitted
-              </span>
-
-              <button type="button" (click)="goToManagerPerformance()"
-                class="link-select whitespace-nowrap !text-[12px] font-medium text-[#4D9BF6] md:text-[14px]">
-                View →
-              </button>
-            </div>
-
-          </div>
+          } @empty {
+            <p class="px-4 py-6 text-center text-[13px] text-gray-400">No managers to show.</p>
+          }
 
         </div>
       </section>
 
+      }
+
     </div>
   </div>
 }
-

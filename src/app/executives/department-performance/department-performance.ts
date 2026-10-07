@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import {
   ChartComponent,
@@ -14,54 +15,95 @@ import {
   ApexLegend,
   ApexResponsive
 } from 'ng-apexcharts';
+import { ElevateApi, errorText } from '../../core/elevate-api.service';
+import { Cycle, DepartmentRow } from '../../core/models';
+import { newestFirst, pickCycle } from '../../core/cycle-context';
+import { cycleName, fmtScore, personName } from '../../core/format';
 
 @Component({
   selector: 'app-department-performance',
   standalone: true,
-  imports: [ChartComponent],
+  imports: [ChartComponent, FormsModule],
   templateUrl: './department-performance.html',
   styleUrl: './department-performance.css'
 })
-export class DepartmentPerformance {
+export class DepartmentPerformance implements OnInit {
+  private readonly api = inject(ElevateApi);
+  private readonly route = inject(ActivatedRoute);
 
   constructor(private router: Router) {}
+
+  readonly cycles = signal<Cycle[]>([]);
+  readonly cycleId = signal('');
+  readonly rows = signal<DepartmentRow[]>([]);
+  readonly loading = signal(true);
+  readonly error = signal('');
+
+  readonly fmtScore = fmtScore;
+  readonly personName = personName;
+
+  label(c: Cycle): string {
+    return c.name || cycleName(c.period, c.startDate);
+  }
+
+  ngOnInit(): void {
+    this.api.cycles().subscribe({
+      next: (list) => {
+        const sorted = newestFirst(list);
+        this.cycles.set(sorted);
+        const pick = pickCycle(sorted, this.route.snapshot.queryParamMap.get('cycle'));
+        if (!pick) {
+          this.loading.set(false);
+          return;
+        }
+        this.cycleId.set(pick._id);
+        this.load();
+      },
+      error: (e) => {
+        this.error.set(errorText(e, 'Could not load performance cycles.'));
+        this.loading.set(false);
+      },
+    });
+  }
+
+  onCycleChange(id: string): void {
+    this.cycleId.set(id);
+    this.load();
+  }
+
+  private load(): void {
+    this.loading.set(true);
+    this.error.set('');
+    this.api.departments(this.cycleId()).subscribe({
+      next: (rows) => {
+        this.rows.set(rows);
+        this.loading.set(false);
+      },
+      error: (e) => {
+        this.error.set(errorText(e, 'Could not load departments.'));
+        this.loading.set(false);
+      },
+    });
+  }
 
   goToDashboard(): void {
     this.router.navigate(['/dashboard']);
   }
 
-  goToManagers(): void {
-    this.router.navigate(['executives/manager-performance']);
-  }
-
-  goToDashboad(): void {
-    this.router.navigate(['/dashboard']);
+  goToManagers(row: DepartmentRow): void {
+    this.router.navigate(['executives/manager-performance'], {
+      queryParams: { cycle: this.cycleId(), unit: row.unit._id },
+    });
   }
 
   // AVERAGE SCORE CHART
 
-  chartSeries: ApexAxisChartSeries = [
-    {
-      name: 'score',
-      data: [96, 57, 69]
-    }
-  ];
+  readonly chartSeries = computed<ApexAxisChartSeries>(() => [
+    { name: 'score', data: this.rows().map((r) => r.averageScore ?? 0) },
+  ]);
 
-  chart: ApexChart = {
-    type: 'bar',
-    height: 350,
-    width: '100%',
-    toolbar: {
-      show: false
-    }
-  };
-
-  xaxis: ApexXAxis = {
-    categories: [
-      'Technology',
-      'Projects & Products',
-      'Settlement'
-    ],
+  readonly xaxis = computed<ApexXAxis>(() => ({
+    categories: this.rows().map((r) => r.unit.name),
     labels: {
       style: {
         fontSize: '13px',
@@ -72,6 +114,20 @@ export class DepartmentPerformance {
       show: false
     },
     axisTicks: {
+      show: false
+    }
+  }));
+
+  readonly colors = computed<string[]>(() => {
+    const palette = ['#5AA4FF', '#ED7800', '#2F9E00', '#B57AE8', '#E5484D'];
+    return this.rows().map((_, i) => palette[i % palette.length]);
+  });
+
+  chart: ApexChart = {
+    type: 'bar',
+    height: 350,
+    width: '100%',
+    toolbar: {
       show: false
     }
   };
@@ -158,12 +214,6 @@ export class DepartmentPerformance {
       bottom: 0
     }
   };
-
-  colors: string[] = [
-    '#5AA4FF',
-    '#ED7800',
-    '#2F9E00'
-  ];
 
   legend: ApexLegend = {
     show: false

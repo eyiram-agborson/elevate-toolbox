@@ -13,6 +13,12 @@
             <span class="ml-2">Team Review</span>
         </button>
 
+        @if (loading()) {
+            <p class="mt-6 text-[14px] text-[#64748B]">Loading review…</p>
+        } @else if (!review()) {
+            <p class="mt-6 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() || 'Review not found.' }}</p>
+        } @else {
+
         <!-- EMPLOYEE INFORMATION + TOTAL SCORE -->
         <div class="mt-5 flex flex-col gap-5 md:flex-row md:items-start md:justify-between md:gap-6">
 
@@ -21,28 +27,28 @@
                 <div class="flex flex-wrap items-center gap-3">
 
                     <span class="!text-[19px] font-semibold !text-[#111827] md:!text-[24px]">
-                        Sally Smith
+                        {{ staffName() }}
                     </span>
 
                     <!-- SUBMITTED -->
-                    @if (!isReadOnly) {
+                    @if (!rated()) {
                         <span class="w-fit shrink-0 rounded-full bg-[#EEF6FF] px-3 py-1 !text-[11px] font-medium !text-[#3B82F6] md:!text-[15px]">
                             Submitted
                         </span>
                     }
 
                     <!-- REVIEWED -->
-                    @if (isReadOnly) {
+                    @if (rated()) {
                         <span class="flex w-fit shrink-0 items-center rounded-full bg-[#ECFDF5] px-3 py-1 !text-[11px] font-medium !text-[#008A63] md:!text-[15px]">
                             <span class="mr-1 !text-[10px]">●</span>
-                            Reviewed
+                            {{ review()!.status === 'HR_VALIDATED' ? 'Validated' : 'Reviewed' }}
                         </span>
                     }
 
                 </div>
 
                 <p class="m-0 mt-1 !text-[12px] leading-5 !text-[#64748B] md:!text-[15px]">
-                    Software Engineer • Client-Side Engineering
+                    {{ review()!.staff.jobTitle || 'Staff' }}{{ unitName() ? ' • ' + unitName() : '' }}
                 </p>
             </div>
 
@@ -51,12 +57,12 @@
                 <div class="flex h-[82px] w-full flex-col items-center justify-center rounded-[10px] border-2 border-[#2F87DA] bg-white">
 
                     <span class="!text-[12px] font-semibold !text-gray-600 md:!text-[13px]">
-                        TOTAL SCORE:
+                        {{ rated() ? 'TOTAL SCORE:' : 'SCORE SO FAR:' }}
                     </span>
 
                     <div class="flex items-center gap-3">
                         <span class="!text-[28px] font-semibold !text-[#2F87DA] md:!text-[30px]">
-                            {{ getTotalScore() }}
+                            {{ fmtScore(totalScore()) }}
                         </span>
 
                         <span class="!text-[22px] md:!text-[24px]">
@@ -68,8 +74,10 @@
             </div>
 
         </div>
+        }
     </section>
 
+    @if (review()) {
     <!-- KEY PERFORMANCE INDICATORS -->
     <section class="mt-7">
 
@@ -79,11 +87,17 @@
             </span>
         </div>
 
+        @if (!canRate() && !rated()) {
+            <p class="mb-3 rounded-[10px] bg-amber-50 px-4 py-3 text-[13px] text-amber-700">
+                Only {{ review()!.manager?.firstName }} {{ review()!.manager?.lastName }}, this person's manager, can rate this review.
+            </p>
+        }
+
         <!-- KPI CARDS -->
-        @for (kpi of kpis; track kpi.title) {
+        @for (kpi of rows(); track kpi.title; let i = $index) {
             <div
                 class="rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[22px] md:py-[18px]"
-                [class.mt-[18px]]="$index > 0"
+                [class]="i > 0 ? 'mt-[18px]' : ''"
             >
 
                 <!-- KPI HEADER -->
@@ -110,11 +124,7 @@
                             </span>
 
                             <p class="m-0 mt-1 !text-[14px] !text-[#111827] md:!text-[17px]">
-                                @if (isReadOnly) {
-                                    {{ kpi.rating }}
-                                } @else {
-                                    —
-                                }
+                                {{ fmtScore(kpi.rating) }}
                             </p>
                         </div>
 
@@ -125,11 +135,7 @@
                             </span>
 
                             <p class="m-0 mt-1 !text-[14px] !text-[#111827] md:!text-[17px]">
-                                @if (isReadOnly) {
-                                    {{ kpi.performance }}
-                                } @else {
-                                    —
-                                }
+                                {{ rated() ? fmtScore(kpi.performance) + '%' : '—' }}
                             </p>
                         </div>
 
@@ -140,11 +146,7 @@
                             </span>
 
                             <p class="m-0 mt-1 !text-[14px] font-medium !text-[#111827] md:!text-[17px]">
-                                @if (isReadOnly) {
-                                    {{ kpi.score }}
-                                } @else {
-                                    —
-                                }
+                                {{ rated() ? fmtScore(kpi.score) : '—' }}
                             </p>
                         </div>
 
@@ -158,7 +160,7 @@
                     </p>
 
                     <div class="mt-2 space-y-1 !text-[13px] leading-6 !text-[#64748B] md:!text-[15px]">
-                        @for (target of kpi.targets; track target) {
+                        @for (target of kpi.targets; track $index) {
                             <p class="m-0 !text-[13px] !text-[#64748B] md:!text-[15px]">
                                 • {{ target }}
                             </p>
@@ -173,15 +175,11 @@
                     </p>
 
                     <p class="m-0 mt-2 !text-[13px] leading-6 !text-[#807777] md:!text-[15px]">
-                        @if (isReadOnly) {
-                            Self-assessed performance of
-                            <span class="font-medium !text-[#111827]">
-                                {{ kpi.performance }}
-                            </span>
-                            out of 5 against the agreed targets for this KPI.
-                        } @else {
-                            Self-assessed performance of — out of 5 against the agreed targets for this KPI.
-                        }
+                        Self-assessed performance of
+                        <span class="font-medium !text-[#111827]">
+                            {{ fmtScore(kpi.staffScore) }}
+                        </span>
+                        out of 5 against the agreed targets for this KPI.
                     </p>
                 </div>
 
@@ -197,7 +195,7 @@
                     </div>
 
                     <p class="m-0 mt-2 !text-[13px] leading-6 !text-[#626262] md:!text-[15px]">
-                        {{ kpi.staffComments }}
+                        {{ kpi.staffComments || 'No comment added.' }}
                     </p>
 
                 </div>
@@ -223,14 +221,14 @@
                         <div class="mt-2 flex flex-wrap items-center gap-2">
                             @for (page of pages; track page) {
                                 <button
-             type="button"
+                                    type="button"
                                     [disabled]="isReadOnly"
                                     (click)="selectRating(kpi, page)"
                                     class="button-press flex h-[30px] w-[30px] items-center justify-center rounded-[6px] border !text-[14px] font-medium transition-colors disabled:cursor-default md:!text-[15px]"
                                     [ngClass]="kpi.rating === page
                                         ? 'border-[#2F87DA] bg-[#2F87DA] !text-white'
                                         : 'border-[#D0D5DD] bg-white !text-[#64748B] hover:border-[#2F87DA] hover:!text-[#2F87DA] disabled:hover:border-[#D0D5DD] disabled:hover:!text-[#64748B]'"
-              >
+                                >
                                     {{ page }}
                                 </button>
                             }
@@ -243,22 +241,19 @@
                             Manager Comments
                         </p>
 
-                        <!-- EDITABLE SUBMITTED VERSION -->
                         @if (!isReadOnly) {
                             <textarea
+                                [name]="'manager-comment-' + i"
                                 [(ngModel)]="kpi.managerComments"
                                 placeholder="Enter your comments..."
                                 class="mt-2 min-h-[75px] w-full resize-none rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] !text-[13px] !text-[#111827] outline-none placeholder:!text-[#98A2B3] focus:border-[#5AA4FF] focus:ring-2 focus:ring-[#5AA4FF]/10 md:!text-[15px]"
-          ></textarea>
-                        }
-
-                        <!-- READ-ONLY REVIEWED VERSION -->
-                        @if (isReadOnly) {
+                            ></textarea>
+                        } @else {
                             <textarea
                                 [value]="kpi.managerComments"
                                 disabled
                                 class="mt-2 min-h-[75px] w-full resize-none rounded-[8px] border border-[#C0C0C0] bg-[#F5F5F5] px-[12px] py-[12px] !text-[13px] !text-[#626262] disabled:cursor-default disabled:opacity-100 md:!text-[15px]"
-          ></textarea>
+                            ></textarea>
                         }
 
                     </div>
@@ -267,23 +262,37 @@
             </div>
         }
 
+        <!-- OVERALL COMMENTS -->
+        <div class="mt-[18px] rounded-[12px] border border-[#E1E4E8] bg-white px-4 py-4 md:px-[22px] md:py-[18px]">
+            <p class="m-0 !text-[12px] font-medium uppercase !text-[#111827] md:!text-[15px]">Overall comments</p>
+            <textarea
+                [(ngModel)]="overallComments"
+                [disabled]="isReadOnly"
+                name="overall-comments"
+                placeholder="Optional overall comments for this review..."
+                class="mt-2 min-h-[75px] w-full resize-none rounded-[8px] border border-[#C0C0C0] bg-white px-[12px] py-[12px] !text-[13px] !text-[#111827] outline-none placeholder:!text-[#98A2B3] focus:border-[#5AA4FF] disabled:bg-[#F5F5F5] disabled:!text-[#626262] md:!text-[15px]"
+            ></textarea>
+        </div>
+
+        @if (error()) {
+            <p class="mt-4 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+        }
+        @if (notice()) {
+            <p class="mt-4 rounded-[10px] bg-[#DCFCE7] px-4 py-3 text-[14px] text-[#166534]">{{ notice() }}</p>
+        }
+
         <!-- REVIEW ACTIONS -->
-        @if (!isReadOnly) {
+        @if (canRate()) {
             <div class="mt-5 flex flex-col gap-3 border-t border-[#E1E4E8] pt-4 md:flex-row md:items-center md:justify-end">
 
-                <button type="button"
-                    (click)="saveDraft()"
-                    class="button-press w-full rounded-[8px] border border-[#D0D5DD] bg-white px-5 py-2.5 !text-[13px] font-medium !text-[#344054] hover:bg-[#F8FAFC] md:w-auto md:!text-[15px]"  >
-                    Save Draft
-                </button>
-
-                <button type="button" (click)="submitReview()"
-                    class="button-press w-full rounded-[8px] bg-[#5AA4FF] px-7 py-2.5 !text-[13px] font-medium !text-white hover:bg-[#428FEA] md:w-auto md:!text-[15px]"  >
-                    Submit Review
+                <button type="button" (click)="submitReview()" [disabled]="busy()"
+                    class="button-press w-full rounded-[8px] bg-[#5AA4FF] px-7 py-2.5 !text-[13px] font-medium !text-white hover:bg-[#428FEA] disabled:opacity-60 md:w-auto md:!text-[15px]"  >
+                    {{ busy() ? 'Submitting…' : 'Submit Review' }}
                 </button>
 
             </div>
         }
 
     </section>
+    }
 </div>

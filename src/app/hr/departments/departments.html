@@ -14,7 +14,7 @@
                             All Departments
                         </span>
 
-                        @if (isHistoricalCycle) {
+                        @if (isHistoricalCycle()) {
                             <span
                                 class="inline-flex items-center gap-[7px] rounded-full border border-[#BBF7D0] bg-[#DCFCE7] px-[13px] py-[6px] text-[13px] font-semibold text-[#16A34A]">
                                 <i class="fa-solid fa-circle-check text-[12px]"></i>
@@ -25,7 +25,7 @@
 
                     <!-- DESCRIPTION -->
                     <span class="mt-[7px] !text-[13px] !text-gray-400 md:!text-[15px]">
-                        @if (isHistoricalCycle) {
+                        @if (isHistoricalCycle()) {
                             Review cycle completed. View historical department performance.
                         } @else {
                             Track manager review progress across all departments
@@ -33,25 +33,19 @@
                     </span>
 
                     <!-- HISTORICAL CYCLE INFORMATION -->
-                    @if (isHistoricalCycle) {
+                    @if (isHistoricalCycle() && selectedCycle(); as c) {
                         <div
                             class="mt-[16px] inline-flex w-fit items-center gap-[13px] rounded-full border border-[#E1E5EA] bg-white px-[16px] py-[9px] text-[13px] text-[#64748B]">
                             <i class="fa-regular fa-calendar text-[14px]"></i>
 
                             <span class="font-medium text-[#344054]">
-                                {{ cycles[+selectedCycle.slice(1) - 1].label }}
+                                {{ label(c) }}
                             </span>
 
                             <span class="text-[#98A2B3]">•</span>
 
                             <span>
-                                Completed on April 02, 2026
-                            </span>
-
-                            <span class="text-[#98A2B3]">•</span>
-
-                            <span>
-                                08:45 AM
+                                Ended {{ fmtDate(c.endDate) }}
                             </span>
                         </div>
                     }
@@ -68,6 +62,8 @@
                         <input
                             type="text"
                             placeholder="Search department..."
+                            [ngModel]="search()"
+                            (ngModelChange)="search.set($event)"
                             class="h-[48px] md:h-[54px] w-full rounded-[10px] border border-[#D0D0D0] bg-[#F9FAFB] pl-[48px] pr-[16px] !text-[13px] !text-[#555] md:!text-[16px] outline-none transition focus:border-[#245D91]"
                         />
                     </div>
@@ -75,12 +71,12 @@
                     <!-- CYCLE FILTER -->
                     <div class="relative w-full md:w-[320px]">
                         <select
-                            [(ngModel)]="selectedCycle"
-                            (change)="onCycleChange()"
+                            [ngModel]="selectedCycleId()"
+                            (ngModelChange)="onCycleChange($event)"
                             class="h-[48px] md:h-[54px] w-full appearance-none rounded-[10px] border border-[#D0D0D0] bg-white px-[20px] pr-[50px] !text-[13px] !text-[#344054] md:!text-[15px] outline-none transition focus:border-[#245D91]">
-                            @for (cycle of cycles; track cycle.value) {
-                                <option [value]="cycle.value">
-                                    {{ cycle.label }}
+                            @for (cycle of cycles(); track cycle._id) {
+                                <option [value]="cycle._id">
+                                    {{ label(cycle) }} · {{ statusText(cycle) }}
                                 </option>
                             }
                         </select>
@@ -94,224 +90,67 @@
 
             <!-- DEPARTMENTS -->
             <section>
+                @if (loading()) {
+                    <p class="text-[14px] text-[#64748B]">Loading departments…</p>
+                } @else if (error()) {
+                    <p class="rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+                } @else if (!selectedCycle()) {
+                    <p class="rounded-[10px] border border-dashed border-[#CBD5E1] bg-white px-4 py-8 text-center text-[14px] text-[#64748B]">No performance cycle exists yet. Create one under Performance Cycles.</p>
+                } @else if (visibleRows().length === 0) {
+                    <p class="rounded-[10px] border border-dashed border-[#CBD5E1] bg-white px-4 py-8 text-center text-[14px] text-[#64748B]">No departments found.</p>
+                } @else {
                 <div class="overflow-hidden rounded-[14px] border border-[#E1E4E8] bg-white">
-                    <!-- TECHNOLOGY -->
+                    @for (row of visibleRows(); track row.unit._id) {
                     <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3.5 md:flex-row md:items-center md:justify-between md:gap-0 md:px-[20px] md:py-[20px]">
                         <div class="flex w-full min-w-0 items-center gap-3 md:w-[42%] md:gap-[14px]">
                             <div class="h-9 w-9 md:h-[42px] md:w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
 
                             <div class="flex flex-col gap-[4px]">
                                 <span class="!text-[14px] font-medium !text-[#111827] md:!text-[16px]">
-                                    Technology
+                                    {{ row.unit.name }}
                                 </span>
 
                                 <span class="!text-[13px] !text-gray-400 md:!text-[15px]">
-                                    24 team members
+                                    {{ row.staffCount }} team member{{ row.staffCount === 1 ? '' : 's' }}
                                 </span>
                             </div>
                         </div>
 
-                        @if (isHistoricalCycle) {
+                        @if (isHistoricalCycle()) {
                             <div class="flex w-full flex-wrap items-center gap-2 !text-[12px] md:w-[38%] md:flex-nowrap md:gap-[14px] md:!text-[14px]">
                                 <span class="!text-[12px] font-medium !text-[#16A34A] md:!text-[15px]">
-                                    24/24 reviewed
+                                    {{ row.managerReviewCount }}/{{ row.staffCount }} reviewed
                                 </span>
 
                                 <span class="text-[#98A2B3]">•</span>
 
                                 <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    April 02, 2026
-                                </span>
-
-                                <span class="text-[#98A2B3]">•</span>
-
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    08:45 AM
+                                    Average {{ row.averageScore ?? '—' }}
                                 </span>
                             </div>
                         } @else {
                             <div class="w-full md:w-[38%]">
                                 <nz-progress
-                                    [nzPercent]="33"
+                                    [nzPercent]="percent(row)"
                                     [nzShowInfo]="false"
                                     [nzStrokeWidth]="6"
                                     nzStrokeColor="#4D9BF6"
                                     class="flex-1"></nz-progress>
 
                                 <span class="mt-[5px] block !text-[13px] !text-gray-400 md:!text-[15px]">
-                                    8/24 reviewed
+                                    {{ row.managerReviewCount }}/{{ row.staffCount }} reviewed
                                 </span>
                             </div>
                         }
 
-                        <button (click)="goToDepartmentDetails()"
+                        <button (click)="goToDepartmentDetails(row)"
                             class="self-end shrink-0 cursor-pointer !text-[12px] font-medium !text-[#555] transition-colors duration-150 hover:!text-[#5BA2F7] md:self-auto md:!text-[15px]">
                             Open →
                         </button>
                     </div>
-
-                    <!-- FINANCE -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3.5 md:flex-row md:items-center md:justify-between md:gap-0 md:px-[20px] md:py-[20px]">
-                        <div class="flex w-full min-w-0 items-center gap-3 md:w-[42%] md:gap-[14px]">
-                            <div class="h-9 w-9 md:h-[42px] md:w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
-
-                            <div class="flex flex-col gap-[4px]">
-                                <span class="!text-[14px] font-medium !text-[#111827] md:!text-[16px]">
-                                    Finance
-                                </span>
-
-                                <span class="!text-[13px] !text-gray-400 md:!text-[15px]">
-                                    24 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        @if (isHistoricalCycle) {
-                            <div class="flex w-full flex-wrap items-center gap-2 !text-[12px] md:w-[38%] md:flex-nowrap md:gap-[14px] md:!text-[14px]">
-                                <span class="!text-[12px] font-medium !text-[#16A34A] md:!text-[15px]">
-                                    24/24 reviewed
-                                </span>
-
-                                <span class="text-[#98A2B3]">•</span>
-
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    April 02, 2026
-                                </span>
-
-                                <span class="text-[#98A2B3]">•</span>
-
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    08:45 AM
-                                </span>
-                            </div>
-                        } @else {
-                            <div class="w-full md:w-[38%]">
-                                <nz-progress
-                                    [nzPercent]="66"
-                                    [nzShowInfo]="false"
-                                    [nzStrokeWidth]="6"
-                                    nzStrokeColor="#4D9BF6"
-                                    class="flex-1"></nz-progress>
-
-                                <span class="mt-[5px] block !text-[13px] !text-gray-400 md:!text-[15px]">
-                                    16/24 reviewed
-                                </span>
-                            </div>
-                        }
-
-                        <button (click)="goToDepartmentDetails()"
-                            class="self-end shrink-0 cursor-pointer !text-[12px] font-medium !text-[#555] transition-colors duration-150 hover:!text-[#5BA2F7] md:self-auto md:!text-[15px]">
-                            Open →
-                        </button>
-                    </div>
-
-                    <!-- HUMAN RESOURCES -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3.5 md:flex-row md:items-center md:justify-between md:gap-0 md:px-[20px] md:py-[20px]">
-                        <div class="flex w-full min-w-0 items-center gap-3 md:w-[42%] md:gap-[14px]">
-                            <div class="h-9 w-9 md:h-[42px] md:w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
-
-                            <div class="flex flex-col gap-[4px]">
-                                <span class="!text-[14px] font-medium !text-[#111827] md:!text-[16px]">
-                                    Human Resources
-                                </span>
-
-                                <span class="!text-[13px] !text-gray-400 md:!text-[15px]">
-                                    24 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        @if (isHistoricalCycle) {
-                            <div class="flex w-full flex-wrap items-center gap-2 !text-[12px] md:w-[38%] md:flex-nowrap md:gap-[14px] md:!text-[14px]">
-                                <span class="!text-[12px] font-medium !text-[#16A34A] md:!text-[15px]">
-                                    24/24 reviewed
-                                </span>
-                                <span class="text-[#98A2B3]">•</span>
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    April 02, 2026
-                                </span>
-                                <span class="text-[#98A2B3]">•</span>
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    08:45 AM
-                                </span>
-                            </div>
-                        } @else {
-                            <div class="w-full md:w-[38%]">
-                                <nz-progress
-                                    [nzPercent]="100"
-                                    [nzShowInfo]="false"
-                                    [nzStrokeWidth]="6"
-                                    nzStrokeColor="#4D9BF6"
-                                    class="flex-1"></nz-progress>
-
-                                <span class="mt-[5px] block !text-[13px] !text-gray-400 md:!text-[15px]">
-                                    24/24 reviewed
-                                </span>
-                            </div>
-                        }
-
-                        <button (click)="goToDepartmentDetails()"
-                            class="self-end shrink-0 cursor-pointer !text-[12px] font-medium !text-[#555] transition-colors duration-150 hover:!text-[#5BA2F7] md:self-auto md:!text-[15px]">
-                            Open →
-                        </button>
-                    </div>
-
-                    <!-- OPERATIONS -->
-                    <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-3 py-3.5 md:flex-row md:items-center md:justify-between md:gap-0 md:px-[20px] md:py-[20px]">
-                        <div class="flex w-full min-w-0 items-center gap-3 md:w-[42%] md:gap-[14px]">
-                            <div class="h-9 w-9 md:h-[42px] md:w-[42px] shrink-0 rounded-full bg-[#B57AE8]"></div>
-
-                            <div class="flex flex-col gap-[4px]">
-                                <span class="!text-[14px] font-medium !text-[#111827] md:!text-[16px]">
-                                    Operations
-                                </span>
-
-                                <span class="!text-[13px] !text-gray-400 md:!text-[15px]">
-                                    24 team members
-                                </span>
-                            </div>
-                        </div>
-
-                        @if (isHistoricalCycle) {
-                            <div class="flex w-full flex-wrap items-center gap-2 !text-[12px] md:w-[38%] md:flex-nowrap md:gap-[14px] md:!text-[14px]">
-                                <span class="!text-[12px] font-medium !text-[#16A34A] md:!text-[15px]">
-                                    24/24 reviewed
-                                </span>
-
-                                <span class="text-[#98A2B3]">•</span>
-
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    April 02, 2026
-                                </span>
-
-                                <span class="text-[#98A2B3]">•</span>
-
-                                <span class="!text-[12px] !text-[#64748B] md:!text-[15px]">
-                                    08:45 AM
-                                </span>
-                            </div>
-                        } @else {
-                            <div class="w-full md:w-[38%]">
-                                <nz-progress
-                                    [nzPercent]="50"
-                                    [nzShowInfo]="false"
-                                    [nzStrokeWidth]="6"
-                                    nzStrokeColor="#4D9BF6"
-                                    class="flex-1"></nz-progress>
-
-                                <span class="mt-[5px] block !text-[13px] !text-gray-400 md:!text-[15px]">
-                                    12/24 reviewed
-                                </span>
-                            </div>
-                        }
-
-                        <button (click)="goToDepartmentDetails()"
-                            class="self-end shrink-0 cursor-pointer !text-[12px] font-medium !text-[#555] transition-colors duration-150 hover:!text-[#5BA2F7] md:self-auto md:!text-[15px]">
-                            Open →
-                        </button>
-                    </div>
-
+                    }
                 </div>
+                }
             </section>
     </div>
 </div>

@@ -17,16 +17,32 @@
 
 
     <!-- Department Performance -->
-    <div>
-      <h1 class="text-[18px] font-bold text-[#000000] md:text-[28px]">
-        Department Performance
-      </h1>
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h1 class="text-[18px] font-bold text-[#000000] md:text-[28px]">
+          Department Performance
+        </h1>
 
-      <p class="text-[11px] text-[#807777] md:text-[16px]">
-        Compare the departments assigned to you in the cycle.
-      </p>
+        <p class="text-[11px] text-[#807777] md:text-[16px]">
+          Compare the departments in the cycle.
+        </p>
+      </div>
+
+      <select [ngModel]="cycleId()" (ngModelChange)="onCycleChange($event)"
+        class="h-[44px] w-full rounded-[10px] border border-[#D0D0D0] bg-white px-4 text-[13px] text-[#344054] outline-none focus:border-[#245D91] md:w-[320px] md:text-[15px]">
+        @for (c of cycles(); track c._id) {
+          <option [value]="c._id">{{ label(c) }}</option>
+        }
+      </select>
     </div>
 
+    @if (loading()) {
+      <p class="mt-6 text-[14px] text-[#64748B]">Loading…</p>
+    } @else if (error()) {
+      <p class="mt-6 rounded-[10px] bg-red-50 px-4 py-3 text-[14px] text-red-600">{{ error() }}</p>
+    } @else if (rows().length === 0) {
+      <p class="mt-6 rounded-[10px] border border-dashed border-[#CBD5E1] bg-white px-4 py-8 text-center text-[14px] text-[#64748B]">No departments to show for this cycle.</p>
+    } @else {
 
     <!-- Graph -->
     <div class="mt-5 overflow-hidden rounded-[16px] border border-[#C0C0C0] bg-white md:mt-8">
@@ -38,15 +54,15 @@
 
       <div class="w-full overflow-hidden px-1 pb-2 md:px-4 md:pb-3">
         <apx-chart
-          [series]="chartSeries"
+          [series]="chartSeries()"
           [chart]="chart"
-          [xaxis]="xaxis"
+          [xaxis]="xaxis()"
           [yaxis]="yaxis"
           [plotOptions]="plotOptions"
           [responsive]="responsive"
           [dataLabels]="dataLabels"
           [grid]="grid"
-          [colors]="colors"
+          [colors]="colors()"
           [tooltip]="tooltip"
           [legend]="legend"
         ></apx-chart>
@@ -64,7 +80,7 @@
         </p>
 
         <p class="mt-1 text-[11px] leading-5 text-[#807777] md:text-[15px]">
-          Compare the performance and team scores of all your assigned departments.
+          Compare the performance and team scores of all departments.
         </p>
       </div>
 
@@ -76,7 +92,7 @@
           <thead>
             <tr>
               <th class="whitespace-nowrap px-3 py-2 text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Departments</th>
-              <th class="whitespace-nowrap px-3 py-2 text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Managers</th>
+              <th class="whitespace-nowrap px-3 py-2 text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Manager</th>
               <th class="whitespace-nowrap px-3 py-2 text-center text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Employees</th>
               <th class="whitespace-nowrap px-3 py-2 text-center text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Reviews</th>
               <th class="whitespace-nowrap px-3 py-2 text-center text-[11px] font-semibold uppercase tracking-wider md:px-5 md:text-[14px]">Current team score</th>
@@ -85,17 +101,16 @@
           </thead>
 
           <tbody>
-
-            <!-- Technology -->
+            @for (row of rows(); track row.unit._id) {
             <tr class="border-t border-[#D6D6D6]">
-              <td class="whitespace-nowrap px-3 py-3 font-medium md:px-5">Technology</td>
-              <td class="whitespace-nowrap px-3 py-3 md:px-5">Sally Smith</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">24</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">16/24 reviewed</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center font-bold text-[#111111] md:px-5">80/100</td>
+              <td class="whitespace-nowrap px-3 py-3 font-medium md:px-5">{{ row.unit.name }}</td>
+              <td class="whitespace-nowrap px-3 py-3 md:px-5">{{ row.unitHead ? personName(row.unitHead) : '—' }}</td>
+              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">{{ row.staffCount }}</td>
+              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">{{ row.managerReviewCount }}/{{ row.staffCount }} reviewed</td>
+              <td class="whitespace-nowrap px-3 py-3 text-center font-bold text-[#111111] md:px-5">{{ fmtScore(row.averageScore) }}/100</td>
               <td class="whitespace-nowrap px-3 py-3 md:px-5">
                 <div class="flex justify-end">
-                  <button type="button" (click)="goToManagers()" class="button-press flex cursor-pointer items-center gap-1 whitespace-nowrap text-[12px] text-black hover:!text-blue-700 md:text-[15px]">
+                  <button type="button" (click)="goToManagers(row)" class="button-press flex cursor-pointer items-center gap-1 whitespace-nowrap text-[12px] text-black hover:!text-blue-700 md:text-[15px]">
                     View
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -106,57 +121,15 @@
                 </div>
               </td>
             </tr>
-
-
-            <!-- DevOps -->
-            <tr class="border-t border-[#D6D6D6]">
-              <td class="whitespace-nowrap px-3 py-3 font-medium md:px-5">DevOps</td>
-              <td class="whitespace-nowrap px-3 py-3 md:px-5">Sally Smith</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">12</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">4/12 reviewed</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center font-bold text-[#111111] md:px-5">72/100</td>
-              <td class="whitespace-nowrap px-3 py-3 md:px-5">
-                <div class="flex justify-end">
-                  <button type="button" (click)="goToManagers()" class="button-press flex cursor-pointer items-center gap-1 whitespace-nowrap text-[12px] text-black hover:!text-blue-700 md:text-[15px]">
-                    View
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 8L22 12L18 16"/>
-                      <path d="M2 12H22"/>
-                    </svg>
-                  </button>
-                </div>
-              </td>
-            </tr>
-
-
-            <!-- DevOps -->
-            <tr class="border-t border-[#D6D6D6]">
-              <td class="whitespace-nowrap px-3 py-3 font-medium md:px-5">DevOps</td>
-              <td class="whitespace-nowrap px-3 py-3 md:px-5">Sally Smith</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">12</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center md:px-5">4/12 reviewed</td>
-              <td class="whitespace-nowrap px-3 py-3 text-center font-bold text-[#111111] md:px-5">72/100</td>
-              <td class="whitespace-nowrap px-3 py-3 md:px-5">
-                <div class="flex justify-end">
-                  <button type="button" (click)="goToManagers()" class="button-press flex cursor-pointer items-center gap-1 whitespace-nowrap text-[12px] text-black hover:!text-blue-700 md:text-[15px]">
-                    View
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 8L22 12L18 16"/>
-                      <path d="M2 12H22"/>
-                    </svg>
-                  </button>
-                </div>
-              </td>
-            </tr>
-
+            }
           </tbody>
         </table>
       </div>
 
       <div class="h-3"></div>
     </div>
+
+    }
 
   </div>
 

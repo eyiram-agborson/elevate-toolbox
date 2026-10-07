@@ -19,26 +19,34 @@
     <span class="!text-[12px] font-semibold uppercase tracking-wide text-[#171717] md:!text-[14px]">Current</span>
     <span class="rounded-full bg-[#DDFFE8] px-3 py-1 !text-[10px] font-medium text-[#399B00] md:px-4 md:!text-[12px]">Active</span>
   </div>
+  @if (loading()) {
+    <p class="mt-2 text-[13px] text-[#64748B]">Loading…</p>
+  } @else if (error()) {
+    <p class="mt-2 rounded-[10px] bg-red-50 px-4 py-3 text-[13px] text-red-600">{{ error() }}</p>
+  } @else if (!current()) {
+    <p class="mt-[6px] rounded-xl border border-dashed border-[#CBD5E1] bg-white px-4 py-6 text-center text-[13px] text-[#64748B]">There is no active performance cycle right now.</p>
+  }
   <!-- CURRENT ACTIVITY CARD -->
+  @if (current(); as c) {
   <div class="mt-[6px] rounded-xl border border-[#8BBCE3] bg-[#EDF6FF] px-4 py-4 md:px-5 md:py-4 lg:px-[24px] lg:py-[18px]">
     <div class="flex flex-col gap-3 md:grid md:grid-cols-[1.7fr_1fr_1fr_auto] md:items-center md:gap-5 lg:gap-6">
       <!-- Cycle -->
       <div class="min-w-0">
-        <p class="!text-[13px] font-semibold text-[#171717] md:!text-[15px]">{{ currentCycles.name }}</p>
+        <p class="!text-[13px] font-semibold text-[#171717] md:!text-[15px]">{{ c.name || cycleName(c.period, c.startDate) }}</p>
       </div>
       <!-- Goals -->
       <div class="flex items-center justify-between border-t border-[#D5E8F7] pt-3 md:block md:border-0 md:pt-0 md:text-center">
         <p class="!text-[11px] font-medium uppercase tracking-wide text-[#8A98A8] md:!text-[12px]">Goals</p>
-        <p class="mt-0 !text-[13px] font-medium text-[#171717] md:mt-1 md:!text-[15px]">{{ currentCycles.targets }}</p>
+        <p class="mt-0 !text-[13px] font-medium text-[#171717] md:mt-1 md:!text-[15px]">{{ fmtRange(c.targetStartDate, c.targetEndDate) }}</p>
       </div>
       <!-- Performance -->
       <div class="flex items-center justify-between border-t border-[#D5E8F7] pt-3 md:block md:border-0 md:pt-0 md:text-center">
         <p class="!text-[11px] font-medium uppercase tracking-wide text-[#8A98A8] md:!text-[12px]">Performance</p>
-        <p class="mt-0 !text-[13px] font-medium text-[#171717] md:mt-1 md:!text-[15px]">{{ currentCycles.performance }}</p>
+        <p class="mt-0 !text-[13px] font-medium text-[#171717] md:mt-1 md:!text-[15px]">{{ fmtRange(c.reviewStartDate, c.reviewEndDate) }}</p>
       </div>
       <!-- View -->
       <div class="flex justify-end">
-        <button type="button" (click)="goToElevate()" class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-[#3287D7] px-4 py-2.5 !text-[13px] font-medium !text-white transition hover:bg-[#2778C4] md:w-auto md:px-5 md:py-2.5 md:!text-[14px]">
+        <button type="button" (click)="view(c)" class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-[#3287D7] px-4 py-2.5 !text-[13px] font-medium !text-white transition hover:bg-[#2778C4] md:w-auto md:px-5 md:py-2.5 md:!text-[14px]">
           View
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"/>
@@ -48,6 +56,7 @@
       </div>
     </div>
   </div>
+  }
 </section>
 <!-- PREVIOUS CYCLES -->
 <section class="mt-5 md:mt-6">
@@ -58,25 +67,28 @@
   </div>
   <!-- PREVIOUS CYCLES -->
   <div class="mt-[6px] overflow-hidden rounded-xl border border-[#DCDCDC] bg-white">
-    @for (cycle of previousCycle; track $index) {
+    @if (previous().length === 0) {
+      <p class="px-4 py-6 text-center text-[13px] text-[#64748B]">No completed cycles yet.</p>
+    }
+    @for (cycle of previous(); track cycle._id) {
       <div class="flex flex-col gap-3 border-b border-[#E5E7EB] px-4 py-4 transition last:border-b-0 hover:bg-[#FAFAFA] md:grid md:grid-cols-[1.7fr_1fr_1fr_auto] md:items-center md:gap-5 md:px-5 md:py-4 lg:px-[24px] lg:py-[16px]">
         <!-- Cycle name -->
         <div class="min-w-0">
-          <span class="!text-[13px] font-medium text-[#171717] md:!text-[15px]">{{ cycle.name }}</span>
+          <span class="!text-[13px] font-medium text-[#171717] md:!text-[15px]">{{ cycle.name || cycleName(cycle.period, cycle.startDate) }}</span>
         </div>
         <!-- Targets -->
         <div class="flex items-center justify-between border-t border-[#EEEEEE] pt-3 md:block md:border-0 md:pt-0 md:text-center">
           <p class="!text-[11px] font-medium uppercase tracking-wide text-[#9A9A9A] md:!text-[12px]">Targets</p>
-          <p class="mt-0 !text-[13px] text-[#333333] md:mt-1 md:!text-[15px]">{{ cycle.targets }}</p>
+          <p class="mt-0 !text-[13px] text-[#333333] md:mt-1 md:!text-[15px]">{{ fmtRange(cycle.targetStartDate, cycle.targetEndDate) }}</p>
         </div>
         <!-- Performance -->
         <div class="flex items-center justify-between border-t border-[#EEEEEE] pt-3 md:block md:border-0 md:pt-0 md:text-center">
           <p class="!text-[11px] font-medium uppercase tracking-wide text-[#9A9A9A] md:!text-[12px]">Performance</p>
-          <p class="mt-0 !text-[13px] text-[#333333] md:mt-1 md:!text-[15px]">{{ cycle.performance }}</p>
+          <p class="mt-0 !text-[13px] text-[#333333] md:mt-1 md:!text-[15px]">{{ fmtRange(cycle.reviewStartDate, cycle.reviewEndDate) }}</p>
         </div>
         <!-- View -->
         <div class="flex justify-end">
-          <button type="button" (click)="goToPreviousCycle()" class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#DCDCDC] px-4 py-2.5 !text-[13px] font-medium !text-[#333333] transition hover:bg-[#3287D7] hover:!text-white md:w-auto md:border-0 md:px-0 md:py-0 md:!text-[15px]">
+          <button type="button" (click)="view(cycle)" class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#DCDCDC] px-4 py-2.5 !text-[13px] font-medium !text-[#333333] transition hover:bg-[#3287D7] hover:!text-white md:w-auto md:border-0 md:px-0 md:py-0 md:!text-[15px]">
             View
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/>

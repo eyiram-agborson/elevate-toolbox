@@ -1,6 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from '../../services/role';
+import { ElevateApi, errorText } from '../../core/elevate-api.service';
+import { Cycle } from '../../core/models';
+import { cycleName, fmtRange } from '../../core/format';
 
 @Component({
   selector: 'app-my-activities',
@@ -8,64 +11,43 @@ import { Role } from '../../services/role';
   templateUrl: './my-activities.html',
   styleUrl: './my-activities.css',
 })
-export class MyActivities {
+export class MyActivities implements OnInit {
+  private readonly roleService = inject(Role);
+  private readonly api = inject(ElevateApi);
+  private readonly router = inject(Router);
 
-  roleService = inject(Role);
+  readonly cycles = signal<Cycle[]>([]);
+  readonly loading = signal(true);
+  readonly error = signal('');
 
-  constructor(private router: Router) {}
+  readonly current = computed(() => this.cycles().find((c) => c.status === 'ACTIVE') ?? null);
+  readonly previous = computed(() => this.cycles().filter((c) => c.status === 'CLOSED'));
 
-  currentCycles = {
-    name: 'ELEVATE - Q3 (July - September 2026)',
-    targets: '22 Jul - 30 Jul 2026',
-    performance: '29 Sept - 7 Oct 2026'
-  };
+  readonly fmtRange = fmtRange;
+  readonly cycleName = cycleName;
 
-  previousCycle = [
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    },
-    {
-      name: 'ELEVATE - Q3 (July-September 2026)',
-      targets: '22 Jul - 30 Jul 2026',
-      performance: '29 Sept - 7 Oct 2026'
-    }
-  ];
+  ngOnInit(): void {
+    this.api.cycles().subscribe({
+      next: (list) => {
+        this.cycles.set(
+          [...list].sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()),
+        );
+        this.loading.set(false);
+      },
+      error: (e) => {
+        this.error.set(errorText(e, 'Could not load performance cycles.'));
+        this.loading.set(false);
+      },
+    });
+  }
 
   goBack(): void {
     this.router.navigate(['/']);
   }
 
-  goToElevate(): void {
-    const role = this.roleService.getRole();
-
-    switch (role) {
-      case 'employee':
-        this.router.navigate(['/elevate/user-elevate']);
-        break;
-
-      case 'hr':
-        this.router.navigate(['/elevate/user-elevate']);
-        break;
-
-      case 'manager':
-        this.router.navigate(['/elevate/manager-elevate']);
-        break;
-
-      default:
-        console.error('Unsupported role for Elevate:', role);
-        break;
-    }
-  }
-  
-
-  goToPreviousCycle(): void {
-    this.router.navigate(['/activities-layout/previous-cycles']);
+  /** Open the "my cycle" screen for a cycle: managers have their own route, everyone else the staff one. */
+  view(cycle: Cycle): void {
+    const path = this.roleService.getRole() === 'manager' ? '/elevate/manager-elevate' : '/elevate/user-elevate';
+    this.router.navigate([path], { queryParams: { cycle: cycle._id } });
   }
 }
