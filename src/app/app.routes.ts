@@ -46,12 +46,9 @@ export const routes: Routes = [
       ]
      },
 
-
      {path: "set-target", loadComponent: () => import("./elevate/set-target/set-target").then(m => m.SetTarget)},
      {path: "team-review", loadComponent: () => import ("./elevate/team-review/team-review").then(m => m.TeamReview) },
      {path: "elevate/teamreview-totalscore", loadComponent: () => import ("./elevate/teamreview-totalscore/teamreview-totalscore").then( m => m.TeamreviewTotalscore) },
-
-
 
       {
         path: 'hr/departments', loadComponent: ()=> import('./hr/departments/departments').then(m => m.Departments),
